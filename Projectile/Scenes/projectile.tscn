@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://eqylcn5ss4x3"]
+
+[ext_resource type="Script" uid="uid://5a6ynk8c3g4k" path="res://Projectile/Script/projectile.gd" id="1_08sw2"]
+[ext_resource type="Texture2D" uid="uid://d2rdmujxgxrra" path="res://Projectile/All_Fire_Bullet_Pixel_16x16_05.png" id="2_tm405"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nl138"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_08sw2"]
+colors = PackedColorArray(1, 0, 1, 0.61960787, 0.05882353, 0, 0.98039216, 0.7058824)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tm405"]
+gradient = SubResource("Gradient_08sw2")
+
+[sub_resource type="Curve" id="Curve_6qb6b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9884616, 0.03392577), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_721ex"]
+curve = SubResource("Curve_6qb6b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xg858"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3(1, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_721ex")
+color_ramp = SubResource("GradientTexture1D_tm405")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_influence_min = 0.065000005
+turbulence_influence_max = 0.24900001
+
+[node name="Area2D" type="Area2D"]
+light_mask = 3
+visibility_layer = 3
+collision_mask = 23
+script = ExtResource("1_08sw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.556, 0.238)
+texture = ExtResource("2_tm405")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 7
+visibility_layer = 7
+shape = SubResource("RectangleShape2D_nl138")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_xg858")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

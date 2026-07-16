@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dohs70o6pdaik"]
+
+[ext_resource type="Script" uid="uid://b8mx3sulq7db2" path="res://Misc/Weapon/Code/Weapon.gd" id="1_6ws56"]
+[ext_resource type="Script" uid="uid://dirnwgb8lp3gc" path="res://Misc/Weapon/Code/attack_data.gd" id="2_f22uu"]
+[ext_resource type="Texture2D" uid="uid://catfutrr64n2i" path="res://CharacterJanitor/Assets/mop.png" id="2_ma86g"]
+
+[sub_resource type="Resource" id="Resource_0c7av"]
+script = ExtResource("2_f22uu")
+knockback = 250.0
+metadata/_custom_type_script = "uid://dirnwgb8lp3gc"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ws56"]
+radius = 21.377558
+
+[node name="Mop" type="Node2D" node_paths=PackedStringArray("attack_zone")]
+script = ExtResource("1_6ws56")
+attack_zone = NodePath("AttackZone")
+cooldown = 0.35
+attack_data = SubResource("Resource_0c7av")
+
+[node name="Mop" type="Sprite2D" parent="."]
+rotation = -1.5707964
+scale = Vector2(0.31006476, 0.31006476)
+texture = ExtResource("2_ma86g")
+centered = false
+offset = Vector2(-49, 0)
+
+[node name="AttackZone" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+position = Vector2(33, 0)
+shape = SubResource("CircleShape2D_6ws56")
