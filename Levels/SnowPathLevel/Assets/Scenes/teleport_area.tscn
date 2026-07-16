@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dau6vsobmegh3"]
+
+[ext_resource type="Script" uid="uid://bt4fwqi6n8bf8" path="res://Levels/SnowPathLevel/Assets/Scripts/teleport_area.gd" id="1_dyyy5"]
+[ext_resource type="PackedScene" uid="uid://2xe404d13xh0" path="res://Menu/Scenes/fade_transition.tscn" id="2_idphi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrdwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvmns"]
+size = Vector2(30, 30)
+
+[node name="TeleportArea" type="Area2D"]
+material = SubResource("ShaderMaterial_wrdwa")
+script = ExtResource("1_dyyy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rvmns")
+
+[node name="fade_transition" parent="." instance=ExtResource("2_idphi")]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

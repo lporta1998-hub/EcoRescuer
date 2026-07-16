@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckievhfhfmuh0"]
+
+[ext_resource type="Script" uid="uid://bnbsbjopfx2ib" path="res://Levels/Ai DataCenter_level/Assets/Scripts/turret.gd" id="1_nxirs"]
+[ext_resource type="PackedScene" uid="uid://brvh8egall1nh" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/Bullet.tscn" id="2_n2pi4"]
+[ext_resource type="Texture2D" uid="uid://bgbfb1u54uk1s" path="res://Levels/Ai DataCenter_level/Assets/Turrets/turretRight/1-FlyRobot.png" id="3_a2633"]
+
+[node name="TurretRight" type="Node2D"]
+script = ExtResource("1_nxirs")
+bullet_scene = ExtResource("2_n2pi4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_a2633")
+hframes = 10
+frame = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(200, 0)
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Bullet" parent="." instance=ExtResource("2_n2pi4")]
+position = Vector2(3, -3)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://1u8ghgs4m864"]
+
+[ext_resource type="Script" uid="uid://dvvoacs7p5ajj" path="res://Levels/Ai DataCenter_level/Assets/Scripts/bullet.gd" id="1_3oegb"]
+[ext_resource type="Texture2D" uid="uid://bxcujjs2iagnj" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/61_All_Fire_Bullet_Pixel_16x16_02.png" id="2_1fjo3"]
+[ext_resource type="Texture2D" uid="uid://dwhfdgpkh10aj" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/62_All_Fire_Bullet_Pixel_16x16_02.png" id="3_6lfc1"]
+[ext_resource type="Texture2D" uid="uid://8ikx5nq3pa8v" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/63_All_Fire_Bullet_Pixel_16x16_02.png" id="4_f3kgd"]
+[ext_resource type="Texture2D" uid="uid://c8ubivol7d2lf" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/64_All_Fire_Bullet_Pixel_16x16_02.png" id="5_xs2ym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghmx7"]
+atlas = ExtResource("2_1fjo3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lrnn"]
+atlas = ExtResource("3_6lfc1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vua1r"]
+atlas = ExtResource("4_f3kgd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv17i"]
+atlas = ExtResource("5_xs2ym")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8i62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghmx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lrnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vua1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv17i")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqetp"]
+radius = 3.0
+
+[node name="BulletUp" type="Area2D"]
+position = Vector2(0, -3)
+script = ExtResource("1_3oegb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 4.712389
+sprite_frames = SubResource("SpriteFrames_n8i62")
+animation = &"shoot"
+frame_progress = 0.715702
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oqetp")
+
+[node name="VisibilityNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-2, -2, 4, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_visibility_notifier_2d_screen_exited"]

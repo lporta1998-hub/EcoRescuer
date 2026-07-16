@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw2s1jh0d0lw6"]
+
+[ext_resource type="Script" uid="uid://bnbsbjopfx2ib" path="res://Levels/Ai DataCenter_level/Assets/Scripts/turret.gd" id="1_acebb"]
+[ext_resource type="PackedScene" uid="uid://1u8ghgs4m864" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bulletUp/Bullet.tscn" id="2_acebb"]
+[ext_resource type="Texture2D" uid="uid://bhqshcr1d2slu" path="res://Levels/Ai DataCenter_level/Assets/Turrets/turretUp/turretup.png" id="3_acebb"]
+
+[node name="TurretUp" type="Node2D"]
+script = ExtResource("1_acebb")
+bullet_scene = ExtResource("2_acebb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_acebb")
+vframes = 2
+frame = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0.2, -200)
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+wait_time = 0.25
+one_shot = true

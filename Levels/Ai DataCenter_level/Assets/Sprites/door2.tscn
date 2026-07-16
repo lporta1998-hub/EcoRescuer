@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://1jxtxvidwtlk"]
+
+[ext_resource type="Script" uid="uid://da8fsvyinx7t1" path="res://Levels/Ai DataCenter_level/Assets/Scripts/door.gd" id="1_p70fu"]
+[ext_resource type="Texture2D" uid="uid://bo2lb8t8pywa6" path="res://Levels/Ai DataCenter_level/Assets/Sprites/door2.0.png" id="2_q4fk1"]
+[ext_resource type="AudioStream" uid="uid://dw5u6srfqrjrl" path="res://Levels/Ai DataCenter_level/Assets/Sounds/Door Open.mp3" id="3_cwyx3"]
+[ext_resource type="AudioStream" uid="uid://wwxu0esxp22d" path="res://Levels/Ai DataCenter_level/Assets/Sounds/door close.mp3" id="4_wvyrt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nqli"]
+atlas = ExtResource("2_q4fk1")
+region = Rect2(0, 0, 48, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61x41"]
+atlas = ExtResource("2_q4fk1")
+region = Rect2(48, 0, 48, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmseq"]
+atlas = ExtResource("2_q4fk1")
+region = Rect2(96, 0, 48, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nqli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nqli")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61x41")
+}],
+"loop": true,
+"name": &"locked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmseq")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nga8u"]
+size = Vector2(60, 72)
+
+[node name="Door" type="Area2D"]
+collision_layer = 256
+collision_mask = 5
+script = ExtResource("1_p70fu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -16)
+scale = Vector2(1.2916666, 1.3220338)
+sprite_frames = SubResource("SpriteFrames_5nqli")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_nga8u")
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cwyx3")
+volume_db = -15.0
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wvyrt")
+volume_db = -15.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
