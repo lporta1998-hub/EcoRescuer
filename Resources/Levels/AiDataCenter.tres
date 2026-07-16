@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://dsmufmr0xxkwt"]
+
+[ext_resource type="PackedScene" uid="uid://cmhjwqitelgk4" path="res://Levels/Ai DataCenter_level/Assets/Scenes/Ai DataCenter.tscn" id="1_0mvbn"]
+[ext_resource type="Texture2D" uid="uid://bxef16px2i5m0" path="res://Menu/Background/Datacenter.PNG" id="1_nii2v"]
+[ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="3_r5rn5"]
+
+[resource]
+script = ExtResource("3_r5rn5")
+level_scene = ExtResource("1_0mvbn")
+level_name = "AI Data Center"
+preview_image = ExtResource("1_nii2v")
+description = "L' AI Data Center uno dei centri principali dove questa banda opera, in una citta corrotta dove hanno protezione da enti governativi e politici, un posto perfetto per nascondersi "
+high_score = 272

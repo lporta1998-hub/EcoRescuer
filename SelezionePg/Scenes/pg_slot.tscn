@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgkuhcrfs5yx5"]
+
+[ext_resource type="Script" uid="uid://cls0c1s1476x2" path="res://SelezionePg/Script/pg_slot.gd" id="2_2e5ke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip17g"]
+bg_color = Color(0.15, 0.15, 0.15, 0.7411765)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PgSlot" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ip17g")
+script = ExtResource("2_2e5ke")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="Select" type="Line2D" parent="."]
+points = PackedVector2Array(5, 5, 95, 5, 95, 95, 5, 95)
+closed = true
+width = 2.0
+default_color = Color(1.9844881, 1.1693964, 4.311239e-06, 1)
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

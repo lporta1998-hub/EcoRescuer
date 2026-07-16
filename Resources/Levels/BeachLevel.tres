@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://bjgb4d3gr25xr"]
+
+[ext_resource type="PackedScene" uid="uid://uasm0y3j2q6x" path="res://Levels/BeachLevel/Assets/Scenes/beach_level.tscn" id="1_cmqnb"]
+[ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="2_gwaac"]
+[ext_resource type="Texture2D" uid="uid://ccstku5ar7sei" path="res://Levels/BeachLevel/Assets/Sprites/levelicon.png" id="2_nunlp"]
+
+[resource]
+script = ExtResource("2_gwaac")
+level_scene = ExtResource("1_cmqnb")
+level_name = "Polluted Lake"
+preview_image = ExtResource("2_nunlp")
+description = "Un Lago nell'isola, trasformata dall’umanità in una discarica e abbandonata al proprio destino."
+high_score = 300

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Pg" load_steps=4 format=3 uid="uid://c2mucrl7ggxfr"]
+
+[ext_resource type="Texture2D" uid="uid://dirxgiffikjpt" path="res://Characters/CharacterLabra/Assets/Sprites/Labrasingle.png" id="1_u8utn"]
+[ext_resource type="PackedScene" uid="uid://cvptmv7bksle0" path="res://Characters/CharacterLabra/Assets/Scenes/Labra.tscn" id="2_tvi17"]
+[ext_resource type="Script" uid="uid://dnnh71e5i82sr" path="res://SelezionePg/Script/Pg.gd" id="3_6mca4"]
+
+[resource]
+script = ExtResource("3_6mca4")
+title = "Labra"
+icon = ExtResource("1_u8utn")
+scene = ExtResource("2_tvi17")
+metadata/_custom_type_script = "uid://d7dbfblkvmnk"

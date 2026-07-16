@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://dx8i1r8qj4lm7"]
+
+[ext_resource type="PackedScene" uid="uid://diexknybg4bw5" path="res://Levels/City_level/Assets/Scenes/city.tscn" id="1_gskyp"]
+[ext_resource type="Texture2D" uid="uid://ber0qe3ea2rs8" path="res://Menu/Background/Citybg.png" id="2_r3ojv"]
+[ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="3_pox1v"]
+
+[resource]
+script = ExtResource("3_pox1v")
+level_scene = ExtResource("1_gskyp")
+level_name = "City"
+preview_image = ExtResource("2_r3ojv")
+description = "Una città con strade larghe, palazzi e vicoli dove muoversi velocemente. Ripulisci le strade dai malfattori e rifiuti!"
+high_score = 108

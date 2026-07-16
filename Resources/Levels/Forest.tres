@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://ces80x0523wjx"]
+
+[ext_resource type="PackedScene" uid="uid://vc7q5yva8ct5" path="res://Levels/Forest_level/Assets/Scenes/forest.tscn" id="1_vpenx"]
+[ext_resource type="Texture2D" uid="uid://d0mq8ofuwp3to" path="res://Resources/Levels/Forest.png" id="2_d37u8"]
+[ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="2_ih31i"]
+
+[resource]
+script = ExtResource("2_ih31i")
+level_scene = ExtResource("1_vpenx")
+level_name = "Forest"
+preview_image = ExtResource("2_d37u8")
+description = "Una foresta fitta piena di alberi alti e sentieri. Cerca di fermare gli Inquinatori prima che rovinino l'ecosistema della foresta"
+high_score = 235

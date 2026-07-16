@@ -1,0 +1,206 @@
+[gd_scene load_steps=23 format=3 uid="uid://bjw5hr63xc7ux"]
+
+[ext_resource type="Script" uid="uid://motwttlo3skc" path="res://SelezionePg/Script/pg_list.gd" id="1_alwti"]
+[ext_resource type="Script" uid="uid://oadbqsbn7gq3" path="res://SelezionePg/Script/menu_selezione.gd" id="1_kmxig"]
+[ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="2_n03kr"]
+[ext_resource type="PackedScene" uid="uid://bgkuhcrfs5yx5" path="res://SelezionePg/Scenes/pg_slot.tscn" id="2_t2imf"]
+[ext_resource type="Script" uid="uid://dnnh71e5i82sr" path="res://SelezionePg/Script/Pg.gd" id="3_wuuvq"]
+[ext_resource type="Resource" uid="uid://bsqf8jenhup32" path="res://Resources/Characters/Ranger.tres" id="5_n03kr"]
+[ext_resource type="Resource" uid="uid://ct3tisqe0wq6v" path="res://Resources/Characters/Boarman.tres" id="8_51rio"]
+[ext_resource type="Resource" uid="uid://c2mucrl7ggxfr" path="res://Resources/Characters/Labra.tres" id="8_b4g7a"]
+[ext_resource type="PackedScene" uid="uid://2xe404d13xh0" path="res://Menu/Scenes/fade_transition.tscn" id="8_bowv1"]
+[ext_resource type="Resource" uid="uid://dijaxlvxjn81m" path="res://Resources/Characters/Nerd.tres" id="9_51rio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u1qs"]
+bg_color = Color(0, 0.32941177, 0.24705882, 0.40392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8eqg0"]
+content_margin_left = 60.0
+content_margin_top = 40.0
+content_margin_right = 60.0
+bg_color = Color(0, 0, 0, 0.5019608)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="FontVariation" id="FontVariation_wuuvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmxig"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n03kr"]
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4g7a"]
+bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bowv1"]
+
+[sub_resource type="FontVariation" id="FontVariation_kmxig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bowv1"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51rio"]
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjnoc"]
+bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8eqg0"]
+
+[node name="MenuSelezione" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8u1qs")
+script = ExtResource("1_kmxig")
+
+[node name="Control" parent="." instance=ExtResource("2_n03kr")]
+layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -205.0
+offset_right = 262.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8eqg0")
+horizontal_scroll_mode = 0
+
+[node name="PgList" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 26
+theme_override_constants/v_separation = 26
+columns = 3
+script = ExtResource("1_alwti")
+pg_slot = ExtResource("2_t2imf")
+characters = Array[ExtResource("3_wuuvq")]([ExtResource("5_n03kr"), ExtResource("8_b4g7a"), ExtResource("8_51rio"), ExtResource("9_51rio")])
+
+[node name="ConfermaButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -172.0
+offset_right = -135.0
+offset_bottom = -120.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_wuuvq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_kmxig")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n03kr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b4g7a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bowv1")
+text = "Conferma"
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 68.0
+offset_top = 33.0
+offset_right = 193.0
+offset_bottom = 85.0
+theme_override_fonts/font = SubResource("FontVariation_kmxig")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_bowv1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_51rio")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjnoc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8eqg0")
+text = "Back
+"
+
+[node name="fade_transition" parent="." instance=ExtResource("8_bowv1")]
+visible = false
+fade_duration = 0.2
+
+[connection signal="pressed" from="ConfermaButton" to="." method="_on_conferma_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

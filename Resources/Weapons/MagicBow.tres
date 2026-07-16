@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SingleShot" load_steps=3 format=3 uid="uid://dt01t2rg6s5iu"]
+
+[ext_resource type="PackedScene" uid="uid://eqylcn5ss4x3" path="res://Projectile/Scenes/projectile.tscn" id="1_3xfm2"]
+[ext_resource type="Script" uid="uid://bkyv7jlka6wvu" path="res://Projectile/Script/singleShot.gd" id="2_iwk6j"]
+
+[resource]
+script = ExtResource("2_iwk6j")
+title = "Magic Bow"
+damage = 1.0
+cooldown = 0.5
+speed = 200.0
+range = 0.5
+metadata/_custom_type_script = "uid://c7oosowp64x2m"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://bojom6mwsvt5w"]
+
+[ext_resource type="PackedScene" uid="uid://g5euax5h74vi" path="res://Levels/SnowPathLevel/Assets/Scenes/snow_path.tscn" id="1_7tdgk"]
+[ext_resource type="Texture2D" uid="uid://qe58suqen43v" path="res://Menu/Background/SnowPathBG.png" id="2_4werb"]
+[ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="3_r5rn5"]
+
+[resource]
+script = ExtResource("3_r5rn5")
+level_scene = ExtResource("1_7tdgk")
+level_name = "Snow Path"
+preview_image = ExtResource("2_4werb")
+description = "Lo Snow Path un tempo era un sentiero immacolato, ora rifiuti e scorie oscurano il bagliore dei cristalli."
+high_score = 218
+metadata/_custom_type_script = "uid://cwhvni60necgs"
