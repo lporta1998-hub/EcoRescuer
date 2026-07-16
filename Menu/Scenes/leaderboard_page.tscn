@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2oj54asl754n"]
+
+[ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://silent_wolf/Scores/Leaderboard.tscn" id="2"]
+[ext_resource type="Script" uid="uid://chg58yrm4ye6b" path="res://Menu/Code/leaderboard_page.gd" id="3"]
+
+[node name="LeaderboardPage" type="CanvasLayer"]
+script = ExtResource("3")
+
+[node name="Background" parent="." instance=ExtResource("1")]
+
+[node name="Leaderboard" parent="." instance=ExtResource("2")]
+ld_name = "forest"

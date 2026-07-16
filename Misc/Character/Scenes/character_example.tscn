@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqik8cnexuepv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqvcr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urkqs"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urkqs"]
+size = Vector2(21, 21)
+
+[node name="CharacterExample" type="CharacterBody2D"]
+metadata/_edit_group_ = true
+
+[node name="MovementCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xqvcr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_urkqs")
+animation = &"walk_left"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_urkqs")

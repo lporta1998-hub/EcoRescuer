@@ -1,0 +1,416 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqn36130s80in"]
+
+[ext_resource type="Script" uid="uid://dul27oydmy0xa" path="res://Menu/PopUp menu/popup_menu.gd" id="1_r0xyp"]
+[ext_resource type="Script" uid="uid://b2evnqslgr3lp" path="res://Menu/PopUp menu/v_box_container.gd" id="2_pmkp2"]
+[ext_resource type="Script" uid="uid://dljhpqh3rp1er" path="res://Menu/PopUp menu/Controls.gd" id="3_8b4ds"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt3sk"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.3403393, 0.34033933, 0.3403393, 0.6313726)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+corner_radius_top_right = 10
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkg2j"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 0.6313726)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xyp"]
+content_margin_left = 35.0
+content_margin_right = 35.0
+content_margin_bottom = 70.0
+bg_color = Color(0, 0, 0, 0.597)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdihw"]
+bg_color = Color(0.6, 0.6, 0.95686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehsiq"]
+bg_color = Color(0.6, 0.6, 0.95686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp2i0"]
+content_margin_left = 35.0
+content_margin_right = 70.0
+content_margin_bottom = 70.0
+bg_color = Color(0, 0, 0, 0.59607846)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkm4n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmkp2"]
+bg_color = Color(0.16458115, 0.15709068, 0.26488313, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8b4ds"]
+bg_color = Color(0.16470589, 0.15686275, 0.26666668, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fae2f"]
+bg_color = Color(0.16470589, 0.15686275, 0.26666668, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.37503824, 0.36246598, 0.55855155, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kecd2"]
+
+[node name="PopupMenu" type="CanvasLayer"]
+script = ExtResource("1_r0xyp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0.012920001, 0.60800004)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -238.0
+offset_right = 362.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/side_margin = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_nt3sk")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_nt3sk")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_nt3sk")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_kkg2j")
+current_tab = 0
+
+[node name="Audio" type="ScrollContainer" parent="TabContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xyp")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+custom_minimum_size = Vector2(195, 150)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41081867, 0.3454295, 0.5368183, 1)
+theme_override_font_sizes/font_size = 25
+text = "Volume Master:
+"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sdihw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ehsiq")
+step = 10.0
+value = 100.0
+scrollable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Volume Music:
+"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sdihw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ehsiq")
+step = 10.0
+value = 100.0
+scrollable = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Volume SFX:
+"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sdihw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ehsiq")
+step = 10.0
+value = 100.0
+scrollable = false
+
+[node name="Video" type="ScrollContainer" parent="TabContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lp2i0")
+horizontal_scroll_mode = 0
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video" node_paths=PackedStringArray("resolution_option", "fullscreen_check", "borderless_check")]
+custom_minimum_size = Vector2(195, 150)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/separation = 31
+script = ExtResource("2_pmkp2")
+resolution_option = NodePath("HBoxContainer4/OptionButton")
+fullscreen_check = NodePath("HBoxContainer5/Check")
+borderless_check = NodePath("HBoxContainer6/Check")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Risoluzione"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Video/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_lkm4n")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 400
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
+horizontal_alignment = 1
+
+[node name="Check" type="CheckBox" parent="TabContainer/Video/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_pmkp2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8b4ds")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fae2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kecd2")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 400
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Borderless"
+
+[node name="Check" type="CheckBox" parent="TabContainer/Video/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_pmkp2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8b4ds")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fae2f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kecd2")
+
+[node name="Panel" type="Panel" parent="TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="ScrollContainer" parent="TabContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0xyp")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls" node_paths=PackedStringArray("up_button", "down_button", "left_button", "right_button")]
+custom_minimum_size = Vector2(195, 150)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 14
+script = ExtResource("3_8b4ds")
+up_button = NodePath("HBoxContainer/Up")
+down_button = NodePath("HBoxContainer2/Down")
+left_button = NodePath("HBoxContainer3/Left")
+right_button = NodePath("HBoxContainer4/Right")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41081867, 0.3454295, 0.5368183, 1)
+theme_override_font_sizes/font_size = 25
+text = "Up"
+
+[node name="Up" type="Button" parent="TabContainer/Controls/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "Up"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Down"
+
+[node name="Down" type="Button" parent="TabContainer/Controls/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Down"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4117647, 0.34509805, 0.5372549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Left"
+
+[node name="Left" type="Button" parent="TabContainer/Controls/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "Left"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41081867, 0.3454295, 0.5368183, 1)
+theme_override_font_sizes/font_size = 25
+text = "Rigth"
+
+[node name="Right" type="Button" parent="TabContainer/Controls/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Rigth"
+
+[node name="X" type="Button" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_clicked"]

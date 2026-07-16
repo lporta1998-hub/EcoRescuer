@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5w1g71odtp20"]
+
+[ext_resource type="Script" uid="uid://cfwg14w3m7hm1" path="res://Menu/Background/control.gd" id="1_62e2m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62e2m")
+
+[node name="Panel" type="TextureRect" parent="."]
+modulate = Color(0.47, 0.47, 0.47, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 6
+
+[node name="Panel2" type="TextureRect" parent="."]
+modulate = Color(0.47058824, 0.47058824, 0.47058824, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 6
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.22
+autostart = true

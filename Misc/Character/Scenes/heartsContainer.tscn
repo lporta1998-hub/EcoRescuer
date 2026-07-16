@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ks55wljd6e1"]
+
+[ext_resource type="Script" uid="uid://dbknxgyi0xnq0" path="res://Misc/Character/Codes/hearts_container.gd" id="1_s4fgc"]
+
+[node name="HeartsContainer" type="HBoxContainer"]
+anchors_preset = -1
+script = ExtResource("1_s4fgc")

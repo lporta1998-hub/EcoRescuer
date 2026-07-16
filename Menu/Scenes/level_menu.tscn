@@ -1,0 +1,173 @@
+[gd_scene load_steps=20 format=3 uid="uid://crpi2r24h34f5"]
+
+[ext_resource type="Script" uid="uid://bdniwkma0sxv8" path="res://Menu/Code/level_menu.gd" id="1_erer0"]
+[ext_resource type="PackedScene" uid="uid://2xe404d13xh0" path="res://Menu/Scenes/fade_transition.tscn" id="2_0r4ru"]
+[ext_resource type="Script" uid="uid://u03heyfg06ta" path="res://Menu/Code/level_list.gd" id="2_sxjbp"]
+[ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="2_x64o7"]
+[ext_resource type="PackedScene" uid="uid://dgjwoyreiqw5h" path="res://Menu/Scenes/level_slot.tscn" id="3_sxjbp"]
+[ext_resource type="Script" uid="uid://cwhvni60necgs" path="res://Menu/Code/LevelData.gd" id="4_eucsw"]
+[ext_resource type="Resource" path="res://Resources/Levels/Forest.tres" id="6_4wfv6"]
+[ext_resource type="Resource" uid="uid://bojom6mwsvt5w" path="res://Resources/Levels/SnowPath.tres" id="8_fbtso"]
+[ext_resource type="Resource" uid="uid://bdfboo57r1v3w" path="res://Resources/Levels/City.tres" id="9_srofc"]
+[ext_resource type="Resource" uid="uid://bjgb4d3gr25xr" path="res://Resources/Levels/BeachLevel.tres" id="10_bxnqb"]
+[ext_resource type="Resource" uid="uid://dsmufmr0xxkwt" path="res://Resources/Levels/AiDataCenter.tres" id="11_2msoo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbtso"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.41568628)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srofc"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_4riic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erer0"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r4ru"]
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4riic"]
+bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxjbp"]
+
+[sub_resource type="FontVariation" id="FontVariation_woogs"]
+
+[node name="level_menu" type="CanvasLayer"]
+script = ExtResource("1_erer0")
+
+[node name="Control" parent="." instance=ExtResource("2_x64o7")]
+
+[node name="Contenitore" type="ScrollContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.5
+offset_top = -237.0
+offset_right = 306.5
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbtso")
+
+[node name="ContenitoreLivelli" type="ScrollContainer" parent="Contenitore"]
+custom_minimum_size = Vector2(320, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_srofc")
+horizontal_scroll_mode = 0
+
+[node name="LevelList" type="GridContainer" parent="Contenitore/ContenitoreLivelli"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_constants/h_separation = 11
+theme_override_constants/v_separation = 11
+script = ExtResource("2_sxjbp")
+level_slot = ExtResource("3_sxjbp")
+levels = Array[ExtResource("4_eucsw")]([ExtResource("6_4wfv6"), ExtResource("8_fbtso"), ExtResource("9_srofc"), ExtResource("10_bxnqb"), ExtResource("11_2msoo")])
+
+[node name="start_button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 362.0
+offset_top = 222.0
+offset_right = 505.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_4riic")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_erer0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0r4ru")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4riic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sxjbp")
+text = "Start"
+
+[node name="back_button" type="Button" parent="."]
+offset_left = 52.0
+offset_top = 38.0
+offset_right = 195.0
+offset_bottom = 103.0
+theme_override_fonts/font = SubResource("FontVariation_woogs")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_erer0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0r4ru")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4riic")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sxjbp")
+text = "Back
+"
+
+[node name="ContenitoreRecord" type="ScrollContainer" parent="."]
+offset_left = 920.0
+offset_top = 109.0
+offset_right = 1088.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbtso")
+
+[node name="Label" type="Label" parent="ContenitoreRecord"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 30
+text = "Record
+300"
+
+[node name="fade_transition" parent="." instance=ExtResource("2_0r4ru")]
+visible = false
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,184 @@
+[gd_scene load_steps=12 format=3 uid="uid://tq14gsasary0"]
+
+[ext_resource type="Script" uid="uid://cyhh5felyp7sm" path="res://Menu/PauseMenu/pause_menu.gd" id="1_s8whr"]
+[ext_resource type="PackedScene" uid="uid://dqn36130s80in" path="res://Menu/PopUp menu/popup_menu.tscn" id="2_c6rkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w51gu"]
+content_margin_left = 150.0
+content_margin_top = 3.0
+content_margin_right = 25.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0)
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 16
+corner_radius_bottom_right = 16
+shadow_size = 5
+
+[sub_resource type="FontVariation" id="FontVariation_w51gu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8whr"]
+content_margin_top = 15.0
+content_margin_right = 0.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6rkn"]
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmayn"]
+bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alngc"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_s8whr"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_c6rkn"]
+events = [SubResource("InputEventKey_s8whr")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alngc"]
+bg_color = Color(0.1, 0.1, 0.1, 0.85882354)
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_s8whr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0036211328, 0.005223516, 0.012617188, 0.45900002)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 260.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_w51gu")
+text = "Pausa"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 83.0
+offset_top = -117.0
+offset_right = 500.0
+offset_bottom = 117.0
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Riprendi" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("FontVariation_w51gu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_s8whr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6rkn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lmayn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_alngc")
+shortcut = SubResource("Shortcut_c6rkn")
+text = "Riprendi
+"
+
+[node name="Opzioni" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("FontVariation_w51gu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_s8whr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6rkn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lmayn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_alngc")
+shortcut = SubResource("Shortcut_c6rkn")
+text = "Opzioni
+"
+
+[node name="MenuPrincipale" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("FontVariation_w51gu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_s8whr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6rkn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lmayn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_alngc")
+text = "Menu principale"
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.6675347
+anchor_top = 0.22839506
+anchor_right = 0.8324653
+anchor_bottom = 0.2824074
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 1.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Oggetti Raccolti"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = -1
+anchor_left = 0.6284722
+anchor_top = 0.33487654
+anchor_right = 0.8576389
+anchor_bottom = 0.6435185
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_alngc")
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="PopupMenu" parent="." instance=ExtResource("2_c6rkn")]
+layer = 2
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/Riprendi" to="." method="_on_riprendi_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opzioni" to="." method="_on_opzioni_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuPrincipale" to="." method="_on_menu_principale_pressed"]

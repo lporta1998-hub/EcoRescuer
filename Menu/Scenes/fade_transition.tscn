@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://2xe404d13xh0"]
+
+[ext_resource type="Script" uid="uid://ch0ix0fctg813" path="res://Menu/Code/fade_transition.gd" id="1_pwpqo"]
+
+[sub_resource type="Animation" id="Animation_x8c23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aud3v"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.16666667, 0.33333334, 0.53333336, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.105882354), Color(0, 0, 0, 0.23921569), Color(0, 0, 0, 0.41960785), Color(0, 0, 0, 0.7254902)]
+}
+
+[sub_resource type="Animation" id="Animation_5ggkw"]
+resource_name = "fade_out"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666666, 0.16666667, 0.3, 0.46666667, 0.6, 0.76666665, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.9254902), Color(0, 0, 0, 0.7882353), Color(0, 0, 0, 0.5764706), Color(0, 0, 0, 0.46666667), Color(0, 0, 0, 0.41568628), Color(0, 0, 0, 0.20392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vp514"]
+_data = {
+&"RESET": SubResource("Animation_x8c23"),
+&"fade_in": SubResource("Animation_aud3v"),
+&"fade_out": SubResource("Animation_5ggkw")
+}
+
+[node name="fade_transition" type="CanvasLayer"]
+script = ExtResource("1_pwpqo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_vp514")
+}
