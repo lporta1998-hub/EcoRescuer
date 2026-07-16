@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv5d8ygbtaf7l"]
+
+[ext_resource type="Script" uid="uid://27bgj62hphhs" path="res://CharacterJanitor/Code/JanitorController.gd" id="1_hm78f"]
+[ext_resource type="Texture2D" uid="uid://4ffnc7leuhy5" path="res://Misc/icon.svg" id="2_hm78f"]
+[ext_resource type="Script" uid="uid://22a80m3swflx" path="res://CharacterJanitor/Code/PuddleGenerator.gd" id="3_hm78f"]
+[ext_resource type="PackedScene" uid="uid://dohs70o6pdaik" path="res://Mop/Scenes/mop.tscn" id="4_riv5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn73u"]
+radius = 15.0
+
+[node name="Janitor" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_hm78f")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hm78f")
+
+[node name="PuddleGenerator" type="Node2D" parent="."]
+script = ExtResource("3_hm78f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaterMeter" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_right = 216.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pn73u")
+
+[node name="SoftCollisionArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoftCollisionArea"]
+shape = SubResource("CircleShape2D_pn73u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_speed = 15.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Mop" parent="." instance=ExtResource("4_riv5r")]
