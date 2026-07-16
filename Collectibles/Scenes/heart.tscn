@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://fnt5b6clw8ir"]
+
+[ext_resource type="Texture2D" uid="uid://d1lnoype1gx42" path="res://Collectibles/Assets/Sprites/Heart.png" id="1_8so8d"]
+[ext_resource type="Script" uid="uid://dmfvq4kw5l80s" path="res://Collectibles/Code/heart.gd" id="1_gleaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gleaf"]
+radius = 8.0
+
+[node name="Heart" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_gleaf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_8so8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gleaf")

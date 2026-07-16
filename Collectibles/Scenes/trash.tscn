@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7knoxxt7kg3"]
+
+[ext_resource type="Script" uid="uid://dxxoj7p5mhlry" path="res://Collectibles/Code/trash.gd" id="1_21yb5"]
+[ext_resource type="Texture2D" uid="uid://cyahmnktbhyos" path="res://Collectibles/Assets/Sprites/trash(1).png" id="2_hl2s0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbag"]
+size = Vector2(16, 18)
+
+[node name="Trash" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_21yb5")
+item_name = "Sacchetto"
+item_type = "trash"
+bobbing = false
+bob_speed = 0.0
+bob_amplitude = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hl2s0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tbag")

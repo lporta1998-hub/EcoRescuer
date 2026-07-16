@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcpxtvewq0pe6"]
+
+[ext_resource type="Script" uid="uid://b7vfnau7tv52f" path="res://Collectibles/Code/eco_token.gd" id="1_etoken"]
+[ext_resource type="Texture2D" uid="uid://cld4mupe3u0bl" path="res://Collectibles/Assets/Sprites/coin.png" id="2_k70mc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etoken"]
+radius = 8.0
+
+[node name="EcoToken" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_etoken")
+item_name = "EcoToken"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k70mc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_etoken")

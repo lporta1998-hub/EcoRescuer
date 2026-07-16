@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6rondl8hncsl"]
+
+[ext_resource type="Script" uid="uid://cd0vbdyigrbh1" path="res://Collectibles/Code/feather.gd" id="1_5itjj"]
+[ext_resource type="Texture2D" uid="uid://dlt4d0dko0kdi" path="res://Collectibles/Assets/Sprites/Feather.png" id="1_601sy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5itjj"]
+size = Vector2(14, 14)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_5itjj")
+boost = 100
+health_restore = 0
+points = 0
+item_name = "Feather"
+item_type = "SpeedBoost"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_601sy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5itjj")
