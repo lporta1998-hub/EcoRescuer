@@ -24,9 +24,23 @@ func _ready() -> void:
     _start_y = position.y
     body_entered.connect(_on_body_entered)
 
+## "Magnete" buff: pull speed (the radius grows with the buff level).
+const MAGNET_SPEED := 260.0
+var _magnet_radius := -1.0
+
 func _process(delta: float) -> void:
     if _collected:
         return
+    # "Magnete" buff: drift towards the player when close.
+    if _magnet_radius < 0.0:
+        var lvl := Progress.level_of("magnet")
+        _magnet_radius = Progress.MAGNET_BASE_RADIUS + Progress.buff_value("magnet", lvl) if lvl > 0 else 0.0
+    if _magnet_radius > 0.0 and magnet_enabled():
+        var player := get_tree().get_first_node_in_group("player") as Node2D
+        if player and global_position.distance_to(player.global_position) < _magnet_radius:
+            global_position = global_position.move_toward(player.global_position, (MAGNET_SPEED + _magnet_radius) * delta)
+            _start_y = position.y
+            return
     if bobbing:
         _time += delta
         position.y = _start_y + sin(_time * bob_speed) * bob_amplitude
@@ -34,13 +48,17 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
     if _collected:
         return
-    # Accept any CharacterBody2D as the player
-    if body is CharacterBody2D:
+    # Only the player picks things up (enemies are CharacterBody2D too).
+    if body is CharacterBody2D and body.is_in_group("player"):
         _collected = true
         on_collect(body)
         emit_signal("collected", self)
         _play_collect_effect()
         queue_free()
+
+## Items that shouldn't fly to the player (barrels) return false.
+func magnet_enabled() -> bool:
+    return true
 
 ## Override in subclasses to add custom pickup logic.
 func on_collect(_player: Node2D) -> void:

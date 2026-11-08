@@ -11,4 +11,6 @@ level_name = "Snow Path"
 preview_image = ExtResource("2_4werb")
 description = "Lo Snow Path un tempo era un sentiero immacolato, ora rifiuti e scorie oscurano il bagliore dei cristalli."
 high_score = 218
+required_kills = 6
+stars_required = 2
 metadata/_custom_type_script = "uid://cwhvni60necgs"

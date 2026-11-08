@@ -47,6 +47,26 @@ func _on_riprova_pressed() -> void:
 func set_level_data(data: Dictionary) -> void:
     level_data = data
     display_grouped_items()
+    _show_coins_earned()
+
+## Under the "Game Over" title: the half share of coins the player keeps.
+func _show_coins_earned() -> void:
+    var coins_label: Label = get_node_or_null("CoinsLabel")
+    if coins_label == null:
+        coins_label = Label.new()
+        coins_label.name = "CoinsLabel"
+        coins_label.set_anchors_preset(Control.PRESET_CENTER_TOP)
+        coins_label.offset_left = -300.0
+        coins_label.offset_right = 300.0
+        coins_label.offset_top = 150.0
+        coins_label.offset_bottom = 190.0
+        coins_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+        coins_label.add_theme_font_size_override("font_size", 26)
+        coins_label.add_theme_color_override("font_color", Color(0.65, 0.95, 0.3))
+        coins_label.add_theme_constant_override("outline_size", 6)
+        coins_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+        add_child(coins_label)
+    coins_label.text = "Hai salvato metà del bottino: +%d monete" % level_data.get("coins_earned", 0)
 
 func display_grouped_items() -> void:
     if not items_container:

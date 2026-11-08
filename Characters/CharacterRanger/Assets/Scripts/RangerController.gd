@@ -15,6 +15,9 @@ var _shoot_animation_length := 0.0
 var _shoot_timer := 0.0
 var shoot_direction := Vector2.RIGHT
 
+# Buttons shown by the on-screen touch controls.
+var touch_actions := {"primary": "ATTACCA", "secondary": "TIRA"}
+
 func _ready():
     super()
     add_to_group("player")
@@ -90,8 +93,9 @@ func handle_shoot_input():
         print_debug("Nessuna arma equipaggiata!")
         return
     
-    var mouse_pos = get_global_mouse_position()
-    var direction = (mouse_pos - global_position).normalized()
+    # Mouse cursor on desktop, auto-aim on touch screens.
+    var aim_pos = TouchControls.get_aim_position(self)
+    var direction = (aim_pos - global_position).normalized()
     
     shoot_direction = direction
     speed = 0
@@ -153,5 +157,5 @@ func _on_shoot_cooldown_timeout() -> void:
     can_shoot = true
 
 func heal(amount: int) -> void:
-    health = min(health + amount, 3)
+    health = min(health + amount, max_health)
     hpChanged.emit(health)

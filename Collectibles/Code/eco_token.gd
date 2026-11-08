@@ -1,6 +1,7 @@
 ## eco_token.gd
-## Collectable green coin. Awards `points` to a future score system.
-## Each coin collected increments the global eco_score variable if it exists.
+## Green coin. Coins picked up in a level are counted by LevelManager.run_coins
+## and can be spent on eco chests (eco_chest.gd); the ones not spent become
+## Shop coins at the end of the level.
 extends Collectible
 
 func _ready() -> void:
@@ -13,3 +14,8 @@ func on_collect(player: Node2D) -> void:
     # Hook into a global score if the project adds one in the future.
     if Global.has_method("add_score"):
         Global.add_score(points)
+
+
+## Marks this collectible as a spendable coin for LevelManager.
+func is_eco_coin() -> bool:
+    return true

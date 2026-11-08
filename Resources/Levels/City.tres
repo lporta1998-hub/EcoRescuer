@@ -11,3 +11,5 @@ level_name = "City"
 preview_image = ExtResource("2_r3ojv")
 description = "Una città con strade larghe, palazzi e vicoli dove muoversi velocemente. Ripulisci le strade dai malfattori e rifiuti!"
 high_score = 108
+required_kills = 6
+stars_required = 4

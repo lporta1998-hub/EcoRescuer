@@ -9,4 +9,6 @@ script = ExtResource("3_cyao4")
 title = "Nerd"
 icon = ExtResource("1_0nxum")
 scene = ExtResource("2_sokso")
+price = 700
+shop_description = "Fendente ampio che pulisce l'area."
 metadata/_custom_type_script = "uid://dnnh71e5i82sr"

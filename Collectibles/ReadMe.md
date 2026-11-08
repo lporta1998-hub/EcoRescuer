@@ -39,6 +39,18 @@ Collectibles/
 
 ---
 
+## Ruolo nel gioco
+
+| Oggetto | Cosa fa |
+|---|---|
+| **Sacchetti** (TrashBag) | Obiettivo del livello: raccoglili e portali al punto di raccolta (LevelExit). |
+| **Monete verdi** (EcoToken) | Contano nel contatore in alto (`LevelManager.run_coins`) e servono ad aprire i **forzieri**. Quelle non spese diventano monete del negozio a fine livello. |
+| **Barili** (Barile, `barrel.gd`) | Perdono una pozza tossica: dentro la pozza vai più piano e perdi un cuore ogni 1.2 s. Raccogli il barile per metterlo in sicurezza e asciugare la pozza. Il Magnete non li attira. |
+| **Forzieri** (EcoChest, `eco_chest.gd`) | Costano `cost` monete raccolte nel livello. Danno una ricompensa a caso: Cura (+1 cuore e salute piena), Eco Rush (20 s più veloce e +1 danno), Tesoro (+100 monete negozio), Scudo extra. Imposta `cost` nell'Inspector e spostali dove vuoi nel livello. |
+| **Cuori** | Curano 1 cuore (la sfida "Senza cure" ne fa sparire una parte). |
+
+---
+
 ## Come usare
 
 ### Aggiungere raccoglibili a un livello esistente

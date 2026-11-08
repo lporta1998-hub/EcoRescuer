@@ -6,9 +6,60 @@ var is_paused := false
 var level_data = {}
 var is_audio_menu_open: bool = false
 # Called when the node enters the scene tree for the first time.
+var _level_map: LevelMap
+
 func _ready() -> void:
     visible = false
     process_mode = Node.PROCESS_MODE_ALWAYS
+    _add_level_map()
+    visibility_changed.connect(_on_visibility_changed)
+
+
+## "Mappa" panel in the middle of the pause screen.
+func _add_level_map() -> void:
+    var panel := PanelContainer.new()
+    panel.name = "MapPanel"
+    var style := StyleBoxFlat.new()
+    style.bg_color = Color(0, 0, 0, 0.45)
+    style.set_border_width_all(4)
+    style.border_color = Color(1, 1, 1, 0.8)
+    style.set_corner_radius_all(16)
+    style.content_margin_left = 12
+    style.content_margin_right = 12
+    style.content_margin_top = 8
+    style.content_margin_bottom = 8
+    panel.add_theme_stylebox_override("panel", style)
+    panel.set_anchors_preset(Control.PRESET_CENTER)
+    panel.offset_left = -205.0
+    panel.offset_right = 205.0
+    panel.offset_top = -175.0
+    panel.offset_bottom = 175.0
+    panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    add_child(panel)
+    move_child(panel, $VBoxContainer.get_index())  # under the buttons and popups
+    var box := VBoxContainer.new()
+    box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    panel.add_child(box)
+    var title := Label.new()
+    title.text = "Mappa"
+    title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    title.add_theme_font_size_override("font_size", 26)
+    title.add_theme_constant_override("outline_size", 6)
+    title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+    box.add_child(title)
+    _level_map = LevelMap.new()
+    _level_map.custom_minimum_size = Vector2(386, 290)
+    box.add_child(_level_map)
+
+
+func _on_visibility_changed() -> void:
+    if visible:
+        # wait one frame so the panel has its final size
+        await get_tree().process_frame
+        if visible:
+            _level_map.open(get_tree().current_scene)
+    else:
+        _level_map.close()
     
 
 

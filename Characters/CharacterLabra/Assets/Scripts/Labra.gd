@@ -67,6 +67,9 @@ func _physics_process(_delta):
 func handle_attack():
   if is_dead:
       return
+  # Respect the cooldown: before, every tap dealt damage even while cooling down.
+  if not can_attack or is_attacking:
+      return
   if can_attack and not is_attacking:
     print_debug("Attacking! Direction: %s, Position: %s" % [get_facing_direction(), global_position])
     

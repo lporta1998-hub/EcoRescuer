@@ -1,5 +1,6 @@
-[gd_scene load_steps=77 format=4 uid="uid://g5euax5h74vi"]
+[gd_scene load_steps=78 format=4 uid="uid://g5euax5h74vi"]
 
+[ext_resource type="Script" path="res://Levels/SnowPathLevel/Assets/Scripts/snow_overlay.gd" id="99_snowfx"]
 [ext_resource type="Script" uid="uid://b0whuudwnatom" path="res://Levels/SnowPathLevel/Assets/Scripts/snow_path.gd" id="1_4aiaa"]
 [ext_resource type="Texture2D" uid="uid://c48uuka463f6w" path="res://Levels/SnowPathLevel/Assets/Sprites/seasonal sample (winter).png" id="2_5eu63"]
 [ext_resource type="Texture2D" uid="uid://u4puekwfw73i" path="res://Levels/SnowPathLevel/Assets/Sprites/Tileset_Dungeon.png" id="3_t3v4o"]
@@ -26,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cbr0lqb1fa2tk" path="res://Default_Enemy/Enemy.tscn" id="25_78g44"]
 [ext_resource type="Texture2D" uid="uid://dys0nmm48a7qs" path="res://Levels/BeachLevel/Assets/Sprites/beachtileset.png" id="25_hfm22"]
 [ext_resource type="PackedScene" uid="uid://fnt5b6clw8ir" path="res://Collectibles/Scenes/heart.tscn" id="26_78g44"]
+[ext_resource type="PackedScene" path="res://Collectibles/Scenes/eco_chest.tscn" id="ec_chest"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_urkwr"]
 texture = ExtResource("2_5eu63")
@@ -8962,6 +8964,7 @@ pareteIllusoria = NodePath("../PareteIllusoria")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 8
 material = SubResource("ShaderMaterial_tvnyt")
+script = ExtResource("99_snowfx")
 offset_left = -234.0
 offset_top = -131.0
 offset_right = 1442.0
@@ -9227,3 +9230,12 @@ position = Vector2(2354, -1141)
 
 [node name="Heart3" parent="hearts" instance=ExtResource("26_78g44")]
 position = Vector2(7000, 3569)
+
+[node name="EcoChest1" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(2467, -1494)
+cost = 3
+
+[node name="EcoChest2" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(7000, 3610)
+cost = 5
+

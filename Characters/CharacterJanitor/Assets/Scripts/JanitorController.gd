@@ -16,7 +16,11 @@ var is_sliding := false
 var max_water := 1.5
 var water := max_water
 
+# Buttons shown by the on-screen touch controls.
+var touch_actions := {"primary": "ACQUA", "secondary": "MOCIO"}
+
 func _ready() -> void:
+  add_to_group("player")
   speed = dry_speed
   decay = dry_decay
   super()

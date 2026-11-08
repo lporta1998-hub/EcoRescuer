@@ -9,4 +9,6 @@ script = ExtResource("3_6mca4")
 title = "Labra"
 icon = ExtResource("1_u8utn")
 scene = ExtResource("2_tvi17")
+price = 0
+shop_description = "Il primo eco-eroe: veloce e con un attacco combo."
 metadata/_custom_type_script = "uid://d7dbfblkvmnk"

@@ -139,9 +139,12 @@ func update_hurt_box_rotation():
             hurt_box.rotation = -PI/2 if attack_direction.y < 0 else PI/2
 
 func take_damage(dmg: int, attacker):
+    # Ignore hits while blinking after the previous one.
+    if is_invincible or is_dead:
+        return
     super(dmg, attacker)
     
-    if not is_dead:
+    if not is_dead and health > 0:
         start_invincibility()
 
 func start_invincibility() -> void:

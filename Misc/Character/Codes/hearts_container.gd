@@ -13,9 +13,8 @@ func setMaxHP(max: int):
 
 func updateHP(currentHP: float):
     var hearts = get_children()
-    
-    for i in range(currentHP):
+    var full := clampi(int(currentHP), 0, hearts.size())
+    for i in range(full):
         hearts[i].update(true)
-    
-    for i in range(currentHP, hearts.size()):
+    for i in range(full, hearts.size()):
         hearts[i].update(false)

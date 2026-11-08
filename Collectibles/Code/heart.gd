@@ -19,7 +19,7 @@ func _ready():
 
 func on_collect(_player: Node2D) -> void:
     SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Heal.wav"))
-    # Logica di recupero vita
+    # Logica di recupero vita (the "Senza cure" Sfida removes hearts at level start)
     if _player.has_method("heal"):
         _player.heal(health_restore)
     

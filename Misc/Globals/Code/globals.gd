@@ -75,6 +75,14 @@ func add_pause_menu_to_current_level():
        
  
 
+## Freezes the game for a split second when a blow lands, so hits feel solid.
+## Lives here (an autoload) so the time scale is always restored, even if the
+## enemy that triggered it is freed in the meantime.
+func hitstop(duration: float = 0.05) -> void:
+    Engine.time_scale = 0.05
+    await get_tree().create_timer(duration, true, false, true).timeout
+    Engine.time_scale = 1.0
+
 static func exp_decay(a,b,decay,delta):
   return b+(a-b)*exp(-decay*delta)
 
@@ -113,10 +121,29 @@ func get_current_high_score() -> int:
     return 0
 
 # Salvataggio su file
+# High scores live in user:// (the app's writable save folder). Writing them
+# back into the .tres files under res:// only works in the editor: in an
+# exported game (iOS, Android, desktop builds) res:// is read-only.
+const HIGH_SCORES_PATH := "user://high_scores.cfg"
+
+func _level_key(level_data: LevelData) -> String:
+    return level_data.resource_path.get_file().get_basename()
+
+## Replaces the high score stored in the level resource with the player's
+## saved record (0 if they never finished the level).
+func apply_saved_high_score(level_data: LevelData) -> void:
+    if level_data == null:
+        return
+    var cfg := ConfigFile.new()
+    cfg.load(HIGH_SCORES_PATH)
+    level_data.high_score = cfg.get_value("high_scores", _level_key(level_data), 0)
+
 func save_level_data(level_data: LevelData) -> void:
-    # Salva solo questo livello modificato
-    var error = ResourceSaver.save(level_data, level_data.resource_path)
+    var cfg := ConfigFile.new()
+    cfg.load(HIGH_SCORES_PATH)  # missing file on first save is fine
+    cfg.set_value("high_scores", _level_key(level_data), level_data.high_score)
+    var error := cfg.save(HIGH_SCORES_PATH)
     if error == OK:
-        print("Dati livello salvati: ", level_data.resource_path)
+        print("Record salvato: ", _level_key(level_data), " = ", level_data.high_score)
     else:
-        print("ERRORE nel salvare il livello: ", error)
+        print("ERRORE nel salvare il record: ", error)

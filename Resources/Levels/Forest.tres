@@ -11,3 +11,5 @@ level_name = "Forest"
 preview_image = ExtResource("2_d37u8")
 description = "Una foresta fitta piena di alberi alti e sentieri. Cerca di fermare gli Inquinatori prima che rovinino l'ecosistema della foresta"
 high_score = 235
+required_kills = 3
+stars_required = 0

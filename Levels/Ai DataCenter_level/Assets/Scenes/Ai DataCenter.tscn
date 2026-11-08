@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://tq14gsasary0" path="res://Menu/PauseMenu/Scenes/pause_menu.tscn" id="16_isda0"]
 [ext_resource type="PackedScene" uid="uid://cbr0lqb1fa2tk" path="res://Default_Enemy/Enemy.tscn" id="19_8lt8p"]
 [ext_resource type="PackedScene" uid="uid://bvsctq87g8iig" path="res://EliteEnemy/Scenes/Elite.tscn" id="20_ciknn"]
+[ext_resource type="PackedScene" path="res://Collectibles/Scenes/eco_chest.tscn" id="ec_chest"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hsk2v"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -884,7 +885,7 @@ func _process(delta):
 
         var collider = ray.get_collider()
 
-        if collider.is_in_group(\"player\") and collider.health > 0:
+        if collider and collider.is_in_group(\"player\") and collider.health > 0:
 
             if reload_timer.is_stopped():
                 shoot()
@@ -1347,3 +1348,16 @@ position = Vector2(636, -671)
 
 [node name="Enemy" parent="." instance=ExtResource("19_8lt8p")]
 position = Vector2(1324, 685)
+
+[node name="EcoChest1" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(1167, 615)
+cost = 4
+
+[node name="EcoChest2" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(343, -322)
+cost = 5
+
+[node name="EcoChest3" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(-494, -240)
+cost = 6
+

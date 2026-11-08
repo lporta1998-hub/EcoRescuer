@@ -11,3 +11,5 @@ level_name = "Polluted Lake"
 preview_image = ExtResource("2_nunlp")
 description = "Un Lago nell'isola, trasformata dall’umanità in una discarica e abbandonata al proprio destino."
 high_score = 300
+required_kills = 8
+stars_required = 6

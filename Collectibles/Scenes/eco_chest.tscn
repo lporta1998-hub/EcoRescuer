@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Collectibles/Code/eco_chest.gd" id="1_chest"]
+[ext_resource type="Texture2D" path="res://Collectibles/Assets/Sprites/eco_chest.png" id="2_chest"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chest"]
+size = Vector2(26, 22)
+
+[node name="EcoChest" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_chest")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_chest")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_chest")

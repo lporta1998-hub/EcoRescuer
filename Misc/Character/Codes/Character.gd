@@ -24,6 +24,12 @@ var _last_direction := Vector2.RIGHT
 var _has_vertical_idles := false 
 var is_dead := false
 
+## Seconds a player stays invincible (blinking) after being hit. Characters
+## that extend CombatCharacter use their own invincibility_duration instead.
+const PLAYER_IFRAMES := 0.8
+var _iframes := 0.0
+var _blink := 0.0
+
 
 
 func _ready() -> void:
@@ -33,6 +39,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+  _update_iframes(delta)
   if health <= 0 and not is_dead:
     handle_death()
     
@@ -148,11 +155,77 @@ func get_direction_as_string():
             #print("Gameover")
 
 func take_damage(dmg: int, attacker):
+  if is_dead or is_invincible_now():
+    return
+  var from_player: bool = is_instance_valid(attacker) and attacker is Node and attacker.is_in_group("player")
+  if is_in_group("player"):
+    # "Scudo" buff: the first hit of the level is blocked.
+    if LevelManager.consume_shield():
+      _flash(Color(0.45, 0.8, 1.6))
+      SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+      _iframes = 0.6
+      return
+  elif from_player:
+    # "Colpo potente" buff / Eco Rush: bonus damage and critical hits
+    var hit: Array = LevelManager.player_hit_damage(dmg)
+    dmg = hit[0]
+    if hit[1]:
+      FloatText.spawn(self, "CRIT!", Color(1.0, 0.85, 0.2))
   SFXManager.play_sfx(preload("res://Audio/SFX/Dmg/Damage.wav"))
   health -= dmg
   hpChanged.emit(health)
-  soft_collision_vector += attacker.global_position.direction_to(global_position) * 400.0
+  var hit_from := global_position + Vector2.LEFT
+  if is_instance_valid(attacker) and attacker is Node2D:
+    hit_from = attacker.global_position
+  _on_hurt(hit_from.direction_to(global_position))
   print_debug("%s took %s damage" % [name, dmg])
+
+
+func is_invincible_now() -> bool:
+  return _iframes > 0.0 or get("is_invincible") == true
+
+
+## Reaction to a hit, `away` points from the attacker to this character.
+## Enemies override it (knockback + stagger); players get feedback + i-frames.
+func _on_hurt(away: Vector2) -> void:
+  soft_collision_vector += away * 400.0
+  _flash(Color(1.0, 0.35, 0.35) if is_in_group("player") else Color(2.5, 2.5, 2.5))
+  if is_in_group("player"):
+    Input.vibrate_handheld(60)
+    _shake_camera()
+    if not has_method("start_invincibility"):
+      _iframes = PLAYER_IFRAMES
+
+
+func _flash(color: Color) -> void:
+  modulate = color
+  var t := create_tween()
+  t.tween_property(self, "modulate", Color.WHITE, 0.15)
+
+
+func _shake_camera() -> void:
+  var cam := get_node_or_null("Camera2D") as Camera2D
+  if cam == null:
+    return
+  var t := create_tween()
+  for i in 4:
+    t.tween_property(cam, "offset", Vector2(randf_range(-3, 3), randf_range(-3, 3)), 0.03)
+  t.tween_property(cam, "offset", Vector2.ZERO, 0.03)
+
+
+func _update_iframes(delta: float) -> void:
+  if _iframes <= 0.0:
+    return
+  _iframes -= delta
+  _blink -= delta
+  var spr := get_node_or_null("AnimatedSprite2D") as CanvasItem
+  if spr == null:
+    return
+  if _iframes <= 0.0 or is_dead:
+    spr.visible = true
+  elif _blink <= 0.0:
+    _blink = 0.1
+    spr.visible = not spr.visible
 
 func handle_death():
   SFXManager.play_sfx(preload("res://Audio/SFX/Dmg/Balloon Pop 1.wav"), -15)
@@ -191,8 +264,8 @@ func handle_death():
   #await get_tree().create_timer(.5).timeout
   #queue_free()
 func heal(amount: int) -> void:
-    # Aumenta la salute ma non superare il massimo (3)
-    health = min(health + amount, 3)
+    # Never above this character's max (it can be raised by the Cuore extra buff)
+    health = min(health + amount, max_health)
     # Emetti il segnale per aggiornare i cuori
     hpChanged.emit(health)
     print("Salute recuperata! Ora: ", health)

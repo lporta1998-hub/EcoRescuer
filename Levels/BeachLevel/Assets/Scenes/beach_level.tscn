@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://db2sne6m33h4d" path="res://Menu/Complete menu/complete_menu.tscn" id="11_j7fab"]
 [ext_resource type="PackedScene" uid="uid://dx6x0s57gn30t" path="res://Menu/GameOverMenu/game_over_menu.tscn" id="12_ts6af"]
 [ext_resource type="PackedScene" uid="uid://tq14gsasary0" path="res://Menu/PauseMenu/Scenes/pause_menu.tscn" id="13_3v75p"]
+[ext_resource type="PackedScene" path="res://Collectibles/Scenes/eco_chest.tscn" id="ec_chest"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0vw37"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -6801,6 +6802,10 @@ position = Vector2(1461, 839)
 
 [node name="Enemy7" parent="." instance=ExtResource("9_0vw37")]
 position = Vector2(1461, 755)
+
+[node name="EcoChest1" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(1612, 187)
+cost = 5
 
 [connection signal="body_entered" from="Compound Roof/VisibilityToggle" to="Compound Roof/VisibilityToggle" method="_on_body_entered"]
 [connection signal="body_exited" from="Compound Roof/VisibilityToggle" to="Compound Roof/VisibilityToggle" method="_on_body_exited"]

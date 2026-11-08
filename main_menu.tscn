@@ -94,13 +94,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -135.0
-offset_top = -171.5
+offset_top = -110.0
 offset_right = 135.0
-offset_bottom = 171.5
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 14
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
@@ -112,6 +112,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
 text = "Start"
+
+[node name="ShopButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_06t4h")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glbon")
+text = "Shop"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -219,6 +229,7 @@ layer = 2
 visible = false
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

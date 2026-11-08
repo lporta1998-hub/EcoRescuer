@@ -10,7 +10,8 @@ func _process(delta):
 
         var collider = ray.get_collider()
 
-        if collider.is_in_group("player") and collider.health > 0:
+        # the ray can hit something without a node (null): ignore it
+        if collider and collider.is_in_group("player") and collider.health > 0:
 
             if reload_timer.is_stopped():
                 shoot()

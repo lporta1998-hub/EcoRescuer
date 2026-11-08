@@ -17,7 +17,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="ecorescuertest01"
 run/main_scene="uid://c3p4nqksuogc5"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://Misc/icon.svg"
+config/icon="res://Misc/AppIcon/icon_1024.png"
+boot_splash/bg_color=Color(0.0627, 0.149, 0.18, 1)
+boot_splash/show_image=false
 
 [autoload]
 
@@ -27,10 +29,15 @@ SettingsManager="*res://Audio/settings_manager.gd"
 SFXManager="*res://Audio/SFX/SFXManager.gd"
 LevelManager="*res://LevelManager.gd"
 SilentWolf="*res://silent_wolf/SilentWolf.gd"
+Story="*res://Misc/Story/story.gd"
+Progress="*res://Misc/Progress/progress.gd"
+TouchControls="*res://Misc/TouchControls/touch_controls.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
 
 [dotnet]
 
@@ -106,3 +113,4 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

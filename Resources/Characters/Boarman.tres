@@ -9,4 +9,6 @@ script = ExtResource("3_y7jb0")
 title = "Boarman"
 icon = ExtResource("1_20mat")
 scene = ExtResource("2_d5ml3")
+price = 1200
+shop_description = "Il più resistente: 4 cuori invece di 3."
 metadata/_custom_type_script = "uid://dnnh71e5i82sr"

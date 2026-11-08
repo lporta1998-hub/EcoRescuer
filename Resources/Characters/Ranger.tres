@@ -9,4 +9,6 @@ script = ExtResource("2_5xtna")
 title = "Ranger"
 icon = ExtResource("1_5xtna")
 scene = ExtResource("2_bmu2y")
+price = 400
+shop_description = "Arciere: colpisce da lontano con le frecce."
 metadata/_custom_type_script = "uid://d7dbfblkvmnk"

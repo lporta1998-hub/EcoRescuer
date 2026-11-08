@@ -4,6 +4,9 @@ extends Area2D
 
 var can_teleport = true
 
+func _ready() -> void:
+    add_to_group("teleport")  # used by RouteGuide (arrow + pause map)
+
 func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("player") and can_teleport:
         SFXManager.play_sfx(preload("res://Audio/SFX/Teleport/Teleport.wav"))
@@ -21,6 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
         await $fade_transition.fade_out_then(func():
             body.velocity = Vector2.ZERO
             body.global_position = destination_marker.global_position
+            LevelManager.on_player_teleported()
         )
         
         # Riabilita il player

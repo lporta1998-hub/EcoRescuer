@@ -44,5 +44,5 @@ func update_facing_direction(direction: Vector2):
     look_direction = direction
 
 func heal(amount: int) -> void:
-    health = min(health + amount, 3)
+    health = min(health + amount, max_health)
     hpChanged.emit(health)

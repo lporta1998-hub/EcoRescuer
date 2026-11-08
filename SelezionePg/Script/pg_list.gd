@@ -11,14 +11,27 @@ func _ready() -> void:
     load_characters() 
     
 func load_characters():
-    for character in characters:
+    # Free character first, then cheapest to most expensive.
+    # Same roster as the Shop (includes the new heroes).
+    var sorted: Array = ShopMenu.CHARACTERS.duplicate()
+    sorted.sort_custom(func(a: Pg, b: Pg): return a.price < b.price)
+    for character in sorted:
         var slot = pg_slot.instantiate()
         
         slot.icon = character.icon
         slot.pressed.connect(_on_slot_pressed.bind(character))
         add_child(slot)
+        slot.set_locked(not Progress.is_unlocked(character), character.price)
 
 func _on_slot_pressed(character: Pg):
+    if not Progress.is_unlocked(character):
+        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+        selected_character = null
+        $"../../ConfermaButton".hide()
+        get_parent().get_parent().show_hint(
+            "%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!" % [character.title, character.price, Progress.coins])
+        return
+    get_parent().get_parent().show_hint("")
     SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
     print("Personaggio selezionato: ", character.title)
     selected_character = character

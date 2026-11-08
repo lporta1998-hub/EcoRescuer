@@ -13,6 +13,12 @@ class_name LevelData
 @export var high_score: int = 0
 @export var max_time_bonus: int = 300
 @export var penalty_time : int = 20
+## Total stars (across all levels) needed to unlock this level. 0 = open.
+@export var stars_required : int = 0
+## Objective: trash bags to collect (-1 = all of them) and enemies to defeat
+## before the recycling station opens and the level can be finished.
+@export var required_bags : int = -1
+@export var required_kills : int = 0
 func update_high_score(new_score: int) -> bool:
     if new_score > high_score:
         high_score = new_score

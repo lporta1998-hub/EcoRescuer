@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6rondl8hncsl" path="res://Collectibles/Scenes/feather.tscn" id="14_cnmps"]
 [ext_resource type="PackedScene" uid="uid://fnt5b6clw8ir" path="res://Collectibles/Scenes/heart.tscn" id="14_dp8ns"]
 [ext_resource type="PackedScene" uid="uid://2fqumris7lxt" path="res://Collectibles/Scenes/barile.tscn" id="16_3fdbq"]
+[ext_resource type="PackedScene" path="res://Collectibles/Scenes/eco_chest.tscn" id="ec_chest"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i0woh"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1220,3 +1221,12 @@ position = Vector2(-397, 367)
 
 [node name="EcoToken8" parent="Collectibles" instance=ExtResource("12_70pw1")]
 position = Vector2(-869, 805)
+
+[node name="EcoChest1" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(-171, -360)
+cost = 2
+
+[node name="EcoChest2" parent="." instance=ExtResource("ec_chest")]
+position = Vector2(1415, -198)
+cost = 4
+

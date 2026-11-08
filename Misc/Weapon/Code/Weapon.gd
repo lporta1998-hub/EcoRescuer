@@ -13,7 +13,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
   modulate = Color.WHITE if attack_zone.monitoring else Color.DARK_GRAY
-  look_at(get_global_mouse_position())
+  # Mouse cursor on desktop, auto-aim on touch screens.
+  look_at(TouchControls.get_aim_position(self))
 
 func start_attack():
   if can_attack:

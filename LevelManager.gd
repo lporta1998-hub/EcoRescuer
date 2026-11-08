@@ -13,6 +13,38 @@ var end_level_menu: CanvasLayer
 var game_over_menu: CanvasLayer
 var pause_menu: CanvasLayer
 var fade_layer: CanvasLayer = null
+## Coins paid out for the run that just ended (shown by the end menus).
+var coins_earned: int = 0
+## Star conditions for the current run: finished, all items, no damage.
+var took_damage := false
+var star_conditions: Array[bool] = [false, false, false]
+var stars_earned := 0
+var new_star_record := false
+var _player_hp := 0.0
+## Hits the "Scudo" buff can still block in this run.
+var shield_charges := 0
+## "Eco Rush" from a chest: faster and stronger until this time (msec).
+const ECO_RUSH_SECONDS := 20.0
+const ECO_RUSH_SPEED := 1.3
+var _eco_rush_until := 0
+## Green coins (EcoToken) picked up in this run, spendable on eco chests.
+var run_coins := 0
+## Points of the coins spent on chests (not paid out as Shop coins).
+var spent_coin_points := 0
+## Shop coins won from chests ("Tesoro") in this run.
+var chest_bonus_coins := 0
+## Objective: collect `bags_needed` trash bags and defeat `kills_needed`
+## enemies, then walk into the recycling station (LevelExit) to finish.
+var total_enemies := 0
+var enemies_killed := 0
+var bags_needed := 0
+var kills_needed := 0
+var level_exit: LevelExit
+var objective_hud: ObjectiveHUD
+var route_guide: RouteGuide
+## Side quests of this level (dossier + one gameplay quest), see Story.
+var side_quests: SideQuests
+var _finished := false
 func _ready() -> void:
     
     add_to_group("level_manager") 
@@ -23,6 +55,8 @@ func create_fade_layer() -> void:
     
     var fade_scene = preload("res://Menu/Scenes/fade_transition.tscn") 
     fade_layer = fade_scene.instantiate()
+    # Fades must finish even while the game is paused (level briefing card).
+    fade_layer.process_mode = Node.PROCESS_MODE_ALWAYS
     get_tree().root.add_child(fade_layer)
     
 func setup_level(level_node: Node2D) -> void:
@@ -43,11 +77,24 @@ func setup_level(level_node: Node2D) -> void:
     items_collected.clear()
     items_counter.clear()
     start_time = Time.get_ticks_msec()
+    coins_earned = 0
+    took_damage = false
+    stars_earned = 0
+    new_star_record = false
+    star_conditions = [false, false, false]
+    _eco_rush_until = 0
+    run_coins = 0
+    spent_coin_points = 0
+    chest_bonus_coins = 0
+    _disable_tile_navigation(level_node)
+    _track_player_damage(level_node)
+    _apply_buffs(level_node)
     total_items = 0
     collected_items = 0
     # Configura il livello
     count_trash_bags()
     connect_collectible_signals()
+    _setup_objective(level_node)
     
     # Nascondi i menu
     if end_level_menu:
@@ -108,6 +155,11 @@ func _on_collectible_collected(collectible: Collectible) -> void:
             "icon": item_data.get("icon", null),
             "points": item_data.get("points", 0)
         }
+    if collectible.has_method("is_eco_coin"):
+        run_coins += 1
+        _quest_event("coin")
+    if collectible is OilBarrel:
+        _quest_event("barrel")
     if collectible is TrashBag:
         trash_bags_collected += 1
         print("Sacco raccolto! ", trash_bags_collected, "/", trash_bags_total)
@@ -117,8 +169,9 @@ func _on_collectible_collected(collectible: Collectible) -> void:
 
     update_menu_data()
     
-    if trash_bags_collected >= trash_bags_total and trash_bags_total > 0:
-        show_end_level_menu()
+    # The level no longer ends on the last bag: the player can keep exploring
+    # and finishes by walking into the recycling station.
+    _update_objective()
 
 func update_menu_data() -> void:
     var time_elapsed = (Time.get_ticks_msec() - start_time) / 1000 if start_time else 0
@@ -135,7 +188,17 @@ func update_menu_data() -> void:
         "score": Global.current_level_score,
         "completion_seconds": time_elapsed,
         "completion_time": Time.get_time_string_from_system(),
-        "completion_percentage": completion_percentage
+        "completion_percentage": completion_percentage,
+        "coins_earned": coins_earned,
+        "coins_total": Progress.coins,
+        "coin_bonus": Progress.coin_multiplier() - 1.0,
+        "chest_coins": chest_bonus_coins,
+        "quests": side_quests.results if side_quests else [],
+        "quest_coins": side_quests.bonus_coins if side_quests else 0,
+        "stars": stars_earned,
+        "star_conditions": star_conditions,
+        "new_star_record": new_star_record,
+        "stars_total": Progress.total_stars()
     }
     
     
@@ -149,6 +212,7 @@ func update_menu_data() -> void:
         pause_menu.set_level_data(current_data)
 
 func show_end_level_menu() -> void:
+    _finished = true
     var bonus = time_score()
     if bonus > 0:
         Global.add_score(bonus)
@@ -156,6 +220,10 @@ func show_end_level_menu() -> void:
         
     var final_score = Global.complete_level()
     print("Livello completato! Punteggio finale: ", final_score)
+    if side_quests:
+        side_quests.on_level_finished(elapsed_seconds())
+    _pay_out_coins(true)
+    _award_stars()
     if Global.selected_level_data and SilentWolf:
         var player_name := Global.player_name
         if player_name.strip_edges().is_empty():
@@ -192,7 +260,397 @@ func _get_ld_name_for_level(level_data: LevelData) -> String:
         return "main"
     return result
 
+## Watches the player's health so the "no damage" star can be judged.
+## Looks inside the new level only: the previous level's player may still be
+## in the tree for a frame while it's being freed.
+func _track_player_damage(level_node: Node) -> void:
+    for node in level_node.find_children("*", "CharacterBody2D", true, false):
+        if node.is_in_group("player") and node.has_signal("hpChanged"):
+            _player_hp = float(node.health)
+            node.hpChanged.connect(_on_player_hp_changed)
+            return
+
+func _on_player_hp_changed(new_hp) -> void:
+    if float(new_hp) < _player_hp:
+        took_damage = true
+        if side_quests:
+            side_quests.on_damage()
+            _refresh_quest_hud()
+    _player_hp = float(new_hp)
+
+# --- Objective & exit ------------------------------------------------------
+
+func _setup_objective(level_node: Node) -> void:
+    _finished = false
+    enemies_killed = 0
+    total_enemies = 0
+    for node in level_node.find_children("*", "CharacterBody2D", true, false):
+        if node is Enemy:
+            total_enemies += 1
+    var ld: LevelData = Global.selected_level_data
+    var req_bags: int = ld.required_bags if ld else -1
+    var req_kills: int = ld.required_kills if ld else 0
+    bags_needed = trash_bags_total if req_bags < 0 else mini(req_bags, trash_bags_total)
+    kills_needed = mini(req_kills, total_enemies)
+
+    objective_hud = ObjectiveHUD.new()
+    level_node.add_child(objective_hud)
+    route_guide = RouteGuide.new(level_node)
+    objective_hud.route_guide = route_guide
+    _update_objective()
+    level_exit = null
+    for node in level_node.find_children("*", "Area2D", true, false):
+        if node is LevelExit:
+            level_exit = node
+    if level_exit == null:
+        level_exit = _place_exit(level_node)
+    _check_chest_costs(level_node)
+    objective_hud.exit_node = level_exit
+    _update_objective()
+    side_quests = SideQuests.new(Global.selected_level_data, level_node) if Global.selected_level_data else null
+    _place_batteries(level_node)
+    if side_quests and side_quests.is_active():
+        _place_dossier(level_node)
+        _refresh_quest_hud()
+        _show_briefing.call_deferred()
+
+## Warns (in the Godot output) when the eco chests of a level cost more green
+## coins than the level has, so not every chest could be opened.
+func _check_chest_costs(level_node: Node) -> void:
+    var coins := 0
+    for c in level_node.find_children("*", "Collectible", true, false):
+        if c.has_method("is_eco_coin"):
+            coins += 1
+    var cost := 0
+    for chest in level_node.find_children("*", "EcoChest", true, false):
+        cost += chest.cost
+    if cost > coins:
+        push_warning("%s: i forzieri costano %d monete ma il livello ne ha solo %d" % [level_node.name, cost, coins])
+
+# --- Story: briefing, dossier, side quests -----------------------------------
+
+func _show_briefing() -> void:
+    if not is_instance_valid(current_level):
+        return
+    var ld: LevelData = Global.selected_level_data
+    var ch: Dictionary = side_quests.chapter
+    var lines := ["Obiettivo: raccogli %d sacchi di rifiuti%s, poi portali al punto di raccolta." % [
+            bags_needed, (" e sconfiggi %d Inquinatori" % kills_needed) if kills_needed > 0 else ""],
+            "Missioni secondarie: trova il dossier segreto  ·  %s." % side_quests.text]
+    var card := StoryCard.open(current_level, {
+        "kicker": "Capitolo %d di %d  ·  %s" % [Story.chapter_index(ld) + 1, Story.chapters().size(), ld.level_name],
+        "title": ch.title, "text": ch.text, "lines": lines, "button": "Via!"})
+    card.closed.connect(func(): start_time = Time.get_ticks_msec())  # the clock starts now
+
+## A Dossier placed in the level scene, or one on the reachable item farthest
+## from the start (away from the recycling station).
+func _place_dossier(level_node: Node) -> void:
+    for node in level_node.find_children("*", "Area2D", true, false):
+        if node is Dossier:
+            return
+    var spawn := level_node.find_child("PlayerSpawn", true, false) as Node2D
+    var start := spawn.global_position if spawn else Vector2.ZERO
+    var best := -1.0
+    var where := Vector2.INF
+    for item in level_node.find_children("*", "Collectible", true, false):
+        if item is TrashBag:
+            continue
+        var p: Vector2 = item.global_position
+        if level_exit and p.distance_to(level_exit.global_position) < 250.0:
+            continue
+        var d: float = route_guide.route_cost(start, p) if route_guide.is_ready() else start.distance_to(p)
+        if d != INF and d > best:
+            best = d
+            where = p
+    if where == Vector2.INF:
+        return
+    var dossier := Dossier.new()
+    dossier.name = "Dossier"
+    level_node.add_child(dossier)
+    dossier.global_position = route_guide.open_spot(where + Vector2(34, 0), 1) if route_guide.is_ready() else where + Vector2(34, 0)
+
+## Batteries exist only for heroes that run on them (ECO-9): spread over
+## reachable spots near the level's items, far from each other.
+func _place_batteries(level_node: Node) -> void:
+    # the hero of THIS level (the previous level's one may not be freed yet)
+    var player: Node = null
+    for n in level_node.get_children():
+        if n.is_in_group("player"):
+            player = n
+    if player == null or not player.has_method("uses_batteries"):
+        return
+    var spawn := level_node.find_child("PlayerSpawn", true, false) as Node2D
+    var start := spawn.global_position if spawn else Vector2.ZERO
+    var candidates := []
+    for item in level_node.find_children("*", "Collectible", true, false):
+        if not (item is TrashBag) and (not route_guide.is_ready() or route_guide.teleport_chain(start, item.global_position) != null):
+            candidates.append(item.global_position)
+    var count := clampi(total_enemies / 3, 5, 9)
+    var chosen := [start]
+    for i in count:
+        var best := Vector2.INF
+        var best_d := -1.0
+        for c in candidates:
+            var d := INF
+            for q in chosen:
+                d = minf(d, c.distance_to(q))
+            if d > best_d:
+                best_d = d
+                best = c
+        if best == Vector2.INF:
+            break
+        chosen.append(best)
+        candidates.erase(best)
+        var b := Battery.new()
+        b.name = "Battery%d" % i
+        level_node.add_child(b)
+        b.global_position = route_guide.open_spot(best + Vector2(0, 26), 1) if route_guide.is_ready() else best + Vector2(0, 26)
+
+func on_dossier_found() -> void:
+    if side_quests == null:
+        return
+    var msg := side_quests.on_dossier()
+    _refresh_quest_hud()
+    StoryCard.open(current_level, {
+        "kicker": "Dossier segreto degli Inquinatori", "title": "Trovato!",
+        "text": side_quests.chapter.get("dossier", ""), "lines": [msg] if msg != "" else [],
+        "button": "Continua", "color": Color(0.95, 0.75, 0.3), "icon": preload("res://Misc/Story/Art/dossier.png")})
+
+func _quest_event(event: String) -> void:
+    if side_quests == null:
+        return
+    var msg := side_quests.on_event(event)
+    _refresh_quest_hud()
+    if msg != "" and objective_hud and is_instance_valid(objective_hud):
+        objective_hud.toast(msg, Color(1.0, 0.85, 0.35))
+
+func elapsed_seconds() -> float:
+    return (Time.get_ticks_msec() - start_time) / 1000.0
+
+func _refresh_quest_hud() -> void:
+    if objective_hud and is_instance_valid(objective_hud) and side_quests:
+        objective_hud.set_quests(side_quests.summary(elapsed_seconds()))
+
+## Re-aims the arrow right away after the player used a teleport.
+func on_player_teleported() -> void:
+    if objective_hud and is_instance_valid(objective_hud):
+        objective_hud.refresh_route()
+
+## Puts a recycling station on the trash bag farthest from the player's
+## start along the route (teleports count as far).
+func _place_exit(level_node: Node) -> LevelExit:
+    var spawn := level_node.find_child("PlayerSpawn", true, false) as Node2D
+    var start := spawn.global_position if spawn else Vector2.ZERO
+    var where := start
+    var best := -1.0
+    for bag in level_node.find_children("*", "TrashBag", true, false):
+        var d: float = route_guide.route_cost(start, bag.global_position) if route_guide.is_ready() \
+                else start.distance_to(bag.global_position)
+        if d == INF:
+            continue
+        if d > best:
+            best = d
+            where = bag.global_position
+    var exit := LevelExit.new()
+    exit.name = "LevelExit"
+    level_node.add_child(exit)
+    # next to the bag, not on top of it, on open floor (never half in a wall)
+    exit.global_position = route_guide.open_spot(where + Vector2(0, 26)) if route_guide.is_ready() \
+            else where + Vector2(0, 26)
+    # draw it above the ground but under the player
+    for node in level_node.get_children():
+        if node.is_in_group("player"):
+            level_node.move_child(exit, node.get_index())
+            break
+    return exit
+
+func objective_met() -> bool:
+    return trash_bags_collected >= bags_needed and enemies_killed >= kills_needed
+
+func _update_objective() -> void:
+    var met := objective_met()
+    if level_exit and is_instance_valid(level_exit):
+        level_exit.set_open(met)
+    if objective_hud and is_instance_valid(objective_hud):
+        objective_hud.update_objective(trash_bags_collected, bags_needed, enemies_killed, kills_needed, met)
+
+func on_enemy_killed(enemy: Node = null) -> void:
+    enemies_killed += 1
+    _update_objective()
+    if enemy is Elite:
+        _quest_event("elite")
+
+func on_chest_opened() -> void:
+    _quest_event("chest")
+
+## Called by the recycling station when the player walks into it.
+func try_finish_level() -> void:
+    if _finished:
+        return
+    # Final level: the station inside the arena starts the boss fight; the
+    # level ends when the boss is beaten (see Boss/fortress_level.gd).
+    if current_level and current_level.has_method("start_boss_fight") and not current_level.boss_defeated \
+            and objective_met():
+        current_level.start_boss_fight()
+        return
+    if objective_met():
+        _finished = true
+        show_end_level_menu()
+        return
+    var missing := []
+    if trash_bags_collected < bags_needed:
+        missing.append("%d rifiuti" % (bags_needed - trash_bags_collected))
+    if enemies_killed < kills_needed:
+        missing.append("%d nemici da sconfiggere" % (kills_needed - enemies_killed))
+    if objective_hud:
+        objective_hud.toast("Ti mancano ancora: " + " e ".join(missing), Color(1.0, 0.6, 0.45))
+
+## Nothing uses the navigation mesh any more (enemies and the station arrow
+## path over RouteGuide's tile grid). The tile layers registered one
+## navigation region per tile (12-19 thousand per level), which the navigation
+## server kept in sync for nothing: switch it off.
+func _disable_tile_navigation(level_node: Node) -> void:
+    for layer in level_node.find_children("*", "TileMapLayer", true, false):
+        layer.navigation_enabled = false
+
+## Applies the buffs and Sfide switched on in the Shop (at their bought
+## level) to this level's player and enemies.
+func _apply_buffs(level_node: Node) -> void:
+    shield_charges = Progress.level_of("shield") * int(Progress.BUFFS.shield.per_level)
+    for node in level_node.find_children("*", "CharacterBody2D", true, false):
+        if node.is_in_group("player"):
+            _buff_player(node)
+        elif node is Enemy:
+            _buff_enemy(node)
+    _remove_hearts(level_node)
+
+func _buff_player(player: Character) -> void:
+    var hearts_lvl := Progress.level_of("extra_heart")
+    if hearts_lvl > 0:
+        var extra := int(Progress.buff_value("extra_heart", hearts_lvl))
+        player.max_health += extra
+        player.health += extra
+        _player_hp = float(player.health)
+        var hearts = player.get("heartsContainer")
+        if hearts:
+            hearts.setMaxHP(extra)  # appends the extra hearts
+            hearts.updateHP(player.health)
+    var swift_lvl := Progress.level_of("swift")
+    if swift_lvl > 0:
+        scale_player_speed(player, 1.0 + Progress.buff_value("swift", swift_lvl))
+
+## Multiplies every speed variable the characters use (they reset `speed` from
+## base_speed / original_speed in different places).
+func scale_player_speed(player: Node, factor: float) -> void:
+    if not is_instance_valid(player):
+        return
+    player.speed *= factor
+    player.base_speed *= factor
+    if "original_speed" in player:
+        player.original_speed *= factor
+
+func _buff_enemy(enemy: Enemy) -> void:
+    var armored_lvl := Progress.level_of("armored")
+    if armored_lvl > 0:
+        enemy.max_health = ceilf(enemy.max_health * (1.0 + Progress.buff_value("armored", armored_lvl)))
+        enemy.health = enemy.max_health
+        enemy.hpChanged.emit(enemy.health)  # refresh its health bar
+    var rapid_lvl := Progress.level_of("rapid")
+    if rapid_lvl > 0:
+        enemy.speed *= 1.0 + Progress.buff_value("rapid", rapid_lvl)
+
+## Damage of an enemy hit on the player: "Colpi pesanti" makes some hits
+## (all of them at max level) take 2 hearts.
+func enemy_hit_damage(base: int) -> int:
+    var lvl := Progress.level_of("heavy")
+    if lvl > 0 and randf() < Progress.buff_value("heavy", lvl):
+        return maxi(base, 2)
+    return base
+
+## Bonus damage of a player hit: "Colpo potente" (+1, then a growing chance of
+## a x2 critical) and the Eco Rush from chests (+1). Returns [damage, is_crit].
+func player_hit_damage(base: int) -> Array:
+    var dmg := base
+    var lvl := Progress.level_of("power")
+    if lvl > 0:
+        dmg += 1
+    if eco_rush_active():
+        dmg += 1
+    var crit := lvl > 1 and randf() < Progress.buff_value("power", lvl - 1)
+    if crit:
+        dmg *= 2
+    return [dmg, crit]
+
+## "Senza cure": a share of the level's heart pickups disappears.
+func _remove_hearts(level_node: Node) -> void:
+    var lvl := Progress.level_of("no_heal")
+    if lvl <= 0:
+        return
+    var hearts := level_node.find_children("*", "HeartCollectible", true, false)
+    hearts.shuffle()
+    var to_remove := ceili(hearts.size() * minf(1.0, Progress.buff_value("no_heal", lvl)))
+    for i in to_remove:
+        hearts[i].queue_free()
+
+func eco_rush_active() -> bool:
+    return Time.get_ticks_msec() < _eco_rush_until
+
+func eco_rush_seconds_left() -> float:
+    return maxf(0.0, (_eco_rush_until - Time.get_ticks_msec()) / 1000.0)
+
+## Chest reward: ECO_RUSH_SECONDS of extra speed and +1 damage.
+func start_eco_rush(player: Node) -> void:
+    var already := eco_rush_active()
+    _eco_rush_until = Time.get_ticks_msec() + int(ECO_RUSH_SECONDS * 1000.0)
+    if already:
+        return  # just extends it
+    scale_player_speed(player, ECO_RUSH_SPEED)
+    while eco_rush_active():
+        await get_tree().create_timer(0.25, false).timeout
+        if not is_instance_valid(player):
+            return
+    scale_player_speed(player, 1.0 / ECO_RUSH_SPEED)
+
+## Called by the player when hit: true if the shield absorbed the blow.
+func consume_shield() -> bool:
+    if shield_charges <= 0:
+        return false
+    shield_charges -= 1
+    return true
+
+## Stars: 1 for finishing, 1 for collecting every item, 1 for taking no damage.
+func _award_stars() -> void:
+    star_conditions = [true, total_items > 0 and collected_items >= total_items, not took_damage]
+    stars_earned = star_conditions.count(true)
+    if Global.selected_level_data:
+        new_star_record = Progress.record_stars(Global.selected_level_data, stars_earned)
+
+## Turns the points of the collected items into Shop coins.
+## Spends `amount` run coins on a chest. False if there aren't enough.
+func spend_run_coins(amount: int) -> bool:
+    if run_coins < amount:
+        return false
+    run_coins -= amount
+    spent_coin_points += amount * ECO_COIN_POINTS
+    return true
+
+const ECO_COIN_POINTS := 10  # points of one green coin (eco_token.gd)
+
+func _pay_out_coins(completed: bool) -> void:
+    var points := maxi(0, collected_points() - spent_coin_points) + chest_bonus_coins
+    coins_earned = Progress.coins_for_run(points, completed)
+    if side_quests:
+        coins_earned += side_quests.bonus_coins  # side-quest rewards, paid in full
+    Progress.add_coins(coins_earned)
+
+func collected_points() -> int:
+    var total := 0
+    for item in items_collected:
+        total += int(item.get("points", 0))
+    return total
+
 func show_game_over_menu() -> void:
+    _pay_out_coins(false)
     Global.reset_current_score()
     update_menu_data()
     MusicManager.play_game_over()

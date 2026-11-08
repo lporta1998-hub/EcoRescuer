@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
     if _opened:
         return
-    if body is CharacterBody2D:
+    if body is CharacterBody2D and body.is_in_group("player"):
         _opened = true
         _spawn_tokens()
         # Animate crate: flash green then hide

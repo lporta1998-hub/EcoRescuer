@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2fqumris7lxt"]
 
-[ext_resource type="Script" uid="uid://dxxoj7p5mhlry" path="res://Collectibles/Code/trash.gd" id="1_toa4s"]
+[ext_resource type="Script" path="res://Collectibles/Code/barrel.gd" id="1_toa4s"]
 [ext_resource type="Texture2D" uid="uid://cxnx8uaaului4" path="res://Collectibles/Assets/Sprites/pixellab-oil-barrel-1773596908433.png" id="2_tnms6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbag"]
