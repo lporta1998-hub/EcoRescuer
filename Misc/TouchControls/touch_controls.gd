@@ -15,6 +15,8 @@ extends CanvasLayer
 ## A character can customise its buttons by declaring, for example:
 ##     var touch_actions := {"primary": "ATTACCA", "secondary": "TIRA"}
 ## Only the actions listed get a button.
+## If the character also has `secondary_cooldown_ratio() -> float` (1 = just
+## used, 0 = ready), the secondary button shows the cooldown as a dark sweep.
 
 const DEFAULT_TOUCH_ACTIONS := {"primary": "ATTACCA"}
 const EDGE_PADDING := 28.0
@@ -63,6 +65,7 @@ func _process(delta: float) -> void:
 			release_all()
 
 	if should_show:
+		_update_cooldowns()
 		_target_refresh -= delta
 		if _target_refresh <= 0.0:
 			_target_refresh = 0.25
@@ -166,6 +169,13 @@ func _configure_for_player() -> void:
 	_primary.label = actions.get("primary", "")
 	_secondary.visible = actions.has("secondary")
 	_secondary.label = actions.get("secondary", "")
+
+
+func _update_cooldowns() -> void:
+	if _secondary.visible and _player.has_method("secondary_cooldown_ratio"):
+		_secondary.cooldown = _player.secondary_cooldown_ratio()
+	else:
+		_secondary.cooldown = 0.0
 
 
 func _layout() -> void:

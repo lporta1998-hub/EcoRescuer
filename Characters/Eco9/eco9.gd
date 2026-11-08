@@ -10,9 +10,12 @@ const HIT_COST := 15.0
 const BATTERY_CHARGE := 45.0
 const HEART_CHARGE := 12.0
 const SPEED_FACTOR := 1.6
+## LASER: piercing arm beam (see ArmLaser); it runs on ECO-9's energy.
+const LASER_COOLDOWN := 1.2
+const LASER_ENERGY := 10.0
 
 var last_direction = Vector2.RIGHT
-var touch_actions := {"primary": "COLPO"}
+var touch_actions := {"primary": "COLPO", "secondary": "LASER"}
 var _bar: Control
 var _low_warned := false
 
@@ -56,10 +59,31 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_pressed("primary") and not is_attacking:
 		handle_attack_input()
+	if Input.is_action_just_pressed("secondary"):
+		fire_laser()
 	if raw != Vector2.ZERO and not is_attacking:
 		update_attack_direction(raw)
 	if not is_attacking:
 		handle_animations()
+
+
+## Fires the arm laser toward `target` (default: where the player aims).
+## Costs LASER_ENERGY; refused while cooling down or when that would empty
+## the battery. Returns whether it fired.
+func fire_laser(target = null) -> bool:
+	if not secondary_ready():
+		return false
+	if health <= LASER_ENERGY:
+		FloatText.spawn(self, "Energia!", Color(1.0, 0.5, 0.3), Vector2(0, -44))
+		return false
+	start_secondary_cooldown(LASER_COOLDOWN)
+	health -= LASER_ENERGY
+	_bar.queue_redraw()
+	var from := global_position + Vector2(0, -14)
+	var dir: Vector2 = (target - from).normalized() if target is Vector2 else aim_direction(from)
+	ArmLaser.fire(get_parent(), from + dir * 10.0, dir, self)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Attacks/Arrow.wav"), -4)
+	return true
 
 
 ## A hit costs energy: HIT_COST for every heart it would have taken.

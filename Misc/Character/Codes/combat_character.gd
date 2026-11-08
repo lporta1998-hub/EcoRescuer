@@ -23,9 +23,22 @@ var _has_attack_animation := false
 var _has_attack_up_animation := false
 var _has_attack_down_animation := false
 
+# Cooldown of the hero's secondary move (ranged move of the melee heroes).
+var _secondary_left := 0.0
+var _secondary_total := 1.0
+
+## Deflect: the melee HurtBox must overlap enemy projectiles. EnemyShot
+## (sludge blobs, drone bolts) is an Area2D on layer 3 "Enemy" (value 4, like
+## enemy bodies), which every hero HurtBox already masks; enable_deflect also
+## adds layer 7 "Enemy Attack" so projectiles put there work too. A projectile
+## needs monitorable = true, group "deflectable" and a deflect(by) method.
+const ENEMY_LAYER := 3
+const ENEMY_ATTACK_LAYER := 7
+
 func _ready():
     super()
     original_speed = speed
+    enable_deflect(hurt_box)
     
     # Controlla animazioni di attacco disponibili
     if sprite and sprite.sprite_frames:
@@ -39,6 +52,7 @@ func _ready():
         
 func _process(delta):
     super(delta)
+    _secondary_left = maxf(0.0, _secondary_left - delta)
     if not is_attacking:
         if active_boost > 0:
             speed = base_speed + active_boost
@@ -63,6 +77,7 @@ func perform_melee_attack():
     input_direction = Vector2.ZERO
     
     # Applica danno ai nemici nell'area
+    deflect_overlapping(hurt_box, self)
     var bodies = hurt_box.get_overlapping_bodies()
     for b in bodies:
         if b == self:
@@ -167,3 +182,44 @@ func start_invincibility() -> void:
 
 func _on_attack_cooldown_timeout() -> void:
     can_attack = true
+
+
+# --- Secondary move cooldown -------------------------------------------------
+
+func secondary_ready() -> bool:
+    return _secondary_left <= 0.0 and not is_dead
+
+func start_secondary_cooldown(seconds: float) -> void:
+    _secondary_total = maxf(seconds, 0.01)
+    _secondary_left = seconds
+
+## 1 = just used, 0 = ready. Read by TouchControls for the button's sweep.
+func secondary_cooldown_ratio() -> float:
+    return clampf(_secondary_left / _secondary_total, 0.0, 1.0)
+
+## Direction from `from` to where the player is aiming (touch auto-aim or mouse).
+func aim_direction(from: Vector2) -> Vector2:
+    var dir := TouchControls.get_aim_position(self) - from
+    return attack_direction if dir.is_zero_approx() else dir.normalized()
+
+
+# --- Deflect -----------------------------------------------------------------
+
+## Lets the melee hurt box see enemy projectiles (layers 3 and 7).
+static func enable_deflect(box: Area2D) -> void:
+    if box:
+        box.monitoring = true
+        box.set_collision_mask_value(ENEMY_LAYER, true)
+        box.set_collision_mask_value(ENEMY_ATTACK_LAYER, true)
+
+## A melee swing bats back every deflectable enemy projectile it touches.
+## Returns how many were deflected.
+static func deflect_overlapping(box: Area2D, by: Node) -> int:
+    var count := 0
+    if box == null:
+        return count
+    for a in box.get_overlapping_areas():
+        if a.is_in_group("deflectable") and a.has_method("deflect"):
+            a.deflect(by)
+            count += 1
+    return count

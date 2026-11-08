@@ -10,6 +10,13 @@ extends Character
 #game stats
 @onready var heartsContainer = $CanvasLayer/HeartsContainer
 
+## Buttons shown by the on-screen touch controls.
+var touch_actions := {"primary": "ATTACCA", "secondary": "LATTINA"}
+
+## LATTINA: a recycled can thrown like a boomerang (see CanBoomerang).
+const CAN_COOLDOWN := 2.0
+var _can_left := 0.0
+
 #attack statesa
 @onready var attack_cooldown: Timer = $AttackCooldown
 var cooldown_length := .5
@@ -44,6 +51,7 @@ func _ready():
     self.hpChanged.connect(heartsContainer.updateHP)
     
     attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
+    CombatCharacter.enable_deflect(hurt_box)
     animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(_delta):
@@ -63,6 +71,28 @@ func _physics_process(_delta):
     
     if Input.is_action_just_pressed("primary"):
         handle_attack()        
+    _can_left = maxf(0.0, _can_left - _delta)
+    if Input.is_action_just_pressed("secondary"):
+        throw_can()
+
+## Throws the can toward `target` (default: where the player aims).
+## Returns false while cooling down.
+func throw_can(target = null) -> bool:
+    if is_dead or _can_left > 0.0:
+        return false
+    _can_left = CAN_COOLDOWN
+    var from := global_position + Vector2(0, -14)
+    var aim: Vector2 = target if target is Vector2 else TouchControls.get_aim_position(self)
+    var dir := aim - from
+    if dir.is_zero_approx():
+        dir = last_direction
+    CanBoomerang.throw(get_parent(), from, dir, self)
+    SFXManager.play_sfx(preload("res://Audio/SFX/Attacks/Arrow.wav"), -6)
+    return true
+
+## 1 = just thrown, 0 = ready. Read by TouchControls for the button's sweep.
+func secondary_cooldown_ratio() -> float:
+    return clampf(_can_left / CAN_COOLDOWN, 0.0, 1.0)
 
 func handle_attack():
   if is_dead:
@@ -76,6 +106,7 @@ func handle_attack():
     is_attacking = true
     play_attack_animation()
     
+  CombatCharacter.deflect_overlapping(hurt_box, self)
   for b in hurt_box.get_overlapping_bodies():
     if b == self:
         continue

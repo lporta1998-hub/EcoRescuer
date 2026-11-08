@@ -88,6 +88,7 @@ func setup_level(level_node: Node2D) -> void:
     chest_bonus_coins = 0
     _disable_tile_navigation(level_node)
     _track_player_damage(level_node)
+    _mix_enemies(level_node)
     _apply_buffs(level_node)
     total_items = 0
     collected_items = 0
@@ -280,6 +281,41 @@ func _on_player_hp_changed(new_hp) -> void:
 
 # --- Objective & exit ------------------------------------------------------
 
+## Swaps some of the level's basic Inquinatori (never Elites) for the new
+## enemy types listed in the chapter's `enemies` (see Story.ENEMIES). Seeded
+## by the level, so the same enemies change every time you play it.
+func _mix_enemies(level_node: Node) -> void:
+    var mix: Dictionary = Story.chapter_of(Global.selected_level_data).get("enemies", {})
+    if mix.is_empty():
+        return
+    var basics: Array = []
+    for node in level_node.find_children("*", "CharacterBody2D", true, false):
+        if node is Enemy and not node is Elite and not node is NewEnemy:
+            basics.append(node)
+    var rng := RandomNumberGenerator.new()
+    rng.seed = hash(level_node.scene_file_path)
+    for i in range(basics.size() - 1, 0, -1):  # shuffle
+        var j := rng.randi_range(0, i)
+        var t = basics[i]
+        basics[i] = basics[j]
+        basics[j] = t
+    var k := 0
+    for type in mix:
+        var scene: PackedScene = load(Story.ENEMIES[type].scene)
+        for n in int(mix[type]):
+            if k >= basics.size():
+                return
+            var old: Node2D = basics[k]
+            k += 1
+            var e: Node2D = scene.instantiate()
+            e.position = old.position
+            var parent := old.get_parent()
+            parent.add_child(e)
+            parent.move_child(e, old.get_index())
+            e.owner = old.owner if old.owner else level_node
+            parent.remove_child(old)
+            old.queue_free()
+
 func _setup_objective(level_node: Node) -> void:
     _finished = false
     enemies_killed = 0
@@ -337,6 +373,8 @@ func _show_briefing() -> void:
     var lines := ["Obiettivo: raccogli %d sacchi di rifiuti%s, poi portali al punto di raccolta." % [
             bags_needed, (" e sconfiggi %d Inquinatori" % kills_needed) if kills_needed > 0 else ""],
             "Missioni secondarie: trova il dossier segreto  ·  %s." % side_quests.text]
+    for type in Story.new_enemies_in(ld):
+        lines.append("Nuovo nemico: %s — %s" % [Story.ENEMIES[type].name, Story.ENEMIES[type].tip])
     var card := StoryCard.open(current_level, {
         "kicker": "Capitolo %d di %d  ·  %s" % [Story.chapter_index(ld) + 1, Story.chapters().size(), ld.level_name],
         "title": ch.title, "text": ch.text, "lines": lines, "button": "Via!"})

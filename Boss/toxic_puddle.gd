@@ -8,13 +8,17 @@ const RADIUS := 26.0
 const LIFE := 6.0
 const TICK := 1.0
 
+var radius := RADIUS
+var life := LIFE
 var _t := 0.0
 var _tick := 0.4
 var _victim: Node2D
 
 
-static func spawn(parent: Node, at: Vector2) -> ToxicPuddle:
+static func spawn(parent: Node, at: Vector2, r: float = RADIUS, l: float = LIFE) -> ToxicPuddle:
 	var p := ToxicPuddle.new()
+	p.radius = r
+	p.life = l
 	parent.add_child(p)
 	p.global_position = at
 	return p
@@ -27,7 +31,7 @@ func _ready() -> void:
 	scale = Vector2(1.0, 0.6)
 	var shape := CollisionShape2D.new()
 	var c := CircleShape2D.new()
-	c.radius = RADIUS
+	c.radius = radius
 	shape.shape = c
 	add_child(shape)
 	body_entered.connect(func(b):
@@ -48,16 +52,16 @@ func _process(delta: float) -> void:
 		if _tick <= 0.0:
 			_tick = TICK
 			_victim.take_damage(1, self)
-	if _t > LIFE:
-		modulate.a = maxf(0.0, 1.0 - (_t - LIFE) * 2.5)
-		if _t > LIFE + 0.4:
+	if _t > life:
+		modulate.a = maxf(0.0, 1.0 - (_t - life) * 2.5)
+		if _t > life + 0.4:
 			queue_free()
 
 
 func _draw() -> void:
 	var grow := minf(1.0, _t * 5.0)
-	draw_circle(Vector2.ZERO, RADIUS * grow, Color(0.25, 0.5, 0.1, 0.55))
-	draw_arc(Vector2.ZERO, RADIUS * grow - 1.0, 0, TAU, 32, Color(0.6, 1.0, 0.25, 0.6 + 0.3 * sin(_t * 6.0)), 2.0)
+	draw_circle(Vector2.ZERO, radius * grow, Color(0.25, 0.5, 0.1, 0.55))
+	draw_arc(Vector2.ZERO, radius * grow - 1.0, 0, TAU, 32, Color(0.6, 1.0, 0.25, 0.6 + 0.3 * sin(_t * 6.0)), 2.0)
 	for i in 3:
 		var k := fmod(_t * 0.9 + i * 0.33, 1.0)
 		draw_arc(Vector2(sin(i * 2.0) * 10.0, cos(i * 1.4) * 8.0), 2.0 + k * 3.0, 0, TAU, 10, Color(0.7, 1.0, 0.3, 1.0 - k), 1.0)

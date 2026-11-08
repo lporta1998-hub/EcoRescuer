@@ -45,7 +45,36 @@ var _path_goal := Vector2.INF
 var _health_bar: EnemyHealthBar
 var _resting := false
 
+## Smarter behaviour: they see you from farther, call their friends, follow
+## you for a while after losing sight, patrol around their post when you're
+## near, and flash before they strike.
+const SIGHT_RADIUS := 140.0
+const ALERT_RADIUS := 160.0
+const MEMORY := 4.0
+const PATROL_RADIUS := 90.0
+## Only enemies this close to the player patrol; the rest keep resting
+## (no physics at all), which keeps phones smooth.
+const PATROL_WAKE := 450.0
+const WINDUP := 0.3
+const LUNGE := 110.0
+var _home := Vector2.INF
+var _in_sight := false
+var _memory := 0.0
+var _awake := false
+var _wake_check := 0.0
+var _patrol_wait := 0.0
+var _patrolling := false
+var _windup := 0.0
+
 func _ready():
+    add_to_group("enemies")
+    _home = global_position
+    _wake_check = randf() * 0.5
+    _patrol_wait = randf_range(0.5, 2.0)
+    var sight := detection_area.get_node_or_null("CollisionShape2D") as CollisionShape2D
+    if sight and sight.shape is CircleShape2D:
+        sight.shape = sight.shape.duplicate()  # the shape resource is shared by every enemy
+        sight.shape.radius = SIGHT_RADIUS
     detection_area.body_entered.connect(_on_body_entered)
     detection_area.body_exited.connect(_on_body_exited)
     attack_area.body_entered.connect(_on_attack_area_body_entered)
@@ -64,13 +93,30 @@ func _ready():
 
 func _on_body_entered(body):
     if body.is_in_group("player"):
-        player = body
-        chasing = true
+        _in_sight = true
+        var was_chasing: bool = chasing
+        alert(body)
+        if not was_chasing:
+            # "!" and the friends nearby join the chase
+            FloatText.spawn(self, "!", Color(1.0, 0.85, 0.3), Vector2(0, -38))
+            for e in get_tree().get_nodes_in_group("enemies"):
+                if e != self and is_instance_valid(e) and e.has_method("alert") \
+                        and e.global_position.distance_to(global_position) < ALERT_RADIUS:
+                    e.alert(body)
 
 func _on_body_exited(body):
     if body == player:
-        player = null
-        chasing = false
+        _in_sight = false  # keep following for MEMORY seconds
+
+## Starts (or refreshes) the chase: called when it sees the player or when a
+## friend nearby spotted them.
+func alert(target: Node2D) -> void:
+    if is_dead or target == null:
+        return
+    player = target
+    chasing = true
+    _memory = MEMORY
+    _patrolling = false
 
 func _on_attack_area_body_entered(body):
     if body.is_in_group("player"):
@@ -93,10 +139,33 @@ func _physics_process(delta):
         
     direction = Vector2.ZERO
 
+    # lost sight: follow the trail for a while, then go back to patrolling
+    if chasing and not _in_sight:
+        _memory -= delta
+        if _memory <= 0.0 or player == null or not is_instance_valid(player):
+            chasing = false
+            player = null
+            _path = PackedVector2Array()
+            _path_index = 0
+
+    # winding up a strike: stand still, then lunge and swing
+    if _windup > 0.0:
+        _windup -= delta
+        input_direction = Vector2.ZERO
+        if _windup <= 0.0 and player and is_instance_valid(player) and not is_dead:
+            velocity += global_position.direction_to(player.global_position) * LUNGE
+            _start_attack_cooldown()
+            _attack()
+        super(delta)
+        return
+
+    if not chasing and not attacking:
+        _update_patrol(delta)
+
     # Idle and not moving: nothing to simulate this frame. Skipping
     # move_and_slide() for the many enemies standing around saves a lot of
     # physics time on phones. Detection still works (area signals).
-    if not chasing and not attacking and _path_finished() \
+    if not chasing and not attacking and _path_finished() and not _patrolling \
             and velocity.length_squared() < 1.0 and soft_collision_vector == Vector2.ZERO:
         if not _resting:
             _resting = true
@@ -123,7 +192,7 @@ func _physics_process(delta):
         direction = (_next_path_point() - global_position).normalized()
     
     _update_direction()
-    input_direction = direction
+    input_direction = direction * (0.5 if _patrolling and not chasing else 1.0)
     handle_footsteps(delta)
     super(delta)
     _update_animation()
@@ -131,8 +200,38 @@ func _physics_process(delta):
     # again here used to move enemies twice per frame.)
     
     if player and player_in_attack_area and can_attack and not attacking and not is_dead:
-        _start_attack_cooldown()
-        _attack()
+        # telegraph: a red flash, a short pause, then the lunge (see above)
+        _windup = WINDUP
+        can_attack = false
+        modulate = Color(2.0, 0.55, 0.5)
+        create_tween().tween_property(self, "modulate", Color.WHITE, WINDUP)
+
+## Wanders between open spots around its post while the player is nearby.
+func _update_patrol(delta: float) -> void:
+    _wake_check -= delta
+    if _wake_check <= 0.0:
+        _wake_check = 0.5
+        var p := get_tree().get_first_node_in_group("player") as Node2D
+        _awake = p != null and p.global_position.distance_to(global_position) < PATROL_WAKE
+    if not _awake:
+        _patrolling = false
+        return
+    if not _path_finished():
+        _patrolling = true
+        return
+    _patrolling = false
+    _patrol_wait -= delta
+    if _patrol_wait > 0.0:
+        return
+    _patrol_wait = randf_range(1.0, 2.0)
+    var rg: RouteGuide = LevelManager.route_guide
+    if rg == null or not rg.is_ready():
+        return
+    var a := randf() * TAU
+    var goal := rg.open_spot(_home + Vector2(cos(a), sin(a)) * randf_range(30.0, PATROL_RADIUS))
+    if rg.reachable(global_position, goal):
+        _set_path_to(goal)
+        _patrolling = true
 
 func _set_path_to(goal: Vector2) -> void:
     _path_goal = goal
@@ -162,11 +261,24 @@ func _next_path_point() -> Vector2:
 func _on_hurt(away: Vector2) -> void:
     velocity = away * knockback_force
     _stagger = stagger_time
-    if can_be_interrupted and attacking:
+    if can_be_interrupted and (attacking or _windup > 0.0):
         attacking = false
         damage_dealt = false
+        if _windup > 0.0:
+            _windup = 0.0
+            can_attack = true
     _flash(Color(2.5, 2.5, 2.5))
     Global.hitstop()
+
+## Getting hit (even from far away, by an arrow or a potion) starts the chase.
+func take_damage(dmg: int, attacker):
+    super(dmg, attacker)
+    if is_dead:
+        return
+    var p: Node2D = attacker if is_instance_valid(attacker) and attacker is Node2D and attacker.is_in_group("player") \
+            else get_tree().get_first_node_in_group("player") as Node2D
+    if p:
+        alert(p)
 
 func handle_death():
     if _health_bar:

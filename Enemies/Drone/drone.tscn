@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Drone/drone.gd" id="1_s"]
+[ext_resource type="Texture2D" path="res://Enemies/Drone/sheet.png" id="2_t"]
+
+[sub_resource type="SpriteFrames" id="SF_1"]
+animations = [{"frames": [], "loop": true, "name": &"default", "speed": 5.0}]
+
+[sub_resource type="CapsuleShape2D" id="Body"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="Sight"]
+radius = 140.0
+
+[sub_resource type="CircleShape2D" id="Reach"]
+radius = 23.0
+
+[node name="Drone" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 274
+script = ExtResource("1_s")
+sheet = ExtResource("2_t")
+frame_size = 32
+directional = false
+feet_y = 24
+speed = 110.0
+max_health = 2.0
+decay = 8.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SF_1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("Body")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 4)
+shape = SubResource("Sight")
+
+[node name="AttackRange" type="Area2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("Reach")
+
+[node name="FootstepSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

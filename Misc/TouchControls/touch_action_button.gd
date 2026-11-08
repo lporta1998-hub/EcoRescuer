@@ -26,6 +26,15 @@ enum Icon { NONE, PAUSE }
 @export var send_as_event := false
 @export var icon := Icon.NONE
 @export var font_size := 18
+## 0 = ready, 1 = just used. While above 0 a dark sweep covers the part of
+## the button still cooling down (it shrinks clockwise, from 12 o'clock).
+var cooldown := 0.0:
+	set(value):
+		value = clampf(value, 0.0, 1.0)
+		if is_equal_approx(value, cooldown):
+			return
+		cooldown = value
+		queue_redraw()
 
 var _touch_index := -1
 
@@ -86,9 +95,19 @@ func _draw() -> void:
 	var center := size * 0.5
 	draw_circle(center, radius, Color(0, 0, 0, 0.35 if held else 0.2))
 	draw_circle(center, radius, Color(1, 1, 1, 0.35 if held else 0.12))
+	var cooling := cooldown > 0.0
+	if cooling:
+		var pts := PackedVector2Array([center])
+		var steps := maxi(2, ceili(48 * cooldown))
+		for i in steps + 1:
+			var a := -PI / 2.0 + TAU * (1.0 - cooldown) + TAU * cooldown * float(i) / steps
+			pts.append(center + Vector2(cos(a), sin(a)) * radius)
+		draw_colored_polygon(pts, Color(0, 0, 0, 0.55))
 	draw_arc(center, radius, 0.0, TAU, 64, Color(1, 1, 1, 0.85 if held else 0.5), 3.0, true)
 
 	var fg := Color(1, 1, 1, 0.95 if held else 0.75)
+	if cooling:
+		fg.a = 0.4
 	match icon:
 		Icon.PAUSE:
 			var bar := Vector2(radius * 0.22, radius * 0.9)

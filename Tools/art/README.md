@@ -34,6 +34,11 @@ prop, add it there too.
 | `baron_portrait.py OUT.png` | Baron bust portrait | used by `panels.py` |
 | `panels.py` | `04_baron_new.png`, `07_fall_new.png` (run in a folder holding `boss3_sheet.png`, `baron_portrait.png` and `pv_arena.png`, an arena render made with `preview_map.py`) | `Misc/Story/Art/04_baron.png`, `07_fall.png` |
 
+## Enemies
+| Script | Output | Goes to |
+|---|---|---|
+| `enemies.py OUT` | `sprayer.png`, `bomber.png` (40 px frames), `brute.png` (56 px), `drone.png` (32 px); rows down / up / side / death, columns idle x2, walk x4, windup, attack | `Enemies/<Type>/sheet.png` |
+
 ## Heroes and collectibles
 | Script | What it does |
 |---|---|

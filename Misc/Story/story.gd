@@ -22,10 +22,26 @@ const QUEST_REWARD := 150
 ## finish within `target` seconds, "nodamage" finish without being hit.
 const QUEST_TYPES := ["barrels", "chests", "elites", "coins", "time", "nodamage"]
 
+## The new enemy types. In each chapter, `enemies` says how many of the
+## level's basic Inquinatori are swapped for each type (LevelManager does it
+## when the level starts); the first level a type appears in mentions it in
+## the briefing.
+const ENEMIES := {
+	"sprayer": {"scene": "res://Enemies/Sprayer/sprayer.tscn", "name": "Spruzzatore",
+			"tip": "lancia fanghi tossici da lontano: avvicinati mentre prende la mira."},
+	"bomber": {"scene": "res://Enemies/Bomber/bomber.tscn", "name": "Kamikaze",
+			"tip": "corre verso di te con un barile che esplode: colpiscilo prima o allontanati quando lampeggia."},
+	"brute": {"scene": "res://Enemies/Brute/brute.tscn", "name": "Bruto",
+			"tip": "carica in linea retta: schivalo e fallo sbattere contro un muro, resterà stordito."},
+	"drone": {"scene": "res://Enemies/Drone/drone.tscn", "name": "Drone NEXUS",
+			"tip": "vola sopra muri e acqua e spara laser: colpiscilo da lontano o respingi i suoi colpi."},
+}
+
 ## Campaign order. `level` is the LevelData resource; the rest is story.
 const CHAPTERS := [
 	{
 		"level": "res://Resources/Levels/Forest.tres",
+		"enemies": {"sprayer": 2},
 		"title": "Il primo segnale",
 		"text": "Nella foresta dell'isola sono comparsi sacchi di rifiuti tossici, scaricati di notte. Le tracce portano agli Inquinatori. Ripulisci il bosco e scopri chi li manda.",
 		"dossier": "Ordine di scarico n. 1: \"Bosco nord, tre carichi a settimana. Pagamento garantito.\" Firmato: N.",
@@ -33,6 +49,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/SnowPath.tres",
+		"enemies": {"sprayer": 2, "bomber": 2},
 		"title": "Cristalli spenti",
 		"text": "Sul sentiero innevato i cristalli che illuminavano le grotte si stanno spegnendo sotto le scorie. Gli Inquinatori usano le grotte come deposito.",
 		"dossier": "Rapporto interno: \"Le grotte sono perfette, nessuno controlla. N. approva l'espansione.\"",
@@ -40,6 +57,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/City.tres",
+		"enemies": {"sprayer": 3, "bomber": 2, "brute": 1},
 		"title": "La città comprata",
 		"text": "In città nessuno ferma gli Inquinatori: politici e funzionari sono stati pagati. Riprendi le strade e trova le prove della corruzione.",
 		"dossier": "Lista pagamenti: assessori, ispettori, un giudice. In fondo: \"Calcolato da NEXUS: corrompere costa meno che smaltire.\"",
@@ -47,6 +65,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/BeachLevel.tres",
+		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il lago dimenticato",
 		"text": "Il grande lago è diventato una discarica a cielo aperto. Il furgone degli Inquinatori fa ancora la spola dal complesso sulla riva.",
 		"dossier": "Messaggio di NEXUS: \"Profitto massimo raggiunto. Ridurre i costi: aumentare gli scarichi del 40%.\"",
@@ -54,6 +73,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Ruins.tres",
+		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2},
 		"title": "Le rovine antiche",
 		"text": "Tra le rovine di un'antica città dell'isola gli Inquinatori hanno nascosto dei server di NEXUS. Le pietre ricordano un tempo in cui l'isola era pulita.",
 		"dossier": "Mappa dei server: \"Nodo rovine, nodo fabbrica, nodo porto. Il nucleo è nella fortezza del Barone.\"",
@@ -61,6 +81,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Factory.tres",
+		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1, "drone": 2},
 		"title": "La fabbrica tossica",
 		"text": "Ecco da dove arrivano i veleni: una fabbrica che non produce nulla, solo scorie. Fermala prima che le vasche traboccino.",
 		"dossier": "Registro della fabbrica: \"Produzione: zero. Scorie: 900 tonnellate. Obiettivo NEXUS: raggiunto.\"",
@@ -68,6 +89,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Harbor.tres",
+		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2, "drone": 2},
 		"title": "Il porto nero",
 		"text": "Le navi degli Inquinatori portano rifiuti da tutto il mondo sull'isola. Al porto si nasconde anche il Barone dei Rifiuti, il capo della banda.",
 		"dossier": "Contratto del Barone: \"In cambio della protezione di NEXUS, l'isola sarà la discarica del mondo.\"",
@@ -75,6 +97,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/AiDataCenter.tres",
+		"enemies": {"drone": 4, "sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il cervello",
 		"text": "Il data center è la mente degli Inquinatori. Qui NEXUS calcola ogni scarico e ogni tangente. Spegni i suoi server e scopri dov'è il nucleo.",
 		"dossier": "Ultimo file: \"Se il nucleo è minacciato, il Barone attiverà il MECCA-RIFIUTI.\"",
@@ -82,6 +105,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Fortress.tres",
+		"enemies": {"brute": 3, "drone": 2, "sprayer": 2, "bomber": 2},
 		"title": "La fortezza del Barone",
 		"text": "Sulla collina della discarica si alza la fortezza del Barone dei Rifiuti. Attraversala, raggiungi l'arena e abbatti il suo MECCA-RIFIUTI per spegnere NEXUS.",
 		"dossier": "Codice di spegnimento di NEXUS: trovato. L'isola può tornare verde.",
@@ -144,6 +168,23 @@ func campaign_levels() -> Array[LevelData]:
 	var out: Array[LevelData] = []
 	for ch in chapters():
 		out.append(load(ch.level))
+	return out
+
+
+## Enemy types that appear for the first time in `level`'s chapter.
+func new_enemies_in(level: LevelData) -> Array:
+	var i := chapter_index(level)
+	if i < 0:
+		return []
+	var seen := {}
+	var list := chapters()
+	for j in i:
+		for k in list[j].get("enemies", {}):
+			seen[k] = true
+	var out := []
+	for k in list[i].get("enemies", {}):
+		if not seen.has(k):
+			out.append(k)
 	return out
 
 
