@@ -38,6 +38,7 @@ var _route_timer := 0.0
 var _shown_coins := -1
 var _quest_label: Label
 var _quest_timer := 0.0
+var _objective_icon: TextureRect
 
 
 func _ready() -> void:
@@ -65,7 +66,8 @@ func _ready() -> void:
 	_quest_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.45))
 	_quest_label.visible = false
 	lines.add_child(_quest_label)
-	row.add_child(_make_icon(BAG_ICON))
+	_objective_icon = _make_icon(BAG_ICON)
+	row.add_child(_objective_icon)
 	_label = _make_label(20)
 	row.add_child(_label)
 	var sep := _make_label(20)
@@ -87,9 +89,7 @@ func _ready() -> void:
 	_buff_row.add_theme_constant_override("separation", 4)
 	_buff_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_buff_row)
-	for entry in Progress.active_buffs():
-		_add_buff_icon(entry[0], load(Progress.BUFFS[entry[0]].icon), str(entry[1]),
-				Progress.BUFFS[entry[0]].kind == "enemy")
+	_fill_buff_row()
 
 	_toast = _make_label(20)
 	_toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -233,6 +233,26 @@ func _add_buff_icon(id: String, tex: Texture2D, badge: String, enemy: bool) -> v
 	box.add_child(label)
 	_buff_row.add_child(box)
 	_buff_badges[id] = label
+
+
+func _fill_buff_row() -> void:
+	for entry in Progress.active_buffs():
+		_add_buff_icon(entry[0], load(Progress.BUFFS[entry[0]].icon), str(entry[1]),
+				Progress.BUFFS[entry[0]].kind == "enemy")
+
+
+## Rebuilds the buff icons (Rage mode changes them during the match).
+func refresh_buffs() -> void:
+	for child in _buff_row.get_children():
+		_buff_row.remove_child(child)
+		child.queue_free()
+	_buff_badges.clear()
+	_fill_buff_row()
+
+
+## The icon in front of the objective line (Rage mode shows a fist).
+func set_objective_icon(tex: Texture2D) -> void:
+	_objective_icon.texture = tex
 
 
 func _update_buff_badges() -> void:

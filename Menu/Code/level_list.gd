@@ -84,7 +84,8 @@ func _on_level_slot_pressed(level: LevelData):
         $"../../../start_button".hide()
         if best_score_container and best_score_label:
             best_score_container.show()
-            best_score_label.text = "Bloccato!\nServono %d stelle\n(ne hai %d)" % [level.stars_required, Progress.total_stars()]
+            best_score_label.text = "Bloccato!\nSconfiggi il Barone\nnella sua fortezza" if Story.is_epilogue(level) \
+                    else "Bloccato!\nServono %d stelle\n(ne hai %d)" % [level.stars_required, Progress.total_stars()]
             best_score_label.add_theme_font_size_override("font_size", 22)
             best_score_label.show()
         return

@@ -11,3 +11,4 @@ level_name = "Ruins"
 preview_image = ExtResource("3_prev")
 description = "Le rovine di un'antica città dell'isola. Tra colonne e piazze di pietra gli Inquinatori hanno nascosto i server di NEXUS."
 required_kills = 6
+stars_required = 8

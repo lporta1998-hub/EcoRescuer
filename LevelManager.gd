@@ -45,6 +45,13 @@ var route_guide: RouteGuide
 ## Side quests of this level (dossier + one gameplay quest), see Story.
 var side_quests: SideQuests
 var _finished := false
+## Achievements unlocked at the end of this run (shown by the end menus).
+var new_achievements: Array = []
+## Coins of the Daily challenge reward paid at the end of this run.
+var daily_reward := 0
+## The Rage mode match (null outside Rage mode) and its game over summary.
+var rage_run: RageRun
+var rage_summary := {}
 func _ready() -> void:
     
     add_to_group("level_manager") 
@@ -127,6 +134,12 @@ func setup_level(level_node: Node2D) -> void:
     items_counter.clear()
     start_time = Time.get_ticks_msec()
     coins_earned = 0
+    new_achievements = []
+    daily_reward = 0
+    rage_run = null
+    rage_summary = {}
+    if Rage.active:
+        Rage.reset_run()  # before the buffs are applied below
     took_damage = false
     stars_earned = 0
     new_star_record = false
@@ -141,14 +154,20 @@ func setup_level(level_node: Node2D) -> void:
     MapFixes.apply(level_node)  # before the route grid is built, so it sees them
     _disable_tile_navigation(level_node)
     _track_player_damage(level_node)
-    _mix_enemies(level_node)
+    if Rage.active:
+        _clear_for_rage(level_node)
+    else:
+        _mix_enemies(level_node)
     _apply_buffs(level_node)
     total_items = 0
     collected_items = 0
     # Configura il livello
     count_trash_bags()
     connect_collectible_signals()
-    _setup_objective(level_node)
+    if Rage.active:
+        _setup_rage(level_node)
+    else:
+        _setup_objective(level_node)
     
     # Nascondi i menu
     if end_level_menu:
@@ -211,11 +230,14 @@ func _on_collectible_collected(collectible: Collectible) -> void:
         }
     if collectible.has_method("is_eco_coin"):
         run_coins += 1
+        Progress.add_stat("coins")
         _quest_event("coin")
     if collectible is OilBarrel:
+        Progress.add_stat("barrels")
         _quest_event("barrel")
     if collectible is TrashBag:
         trash_bags_collected += 1
+        Progress.add_stat("bags")
         print("Sacco raccolto! ", trash_bags_collected, "/", trash_bags_total)
     else:
         print("Oggetto di tipo '", item_type, "' raccolto (non influisce sul completamento)")
@@ -252,7 +274,11 @@ func update_menu_data() -> void:
         "stars": stars_earned,
         "star_conditions": star_conditions,
         "new_star_record": new_star_record,
-        "stars_total": Progress.total_stars()
+        "stars_total": Progress.total_stars(),
+        "achievements": new_achievements,
+        "daily": Daily.active,
+        "daily_reward": daily_reward,
+        "rage": rage_summary
     }
     
     
@@ -272,17 +298,21 @@ func show_end_level_menu() -> void:
         Global.add_score(bonus)
         print("Bonus tempo aggiunto: +", bonus)
         
-    var final_score = Global.complete_level()
+    # the Daily challenge keeps the level's own record and stars untouched
+    var final_score = Global.current_level_score if Daily.active else Global.complete_level()
     print("Livello completato! Punteggio finale: ", final_score)
     if side_quests:
         side_quests.on_level_finished(elapsed_seconds())
     _pay_out_coins(true)
     _award_stars()
+    if Daily.active:
+        daily_reward = Daily.on_completed()
+    _record_run_stats(true)
     if Global.selected_level_data and SilentWolf:
         var player_name := Global.player_name
         if player_name.strip_edges().is_empty():
             player_name = SilentWolf.Auth.get_anon_user_id()
-        var ld_name := _get_ld_name_for_level(Global.selected_level_data)
+        var ld_name := Daily.board_id() if Daily.active else _get_ld_name_for_level(Global.selected_level_data)
         SilentWolf.Scores.save_score(player_name, final_score, ld_name)
     
     update_menu_data()
@@ -299,20 +329,7 @@ func show_end_level_menu() -> void:
 
 
 func _get_ld_name_for_level(level_data: LevelData) -> String:
-    var normalized := level_data.level_name.strip_edges().to_lower()
-    normalized = normalized.replace(" ", "_")
-
-    var result := ""
-    for i in normalized.length():
-        var ch := normalized[i]
-        var is_lower := ch >= "a" and ch <= "z"
-        var is_digit := ch >= "0" and ch <= "9"
-        if is_lower or is_digit or ch == "_":
-            result += ch
-
-    if result.is_empty():
-        return "main"
-    return result
+    return Story.leaderboard_id(level_data)
 
 ## Watches the player's health so the "no damage" star can be judged.
 ## Looks inside the new level only: the previous level's player may still be
@@ -396,12 +413,44 @@ func _setup_objective(level_node: Node) -> void:
     _check_chest_costs(level_node)
     objective_hud.exit_node = level_exit
     _update_objective()
-    side_quests = SideQuests.new(Global.selected_level_data, level_node) if Global.selected_level_data else null
+    # no side quests in the Daily challenge: it's only about the score
+    side_quests = SideQuests.new(Global.selected_level_data, level_node) \
+            if Global.selected_level_data and not Daily.active else null
     _place_batteries(level_node)
-    if side_quests and side_quests.is_active():
+    if Daily.active:
+        _show_daily_briefing.call_deferred()
+    elif side_quests and side_quests.is_active():
         _place_dossier(level_node)
         _refresh_quest_hud()
         _show_briefing.call_deferred()
+
+# --- Rage mode -----------------------------------------------------------------
+
+## Rage mode plays on the map without its story: no trash bags, station,
+## dossier or placed enemies (RageRun spawns its own).
+func _clear_for_rage(level_node: Node) -> void:
+    var drop := []
+    for node in level_node.find_children("*", "", true, false):
+        if node is TrashBag or node is LevelExit or node is Dossier or node is Enemy or node is Boss:
+            drop.append(node)
+    for node in drop:
+        if is_instance_valid(node) and node.get_parent():
+            node.get_parent().remove_child(node)
+            node.queue_free()
+
+func _setup_rage(level_node: Node) -> void:
+    total_enemies = 0
+    bags_needed = 0
+    kills_needed = 0
+    side_quests = null
+    level_exit = null
+    objective_hud = ObjectiveHUD.new()
+    level_node.add_child(objective_hud)
+    route_guide = RouteGuide.new(level_node)
+    objective_hud.route_guide = route_guide
+    objective_hud.exit_node = null
+    rage_run = RageRun.new(level_node)
+    level_node.add_child(rage_run)
 
 ## Warns (in the Godot output) when the eco chests of a level cost more green
 ## coins than the level has, so not every chest could be opened.
@@ -429,9 +478,26 @@ func _show_briefing() -> void:
     for type in Story.new_enemies_in(ld):
         lines.append("Nuovo nemico: %s — %s" % [Story.ENEMIES[type].name, Story.ENEMIES[type].tip])
     var card := StoryCard.open(current_level, {
-        "kicker": "Capitolo %d di %d  ·  %s" % [Story.chapter_index(ld) + 1, Story.chapters().size(), ld.level_name],
+        "kicker": ("Epilogo  ·  %s" % ld.level_name) if Story.is_epilogue(ld) else \
+                "Capitolo %d di %d  ·  %s" % [Story.chapter_index(ld) + 1, Story.main_chapters().size(), ld.level_name],
         "title": ch.title, "text": ch.text, "lines": lines, "button": "Via!"})
     card.closed.connect(func(): start_time = Time.get_ticks_msec())  # the clock starts now
+
+func _show_daily_briefing() -> void:
+    if not is_instance_valid(current_level):
+        return
+    var ld: LevelData = Global.selected_level_data
+    var lines := ["Obiettivo: raccogli %d sacchi di rifiuti%s, poi portali al punto di raccolta." % [
+            bags_needed, (" e sconfiggi %d Inquinatori" % kills_needed) if kills_needed > 0 else ""],
+            "Sfide attive: " + Daily.sfide_text(),
+            "I potenziamenti del negozio sono spenti: vince il punteggio più alto."]
+    if not Daily.done_today():
+        lines.append("Completala per +%d monete (una volta al giorno)." % Daily.REWARD)
+    var card := StoryCard.open(current_level, {
+        "kicker": "Sfida del giorno  ·  " + Daily.date(),
+        "title": ld.level_name, "text": "Stesso livello e stesse Sfide per tutti i giocatori, solo per oggi.",
+        "lines": lines, "button": "Via!", "color": Color(0.55, 0.9, 1.0)})
+    card.closed.connect(func(): start_time = Time.get_ticks_msec())
 
 ## A Dossier placed in the level scene, or one on the reachable item farthest
 ## from the start (away from the recycling station).
@@ -559,6 +625,9 @@ func objective_met() -> bool:
     return trash_bags_collected >= bags_needed and enemies_killed >= kills_needed
 
 func _update_objective() -> void:
+    if rage_run:
+        rage_run.update_hud()
+        return
     var met := objective_met()
     if level_exit and is_instance_valid(level_exit):
         level_exit.set_open(met)
@@ -567,11 +636,16 @@ func _update_objective() -> void:
 
 func on_enemy_killed(enemy: Node = null) -> void:
     enemies_killed += 1
+    Progress.add_stat("kills")
+    if rage_run:
+        rage_run.on_kill(enemy)
     _update_objective()
     if enemy is Elite:
+        Progress.add_stat("elites")
         _quest_event("elite")
 
 func on_chest_opened() -> void:
+    Progress.add_stat("chests")
     _quest_event("chest")
 
 ## Called by the recycling station when the player walks into it.
@@ -618,17 +692,22 @@ func _apply_buffs(level_node: Node) -> void:
 func _buff_player(player: Character) -> void:
     var hearts_lvl := Progress.level_of("extra_heart")
     if hearts_lvl > 0:
-        var extra := int(Progress.buff_value("extra_heart", hearts_lvl))
-        player.max_health += extra
-        player.health += extra
-        _player_hp = float(player.health)
-        var hearts = player.get("heartsContainer")
-        if hearts:
-            hearts.setMaxHP(extra)  # appends the extra hearts
-            hearts.updateHP(player.health)
+        add_player_hearts(player, int(Progress.buff_value("extra_heart", hearts_lvl)))
     var swift_lvl := Progress.level_of("swift")
     if swift_lvl > 0:
         scale_player_speed(player, 1.0 + Progress.buff_value("swift", swift_lvl))
+
+## Raises the player's max hearts by `extra` (and fills them).
+func add_player_hearts(player: Node, extra: int) -> void:
+    if extra <= 0 or not is_instance_valid(player):
+        return
+    player.max_health += extra
+    player.health += extra
+    _player_hp = float(player.health)
+    var hearts = player.get("heartsContainer")
+    if hearts:
+        hearts.setMaxHP(extra)  # appends the extra hearts
+        hearts.updateHP(player.health)
 
 ## Multiplies every speed variable the characters use (they reset `speed` from
 ## base_speed / original_speed in different places).
@@ -713,7 +792,7 @@ func consume_shield() -> bool:
 func _award_stars() -> void:
     star_conditions = [true, total_items > 0 and collected_items >= total_items, not took_damage]
     stars_earned = star_conditions.count(true)
-    if Global.selected_level_data:
+    if Global.selected_level_data and not Daily.active:
         new_star_record = Progress.record_stars(Global.selected_level_data, stars_earned)
 
 ## Turns the points of the collected items into Shop coins.
@@ -734,6 +813,19 @@ func _pay_out_coins(completed: bool) -> void:
         coins_earned += side_quests.bonus_coins  # side-quest rewards, paid in full
     Progress.add_coins(coins_earned)
 
+## End-of-run counters for achievements, then saves and checks them.
+func _record_run_stats(completed: bool) -> void:
+    if completed:
+        Progress.add_stat("runs_completed")
+        Progress.record_win(Global.selected_character)
+        if not took_damage:
+            Progress.add_stat("flawless")
+        if Progress.active_buffs().filter(func(b): return Progress.BUFFS[b[0]].kind == "enemy").size() >= 3:
+            Progress.add_stat("hard_wins")
+    else:
+        Progress.add_stat("deaths")
+    new_achievements = Progress.finish_run()
+
 func collected_points() -> int:
     var total := 0
     for item in items_collected:
@@ -741,7 +833,12 @@ func collected_points() -> int:
     return total
 
 func show_game_over_menu() -> void:
-    _pay_out_coins(false)
+    if rage_run:
+        rage_summary = rage_run.finish(maxi(0, collected_points() - spent_coin_points))
+        coins_earned = rage_summary.coins
+    else:
+        _pay_out_coins(false)
+    _record_run_stats(false)
     Global.reset_current_score()
     update_menu_data()
     MusicManager.play_game_over()

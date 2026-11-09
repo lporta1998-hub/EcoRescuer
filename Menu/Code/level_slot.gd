@@ -70,7 +70,8 @@ func setup(level: LevelData):
     _show_stars(Progress.get_stars(level))
     locked = not Progress.is_level_unlocked(level)
     if locked:
-        _show_lock(level.stars_required)
+        # the epilogue opens by beating the fortress, not with stars
+        _show_lock(-1 if Story.is_epilogue(level) else level.stars_required)
     elif Progress.is_new_unlock(level):
         _show_new_badge()
         Progress.mark_level_seen(level)
@@ -93,7 +94,7 @@ func _show_stars(count: int) -> void:
     names_box.add_child(row)
     names_box.move_child(row, 1)  # right under the level name
 
-## Dark veil with a padlock and "N stars needed".
+## Dark veil with a padlock and "N stars needed" (-1: "beat the Barone").
 func _show_lock(stars_needed: int) -> void:
     var veil := ColorRect.new()
     veil.name = "LockVeil"
@@ -108,7 +109,10 @@ func _show_lock(stars_needed: int) -> void:
     row.mouse_filter = Control.MOUSE_FILTER_IGNORE
     row.add_theme_constant_override("separation", 8)
     center.add_child(row)
-    for tex in [preload("res://Menu/Shop/lock.png"), preload("res://Menu/Stars/star_full.png")]:
+    var icons := [preload("res://Menu/Shop/lock.png")]
+    if stars_needed >= 0:
+        icons.append(preload("res://Menu/Stars/star_full.png"))
+    for tex in icons:
         var icon_rect := TextureRect.new()
         icon_rect.texture = tex
         icon_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -117,8 +121,8 @@ func _show_lock(stars_needed: int) -> void:
         icon_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
         row.add_child(icon_rect)
     var label := Label.new()
-    label.text = "%d" % stars_needed
-    label.add_theme_font_size_override("font_size", 28)
+    label.text = "%d" % stars_needed if stars_needed >= 0 else "Batti il Barone"
+    label.add_theme_font_size_override("font_size", 28 if stars_needed >= 0 else 20)
     label.add_theme_constant_override("outline_size", 6)
     label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
     row.add_child(label)

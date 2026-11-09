@@ -121,6 +121,19 @@ const CHAPTERS := [
 		"quest": {"type": "chests", "text": "Apri i forzieri della fortezza"},
 		"boss": true,
 	},
+	# Post-game: unlocked by finishing the fortress (Escape.tres needs 999
+	# stars, so only that unlocks it). Not counted by the ending or the
+	# dossier total (see main_chapters).
+	{
+		"level": "res://Resources/Levels/Escape.tres",
+		"music": "harbor",
+		"enemies": {"brute": 2, "drone": 2, "sprayer": 2, "bomber": 2},
+		"title": "La fuga del Barone",
+		"text": "NEXUS è spento, ma il Barone dei Rifiuti è scappato. Di notte, al molo, aspetta una nave con quel che resta del suo MECCA-RIFIUTI. Ripulisci il porto e fermalo prima che salpi.",
+		"dossier": "Biglietto del Barone: \"Nave per l'isola successiva, mezzanotte. Ricominceremo da capo.\" Non ci sarà nessuna isola successiva.",
+		"quest": {"type": "time", "target": 300, "text": "Completa il livello in meno di 5 minuti"},
+		"epilogue": true,
+	},
 ]
 
 var _levels := {}  # LevelData path -> index
@@ -138,6 +151,20 @@ func chapters() -> Array:
 		if ResourceLoader.exists(ch.level):
 			out.append(ch)
 	return out
+
+
+## Chapters of the main story, without the post-game epilogue: these are
+## the ones the ending, the dossier count and the achievements look at.
+func main_chapters() -> Array:
+	var out := []
+	for ch in chapters():
+		if not ch.get("epilogue", false):
+			out.append(ch)
+	return out
+
+
+func is_epilogue(level: LevelData) -> bool:
+	return chapter_of(level).get("epilogue", false)
 
 
 func chapter_index(level: LevelData) -> int:
@@ -200,3 +227,15 @@ func new_enemies_in(level: LevelData) -> Array:
 func is_final(level: LevelData) -> bool:
 	var ch := chapter_of(level)
 	return ch.get("boss", false)
+
+
+## Online leaderboard id of a level, built from its name ("Black Harbor" ->
+## "black_harbor"). Scores are saved under this id, so don't change it.
+static func leaderboard_id(level: LevelData) -> String:
+	var normalized := level.level_name.strip_edges().to_lower().replace(" ", "_")
+	var result := ""
+	for i in normalized.length():
+		var ch := normalized[i]
+		if (ch >= "a" and ch <= "z") or (ch >= "0" and ch <= "9") or ch == "_":
+			result += ch
+	return result if not result.is_empty() else "main"

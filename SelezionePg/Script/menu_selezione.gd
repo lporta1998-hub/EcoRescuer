@@ -56,6 +56,9 @@ func _on_conferma_button_pressed() -> void:
         SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         
         await $fade_transition.fade_out()
+        if Daily.active:
+            Global.load_game()  # today's level is already chosen
+            return
         get_tree().change_scene_to_packed(level_menu_scene)
     else:
         print("ERRORE: Nessun personaggio selezionato!")

@@ -11,3 +11,4 @@ level_name = "Toxic Factory"
 preview_image = ExtResource("3_prev")
 description = "Una fabbrica che non produce nulla, solo scorie. Vasche tossiche, casse e fusti: fermala prima che trabocchi."
 required_kills = 8
+stars_required = 10

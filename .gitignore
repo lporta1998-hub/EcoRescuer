@@ -4,3 +4,12 @@
 
 # macOS
 .DS_Store
+
+# iOS / export build output (Xcode project, DerivedData, .pck): never commit
+/build/
+
+# More Godot caches
+.nomedia
+.mono/
+.gdshaderc/
+*.bak

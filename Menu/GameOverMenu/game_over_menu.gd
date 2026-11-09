@@ -67,6 +67,18 @@ func _show_coins_earned() -> void:
         coins_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
         add_child(coins_label)
     coins_label.text = "Hai salvato metà del bottino: +%d monete" % level_data.get("coins_earned", 0)
+    var rage: Dictionary = level_data.get("rage", {})
+    if not rage.is_empty():
+        coins_label.text = "Rage mode: %d round superati  ·  %d nemici  ·  %d boss\nPunteggio %d  ·  +%d monete  ·  %s" % [
+                rage.rounds, rage.kills, rage.bosses, rage.score, rage.coins,
+                "NUOVO RECORD!" if rage.record else "record: round %d" % rage.best]
+        coins_label.offset_bottom = 230.0
+        $ScrollContainer.hide()  # the items list isn't the point in Rage mode
+    var unlocked: Array = level_data.get("achievements", [])
+    if not unlocked.is_empty():
+        coins_label.offset_bottom = 190.0 + 34.0 * unlocked.size()
+        for a in unlocked:
+            coins_label.text += "\nTraguardo: %s  +%d" % [a.title, a.reward]
 
 func display_grouped_items() -> void:
     if not items_container:

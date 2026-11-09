@@ -11,3 +11,4 @@ level_name = "Black Harbor"
 preview_image = ExtResource("3_prev")
 description = "Il porto nero da cui arrivano le navi cariche di rifiuti. Moli, container e magazzini pieni di Inquinatori."
 required_kills = 8
+stars_required = 12

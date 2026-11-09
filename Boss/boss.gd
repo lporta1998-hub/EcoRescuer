@@ -17,6 +17,8 @@ const FRAME := 128
 @export var boss_health := 40.0
 @export var walk_speed := 55.0
 @export var charge_speed := 340.0
+## Phase it starts in (the Escape rematch skips phase 1: barrels from the start).
+@export_range(1, 3) var start_phase := 1
 
 var active := false
 var _state := "sleep"
@@ -68,7 +70,7 @@ func activate() -> void:
 
 func phase() -> int:
 	var r := health / max_health
-	return 1 if r > 0.66 else (2 if r > 0.33 else 3)
+	return maxi(start_phase, 1 if r > 0.66 else (2 if r > 0.33 else 3))
 
 
 func _physics_process(delta: float) -> void:

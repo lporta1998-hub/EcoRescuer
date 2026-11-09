@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Levels/Escape_level/escape_level.gd" id="1_escape"]
+
+[node name="Escape" type="Node2D"]
+script = ExtResource("1_escape")
+map_path = "res://Levels/Escape_level/map.txt"
+theme = "harbor"
+chest_costs = Array[int]([4, 6])

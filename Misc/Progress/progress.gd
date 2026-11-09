@@ -10,6 +10,7 @@ extends Node
 signal coins_changed(total: int)
 signal character_unlocked(character_id: String)
 signal stars_changed(total: int)
+signal achievement_unlocked(id: String)
 
 const MAX_STARS_PER_LEVEL := 3
 
@@ -59,6 +60,19 @@ var _active_buffs: Array[String] = []
 var intro_seen := false
 ## Side quests done: level id -> {"dossier": bool, "quest": bool}.
 var _quests := {}
+## Lifetime counters (kills, bags, ...) for achievements and the Codex.
+## Counted during a run and saved when it ends (see finish_run).
+var _stats := {}
+## Levels finished with each character: character id -> count.
+var _wins_by_char := {}
+## Achievements unlocked (ids from Achievements.LIST).
+var _achievements: Array[String] = []
+## Date (UTC, "YYYY-MM-DD") of the last Daily challenge completed.
+var daily_last_done := ""
+## Rage mode: permanent perks won from bosses (id -> level, see Rage.PERKS)
+## and the ones the player switched off.
+var rage_perks := {}
+var rage_perks_off: Array[String] = []
 
 
 func _ready() -> void:
@@ -131,7 +145,12 @@ func buff_level(id: String) -> int:
 
 ## Level the game should use: the bought level if the buff is switched on,
 ## otherwise 0. This is what gameplay code checks.
+## During a Daily challenge it's today's Sfide, and no player buffs.
 func level_of(id: String) -> int:
+	if Rage.active:
+		return Rage.buff_level(id)
+	if Daily.active:
+		return Daily.buff_level(id)
 	return buff_level(id) if _active_buffs.has(id) else 0
 
 
@@ -296,12 +315,112 @@ func record_quest(level: LevelData, kind: String) -> bool:
 	return true
 
 
+## Dossiers found in the main campaign (the epilogue's doesn't count for
+## the ending).
 func dossiers_found() -> int:
+	return _main_quests_done("dossier")
+
+
+## Gameplay side quests completed in the main campaign.
+func quests_found() -> int:
+	return _main_quests_done("quest")
+
+
+func _main_quests_done(kind: String) -> int:
 	var n := 0
-	for id in _quests:
-		if _quests[id].get("dossier", false):
+	for ch in Story.main_chapters():
+		var id: String = String(ch.level).get_file().get_basename()
+		if bool(_quests.get(id, {}).get(kind, false)):
 			n += 1
 	return n
+
+
+## Stars earned in the main campaign levels.
+func campaign_stars() -> int:
+	var n := 0
+	for ch in Story.main_chapters():
+		n += int(_stars.get(String(ch.level).get_file().get_basename(), 0))
+	return n
+
+
+# --- Stats and achievements --------------------------------------------------
+
+## Adds to a lifetime counter. Not saved right away: finish_run() saves.
+func add_stat(key: String, amount: int = 1) -> void:
+	_stats[key] = int(_stats.get(key, 0)) + amount
+
+
+func stat(key: String) -> int:
+	return int(_stats.get(key, 0))
+
+
+## Keeps the highest value seen (records like the best Rage round).
+func record_stat_max(key: String, value: int) -> bool:
+	if value <= stat(key):
+		return false
+	_stats[key] = value
+	return true
+
+
+# --- Rage perks ----------------------------------------------------------------
+
+func add_rage_perk(id: String) -> void:
+	rage_perks[id] = mini(int(rage_perks.get(id, 0)) + 1, Rage.PERK_MAX)
+	rage_perks_off.erase(id)
+	save_progress()
+
+
+func set_rage_perk_on(id: String, on: bool) -> void:
+	if on:
+		rage_perks_off.erase(id)
+	elif not rage_perks_off.has(id):
+		rage_perks_off.append(id)
+	save_progress()
+
+
+## Records a level finished with `character`.
+func record_win(character: Pg) -> void:
+	if character == null:
+		return
+	var id := character_id(character)
+	_wins_by_char[id] = int(_wins_by_char.get(id, 0)) + 1
+
+
+## How many different characters have finished at least one level.
+func heroes_won() -> int:
+	return _wins_by_char.size()
+
+
+func wins_with(character: Pg) -> int:
+	return int(_wins_by_char.get(character_id(character), 0))
+
+
+func has_achievement(id: String) -> bool:
+	return _achievements.has(id)
+
+
+## Unlocks every achievement whose goal has been reached, pays its reward
+## and returns the newly unlocked ones (dictionaries from Achievements.LIST).
+func check_achievements() -> Array:
+	var unlocked := []
+	for a in Achievements.LIST:
+		if has_achievement(a.id):
+			continue
+		if Achievements.value_of(a) >= Achievements.target_of(a):
+			_achievements.append(a.id)
+			coins += int(a.reward)
+			unlocked.append(a)
+			achievement_unlocked.emit(a.id)
+	if not unlocked.is_empty():
+		coins_changed.emit(coins)
+	return unlocked
+
+
+## End of a run (completed or game over): checks achievements and saves.
+func finish_run() -> Array:
+	var unlocked := check_achievements()
+	save_progress()
+	return unlocked
 
 
 func mark_intro_seen() -> void:
@@ -338,6 +457,12 @@ func save_progress() -> void:
 	cfg.set_value("buffs", "active", _active_buffs)
 	cfg.set_value("story", "intro_seen", intro_seen)
 	cfg.set_value("story", "quests", _quests)
+	cfg.set_value("stats", "counters", _stats)
+	cfg.set_value("stats", "wins_by_char", _wins_by_char)
+	cfg.set_value("stats", "achievements", _achievements)
+	cfg.set_value("daily", "last_done", daily_last_done)
+	cfg.set_value("rage", "perks", rage_perks)
+	cfg.set_value("rage", "perks_off", rage_perks_off)
 	var err := cfg.save(SAVE_PATH)
 	if err != OK:
 		push_warning("Progress: could not save (%d)" % err)
@@ -361,6 +486,19 @@ func load_progress() -> void:
 	intro_seen = bool(cfg.get_value("story", "intro_seen", false))
 	var q = cfg.get_value("story", "quests", {})
 	_quests = q if q is Dictionary else {}
+	var st = cfg.get_value("stats", "counters", {})
+	_stats = st if st is Dictionary else {}
+	var w = cfg.get_value("stats", "wins_by_char", {})
+	_wins_by_char = w if w is Dictionary else {}
+	_achievements.clear()
+	for id in cfg.get_value("stats", "achievements", []):
+		_achievements.append(str(id))
+	daily_last_done = str(cfg.get_value("daily", "last_done", ""))
+	var rp = cfg.get_value("rage", "perks", {})
+	rage_perks = rp if rp is Dictionary else {}
+	rage_perks_off.clear()
+	for id in cfg.get_value("rage", "perks_off", []):
+		rage_perks_off.append(str(id))
 	_buff_levels.clear()
 	_active_buffs.clear()
 	var levels = cfg.get_value("buffs", "levels", {})

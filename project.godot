@@ -31,6 +31,8 @@ LevelManager="*res://LevelManager.gd"
 SilentWolf="*res://silent_wolf/SilentWolf.gd"
 Story="*res://Misc/Story/story.gd"
 Progress="*res://Misc/Progress/progress.gd"
+Daily="*res://Misc/Daily/daily.gd"
+Rage="*res://Misc/Rage/rage.gd"
 TouchControls="*res://Misc/TouchControls/touch_controls.gd"
 
 [display]

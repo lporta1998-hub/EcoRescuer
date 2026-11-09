@@ -11,3 +11,4 @@ level_name = "Barone's Fortress"
 preview_image = ExtResource("3_prev")
 description = "La fortezza del Barone dei Rifiuti, in cima alla discarica. Attraversala, apri il cancello dell'arena e abbatti il MECCA-RIFIUTI."
 required_kills = 6
+stars_required = 16

@@ -14,6 +14,14 @@ var _gates_open := false
 var _bar: CanvasLayer
 var _bar_fill: ColorRect
 var _bar_ghost: ColorRect
+## What the Barone says before boarding, the boss's exported values to change
+## and the toast when it's beaten (the Escape level sets its own).
+var intro_lines: Array = [
+	["Benvenuti nella mia fortezza, piccoli ambientalisti!", 2.4],
+	["Io compro tutto: politici, isole... e questa armatura da un miliardo.", 2.8],
+]
+var boss_overrides := {}
+var defeat_text := "Il MECCA-RIFIUTI è distrutto! NEXUS si spegne..."
 
 
 func build() -> void:
@@ -21,6 +29,8 @@ func build() -> void:
 	close_gates()
 	if boss_spawn != Vector2.INF:
 		boss = BOSS_SCENE.instantiate()
+		for key in boss_overrides:
+			boss.set(key, boss_overrides[key])
 		boss.position = boss_spawn
 		add_child(boss)
 		boss.owner = self
@@ -91,8 +101,8 @@ func _boarding_cutscene(player: Node2D) -> void:
 	baron.global_position = boss.global_position + Vector2(-96, 34)
 	baron.face("right")
 	await get_tree().create_timer(0.4).timeout
-	await baron.say("Benvenuti nella mia fortezza, piccoli ambientalisti!", 2.4)
-	await baron.say("Io compro tutto: politici, isole... e questa armatura da un miliardo.", 2.8)
+	for line in intro_lines:
+		await baron.say(line[0], line[1])
 	await baron.walk_to(boss.global_position + Vector2(0, 14), 1.2)
 	baron.face("up")
 	await get_tree().create_timer(0.3).timeout
@@ -150,10 +160,11 @@ func _on_boss_health(current: float, maximum: float) -> void:
 
 func _on_boss_defeated() -> void:
 	boss_defeated = true
+	Progress.add_stat("boss_kills")
 	if _bar:
 		_bar.queue_free()
 	if LevelManager.objective_hud:
-		LevelManager.objective_hud.toast("Il MECCA-RIFIUTI è distrutto! NEXUS si spegne...", Color(0.6, 1.0, 0.5))
+		LevelManager.objective_hud.toast(defeat_text, Color(0.6, 1.0, 0.5))
 	await get_tree().create_timer(2.0).timeout
 	LevelManager.show_end_level_menu()
 

@@ -3,6 +3,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    Daily.stop()
+    Rage.stop()
     $start_button.hide()
 
     $fade_transition.visible=true

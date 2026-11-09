@@ -44,10 +44,17 @@ static func play(tree: SceneTree, panels: Array, next_scene: String) -> void:
 	tree.change_scene_to_file("res://Misc/Story/cutscene.tscn")
 
 
+## After the epilogue chapter (the Barone caught).
+const EPILOGUE := [
+	{"image": "04_baron", "title": "Fine della fuga", "text": "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."},
+	{"image": "05_team", "title": "La squadra", "text": "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La squadra EcoRescuer resta di guardia: se qualcuno sporca l'isola, lo saprà."},
+]
+
+
 ## The ending, with the last line depending on how many dossiers were found.
 static func ending_panels() -> Array:
 	var found := Progress.dossiers_found()
-	var total := Story.chapters().size()
+	var total := Story.main_chapters().size()
 	var last: String
 	if found >= total:
 		last = "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!" % total
@@ -58,6 +65,9 @@ static func ending_panels() -> Array:
 		var q: Dictionary = p.duplicate()
 		q.text = String(q.text).replace("{dossiers}", last)
 		out.append(q)
+	# the hook to the post-game chapter
+	out.append({"image": "04_baron", "title": "Il Barone è fuggito",
+			"text": "Ma il Barone dei Rifiuti è scappato al porto, in attesa di una nave. Nuovo capitolo sbloccato: \"La fuga del Barone\"."})
 	return out
 
 

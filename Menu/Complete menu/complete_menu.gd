@@ -54,6 +54,7 @@ func update_display() -> void:
         _show_coins_earned()
         _show_star_conditions()
         _show_quests()
+        _show_achievements()
     _show_stars()
     _setup_next_button()
     # Mostra gli oggetti raggruppati
@@ -138,6 +139,9 @@ func _show_coins_earned() -> void:
     var chest: int = level_data.get("chest_coins", 0)
     if chest > 0:
         coins_label.text += "  forzieri +%d" % chest
+    var daily: int = level_data.get("daily_reward", 0)
+    if daily > 0:
+        coins_label.text += "  sfida del giorno +%d" % daily
 
 ## Side quests of the level: "[x] Dossier segreto  +100".
 func _show_quests() -> void:
@@ -159,6 +163,20 @@ func _show_quests() -> void:
         if coins_label:
             coins_label.text += "  missioni +%d" % bonus
 
+## Achievements unlocked by this run: "Traguardo: Spazzino  +100".
+func _show_achievements() -> void:
+    var box := score_label.get_parent()
+    var unlocked: Array = level_data.get("achievements", [])
+    for i in unlocked.size():
+        var line_name := "Achievement%d" % i
+        var line: Label = box.get_node_or_null(line_name)
+        if line == null:
+            line = score_label.duplicate()
+            line.name = line_name
+            box.add_child(line)
+        line.text = "Traguardo: %s  +%d" % [unlocked[i].title, unlocked[i].reward]
+        line.add_theme_color_override("font_color", Color(0.55, 0.9, 1.0))
+
 ## "Avanti" starts the next chapter, by itself after a short countdown. After
 ## the final boss it plays the ending instead.
 func _setup_next_button() -> void:
@@ -179,7 +197,8 @@ func _setup_next_button() -> void:
         $ButtonsRow/MenuPrincipale.pressed.connect(func(): _countdown = -1.0)
         $ButtonsRow/Livelli.pressed.connect(func(): _countdown = -1.0)
     var ld: LevelData = Global.selected_level_data
-    var has_next := Story.next_level(ld) != null or Story.is_final(ld)
+    var has_next := (Story.next_level(ld) != null or Story.is_final(ld) or Story.is_epilogue(ld)) \
+            and not Daily.active
     _next_button.visible = has_next
     _countdown = AUTO_ADVANCE_SECONDS if has_next else -1.0
     _advancing = false
@@ -188,7 +207,8 @@ func _setup_next_button() -> void:
 func _update_next_label() -> void:
     if _next_button == null:
         return
-    var word := "Finale" if Story.is_final(Global.selected_level_data) else "Avanti"
+    var ld: LevelData = Global.selected_level_data
+    var word := "Finale" if Story.is_final(ld) or Story.is_epilogue(ld) else "Avanti"
     _next_button.text = ("%s (%d)" % [word, ceili(_countdown)]) if _countdown > 0.0 else word
 
 func _process(delta: float) -> void:
@@ -209,6 +229,9 @@ func _advance() -> void:
     var ld: LevelData = Global.selected_level_data
     if Story.is_final(ld):
         Cutscene.play(get_tree(), Cutscene.ending_panels(), "res://main_menu.tscn")
+        return
+    if Story.is_epilogue(ld):
+        Cutscene.play(get_tree(), Cutscene.EPILOGUE, "res://main_menu.tscn")
         return
     var next: LevelData = Story.next_level(ld)
     if next == null:

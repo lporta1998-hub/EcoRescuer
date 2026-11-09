@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready() -> void:
+    _build_board_list()
     _connect_header_controls()
     _update_ui_and_load()
 
@@ -10,14 +11,9 @@ func _ready() -> void:
 @onready var left_arrow: Button = $Leaderboard/Board/HighScores/Header/LeftArrow
 @onready var right_arrow: Button = $Leaderboard/Board/HighScores/Header/RightArrow
 
-var map_leaderboards := [
-    {"name": "Forest", "ld": "forest"},
-    {"name": "City", "ld": "city"},
-    {"name": "Polluted Lake", "ld": "polluted_lake"},
-    {"name": "Snow Path", "ld": "snow_path"},
-    {"name": "Ruins", "ld": "ruins"},
-    {"name": "AI Data Center", "ld": "ai_data_center"},
-]
+## One board per campaign level, in campaign order (built in _ready, so new
+## levels show up by themselves).
+var map_leaderboards: Array = []
 
 var current_index := 0
 
@@ -50,3 +46,11 @@ func _update_ui_and_load() -> void:
 
     if leaderboard and leaderboard.has_method("load_leaderboard"):
         leaderboard.load_leaderboard(str(entry["ld"]))
+
+
+func _build_board_list() -> void:
+    map_leaderboards.clear()
+    for level in Story.campaign_levels():
+        map_leaderboards.append({"name": level.level_name, "ld": Story.leaderboard_id(level)})
+    map_leaderboards.append({"name": "Sfida del giorno", "ld": Daily.board_id()})
+    map_leaderboards.append({"name": "Rage mode", "ld": Rage.BOARD})
