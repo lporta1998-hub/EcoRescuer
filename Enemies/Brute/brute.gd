@@ -79,6 +79,9 @@ func _think(delta: float) -> void:
 				player.soft_collision_vector += _charge_dir * 450.0
 				_end_charge()
 				return
+			if blocked_by_map:  # a wall on a layer it doesn't collide with (City)
+				_stun()
+				return
 			if get_slide_collision_count() > 0:
 				for i in get_slide_collision_count():
 					var col := get_slide_collision(i).get_collider()

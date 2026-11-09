@@ -217,6 +217,30 @@ func is_ready() -> bool:
 	return _built
 
 
+## True if `world` is on open floor, where the player can stand. Enemies use
+## it to stay inside the map: in some levels (City, part of Snow Path) the
+## walls are on a collision layer enemies don't collide with.
+func is_open(world: Vector2) -> bool:
+	if not _built:
+		return true
+	var c := _cell_of(world)
+	return _grid.is_in_boundsv(c) and not _grid.is_point_solid(c)
+
+
+## True if open floor is within `radius` cells of `world` (flying enemies may
+## cross walls and water, but not leave the playable area).
+func near_open(world: Vector2, radius := 4) -> bool:
+	if not _built:
+		return true
+	var c := _cell_of(world)
+	for dy in range(-radius, radius + 1):
+		for dx in range(-radius, radius + 1):
+			var q := c + Vector2i(dx, dy)
+			if _grid.is_in_boundsv(q) and not _grid.is_point_solid(q):
+				return true
+	return false
+
+
 ## Opens or closes the cells under a world rectangle (the boss arena gate).
 func set_area_walkable(rect: Rect2, walkable: bool) -> void:
 	if not _built:

@@ -65,6 +65,7 @@ var _wake_check := 0.0
 var _patrol_wait := 0.0
 var _patrolling := false
 var _windup := 0.0
+var _last_ok := Vector2.INF
 
 func _ready():
     add_to_group("enemies")
@@ -135,6 +136,7 @@ func _physics_process(delta):
         _stagger -= delta
         input_direction = Vector2.ZERO
         super(delta)
+        _keep_on_floor()
         return
         
     direction = Vector2.ZERO
@@ -157,6 +159,7 @@ func _physics_process(delta):
             _start_attack_cooldown()
             _attack()
         super(delta)
+        _keep_on_floor()
         return
 
     if not chasing and not attacking:
@@ -195,6 +198,7 @@ func _physics_process(delta):
     input_direction = direction * (0.5 if _patrolling and not chasing else 1.0)
     handle_footsteps(delta)
     super(delta)
+    _keep_on_floor()
     _update_animation()
     # (Character._physics_process already calls move_and_slide(); calling it
     # again here used to move enemies twice per frame.)
@@ -205,6 +209,23 @@ func _physics_process(delta):
         can_attack = false
         modulate = Color(2.0, 0.55, 0.5)
         create_tween().tween_property(self, "modulate", Color.WHITE, WINDUP)
+
+## Never leave the walkable map: if a move (or a knockback) ends off the
+## floor grid, step back to the last good spot. Returns false when blocked.
+## (In City the walls are on collision layer 1, which enemies don't collide
+## with, so physics alone doesn't stop them.)
+func _keep_on_floor() -> bool:
+    var rg: RouteGuide = LevelManager.route_guide
+    if rg == null or not rg.is_ready():
+        return true
+    if rg.is_open(global_position):
+        _last_ok = global_position
+        return true
+    if _last_ok == Vector2.INF:
+        _last_ok = rg.open_spot(global_position, 0)
+    global_position = _last_ok
+    velocity = Vector2.ZERO
+    return false
 
 ## Wanders between open spots around its post while the player is nearby.
 func _update_patrol(delta: float) -> void:

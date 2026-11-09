@@ -134,10 +134,33 @@ func _update_memory(delta: float) -> void:
 			_path_index = 0
 
 
+## Set after each move: true if the walkable map stopped this enemy.
+var blocked_by_map := false
+
+
 func _move() -> void:
 	velocity += soft_collision_vector
 	soft_collision_vector = Vector2.ZERO
 	move_and_slide()
+	blocked_by_map = not _stay_in_map()
+
+
+## Ground enemies stay on the walkable floor (see Enemy._keep_on_floor);
+## the drone (group "flying") may cross walls and water but not leave the
+## playable area.
+func _stay_in_map() -> bool:
+	if not is_in_group("flying"):
+		return _keep_on_floor()
+	var rg: RouteGuide = LevelManager.route_guide
+	if rg == null or not rg.is_ready():
+		return true
+	if rg.near_open(global_position, 4):
+		_last_ok = global_position
+		return true
+	if _last_ok != Vector2.INF:
+		global_position = _last_ok
+		velocity = Vector2.ZERO
+	return false
 
 
 ## Direction along the grid path to `goal` (repaths every REPATH_INTERVAL).
@@ -153,7 +176,7 @@ func _path_dir(goal: Vector2, delta: float) -> Vector2:
 
 ## True if nothing solid (walls, water edges) is between here and `to`.
 func _clear_line(to: Vector2) -> bool:
-	var q := PhysicsRayQueryParameters2D.create(global_position, to, 2 | 16 | 256, [get_rid()])
+	var q := PhysicsRayQueryParameters2D.create(global_position, to, 1 | 2 | 16 | 256, [get_rid()])
 	var hit := get_world_2d().direct_space_state.intersect_ray(q)
 	return hit.is_empty() or (hit.collider is Node and hit.collider.is_in_group("player"))
 

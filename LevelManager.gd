@@ -51,6 +51,55 @@ func _ready() -> void:
     call_deferred("create_fade_layer")
 
     
+## Safety net against getting wedged in a map (narrow gaps between collision
+## shapes, mostly in the hand-made levels): if the player has been pushing a
+## direction for a while without moving and can't move any way at all, put
+## them on the nearest open spot.
+const UNSTICK_AFTER := 0.6
+var _stuck_time := 0.0
+var _stuck_from := Vector2.INF
+
+func _physics_process(delta: float) -> void:
+    if not is_instance_valid(current_level) or get_tree().paused or route_guide == null:
+        return
+    var p := _player_in(current_level)
+    if p == null or p.is_dead:
+        _stuck_time = 0.0
+        return
+    var pushing := Input.get_vector("left", "right", "up", "down").length() > 0.3
+    if not pushing or _stuck_from == Vector2.INF or p.global_position.distance_to(_stuck_from) > 2.0:
+        _stuck_time = 0.0
+        _stuck_from = p.global_position
+        return
+    _stuck_time += delta
+    if _stuck_time < UNSTICK_AFTER:
+        return
+    _stuck_time = 0.0
+    if _boxed_in(p.global_transform, p):
+        # nearest spot around where the body fits and can move again
+        var xf := p.global_transform
+        for r in [8.0, 12.0, 16.0, 24.0, 32.0, 40.0, 56.0]:
+            for k in 16:
+                xf.origin = p.global_position + Vector2.RIGHT.rotated(k * TAU / 16.0) * r
+                if route_guide.is_open(xf.origin) and not p.test_move(xf, Vector2.ZERO) and not _boxed_in(xf, p):
+                    p.global_position = xf.origin
+                    p.velocity = Vector2.ZERO
+                    print_debug("unstuck the player to ", xf.origin)
+                    return
+
+func _player_in(level: Node) -> CharacterBody2D:
+    for node in get_tree().get_nodes_in_group("player"):
+        if node is CharacterBody2D and level.is_ancestor_of(node):
+            return node
+    return null
+
+## True if, placed at `xf`, a 4 px step in every one of 8 directions would hit something.
+func _boxed_in(xf: Transform2D, p: CharacterBody2D) -> bool:
+    for k in 8:
+        if not p.test_move(xf, Vector2.RIGHT.rotated(k * PI / 4.0) * 4.0):
+            return false
+    return true
+
 func create_fade_layer() -> void:
     
     var fade_scene = preload("res://Menu/Scenes/fade_transition.tscn") 
@@ -86,6 +135,7 @@ func setup_level(level_node: Node2D) -> void:
     run_coins = 0
     spent_coin_points = 0
     chest_bonus_coins = 0
+    MapFixes.apply(level_node)  # before the route grid is built, so it sees them
     _disable_tile_navigation(level_node)
     _track_player_damage(level_node)
     _mix_enemies(level_node)

@@ -140,53 +140,79 @@ def bomber(d, phase=None, bob=0, wind=False, attack=False):
 # ------------------------------------------------------------------ brute
 
 def brute(d, phase=None, bob=0, wind=False, attack=False):
+    """Hulking, hunched polluter: rust-orange hazard armor, a sludge tank with a
+    smoking stack on its back, a black respirator with red eyes and huge
+    mechanical fists hanging low."""
     S = 56
-    c = Canvas(S, S, pal(armor="#8e5a3a", plate="#6a6e78", drum="#3a5c9e", hat="#e2b830",
-                         skin="#c8906a", dark="#26222c", eye="#ff4a3a", band="#d8d0c0"))
+    c = Canvas(S, S, pal(suit="#4a4e64", armor="#c8682a", stripe="#f0cc34", tank="#4e8a3a", metal="#9aa2ae",
+                         mask="#26242a", eye="#ff3a2a", dark="#1c1a20", smoke="#8a8a90", goo="#9ae04a"))
     cx, base = 28, 53
     side = d == "side"
-    lean = 3 if attack else (1 if wind else 0)
-    legs(c, cx, base, phase, side, "plate", "dark", w=4.2, gap=5.5, h=12)
-    ty = base - 28 + bob + lean
-    cxx = cx + (lean if side else 0)
-    c.add(rbox("armor", 2, cxx - 11, ty, cxx + 11, ty + 17, rad=6))             # barrel chest
-    for x in range(cxx - 10, cxx + 11):
-        c.dot(x, ty + 12, "dark", 2)
-        c.dot(x, ty + 13, "plate", 3)
-    if d == "up":   # back: a riveted steel plate and the exhaust of the suit
-        c.add(rbox("plate", 2.5, cxx - 8, ty + 1, cxx + 8, ty + 11, rad=3, depth=0.6))
-        for (x, y) in ((cxx - 6, ty + 3), (cxx + 6, ty + 3), (cxx - 6, ty + 9), (cxx + 6, ty + 9)):
-            c.dot(x, y, "band", 4)
-        c.add(capsule("dark", 2.6, cxx + 4, ty + 2, cxx + 4, ty - 4, 1.6))
-    else:
-        for (x, y) in ((cxx - 7, ty + 4), (cxx + 7, ty + 4), (cxx - 7, ty + 9), (cxx + 7, ty + 9)):
-            c.dot(x, y, "band", 4)                                               # rivets
-    # oil-drum shoulder pads + big arms
-    for s in (-1, 1):
-        if side and s < 0:
+    lean = 4 if attack else (2 if wind else 0)
+    # short, thick legs with boots
+    legs(c, cx, base, phase, side, "suit", "dark", w=4.6, gap=6.5, h=10)
+    ty = base - 30 + bob + lean          # top of the shoulders
+    bx = cx + (lean if side else 0)
+    # sludge tank + smoke stack on the back (behind the body unless seen from behind)
+    tz = 4.5 if d == "up" else 0.8
+    tx = bx - (6 if side else 0)
+    c.add(rbox("tank", tz, tx - 9, ty - 4, tx + 9, ty + 12, rad=5))
+    for x in range(int(tx - 8), int(tx + 9)):
+        c.dot(x, ty + 1, "dark", 2)
+        c.dot(x, ty + 7, "dark", 2)
+    c.add(capsule("metal", tz + 0.1, tx + 6, ty - 2, tx + 6, ty - 7, 1.8))      # stack
+    puff = 3 if wind else 1
+    for k in range(puff):
+        c.dot(tx + 5 + (k % 2), ty - 12 - k * 2, "smoke", 4)
+        c.dot(tx + 6, ty - 13 - k * 2, "smoke", 3)
+    if d == "up":
+        c.add(capsule("goo", 4.6, tx - 4, ty + 10, tx - 4, ty + 13, 1.0))      # leak
+    # massive hunched torso: dark suit with rust armor plates + hazard stripes
+    c.add(rbox("suit", 2, bx - 13, ty, bx + 13, ty + 20, rad=8))
+    if d != "up":
+        c.add(poly("armor", 2.5, [(bx - 12, ty + 2), (bx + 12, ty + 2), (bx + 9, ty + 15), (bx - 9, ty + 15)], depth=0.9))
+        for x in range(bx - 9, bx + 10):
+            if (x // 2) % 2 == 0:
+                c.dot(x, ty + 12, "stripe", 4)
+                c.dot(x, ty + 13, "dark", 2)
+    # huge shoulder plates
+    for s_ in (-1, 1):
+        if side and s_ < 0:
             continue
-        sx = cxx + s * (12 if not side else 2)
-        c.add(rbox("drum", 3.5, sx - 5, ty - 2, sx + 5, ty + 6, rad=3))
-        for x in range(sx - 4, sx + 5):
-            c.dot(x, ty + 1, "band", 3)
-        fist_y = ty + 17 + (2 if phase is None else math.sin((phase or 0) * math.tau + (0 if s < 0 else math.pi)) * 2)
-        fx = sx + (6 if side else 0) + (lean * 2 if side else 0)
-        c.add(capsule("plate", 3, sx, ty + 5, fx, fist_y - 3, 3.6))
-        c.add(ellipsoid("skin" if not attack else "plate", 3.2, fx, fist_y, 4.2, 4))
-    # small head with hard hat, glowing eyes
-    hy = ty - 5
-    c.add(ellipsoid("skin" if d != "up" else "hat", 4, cxx + (2 if side else 0), hy, 5, 4.5))
-    c.add(ellipsoid("hat", 4.3, cxx + (2 if side else 0), hy - 3, 6.5, 3.5))
-    c.add(rbox("hat", 4.25, cxx - 7 + (2 if side else 0), hy - 2, cxx + 7 + (3 if side else 0), hy - 1, rad=0.8, depth=0.5))
-    if d == "down":
-        for s in (-1, 1):
-            c.dot(cxx + s * 2, hy + 1, "eye", 5)
-    elif side:
-        c.dot(cxx + 5, hy + 1, "eye", 5)
-    if wind:   # steam puffs while it winds up the charge
-        for (x, y) in ((cxx - 13, ty - 4), (cxx + 13, ty - 5), (cxx - 12, ty - 7)):
-            c.dot(x, y, "band", 5)
-            c.dot(x + 1, y - 1, "band", 4)
+        sx = bx + s_ * (13 if not side else 3)
+        c.add(ellipsoid("armor", 3.4, sx, ty + 2, 7, 5.5))
+        for k in range(-5, 6):
+            c.dot(sx + k, ty + 5 - abs(k) // 3, "stripe", 3)
+        # long arms ending in big mechanical fists near the ground
+        swing = 0 if phase is None else math.sin(phase * math.tau + (0 if s_ < 0 else math.pi)) * 2.5
+        fx = sx + s_ * (2 if not side else 0) + (5 + lean * 2 if side else 0)
+        fy = base - 9 + swing - (6 if attack and side else 0)
+        c.add(capsule("suit", 3.2, sx, ty + 4, fx, fy - 5, 3.6))
+        c.add(rbox("metal", 3.6, fx - 6, fy - 5, fx + 6, fy + 5, rad=3))        # gauntlet
+        for x in range(int(fx - 4), int(fx + 5), 2):
+            c.dot(x, fy - 3, "dark", 1)                                       # knuckle plates
+    # small head sunk between the shoulders: respirator, red eyes
+    hy = ty - 1
+    hx = bx + (4 if side else 0)
+    if d == "up":
+        c.add(ellipsoid("suit", 4.2, hx, hy - 1, 6, 5))
+        c.add(capsule("dark", 4.3, hx - 4, hy - 1, hx + 4, hy - 1, 1.0))   # mask strap
+    else:
+        c.add(ellipsoid("mask", 4.2, hx, hy, 7, 6.5))
+        c.add(rbox("armor", 4.25, hx - 6, hy - 6, hx + 6, hy - 3, rad=1.5, depth=0.6))   # helmet brow
+        if side:
+            c.add(ellipsoid("metal", 4.4, hx + 4, hy + 2, 2.6, 2.6))       # filter
+            for (ex, ey) in ((2, -1), (3, -1), (3, 0)):
+                c.dot(hx + ex, hy + ey, "eye", 5)
+        else:
+            for s_ in (-1, 1):
+                for (ex, ey) in ((2, -1), (3, -1), (2, 0), (3, 0)):
+                    c.dot(hx + s_ * ex, hy + ey, "eye", 5 if ey < 0 else 4)
+            c.add(ellipsoid("metal", 4.4, hx, hy + 3, 3, 2.4))            # filter
+            c.dot(hx, hy + 3, "dark", 1)
+    if wind:   # red-hot eyes while winding up
+        for (x, y) in ((hx - 4, hy - 3), (hx + 4, hy - 3)):
+            c.dot(x, y, "eye", 3)
     return c.render()
 
 
