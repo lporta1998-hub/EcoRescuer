@@ -145,7 +145,7 @@ func pause_game():
     # 1. Mostra il menu
     show()
     visible = true
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Pause.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_pause.wav"))
     
     # 2. Metti in pausa l'albero
     get_tree().paused = true
@@ -155,20 +155,20 @@ func pause_game():
 
 func _on_menu_principale_pressed() -> void:
     get_tree().paused = false
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     get_tree().change_scene_to_file("res://main_menu.tscn")
     
 
 func _on_riprendi_pressed() -> void:
     print("▶️ RIPRENDE GIOCO")
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unpause.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_unpause.wav"))
     $".".hide()
     get_tree().paused = false
     is_paused = false
 
 
 func _on_opzioni_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     $PopupMenu.show()
     is_audio_menu_open = true
     

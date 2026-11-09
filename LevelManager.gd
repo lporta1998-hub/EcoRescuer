@@ -135,6 +135,9 @@ func setup_level(level_node: Node2D) -> void:
     run_coins = 0
     spent_coin_points = 0
     chest_bonus_coins = 0
+    # background music of this chapter (Tools/audio/music.py)
+    var chapter: Dictionary = Story.chapter_of(Global.selected_level_data) if Global.selected_level_data else {}
+    MusicManager.play_track(chapter.get("music", "forest"))
     MapFixes.apply(level_node)  # before the route grid is built, so it sees them
     _disable_tile_navigation(level_node)
     _track_player_damage(level_node)

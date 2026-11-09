@@ -63,12 +63,13 @@ func _open(player: Node2D) -> void:
 	opened = true
 	LevelManager.on_chest_opened()
 	queue_redraw()
-	SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"), -6)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -5)
 	_sprite.texture = OPEN
 	var tw := create_tween()
 	tw.tween_property(_sprite, "scale", Vector2(1.3, 1.3), 0.1)
 	tw.tween_property(_sprite, "scale", Vector2.ONE, 0.18)
 	FloatText.spawn(self, "-%d" % cost, Color(1.0, 0.83, 0.3), Vector2(0, -24))
+	FX.at_node("sparkle", self, Vector2(0, -4), Color(1.0, 0.85, 0.3), 1.5)
 	var reward := _pick_reward()
 	var text := ""
 	match reward:

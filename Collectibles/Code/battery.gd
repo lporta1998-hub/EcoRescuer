@@ -20,7 +20,8 @@ func _ready() -> void:
 	body_entered.connect(func(b):
 		if b.has_method("recharge"):
 			b.recharge(b.BATTERY_CHARGE if "BATTERY_CHARGE" in b else 40.0)
-			SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"), -4)
+			SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -6)
+			FX.at_node("sparkle", self, Vector2.ZERO, Color(1.0, 0.95, 0.4))
 			queue_free())
 
 

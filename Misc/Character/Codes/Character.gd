@@ -162,7 +162,7 @@ func take_damage(dmg: int, attacker):
     # "Scudo" buff: the first hit of the level is blocked.
     if LevelManager.consume_shield():
       _flash(Color(0.45, 0.8, 1.6))
-      SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+      SFXManager.play_sfx(preload("res://Audio/SFX/Eco/shield.wav"))
       _iframes = 0.6
       return
   elif from_player:
@@ -171,14 +171,26 @@ func take_damage(dmg: int, attacker):
     dmg = hit[0]
     if hit[1]:
       FloatText.spawn(self, "CRIT!", Color(1.0, 0.85, 0.2))
-  SFXManager.play_sfx(preload("res://Audio/SFX/Dmg/Damage.wav"))
   health -= dmg
   hpChanged.emit(health)
+  _hit_fx()
   var hit_from := global_position + Vector2.LEFT
   if is_instance_valid(attacker) and attacker is Node2D:
     hit_from = attacker.global_position
   _on_hurt(hit_from.direction_to(global_position))
   print_debug("%s took %s damage" % [name, dmg])
+
+
+## Green impact star on a polluter, toxic splat on the hero.
+func _hit_fx() -> void:
+  if is_in_group("player"):
+    FX.at_node("hurt", self, Vector2(randf_range(-3, 3), -10))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/hurt.wav"), -2)
+  else:
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/hit.wav"), -3, randf_range(0.9, 1.12))
+    var fx := FX.at_node("hit", self, Vector2(randf_range(-4, 4), randf_range(-14, -6)))
+    if fx:
+      fx.flip_h = randf() < 0.5
 
 
 func is_invincible_now() -> bool:
@@ -269,6 +281,15 @@ func heal(amount: int) -> void:
     # Emetti il segnale per aggiornare i cuori
     hpChanged.emit(health)
     print("Salute recuperata! Ora: ", health)
+    _heal_fx()
+
+
+## Leaves and pluses rising around the hero (they follow the hero), with a
+## soft chime. The heroes that override heal() call this too.
+func _heal_fx() -> void:
+    if is_in_group("player"):
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/heal.wav"), -4)
+        FX.spawn("heal", self, global_position + Vector2(0, -6), Color.WHITE, 1.0, 5)
     
 func speedBoost(amount: int, duration: float) -> void:
     # Applica il boost

@@ -77,8 +77,10 @@ func _rock_burst(at: Vector2) -> void:
 		if n.global_position.distance_to(at) <= ROCK_RADIUS + HeroShot.reach(n):
 			rock_hits.append(n)
 			HeroShot.hit(n, ROCK_DAMAGE, caster)
-	SFXManager.play_sfx(preload("res://Audio/SFX/Dmg/Damage.wav"), -8)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/stomp.wav"), -5)
 	_rock_fx(at)
+	for k in 3:
+		FX.spawn("dust", get_parent(), at + Vector2(-12 + k * 12, 4 - (k % 2) * 8), Color.WHITE, 1.4, 0)
 	var tw := create_tween()
 	tw.tween_property(self, "modulate:a", 0.0, 0.3)
 	tw.tween_callback(queue_free)

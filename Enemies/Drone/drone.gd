@@ -40,7 +40,7 @@ func _think(delta: float) -> void:
 		if _aim <= 0.0:
 			var from := global_position + Vector2(0, sprite.position.y + 4)
 			EnemyShot.fire_bolt(get_parent(), from, _where_player_will_be(0.25) - from, self)
-			SFXManager.play_sfx(preload("res://Audio/SFX/Attacks/Arrow.wav"), -8)
+			SFXManager.play_sfx(preload("res://Audio/SFX/Eco/laser.wav"), -8)
 			_swoop = 0.9
 		return
 	_reload -= delta

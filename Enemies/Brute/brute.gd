@@ -17,6 +17,7 @@ var _charge_dir := Vector2.ZERO
 var _charge_cd := 1.5
 var _slam_cd := 0.0
 var _hit_player := false
+var _dust_t := 0.0
 
 
 func _ready() -> void:
@@ -51,7 +52,7 @@ func _think(delta: float) -> void:
 				_t = WIND
 				_charge_dir = to.normalized()
 				_flash_wind(WIND)
-				SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"), -6)
+				SFXManager.play_sfx(preload("res://Audio/SFX/Eco/charge.wav"), -8)
 				input_direction = Vector2.ZERO
 				return
 			var d := _path_dir(player.global_position, delta)
@@ -73,6 +74,10 @@ func _think(delta: float) -> void:
 			_play("attack")
 			input_direction = _charge_dir * (CHARGE_SPEED / maxf(speed, 1.0))
 			velocity = _charge_dir * CHARGE_SPEED
+			_dust_t -= delta
+			if _dust_t <= 0.0:
+				_dust_t = 0.07
+				FX.spawn("dust", get_parent(), global_position + Vector2(randf_range(-6, 6), 4) - _charge_dir * 10.0, Color.WHITE, 1.2, 0)
 			if not _hit_player and dist < 22.0:
 				_hit_player = true
 				player.take_damage(LevelManager.enemy_hit_damage(2), self)
@@ -104,6 +109,9 @@ func _think(delta: float) -> void:
 			_play("wind")
 			if _t <= 0.0:
 				_play("attack")
+				SFXManager.play_sfx(preload("res://Audio/SFX/Eco/stomp.wav"), -4)
+				for k in 4:
+					FX.spawn("dust", get_parent(), global_position + Vector2(-14 + k * 9, 6 - (k % 2) * 6), Color.WHITE, 1.3, 0)
 				if global_position.distance_to(player.global_position) < 34.0:
 					player.take_damage(LevelManager.enemy_hit_damage(1), self)
 				if player.has_method("_shake_camera"):
@@ -132,9 +140,14 @@ func _stun() -> void:
 	_charge_cd = 2.5
 	velocity = Vector2.ZERO
 	input_direction = Vector2.ZERO
-	FloatText.spawn(self, "★ ★ ★", Color(1.0, 0.9, 0.4), Vector2(0, -52))
+	# stars circling its head while it's dazed, and a dust cloud from the crash
+	var stars := FX.spawn("stars", self, global_position + Vector2(0, sprite.position.y - frame_size * 0.5 + 4), Color.WHITE, 1.0, 5)
+	if stars:
+		stars.life = STUN
+	for k in 3:
+		FX.spawn("dust", get_parent(), global_position + _charge_dir * 12.0 + Vector2(-10 + k * 10, 2), Color.WHITE, 1.5, 0)
 	sprite.modulate = Color(0.8, 0.8, 1.2)
-	SFXManager.play_sfx(preload("res://Audio/SFX/Dmg/Damage.wav"), -4)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/stun.wav"), -3)
 	var p := get_tree().get_first_node_in_group("player")
 	if p and p.has_method("_shake_camera"):
 		p._shake_camera()

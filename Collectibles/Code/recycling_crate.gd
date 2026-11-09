@@ -19,6 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
     if body is CharacterBody2D and body.is_in_group("player"):
         _opened = true
         _spawn_tokens()
+        FX.at_node("sparkle", self, Vector2.ZERO, Color(0.55, 1.0, 0.45), 1.4)
         # Animate crate: flash green then hide
         modulate = Color(0.4, 1.0, 0.4, 1.0)
         await get_tree().create_timer(0.3).timeout

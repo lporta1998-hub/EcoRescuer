@@ -31,13 +31,13 @@ func _connect_header_controls() -> void:
 
 func _on_left_arrow_pressed() -> void:
     current_index = (current_index - 1 + map_leaderboards.size()) % map_leaderboards.size()
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     _update_ui_and_load()
 
 
 func _on_right_arrow_pressed() -> void:
     current_index = (current_index + 1) % map_leaderboards.size()
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     _update_ui_and_load()
 
 

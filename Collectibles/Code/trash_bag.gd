@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func on_collect(player: Node2D) -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"),-10)
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -8)
     print("[TrashBag] Rifiuto raccolto! Ambiente più pulito! +%d punti eco" % points)
     if Global.has_method("add_score"):
         Global.add_score(points)

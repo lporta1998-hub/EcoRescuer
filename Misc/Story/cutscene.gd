@@ -170,7 +170,7 @@ func _advance() -> void:
 		_shown = _full_text.length()  # first tap: show the whole line
 		_text.visible_characters = -1
 		return
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_page.wav"))
 	_next()
 
 

@@ -74,3 +74,4 @@ func update_facing_direction(direction: Vector2):
 func heal(amount: int) -> void:
     health = min(health + amount, max_health)
     hpChanged.emit(health)
+    _heal_fx()

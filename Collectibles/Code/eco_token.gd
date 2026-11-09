@@ -9,7 +9,7 @@ func _ready() -> void:
     super()
 
 func on_collect(player: Node2D) -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"),-10)
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -8)
     print("[EcoToken] Raccolta! +%d punti eco" % points)
     # Hook into a global score if the project adds one in the future.
     if Global.has_method("add_score"):

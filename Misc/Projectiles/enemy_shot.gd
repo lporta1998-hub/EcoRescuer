@@ -62,7 +62,7 @@ func deflect(by: Node) -> void:
 	if deflected:
 		return
 	deflected = true
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"), -6)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/deflect.wav"), -4)
 	var back: Vector2 = shooter.global_position if is_instance_valid(shooter) else global_position - _vel
 	shooter = by as Node2D
 	if kind == Kind.BOLT:
@@ -114,8 +114,11 @@ func _land() -> void:
 		for e in get_tree().get_nodes_in_group("enemies"):
 			if is_instance_valid(e) and not e.is_dead and e.global_position.distance_to(global_position) < 22.0:
 				e.take_damage(1, shooter if is_instance_valid(shooter) else null)
+		FX.spawn("splash", get_parent(), global_position + Vector2(0, -6), Color(1.2, 1.1, 0.5), 1.0, 0)
+		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/splash.wav"), -8)
 	else:
 		ToxicPuddle.spawn(get_parent(), global_position, 18.0, 4.0)
+		FX.spawn("splash", get_parent(), global_position + Vector2(0, -6), Color.WHITE, 1.0, 0)
 	queue_free()
 
 

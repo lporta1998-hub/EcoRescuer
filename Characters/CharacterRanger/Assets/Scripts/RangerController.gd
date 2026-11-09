@@ -159,3 +159,4 @@ func _on_shoot_cooldown_timeout() -> void:
 func heal(amount: int) -> void:
     health = min(health + amount, max_health)
     hpChanged.emit(health)
+    _heal_fx()

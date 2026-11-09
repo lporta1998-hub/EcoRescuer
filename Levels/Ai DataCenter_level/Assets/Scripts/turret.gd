@@ -18,7 +18,7 @@ func _process(delta):
 func shoot():
 
     var bullet = bullet_scene.instantiate()
-    SFXManager.play_sfx(preload("res://Audio/SFX/Attacks/Arrow.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/laser.wav"), -8, randf_range(0.8, 0.9))
     get_tree().current_scene.add_child(bullet)
 
     bullet.global_position = global_position

@@ -24,12 +24,12 @@ func _on_menu_principale_pressed() -> void:
     MusicManager.resume_music()
     get_tree().paused = false
     get_tree().change_scene_to_file("res://main_menu.tscn")
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     
 
 
 func _on_riprova_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     # Mostra il rettangolo nero
     $TransitionRect.color = Color.BLACK
     $TransitionRect.modulate.a = 0.0  # Inizia trasparente

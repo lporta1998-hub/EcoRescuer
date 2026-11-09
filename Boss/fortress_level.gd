@@ -113,7 +113,7 @@ func _boarding_cutscene(player: Node2D) -> void:
 	baron.queue_free()
 	# plates close, the reactor and the visor light up
 	suit.play("boot")
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/charge.wav"), -2)
 	await get_tree().create_timer(0.7).timeout
 	var flash := create_tween()
 	flash.tween_property(suit, "modulate", Color(2.2, 2.4, 2.2), 0.08)

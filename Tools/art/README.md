@@ -39,6 +39,31 @@ prop, add it there too.
 |---|---|---|
 | `enemies.py OUT` | `sprayer.png`, `bomber.png` (40 px frames), `brute.png` (56 px), `drone.png` (32 px); rows down / up / side / death, columns idle x2, walk x4, windup, attack | `Enemies/<Type>/sheet.png` |
 
+## Effects
+| Script | Output | Goes to |
+|---|---|---|
+| `effects.py OUT` | `hit`, `hurt`, `purify`, `sparkle`, `heal`, `blast`, `splash`, `dust`, `stars` (one horizontal strip each), `leaf_bolt.png` (magic-bow shot, 2 rows), `plasma.png` (AI DataCenter turret bullets) | `Misc/FX/` |
+
+`Misc/FX/fx.gd` (class `FX`) plays them: `FX.spawn("hit", parent, where)` or
+`FX.at_node("purify", enemy, offset)`. Frame sizes and speeds are in `FX.SHEETS`.
+
+## Sound effects
+`../audio/sfx.py OUT` synthesizes the gameplay sounds from scratch (pure
+Python, no packages): `hit`, `hurt`, `purify`, `pickup`, `heal`, `blast`,
+`splash`, `lob`, `fuse`, `charge`, `stun`, `stomp`, `laser`, `alert`, plus the
+menu set (`ui_confirm`, `ui_back`, `ui_tab`, `ui_denied`, `ui_buy`, `ui_on`,
+`ui_off`, `ui_pause`, `ui_unpause`, `ui_page`) and `teleport`, `shield`,
+`deflect`. They go to `Audio/SFX/Eco/`.
+
+## Music
+`../audio/music.py OUT [track ...]` composes and synthesizes the soundtrack
+(melodies and chords are written in the script): `menu`, one track per map
+(`forest`, `snow`, `city`, `lake`, `ruins`, `factory`, `harbor`, `datacenter`,
+`fortress`) and `boss` (looping WAVs with the loop point inside the file) and the
+`victory` / `gameover` jingles. They go to `Audio/Music_Levels/Eco/`. Which
+level plays which track is the `"music"` entry of each chapter in
+`Misc/Story/story.gd`; `Audio/Music_Levels/MusicManager.gd` plays them.
+
 ## Heroes and collectibles
 | Script | What it does |
 |---|---|

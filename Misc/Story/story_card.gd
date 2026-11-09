@@ -110,7 +110,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _close() -> void:
 	if Time.get_ticks_msec() < _can_close_at or is_queued_for_deletion():
 		return
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_page.wav"))
 	get_tree().paused = false
 	closed.emit()
 	queue_free()

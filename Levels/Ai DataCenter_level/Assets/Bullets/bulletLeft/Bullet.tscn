@@ -1,26 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2kfk1uco6adq"]
+[gd_scene load_steps=9 format=3 uid="uid://d2kfk1uco6adq"]
 
 [ext_resource type="Script" uid="uid://dvvoacs7p5ajj" path="res://Levels/Ai DataCenter_level/Assets/Scripts/bullet.gd" id="1_smquv"]
-[ext_resource type="Texture2D" uid="uid://bxcujjs2iagnj" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/61_All_Fire_Bullet_Pixel_16x16_02.png" id="2_koiao"]
-[ext_resource type="Texture2D" uid="uid://dwhfdgpkh10aj" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/62_All_Fire_Bullet_Pixel_16x16_02.png" id="3_rvv8e"]
-[ext_resource type="Texture2D" uid="uid://8ikx5nq3pa8v" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/63_All_Fire_Bullet_Pixel_16x16_02.png" id="4_odn3q"]
-[ext_resource type="Texture2D" uid="uid://c8ubivol7d2lf" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bullet/64_All_Fire_Bullet_Pixel_16x16_02.png" id="5_xwm81"]
+[ext_resource type="Texture2D" path="res://Misc/FX/plasma.png" id="fx_plasma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4rkd"]
-atlas = ExtResource("2_koiao")
+atlas = ExtResource("fx_plasma")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkk66"]
-atlas = ExtResource("3_rvv8e")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("fx_plasma")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl2jr"]
-atlas = ExtResource("4_odn3q")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("fx_plasma")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdkcu"]
-atlas = ExtResource("5_xwm81")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("fx_plasma")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n8i62"]
 animations = [{
@@ -39,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shoot",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqetp"]

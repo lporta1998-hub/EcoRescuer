@@ -64,7 +64,17 @@ func magnet_enabled() -> bool:
 func on_collect(_player: Node2D) -> void:
     pass
 
+## Sparkle color per item type.
+const SPARKLE_TINTS := {
+    "health": Color(1.0, 0.45, 0.5),
+    "trash": Color(0.55, 1.0, 0.45),
+    "trash_bag": Color(0.55, 1.0, 0.45),
+    "barile": Color(0.75, 1.0, 0.3),
+    "SpeedBoost": Color(0.6, 0.85, 1.0),
+}
+
 func _play_collect_effect() -> void:
+    FX.at_node("sparkle", self, Vector2.ZERO, SPARKLE_TINTS.get(item_type, Color(1.0, 0.85, 0.3)))
     # Simple scale-up tween before queue_free (visual feedback)
     var tween := create_tween()
     tween.tween_property(self, "scale", Vector2(1.6, 1.6), 0.12)

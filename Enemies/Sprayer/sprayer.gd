@@ -27,7 +27,7 @@ func _think(delta: float) -> void:
 		_play("wind")
 		if _aim <= 0.0:
 			EnemyShot.lob_sludge(get_parent(), global_position + Vector2(0, -6), _where_player_will_be(0.35), self)
-			SFXManager.play_sfx(preload("res://Audio/SFX/Attacks/Basic_Attack.wav"), -8)
+			SFXManager.play_sfx(preload("res://Audio/SFX/Eco/lob.wav"), -6)
 			_recoil = 0.3
 		return
 	if _recoil > 0.0:

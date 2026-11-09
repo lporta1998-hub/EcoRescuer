@@ -41,6 +41,7 @@ const ENEMIES := {
 const CHAPTERS := [
 	{
 		"level": "res://Resources/Levels/Forest.tres",
+		"music": "forest",
 		"enemies": {"sprayer": 2},
 		"title": "Il primo segnale",
 		"text": "Nella foresta dell'isola sono comparsi sacchi di rifiuti tossici, scaricati di notte. Le tracce portano agli Inquinatori. Ripulisci il bosco e scopri chi li manda.",
@@ -49,6 +50,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/SnowPath.tres",
+		"music": "snow",
 		"enemies": {"sprayer": 2, "bomber": 2},
 		"title": "Cristalli spenti",
 		"text": "Sul sentiero innevato i cristalli che illuminavano le grotte si stanno spegnendo sotto le scorie. Gli Inquinatori usano le grotte come deposito.",
@@ -57,6 +59,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/City.tres",
+		"music": "city",
 		"enemies": {"sprayer": 3, "bomber": 2, "brute": 1},
 		"title": "La città comprata",
 		"text": "In città nessuno ferma gli Inquinatori: politici e funzionari sono stati pagati. Riprendi le strade e trova le prove della corruzione.",
@@ -65,6 +68,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/BeachLevel.tres",
+		"music": "lake",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il lago dimenticato",
 		"text": "Il grande lago è diventato una discarica a cielo aperto. Il furgone degli Inquinatori fa ancora la spola dal complesso sulla riva.",
@@ -73,6 +77,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Ruins.tres",
+		"music": "ruins",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2},
 		"title": "Le rovine antiche",
 		"text": "Tra le rovine di un'antica città dell'isola gli Inquinatori hanno nascosto dei server di NEXUS. Le pietre ricordano un tempo in cui l'isola era pulita.",
@@ -81,6 +86,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Factory.tres",
+		"music": "factory",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1, "drone": 2},
 		"title": "La fabbrica tossica",
 		"text": "Ecco da dove arrivano i veleni: una fabbrica che non produce nulla, solo scorie. Fermala prima che le vasche traboccino.",
@@ -89,6 +95,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Harbor.tres",
+		"music": "harbor",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2, "drone": 2},
 		"title": "Il porto nero",
 		"text": "Le navi degli Inquinatori portano rifiuti da tutto il mondo sull'isola. Al porto si nasconde anche il Barone dei Rifiuti, il capo della banda.",
@@ -97,6 +104,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/AiDataCenter.tres",
+		"music": "datacenter",
 		"enemies": {"drone": 4, "sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il cervello",
 		"text": "Il data center è la mente degli Inquinatori. Qui NEXUS calcola ogni scarico e ogni tangente. Spegni i suoi server e scopri dov'è il nucleo.",
@@ -105,6 +113,7 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Fortress.tres",
+		"music": "fortress",
 		"enemies": {"brute": 3, "drone": 2, "sprayer": 2, "bomber": 2},
 		"title": "La fortezza del Barone",
 		"text": "Sulla collina della discarica si alza la fortezza del Barone dei Rifiuti. Attraversala, raggiungi l'arena e abbatti il suo MECCA-RIFIUTI per spegnere NEXUS.",

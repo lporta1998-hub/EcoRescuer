@@ -67,3 +67,4 @@ func take_damage(dmg: int, attacker) -> void:
 func heal(amount: int) -> void:
 	health = min(health + amount, max_health)
 	hpChanged.emit(health)
+	_heal_fx()

@@ -145,7 +145,7 @@ func _build() -> void:
 		var b := _make_button(t.title, 22)
 		b.custom_minimum_size = Vector2(190, 44)
 		b.pressed.connect(func():
-			SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+			SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_tab.wav"))
 			_show_tab(t.id))
 		tabs.add_child(b)
 		_tab_buttons[t.id] = b
@@ -461,7 +461,7 @@ func _on_card_pressed(item: Dictionary, card: Control) -> void:
 		return  # buff already at max level
 	var bought := Progress.buy_character(item.pg) if item.kind == "character" else Progress.buy_buff(item.id)
 	if bought:
-		SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_buy.wav"))
 		if item.kind == "character":
 			_show_message("%s sbloccato! Sceglilo in selezione personaggio." % item.title, GREEN)
 		else:
@@ -472,7 +472,7 @@ func _on_card_pressed(item: Dictionary, card: Control) -> void:
 		t.tween_property(card, "scale", Vector2(1.08, 1.08), 0.1)
 		t.tween_property(card, "scale", Vector2.ONE, 0.15)
 	else:
-		SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_denied.wav"))
 		_show_message("Ti mancano %d monete: raccogli oggetti nei livelli!" % (price - Progress.coins), RED)
 		card.pivot_offset = card.size / 2.0
 		var t := create_tween()
@@ -486,7 +486,7 @@ func _on_toggle_pressed(item: Dictionary) -> void:
 		return
 	var on := not Progress.is_active(item.id)
 	Progress.set_buff_active(item.id, on)
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav") if on else preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_on.wav") if on else preload("res://Audio/SFX/Eco/ui_off.wav"))
 	_show_message("%s %s." % [item.title, "attivato" if on else "spento"], GREEN if on else GREY)
 	_refresh()
 
@@ -497,5 +497,5 @@ func _show_message(text: String, color: Color) -> void:
 
 
 func _on_back_pressed() -> void:
-	SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
 	get_tree().change_scene_to_file(return_scene)

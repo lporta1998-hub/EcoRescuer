@@ -100,6 +100,7 @@ func _on_body_entered(body):
         if not was_chasing:
             # "!" and the friends nearby join the chase
             FloatText.spawn(self, "!", Color(1.0, 0.85, 0.3), Vector2(0, -38))
+            SFXManager.play_sfx(preload("res://Audio/SFX/Eco/alert.wav"), -10)
             for e in get_tree().get_nodes_in_group("enemies"):
                 if e != self and is_instance_valid(e) and e.has_method("alert") \
                         and e.global_position.distance_to(global_position) < ALERT_RADIUS:
@@ -305,6 +306,9 @@ func handle_death():
     if _health_bar:
         _health_bar.visible = false
     LevelManager.on_enemy_killed(self)
+    # the smog clears into leaves: one polluter less
+    FX.at_node("purify", self, Vector2(0, -12))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/purify.wav"), -5, randf_range(0.95, 1.05))
     await super()
 
 ## Enemy footsteps used a non-positional player, so every walking enemy in the

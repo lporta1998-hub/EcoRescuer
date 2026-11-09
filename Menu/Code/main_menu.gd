@@ -16,7 +16,7 @@ func _ready() -> void:
     _add_player_button()
     _add_story_button()
     $fade_transition.visible=true
-    MusicManager.play_music(load("res://Audio/Music_Levels/Menu/Menu.mp3"))
+    MusicManager.play_track("menu")
     await $fade_transition.fade_in()
     _sync_name_prompt_with_state()
 
@@ -39,12 +39,12 @@ func _keep_name_panel_above_keyboard(delta: float) -> void:
 
 
 func _on_quit_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     get_tree().quit()
 
 
 func _on_start_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     # The name is asked only the first time; after that Start goes straight in.
     if Global.player_name.strip_edges() != "":
         await $fade_transition.fade_out()
@@ -66,7 +66,7 @@ func _add_player_button() -> void:
     _player_button.offset_top = -64.0
     _player_button.offset_bottom = -24.0
     _player_button.pressed.connect(func():
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         _renaming = true
         _open_name_prompt())
     add_child(_player_button)
@@ -88,7 +88,7 @@ func _add_story_button() -> void:
     b.offset_top = -64.0
     b.offset_bottom = -24.0
     b.pressed.connect(func():
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         Cutscene.play(get_tree(), Cutscene.INTRO, "res://main_menu.tscn"))
     add_child(b)
     move_child(b, $NameOverlay.get_index())
@@ -100,17 +100,17 @@ func _update_player_button() -> void:
 
 
 func _on_shop_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     ShopMenu.open_from(get_tree(), "res://main_menu.tscn")
 
 
 func _on_options_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     $PopupMenu.show()
    
     
 func _on_leaderboard_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     get_tree().change_scene_to_file("res://Menu/Scenes/leaderboard_page.tscn")
 
 
@@ -151,7 +151,7 @@ func _on_name_confirm_pressed() -> void:
     if _renaming:
         _renaming = false
         return
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     await $fade_transition.fade_out()
     _go_to_game()
 

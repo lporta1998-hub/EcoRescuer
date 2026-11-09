@@ -161,7 +161,7 @@ func clear_leaderboard() -> void:
 
 
 func _on_CloseButton_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     var silentwolf := _get_silentwolf()
     if silentwolf == null:
         get_tree().change_scene_to_file("res://main_menu.tscn")

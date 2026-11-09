@@ -38,7 +38,7 @@ func load_current_settings():
             break
  
 func _on_resolution_selected(index: int):
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     var text = resolution_option.get_item_text(index)
     var parts = text.split("x")
     if parts.size() == 2:

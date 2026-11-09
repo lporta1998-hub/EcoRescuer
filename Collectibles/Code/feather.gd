@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
     pass
     
 func on_collect(_player: Node2D) -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"),-10)
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -8)
     if _player.has_method("speedBoost"):
         _player.speedBoost(boost,boost_duration)
         

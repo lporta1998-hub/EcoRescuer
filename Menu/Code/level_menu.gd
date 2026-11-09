@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_back_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     await $fade_transition.fade_out()
     Global.selected_level = null
     Global.selected_level_data = null
@@ -28,7 +28,7 @@ func _on_back_button_pressed() -> void:
     
 
 func _on_start_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     await $fade_transition.fade_out()
     if Global.selected_character and Global.selected_level:
         print("Avvio livello con:")

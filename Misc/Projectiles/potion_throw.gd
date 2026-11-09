@@ -43,7 +43,7 @@ func _splash() -> void:
 	set_process(false)
 	global_position = _to
 	rotation = 0
-	SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"), -6)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/splash.wav"), -6, 1.4)
 	for node in get_tree().current_scene.find_children("*", "CharacterBody2D", true, false):
 		if (node is Enemy or node is Boss) and not node.is_dead and node.global_position.distance_to(_to) <= SPLASH_RADIUS + 8.0:
 			node.take_damage(damage, thrower if is_instance_valid(thrower) else null)

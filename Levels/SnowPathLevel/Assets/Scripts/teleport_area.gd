@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
     if body.is_in_group("player") and can_teleport:
-        SFXManager.play_sfx(preload("res://Audio/SFX/Teleport/Teleport.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/teleport.wav"))
         $fade_transition.show()
         can_teleport = false
         

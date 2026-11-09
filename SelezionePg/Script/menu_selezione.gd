@@ -36,7 +36,7 @@ func _add_shop_button() -> void:
     shop.offset_top = 33.0
     shop.offset_bottom = 85.0
     shop.pressed.connect(func():
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         ShopMenu.open_from(get_tree(), "res://SelezionePg/Scenes/menu_selezione.tscn"))
     add_child(shop)
 
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 
 func _on_conferma_button_pressed() -> void:
     if Global.selected_character:
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         
         await $fade_transition.fade_out()
         get_tree().change_scene_to_packed(level_menu_scene)
@@ -62,5 +62,5 @@ func _on_conferma_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     get_tree().change_scene_to_file("res://main_menu.tscn")

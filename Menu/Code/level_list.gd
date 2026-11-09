@@ -77,7 +77,7 @@ func _show_total_stars() -> void:
 
 func _on_level_slot_pressed(level: LevelData):
     if not Progress.is_level_unlocked(level):
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_denied.wav"))
         selected_level = null
         Global.selected_level = null
         Global.selected_level_data = null
@@ -88,7 +88,7 @@ func _on_level_slot_pressed(level: LevelData):
             best_score_label.add_theme_font_size_override("font_size", 22)
             best_score_label.show()
         return
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     print("Livello selezionato")
     print(level.level_name)
     print(level.description)

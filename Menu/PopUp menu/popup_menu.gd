@@ -67,7 +67,7 @@ func _on_sfx_volume_changed(value: float):
 func toggle_visibility():
     if visible:
         hide()
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
 
 func _on_visibility_changed():
     if visible:
@@ -88,6 +88,6 @@ func reset_to_first_tab():
 
 func _on_tab_clicked(tab: int) -> void:
     if tab != 3:
-        SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     if tab == 3:
         toggle_visibility()

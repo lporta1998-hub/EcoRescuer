@@ -60,6 +60,7 @@ func _frames() -> SpriteFrames:
 
 func activate() -> void:
 	active = true
+	MusicManager.play_track("boss")
 	_state = "chase"
 	_next_attack = 2.0
 	health_changed.emit(health, max_health)
@@ -127,7 +128,7 @@ func _pick_attack() -> void:
 		_state = "windup"
 		_timer = 0.7 if p < 3 else 0.45
 		$AnimatedSprite2D.play("windup")
-		SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"), -4)
+		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/charge.wav"), -6)
 
 
 func _end_attack() -> void:
@@ -162,6 +163,7 @@ func _lob_barrel(from: Vector2, to: Vector2, flight: float) -> void:
 		b.rotation = t * TAU, 0.0, 1.0, flight)
 	tw.tween_callback(func():
 		ToxicPuddle.spawn(get_parent(), to)
+		FX.spawn("splash", get_parent(), to + Vector2(0, -8), Color.WHITE, 1.6, 0)
 		b.queue_free())
 
 

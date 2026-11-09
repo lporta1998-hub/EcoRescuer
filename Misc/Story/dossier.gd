@@ -34,7 +34,7 @@ func _on_body_entered(body: Node) -> void:
 	if _taken or not body.is_in_group("player"):
 		return
 	_taken = true
-	SFXManager.play_sfx(preload("res://Audio/SFX/Objects/Collection.wav"), -4)
+	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_page.wav"), -2)
 	LevelManager.on_dossier_found()
 	var tw := create_tween()
 	tw.tween_property(self, "scale", Vector2(1.6, 1.6), 0.12)

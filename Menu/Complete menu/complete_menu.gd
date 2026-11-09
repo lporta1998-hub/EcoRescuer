@@ -203,7 +203,7 @@ func _advance() -> void:
     if _advancing:
         return
     _advancing = true
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Confirm.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
     MusicManager.resume_music()
     get_tree().paused = false
     var ld: LevelData = Global.selected_level_data
@@ -271,7 +271,7 @@ func _on_menu_principale_pressed() -> void:
     MusicManager.resume_music()
     get_tree().paused = false
     get_tree().change_scene_to_file("res://main_menu.tscn")
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
 
 func _on_livelli_pressed() -> void:
     MusicManager.resume_music()
@@ -279,5 +279,5 @@ func _on_livelli_pressed() -> void:
     Global.selected_level = null
     Global.selected_level_data = null
     get_tree().change_scene_to_file("res://Menu/Scenes/level_menu.tscn")
-    SFXManager.play_sfx(preload("res://Audio/SFX/MenuSFX/Unequip.wav"))
+    SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
     

@@ -93,6 +93,7 @@ func take_damage(dmg: int, attacker) -> void:
 
 func heal(amount: int) -> void:
 	recharge(amount * HEART_CHARGE)
+	_heal_fx()
 
 
 func recharge(amount: float) -> void:
