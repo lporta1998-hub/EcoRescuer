@@ -47,6 +47,10 @@ func _splash() -> void:
 	for node in get_tree().current_scene.find_children("*", "CharacterBody2D", true, false):
 		if (node is Enemy or node is Boss) and not node.is_dead and node.global_position.distance_to(_to) <= SPLASH_RADIUS + 8.0:
 			node.take_damage(damage, thrower if is_instance_valid(thrower) else null)
+	# the splash also breaks vases, crates and barricades
+	for node in get_tree().get_nodes_in_group("breakable_objects"):
+		if is_instance_valid(node) and node.global_position.distance_to(_to) <= SPLASH_RADIUS + 10.0:
+			node.take_damage(damage, thrower if is_instance_valid(thrower) else null)
 	var r := {"v": 0.0}
 	var fx := Node2D.new()
 	fx.draw.connect(func():

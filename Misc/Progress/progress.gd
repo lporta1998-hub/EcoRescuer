@@ -73,6 +73,8 @@ var daily_last_done := ""
 ## and the ones the player switched off.
 var rage_perks := {}
 var rage_perks_off: Array[String] = []
+## Permanent Shop discounts from the secret vaults: buff id -> percent off.
+var discounts := {}
 
 
 func _ready() -> void:
@@ -168,7 +170,18 @@ func next_price(id: String) -> int:
 	var lvl := buff_level(id)
 	if lvl >= MAX_BUFF_LEVEL:
 		return -1
-	return int(BUFFS[id].prices[lvl])
+	return int(round(BUFFS[id].prices[lvl] * (100 - discount(id)) / 100.0))
+
+
+## Percent off the Shop price of buff `id` (secret vault rewards).
+func discount(id: String) -> int:
+	return int(discounts.get(id, 0))
+
+
+## Keeps the biggest discount for `id`.
+func add_discount(id: String, pct: int) -> void:
+	discounts[id] = maxi(discount(id), clampi(pct, 0, 90))
+	save_progress()
 
 
 ## The size of the effect at `level`, as numbers the game uses.
@@ -321,6 +334,16 @@ func dossiers_found() -> int:
 	return _main_quests_done("dossier")
 
 
+## Secret relics found (every chapter, epilogue too). Stored like the side
+## quests: _quests[level id]["secret"].
+func secrets_found() -> int:
+	var n := 0
+	for ch in Story.chapters():
+		if bool(_quests.get(String(ch.level).get_file().get_basename(), {}).get("secret", false)):
+			n += 1
+	return n
+
+
 ## Gameplay side quests completed in the main campaign.
 func quests_found() -> int:
 	return _main_quests_done("quest")
@@ -463,6 +486,7 @@ func save_progress() -> void:
 	cfg.set_value("daily", "last_done", daily_last_done)
 	cfg.set_value("rage", "perks", rage_perks)
 	cfg.set_value("rage", "perks_off", rage_perks_off)
+	cfg.set_value("shop", "discounts", discounts)
 	var err := cfg.save(SAVE_PATH)
 	if err != OK:
 		push_warning("Progress: could not save (%d)" % err)
@@ -496,6 +520,8 @@ func load_progress() -> void:
 	daily_last_done = str(cfg.get_value("daily", "last_done", ""))
 	var rp = cfg.get_value("rage", "perks", {})
 	rage_perks = rp if rp is Dictionary else {}
+	var disc = cfg.get_value("shop", "discounts", {})
+	discounts = disc if disc is Dictionary else {}
 	rage_perks_off.clear()
 	for id in cfg.get_value("rage", "perks_off", []):
 		rage_perks_off.append(str(id))

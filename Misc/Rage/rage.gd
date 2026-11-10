@@ -40,7 +40,7 @@ const PERKS := {
 			"icon": "res://Menu/Shop/Icons/magnet.png"},
 	"shield": {"title": "Scudo", "text": "+1 colpo bloccato a inizio partita",
 			"icon": "res://Menu/Shop/Icons/shield.png"},
-	"regen": {"title": "Rigenerazione", "text": "Recupera 1 cuore alla fine dei round (ogni 3/2/1 round)",
+	"regen": {"title": "Rigenerazione", "text": "Un cuore in più alla fine dei round (ogni 3/2/1 round)",
 			"icon": "res://Menu/Shop/Icons/heart.png"},
 	"luck": {"title": "Fortuna", "text": "I potenziamenti compaiono più spesso",
 			"icon": "res://Menu/Shop/Icons/rush.png"},

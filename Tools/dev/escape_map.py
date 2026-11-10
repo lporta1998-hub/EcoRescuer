@@ -88,6 +88,14 @@ put(74, 58, 'R')
 put(13, 37, 'K'); put(78, 34, 'K')
 put(29, 60, 'D')
 
+# --- secret room in the wall block west of the arena: a corridor from the
+# docks, closed by crates (V), to a small store room with the relic (Y)
+rect(8, 8, 20, 13, ',')
+rect(14, 14, 15, 25, ',')
+put(14, 25, 'V'); put(15, 25, 'V')
+put(10, 9, 'Y')
+put(18, 12, 'x')
+
 out = '\n'.join(''.join(r) for r in g) + '\n'
 open(sys.argv[1] if len(sys.argv) > 1 else OUT, 'w').write(out)
 print(out)

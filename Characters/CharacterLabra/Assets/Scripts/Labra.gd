@@ -111,7 +111,8 @@ func handle_attack():
     if b == self:
         continue
         
-    if b is Character:
+    # enemies, and also vases / crates (StaticBody2D with take_damage)
+    if b is Character or b.has_method("take_damage"):
         print_debug("  Hit: %s" % b.name)
         b.take_damage(1, self)
         

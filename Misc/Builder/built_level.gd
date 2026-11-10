@@ -16,6 +16,8 @@ extends Node2D
 ##           C  coin             H  heart                F  speed feather
 ##           R  leaking barrel   K  eco chest (cost from `chest_costs`, in map order)
 ##           Z  boss             G  arena gate (floor, closes when the boss fight starts)
+## Secrets (see SecretSpots):
+##           V  breakable crates (close a secret passage)      Y  portal to the secret vault
 
 const TILE := 16
 const SCENES := {
@@ -59,6 +61,11 @@ const FOG_SCENE := "res://Levels/Forest_level/Assets/Scenes/parallax_background.
 @export_enum("ruins", "factory", "harbor", "fortress") var theme := "ruins"
 @export var chest_costs: Array[int] = [3, 5]
 @export_file var music_path := ""
+## Map given in code instead of map_path (the secret vaults).
+var map_text := ""
+## A room inside another level (SecretVault): only tiles, props and things;
+## no fog, menus, camera limits or level setup.
+var sub_area := false
 
 var map: PackedStringArray
 var ground: TileMapLayer   ## floor + collision of water and masses
@@ -79,6 +86,8 @@ func _notification(what: int) -> void:
 func _ready() -> void:
 	if not _built:
 		build()
+	if sub_area:
+		return
 	_fit_camera()
 	LevelManager.setup_level(self)
 	if music_path != "" and ResourceLoader.exists(music_path):
@@ -93,11 +102,14 @@ func build() -> void:
 	if _built:
 		return
 	_built = true
-	var f := FileAccess.open(map_path, FileAccess.READ)
-	if f == null:
-		push_error("BuiltLevel: map not found: " + map_path)
-		return
-	map = f.get_as_text().replace("\r", "").split("\n")
+	var text := map_text
+	if text == "":
+		var f := FileAccess.open(map_path, FileAccess.READ)
+		if f == null:
+			push_error("BuiltLevel: map not found: " + map_path)
+			return
+		text = f.get_as_text()
+	map = text.replace("\r", "").split("\n")
 	# characters, props, enemies and items are all children of the level:
 	# sort them by their feet so you walk behind trees and in front of them
 	y_sort_enabled = true
@@ -142,6 +154,15 @@ func build() -> void:
 					boss_spawn = pos
 				"G":
 					gates.append(cell)
+				"V":
+					var crate := BreakableCrate.new()
+					crate.position = pos
+					add_child(crate)
+				"Y":
+					var portal := SecretPortal.new()
+					portal.name = "SecretPortal"
+					portal.position = pos
+					add_child(portal)
 				"K":
 					var chest = load(SCENES.K).instantiate()
 					chest.cost = chest_costs[mini(chest_i, chest_costs.size() - 1)] if not chest_costs.is_empty() else 4
@@ -156,6 +177,9 @@ func build() -> void:
 	bounds = Rect2(0, 0, w * TILE, map.size() * TILE)
 	_fill_overlay(water, w, _is_water)
 	_fill_overlay(path, w, _is_path)
+	if sub_area:
+		_own_children()
+		return
 	if ResourceLoader.exists(FOG_SCENE):
 		var fog: Node2D = load(FOG_SCENE).instantiate()
 		fog.name = "Fog"
@@ -273,6 +297,11 @@ func _add_props(ch: String, x: int, y: int) -> void:
 	if ch in ["T", "x", "X", "b"]:
 		key = ch
 	elif ch == "&":
+		# keep the crates of a secret passage in sight: no canopy over them
+		for dy in range(-2, 3):
+			for dx in range(-2, 3):
+				if _char(x + dx, y + dy) == "V":
+					return
 		var edge := false
 		for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
 			if _char(x + d.x, y + d.y) != "&":

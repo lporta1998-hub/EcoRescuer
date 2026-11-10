@@ -9,6 +9,7 @@ extends RefCounted
 ##   "stars"         total stars
 ##   "dossiers"      secret dossiers found (main chapters)
 ##   "quests"        gameplay side quests completed (main chapters)
+##   "secrets"       secret relics found (all chapters)
 ##   "heroes_won"    different characters that have finished a level
 ##   "heroes_owned"  characters unlocked
 ##   "epilogue"      1 once the epilogue chapter is completed
@@ -40,6 +41,10 @@ const LIST := [
 		"source": "dossiers", "target": 1, "reward": 50},
 	{"id": "dossier_all", "title": "Prove schiaccianti", "text": "Trova tutti i dossier segreti",
 		"source": "dossiers", "target": -1, "reward": 400},
+	{"id": "secret_1", "title": "Esploratore", "text": "Saccheggia un caveau segreto",
+		"source": "secrets", "target": 1, "reward": 100},
+	{"id": "secret_all", "title": "Cartografo", "text": "Saccheggia i caveau segreti di tutti i livelli",
+		"source": "secrets", "target": -1, "reward": 500},
 	{"id": "quests_all", "title": "Missioni compiute", "text": "Completa tutte le missioni secondarie",
 		"source": "quests", "target": -1, "reward": 300},
 	{"id": "baron", "title": "Abbasso il Barone", "text": "Distruggi il MECCA-RIFIUTI",
@@ -77,6 +82,8 @@ static func target_of(a: Dictionary) -> int:
 			return Story.main_chapters().size() * Progress.MAX_STARS_PER_LEVEL
 		"dossiers", "quests":
 			return Story.main_chapters().size()
+		"secrets":
+			return Story.chapters().size()
 		"heroes_owned":
 			return ShopMenu.CHARACTERS.size()
 	return 1
@@ -94,6 +101,8 @@ static func value_of(a: Dictionary) -> int:
 			return Progress.dossiers_found()
 		"quests":
 			return Progress.quests_found()
+		"secrets":
+			return Progress.secrets_found()
 		"heroes_won":
 			return Progress.heroes_won()
 		"heroes_owned":

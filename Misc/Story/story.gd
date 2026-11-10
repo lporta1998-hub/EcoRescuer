@@ -13,6 +13,9 @@ extends Node
 ##    (placed automatically on a far, reachable spot unless the level has a
 ##    Dossier node). Collecting all of them unlocks the true ending.
 ##  - one gameplay quest (see QUEST_TYPES).
+## Every level also hides a secret vault (`secret`, see SecretSpots): a
+## portal behind breakable crates leads to guards and a chest with a lore
+## item and a permanent reward. Not part of the objective; shown in the Codex.
 
 const DOSSIER_REWARD := 100
 const QUEST_REWARD := 150
@@ -41,6 +44,8 @@ const ENEMIES := {
 const CHAPTERS := [
 	{
 		"level": "res://Resources/Levels/Forest.tres",
+		"secret": {"title": "La ghianda d'oro", "text": "Nel caveau del bosco, una ghianda placcata d'oro. I primi abitanti piantavano una quercia per ogni bambino nato: questo bosco è fatto delle loro famiglie.",
+			"reward": {"type": "discount", "id": "extra_heart", "pct": 30}},
 		"music": "forest",
 		"enemies": {"sprayer": 2},
 		"title": "Il primo segnale",
@@ -50,6 +55,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/SnowPath.tres",
+		"secret": {"title": "Il cristallo tiepido", "text": "Un cristallo delle grotte, ancora tiepido, custodito dagli Inquinatori. Quando l'isola guarirà, dicono, torneranno a brillare tutti.",
+			"reward": {"type": "perk", "id": "luck"}},
 		"music": "snow",
 		"enemies": {"sprayer": 2, "bomber": 2},
 		"title": "Cristalli spenti",
@@ -59,6 +66,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/City.tres",
+		"secret": {"title": "La mappa del tram", "text": "Sotto il monumento, il deposito segreto degli assessori corrotti: c'è la mappa del vecchio tram elettrico, fatto chiudere per vendere più carburante.",
+			"reward": {"type": "discount", "id": "swift", "pct": 30}},
 		"music": "city",
 		"enemies": {"sprayer": 3, "bomber": 2, "brute": 1},
 		"title": "La città comprata",
@@ -68,6 +77,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/BeachLevel.tres",
+		"secret": {"title": "La foto del lago", "text": "Tra la merce rubata, una foto del 1980: bambini che fanno il bagno nel lago limpido. Si vedeva il fondo a dieci metri.",
+			"reward": {"type": "perk", "id": "regen"}},
 		"music": "lake",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il lago dimenticato",
@@ -77,6 +88,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Ruins.tres",
+		"secret": {"title": "La tavoletta di pietra", "text": "La camera sotto le rovine conserva una legge incisa nella pietra: «Chi sporca la sorgente beve il proprio veleno».",
+			"reward": {"type": "discount", "id": "power", "pct": 30}},
 		"music": "ruins",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2},
 		"title": "Le rovine antiche",
@@ -86,6 +99,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Factory.tres",
+		"secret": {"title": "Il progetto del filtro", "text": "Nel magazzino segreto: il progetto di un filtro per le ciminiere, mai costruito. A margine, NEXUS ha scritto «non redditizio».",
+			"reward": {"type": "perk", "id": "loot"}},
 		"music": "factory",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 1, "drone": 2},
 		"title": "La fabbrica tossica",
@@ -95,6 +110,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Harbor.tres",
+		"secret": {"title": "La bussola del pescatore", "text": "Nella stiva dei contrabbandieri, la bussola dell'ultimo pescatore del porto. Sul retro: «Il mare restituisce tutto quello che gli dai».",
+			"reward": {"type": "discount", "id": "magnet", "pct": 30}},
 		"music": "harbor",
 		"enemies": {"sprayer": 2, "bomber": 2, "brute": 2, "drone": 2},
 		"title": "Il porto nero",
@@ -104,6 +121,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/AiDataCenter.tres",
+		"secret": {"title": "Il chip di NEXUS v0.1", "text": "Nel server nascosto, la prima versione di NEXUS: doveva ottimizzare il riciclo dell'isola. Qualcuno ha cambiato un solo parametro: profitto.",
+			"reward": {"type": "perk", "id": "power"}},
 		"music": "datacenter",
 		"enemies": {"drone": 4, "sprayer": 2, "bomber": 2, "brute": 1},
 		"title": "Il cervello",
@@ -113,6 +132,8 @@ const CHAPTERS := [
 	},
 	{
 		"level": "res://Resources/Levels/Fortress.tres",
+		"secret": {"title": "Il diario del Barone", "text": "Nella cassaforte del Barone resta una sola pagina del suo diario: «Da piccolo volevo fare il guardaparco».",
+			"reward": {"type": "discount", "id": "shield", "pct": 30}},
 		"music": "fortress",
 		"enemies": {"brute": 3, "drone": 2, "sprayer": 2, "bomber": 2},
 		"title": "La fortezza del Barone",
@@ -126,6 +147,8 @@ const CHAPTERS := [
 	# dossier total (see main_chapters).
 	{
 		"level": "res://Resources/Levels/Escape.tres",
+		"secret": {"title": "Il biglietto senza ritorno", "text": "Il bottino del Barone, pronto per la fuga. Sopra c'è il biglietto della nave, destinazione «isola successiva». Non partirà mai.",
+			"reward": {"type": "perk", "id": "extra_heart"}},
 		"music": "harbor",
 		"enemies": {"brute": 2, "drone": 2, "sprayer": 2, "bomber": 2},
 		"title": "La fuga del Barone",

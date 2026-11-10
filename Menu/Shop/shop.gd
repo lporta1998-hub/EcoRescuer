@@ -376,6 +376,8 @@ func _refresh_buff_card(c: Dictionary) -> void:
 	else:
 		var price := Progress.next_price(id)
 		button.text = " %d" % price
+		if Progress.discount(id) > 0:
+			button.text += "  -%d%%" % Progress.discount(id)
 		button.icon = COIN_ICON
 		button.disabled = false
 		var col := Color.WHITE if Progress.can_afford(price) else RED

@@ -152,6 +152,10 @@ func setup_level(level_node: Node2D) -> void:
     var chapter: Dictionary = Story.chapter_of(Global.selected_level_data) if Global.selected_level_data else {}
     MusicManager.play_track(chapter.get("music", "forest"))
     MapFixes.apply(level_node)  # before the route grid is built, so it sees them
+    if Rage.active or Daily.active:
+        _remove_secret(level_node)  # secrets are for the campaign
+    else:
+        SecretSpots.apply(level_node)
     _disable_tile_navigation(level_node)
     _track_player_damage(level_node)
     if Rage.active:
@@ -437,6 +441,13 @@ func _clear_for_rage(level_node: Node) -> void:
         if is_instance_valid(node) and node.get_parent():
             node.get_parent().remove_child(node)
             node.queue_free()
+
+## Rage mode and the Daily challenge: no portal to the secret vault (the
+## crates of the built levels stay, as scenery).
+func _remove_secret(level_node: Node) -> void:
+    for node in level_node.find_children("*", "SecretPortal", true, false):
+        node.get_parent().remove_child(node)
+        node.queue_free()
 
 func _setup_rage(level_node: Node) -> void:
     total_enemies = 0

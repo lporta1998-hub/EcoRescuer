@@ -13,15 +13,21 @@ extends Node
 const BASIC := "res://Default_Enemy/Enemy.tscn"
 const ELITE := "res://EliteEnemy/Scenes/Elite.tscn"
 const BOSS_SCENE := "res://Boss/Boss.tscn"
-const BREAK := 4.0
+# --- Difficulty: the numbers to tweak --------------------------------------
+const BREAK := 6.0
 const FIRST_BREAK := 3.0
 const SPAWN_MIN_DIST := 230.0
 const SPAWN_MAX_DIST := 440.0
-const PICKUP_FIRST := 8.0
-const PICKUP_EVERY := 20.0
-const MAX_PICKUPS := 2
+const PICKUP_FIRST := 5.0
+const PICKUP_EVERY := 13.0
+const MAX_PICKUPS := 3
+## Hearts healed at the end of every round (Rigenerazione adds more).
+const ROUND_HEAL := 1
 const REALERT_EVERY := 1.5
-const MINION_EVERY := 6.0
+const MINION_EVERY := 9.0
+## ECO-9's batteries: one every BATTERY_EVERY seconds (sooner when low).
+const BATTERY_EVERY := 12.0
+const MAX_BATTERIES := 2
 const RED := Color(1.0, 0.45, 0.4)
 const GOLD := Color(1.0, 0.83, 0.3)
 const GREEN := Color(0.65, 0.95, 0.3)
@@ -47,6 +53,7 @@ var _spawn_timer := 0.0
 var _minion_timer := 0.0
 var _pickup_timer := PICKUP_FIRST
 var _alert_timer := 0.0
+var _battery_timer := 4.0
 var _rng := RandomNumberGenerator.new()
 var _bar: CanvasLayer
 var _bar_fill: ColorRect
@@ -79,6 +86,12 @@ func _process(delta: float) -> void:
 		for e in _alive:
 			if is_instance_valid(e) and e.has_method("alert"):
 				e.alert(p)
+	if p.has_method("uses_batteries"):
+		_battery_timer -= delta
+		if _battery_timer <= 0.0:
+			var low: bool = p.health < p.max_health * 0.35
+			_battery_timer = BATTERY_EVERY * (0.5 if low else 1.0)
+			_spawn_battery(p)
 	_pickup_timer -= delta
 	if _pickup_timer <= 0.0:
 		_pickup_timer = PICKUP_EVERY * (1.0 - 0.2 * Rage.perk("luck")) * _rng.randf_range(0.8, 1.2)
@@ -108,38 +121,42 @@ func _process(delta: float) -> void:
 					_spawn_enemy("basic", p)
 
 
+## Enemies in a round: 5, 6, 7... up to 30.
 func round_size() -> int:
-	return mini(5 + 2 * wave, 40)
+	return mini(4 + wave, 30)
 
 
+## Seconds between two spawns: 2.9 at round 1, never under 1.2.
 func spawn_interval() -> float:
-	return maxf(0.7, 2.6 - 0.12 * wave)
+	return maxf(1.2, 3.0 - 0.1 * wave)
 
 
+## Enemies on the map at once: 3 at round 1, +1 every 2 rounds, at most 10.
 func max_alive() -> int:
-	return mini(4 + wave, 14)
+	return mini(3 + wave / 2, 10)
 
 
 ## Enemy health and speed multipliers for the current round.
 func hp_scale() -> float:
-	return 1.0 + 0.07 * (wave - 1)
+	return 1.0 + 0.04 * (wave - 1)
 
 
 func speed_scale() -> float:
-	return 1.0 + minf(0.3, 0.015 * (wave - 1))
+	return 1.0 + minf(0.2, 0.01 * (wave - 1))
 
 
+## Which enemy comes next: the tougher kinds join later and stay rarer.
 func _pick_type() -> String:
-	var weights := {"basic": 6}
-	if wave >= 2:
-		weights.sprayer = 3
+	var weights := {"basic": 8}
 	if wave >= 3:
-		weights.bomber = 2
-	if wave >= 4:
-		weights.elite = 1 + wave / 10
+		weights.sprayer = 2
 	if wave >= 5:
-		weights.brute = 2
+		weights.bomber = 2
 	if wave >= 6:
+		weights.elite = 1 + wave / 15
+	if wave >= 7:
+		weights.brute = 1
+	if wave >= 9:
 		weights.drone = 2
 	return _weighted(weights)
 
@@ -165,12 +182,23 @@ func _end_round() -> void:
 	for id in Rage.PICKUPS:
 		if Rage.PICKUPS[id].lasts == "round" and int(Rage.run_levels.get(id, 0)) > 0:
 			_set_run_level(id, 0)
+	# between rounds: an ability to grab before the next one (and a battery for ECO-9)
+	var hero := _player()
+	if hero:
+		_spawn_pickup(hero, true)
+		if hero.has_method("uses_batteries"):
+			_spawn_battery(hero)
 	var msg := "Round %d superato!" % wave
-	var regen := Rage.perk("regen")
+	# every round cleared gives back a heart; Rigenerazione one more
+	# (every 3 / 2 / 1 rounds at level 1 / 2 / 3)
 	var p := _player()
-	if regen > 0 and wave % (4 - regen) == 0 and p and p.health < p.max_health:
-		p.heal(1)
-		msg += "  Rigenerazione +1"
+	var heal := ROUND_HEAL
+	var regen := Rage.perk("regen")
+	if regen > 0 and wave % (4 - regen) == 0:
+		heal += 1
+	if p and p.health < p.max_health:
+		p.heal(heal)
+		msg += "  +%d %s" % [heal, "cuore" if heal == 1 else "cuori"]
 	_toast(msg, GREEN)
 	update_hud()
 
@@ -256,10 +284,11 @@ func _start_boss() -> void:
 	var p := _player()
 	if tier % 3 == 0:
 		var b: Boss = load(BOSS_SCENE).instantiate()
-		b.boss_health = 30.0 + 12.0 * tier
+		b.boss_health = 24.0 + 10.0 * tier
 		b.start_phase = clampi(tier - 1, 1, 3)
-		b.position = _spawn_point(p)
+		var at := _spawn_point(p)
 		level.add_child(b)
+		b.global_position = at  # world position (hand-made levels aren't at the origin)
 		b.defeated.connect(_boss_defeated)
 		b.health_changed.connect(func(c: float, m: float): _set_bar(c / m))
 		b.get_node("AnimatedSprite2D").play("boot")
@@ -273,7 +302,7 @@ func _start_boss() -> void:
 	else:
 		var type: String = BOSS_TYPES.keys()[_rng.randi_range(0, BOSS_TYPES.size() - 1)]
 		var e := _spawn_enemy(type, p)
-		_scale_enemy(e, 8.0 + 4.0 * tier, 1.15)
+		_scale_enemy(e, 6.0 + 3.0 * tier, 1.1)
 		e.scale *= 1.5
 		e.modulate = Color(1.35, 0.75, 0.75)
 		e.hpChanged.connect(func(hp: float): _set_bar(hp / e.max_health))
@@ -449,31 +478,51 @@ func _after_choice() -> void:
 
 # --- Pickups ----------------------------------------------------------------
 
-func _spawn_pickup(p: Node2D) -> void:
+## An ability on the ground near the player. `always`: even if MAX_PICKUPS
+## are already lying around (the one between rounds).
+func _spawn_pickup(p: Node2D, always := false) -> void:
 	var count := 0
 	for n in level.get_children():
 		if n is RagePickup:
 			count += 1
-	if count >= MAX_PICKUPS:
+	if count >= MAX_PICKUPS and not always:
 		return
 	var weights := {}
 	for id in Rage.PICKUPS:
 		weights[id] = Rage.PICKUPS[id].weight
 	if p.health <= 1:
 		weights.extra_heart = 8
-	var rg := LevelManager.route_guide
-	var at := p.global_position + Vector2(90, 0)
-	if rg and rg.is_ready():
-		for i in 24:
-			var q := p.global_position + Vector2.RIGHT.rotated(_rng.randf() * TAU) * _rng.randf_range(70.0, 200.0)
-			if rg.is_open(q) and rg.reachable(p.global_position, q):
-				at = rg.open_spot(q, 2)
-				break
+	var at := _near_player(p, 70.0, 200.0)
 	var pk := RagePickup.new()
 	pk.id = _weighted(weights)
-	pk.position = at
 	pk.picked.connect(on_pickup)
 	level.add_child(pk)
+	pk.global_position = at  # world position (hand-made levels aren't at the origin)
+
+
+## An open, reachable spot between `near` and `far` px from the player.
+func _near_player(p: Node2D, near: float, far: float) -> Vector2:
+	var rg := LevelManager.route_guide
+	if rg and rg.is_ready():
+		for i in 24:
+			var q := p.global_position + Vector2.RIGHT.rotated(_rng.randf() * TAU) * _rng.randf_range(near, far)
+			if rg.is_open(q) and rg.reachable(p.global_position, q):
+				return rg.open_spot(q, 2)
+		return rg.open_spot(p.global_position + Vector2(near, 0), 2)
+	return p.global_position + Vector2(near, 0)
+
+
+## ECO-9 runs on batteries: one near the player (at most MAX_BATTERIES around).
+func _spawn_battery(p: Node2D) -> void:
+	var count := 0
+	for n in level.get_children():
+		if n is Battery:
+			count += 1
+	if count >= MAX_BATTERIES:
+		return
+	var b := Battery.new()
+	level.add_child(b)
+	b.global_position = _near_player(p, 60.0, 180.0)
 
 
 func on_pickup(id: String) -> void:

@@ -39,6 +39,11 @@ func _ready():
     super()
     original_speed = speed
     enable_deflect(hurt_box)
+    # Breakable objects (vases, crates, barricades) are StaticBody2D on layer
+    # 1: some heroes' hurt boxes only saw layer 3 (enemies) and couldn't break
+    # them. perform_melee_attack skips the hero itself.
+    if hurt_box:
+        hurt_box.set_collision_mask_value(1, true)
     
     # Controlla animazioni di attacco disponibili
     if sprite and sprite.sprite_frames:

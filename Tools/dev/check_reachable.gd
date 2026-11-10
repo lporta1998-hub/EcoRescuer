@@ -24,7 +24,7 @@ func _initialize():
 		for node in current_scene.find_children("*", "", true, false):
 			if node is Collectible or node is Dossier or node is Enemy:
 				n += 1
-				if not rg.reachable(start, node.global_position):
+				if rg.route_cost(start, node.global_position) == INF:  # teleports count
 					bad.append("%s %s" % [node.get_class() if node.get_script() == null else node.get_script().resource_path.get_file(), Vector2i(node.global_position / 16)])
 		print("R ", G.selected_level_data.level_name, ": ", n, " checked, unreachable: ", bad)
 	quit()

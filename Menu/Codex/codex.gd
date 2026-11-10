@@ -4,6 +4,7 @@ extends Control
 ##  - Traguardi: achievements (Achievements.LIST), with progress.
 ##  - Nemici: the enemies met in the campaign, with a tip for each.
 ##  - Dossier: the secret files found, to reread the story.
+##  - Segreti: the relics of the secret areas (one per level).
 ##  - Statistiche: lifetime counters.
 ## Built in code, with the same look as the Shop.
 
@@ -21,6 +22,7 @@ const TABS := [
 	{"id": "achievements", "title": "Traguardi"},
 	{"id": "enemies", "title": "Nemici"},
 	{"id": "dossiers", "title": "Dossier"},
+	{"id": "secrets", "title": "Segreti"},
 	{"id": "stats", "title": "Statistiche"},
 ]
 
@@ -112,14 +114,14 @@ func _build() -> void:
 	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
 	tabs.add_theme_constant_override("separation", 12)
 	tabs.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	tabs.offset_left = -420
-	tabs.offset_right = 420
+	tabs.offset_left = -470
+	tabs.offset_right = 470
 	tabs.offset_top = 92
 	tabs.offset_bottom = 136
 	add_child(tabs)
 	for t in TABS:
 		var b := _make_button(t.title, 22)
-		b.custom_minimum_size = Vector2(190, 44)
+		b.custom_minimum_size = Vector2(170, 44)
 		b.pressed.connect(func():
 			SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_tab.wav"))
 			_show_tab(t.id))
@@ -165,6 +167,8 @@ func _show_tab(id: String) -> void:
 			_fill_enemies()
 		"dossiers":
 			_fill_dossiers()
+		"secrets":
+			_fill_secrets()
 		"stats":
 			_fill_stats()
 
@@ -240,6 +244,27 @@ func _fill_dossiers() -> void:
 		else:
 			_list.add_child(_row(LOCK_ICON, label, "Dossier non ancora trovato: è nascosto in %s." % level.level_name, "", GREY))
 	_summary.text = "Dossier trovati: %d / %d" % [found, list.size()]
+
+
+func _fill_secrets() -> void:
+	var found := 0
+	var list := Story.chapters()
+	for i in list.size():
+		var ch: Dictionary = list[i]
+		var level: LevelData = load(ch.level)
+		var secret: Dictionary = ch.get("secret", {})
+		var reward: Dictionary = secret.get("reward", {})
+		var where := ("Epilogo" if ch.get("epilogue", false) else "Capitolo %d" % (i + 1)) + " · " + level.level_name
+		if Progress.quest_done(level, "secret"):
+			found += 1
+			_list.add_child(_row(VaultChest.OPEN, secret.get("title", "?"),
+					secret.get("text", "") + "\n" + SecretSpots.reward_text(reward), where, SecretPortal.COLOR))
+		else:
+			var kind := "un potenziamento per la Rage mode" if reward.get("type", "") == "perk" else "uno sconto nel negozio"
+			_list.add_child(_row(LOCK_ICON, "Caveau nascosto",
+					"In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s." % [level.level_name, kind],
+					where, GREY))
+	_summary.text = "Caveau trovati: %d / %d" % [found, list.size()]
 
 
 func _fill_stats() -> void:
