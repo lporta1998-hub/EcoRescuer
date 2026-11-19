@@ -27,6 +27,16 @@ The map characters are documented at the top of `Misc/Builder/built_level.gd`.
 The prop names per theme are listed in `PROPS` in the same file. If you add a
 prop, add it there too.
 
+## Restyle of the original levels (Forest, City, Lake, Snow Path, AI DataCenter)
+`levels_restyle.py OUT` (or `--game` to write into the project) gives each of
+these levels its own palette: deep emerald forest, fresh lime city park,
+golden-hour downtown, gold sand and turquoise water at the lake, cold blue-white
+snow, cold steel with magenta neon in the DataCenter. The prop sheets also get
+coloured outlines and a soft top-left rim light. Image sizes, tile layout and
+transparency stay exactly the same, so the scenes need no changes. The script
+always starts from the untouched originals in `orig/levels/`. Pass theme names
+to redo only some of them: `forest park city lake snow datacenter`.
+
 ## Boss and story
 | Script | Output | Goes to |
 |---|---|---|
