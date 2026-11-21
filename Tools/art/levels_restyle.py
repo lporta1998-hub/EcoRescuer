@@ -52,10 +52,12 @@ THEMES = {
         "files": [L + "Forest_level/Assets/Sprites/forest_terrain.png",
                   L + "Forest_level/Assets/Sprites/Pixeival wood tileset.png"],
         "props": [L + "Forest_level/Assets/Sprites/forest_objects.png"],
-        "remap": [(65, 170, 0.15, 146, 0.55, 1.15, -0.04),   # grass/leaves -> deep emerald
-                  (10, 50, 0.12, 18, 0.45, 1.15, -0.02),     # earth/wood -> warm red-brown
-                  (180, 230, 0.15, 186, 0.5, 1.1, 0.0)],     # water -> teal
-        "shadow": (195, 0.22), "light": (55, 0.14), "sat": 1.06, "contrast": 1.08,
+        "remap": [(65, 170, 0.15, 150, 0.75, 1.2, -0.05),    # grass/leaves -> deep emerald
+                  (0, 50, 0.12, 18, 0.45, 1.15, -0.02),      # earth/wood -> warm red-brown
+                  (340, 360, 0.12, 18, 0.45, 1.15, -0.02),
+                  (180, 230, 0.15, 180, 0.75, 1.15, 0.0)],    # water -> teal
+        "neutral": (40, 0.1),                                # stones get a warm tint
+        "shadow": (195, 0.38), "light": (55, 0.24), "sat": 1.08, "contrast": 1.1,
     },
     # the city park: fresher lime grass, cleaner paths
     "park": {
@@ -70,11 +72,12 @@ THEMES = {
     "city": {
         "files": [L + "City_level/Assets/Sprites/city.png"],
         "props": [L + "City_level/Assets/Sprites/city-signs.png"],
-        "remap": [(195, 250, 0.12, 212, 0.25, 1.05, 0.0),    # glass / blue buildings
-                  (330, 360, 0.2, 350, 0.4, 1.0, 0.0),       # maroon facades -> wine
-                  (0, 30, 0.2, 350, 0.25, 1.0, 0.0)],
-        "neutral": (255, 0.07),                              # greys get a lilac tint
-        "shadow": (245, 0.25), "light": (40, 0.14), "sat": 1.08, "contrast": 1.06,
+        "remap": [(195, 250, 0.12, 186, 0.6, 1.2, 0.02),     # glass / blue buildings -> teal
+                  (330, 360, 0.2, 325, 0.7, 1.1, 0.0),       # maroon facades -> plum
+                  (0, 30, 0.2, 330, 0.55, 1.1, 0.0),
+                  (30, 65, 0.2, 38, 0.5, 1.2, 0.03)],        # yellow / orange -> amber
+        "neutral": (262, 0.25),                              # greys get a lilac tint
+        "shadow": (245, 0.45), "light": (38, 0.3), "sat": 1.15, "contrast": 1.1,
     },
     # the lake: sunny gold sand, bright turquoise water
     "lake": {
@@ -83,8 +86,10 @@ THEMES = {
                   L + "BeachLevel/Assets/Sprites/interiors_demo.png"],
         "props": [L + "BeachLevel/Assets/Sprites/cuttouts.png"],
         "remap": [(35, 70, 0.12, 44, 0.45, 1.2, 0.02),       # sand -> gold
-                  (185, 235, 0.12, 182, 0.55, 1.25, 0.03)],  # water -> turquoise
-        "shadow": (190, 0.2), "light": (45, 0.12), "sat": 1.06, "contrast": 1.05,
+                  (185, 235, 0.12, 180, 0.75, 1.3, 0.03),   # water -> turquoise
+                  (0, 35, 0.15, 14, 0.4, 1.15, 0.01)],       # wood / roofs -> coral
+        "neutral": (38, 0.12),                               # greys warm up in the sun
+        "shadow": (190, 0.35), "light": (45, 0.22), "sat": 1.1, "contrast": 1.07,
     },
     # frozen path: ice-blue shadows, crisp highlights, colder rock
     "snow": {
@@ -98,9 +103,10 @@ THEMES = {
         "props": [L + "SnowPathLevel/Assets/Sprites/Cave_objects_source.png"],
         "remap": [(50, 110, 0.04, 205, 1.0, 0.45, 0.05),     # khaki snow -> cold blue-white
                   (180, 260, 0.08, 208, 0.35, 1.15, 0.0),    # rock / ice -> glacier blue
-                  (15, 45, 0.12, 22, 0.2, 0.85, 0.0)],       # wood / earth: a bit colder
-        "neutral": (210, 0.08),
-        "shadow": (222, 0.3), "light": (190, 0.08), "sat": 1.0, "contrast": 1.08,
+                  (0, 45, 0.1, 20, 0.3, 0.6, 0.02),          # wood / red earth: frosted, colder
+                  (330, 360, 0.1, 20, 0.3, 0.6, 0.02)],
+        "neutral": (212, 0.2),
+        "shadow": (222, 0.5), "light": (190, 0.18), "sat": 1.05, "contrast": 1.1,
     },
     # AI DataCenter: cold steel, orange alerts turned into magenta neon
     "datacenter": {
