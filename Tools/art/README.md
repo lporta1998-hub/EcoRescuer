@@ -15,27 +15,29 @@ the game.
 | `vol.py` | Volume-shaded pixel renderer (ellipsoids, capsules, rounded boxes, lighting, outline). Used by heads, props, boss, portrait. |
 | `pixelkit.py` | Smaller pixel-art helpers used by the collectibles and the trash bag. |
 
-## Levels (Ruins, Factory, Harbor, Fortress)
+## Levels (every campaign level)
+All levels are `BuiltLevel`s (`Misc/Builder/built_level.gd`): a text map drawn
+with the tilesets and props below. Themes: `ruins`, `factory`, `harbor`,
+`fortress`, and `forest`, `snow`, `city`, `lake`, `datacenter` for Forest,
+Snow Path, City, Polluted Lake and AI DataCenter.
+
 | Script | Output | Goes to |
 |---|---|---|
-| `tiles2.py OUT` | `<theme>.png` (8x2 atlas), `<theme>_water.png`, `<theme>_path.png` (dual-grid edges) | `Misc/Builder/Tiles/` |
-| `props.py OUT` | trees, pillars, tanks, containers, junk piles... per theme | `Misc/Builder/Props/<theme>/` |
+| `tiles2.py OUT` | `<theme>.png` (8x2 atlas), `<theme>_water.png`, `<theme>_path.png` (dual-grid edges), `passage.png` (marks the teleports between the areas of a map) | `Misc/Builder/Tiles/` |
+| `props.py OUT` | trees, pines, crystals, lamps, cars, palms, server racks... per theme, plus `turret_side/up/down.png` | `Misc/Builder/Props/<theme>/`, the turrets to `Levels/Ai DataCenter_level/Assets/Turrets/` |
 | `gen_maps2.py OUT` | `Ruins.txt`, `Factory.txt`, `Harbor.txt`, `Fortress.txt` (seeded, same result every run) | `Levels/<Name>_level/map.txt` |
-| `preview_map.py MAP THEME OUT.png [x y w h]` | picture of a map as the game draws it (needs `tiles2/` and `props/` next to the script) | level-select previews in `Resources/Levels/` |
+| `preview_map.py MAP THEME OUT.png [x y w h]` | picture of a map as the game draws it (needs `tiles2/` and `props/` next to the script) | level-select previews in `Resources/Levels/`, menu backgrounds in `Menu/Background/` |
 
 The map characters are documented at the top of `Misc/Builder/built_level.gd`.
-The prop names per theme are listed in `PROPS` in the same file. If you add a
-prop, add it there too.
+The prop names per theme are listed in `PROPS` in the same file (and in `CAT`
+in `preview_map.py`). If you add a prop, add it there too.
 
-## Restyle of the original levels (Forest, City, Lake, Snow Path, AI DataCenter)
-`levels_restyle.py OUT` (or `--game` to write into the project) gives each of
-these levels its own palette: deep emerald forest, fresh lime city park,
-golden-hour downtown, gold sand and turquoise water at the lake, cold blue-white
-snow, cold steel with magenta neon in the DataCenter. The prop sheets also get
-coloured outlines and a soft top-left rim light. Image sizes, tile layout and
-transparency stay exactly the same, so the scenes need no changes. The script
-always starts from the untouched originals in `orig/levels/`. Pass theme names
-to redo only some of them: `forest park city lake snow datacenter`.
+The maps of Forest, Snow Path, City, Polluted Lake and AI DataCenter keep the
+layout of the old hand-made scenes (which used third-party tilesets, now
+removed): `Tools/dev/scene_to_map.py` read which cells were walkable, water or
+walls, and where the start, enemies, items, teleports and turrets were. They
+were converted once and can be edited by hand like the others (the secret
+rooms of City and Snow Path were carved by hand).
 
 ## Boss and story
 | Script | Output | Goes to |

@@ -12,6 +12,16 @@ CAT = {
                "&": ["container_0", "container_1", "container_2"], "b": ["boat_0"]},
     "fortress": {"T": ["junk_0", "junk_1", "car_0"], "x": ["tires_0", "drums_0", "banner_0"], "X": ["tires_0"],
                  "&": ["junk_0", "junk_1"], "b": []},
+    "forest": {"T": ["tree_0", "tree_1", "tree_2", "tree_0", "tree_1", "tree_3"], "x": ["rock_0", "stump_0", "bush_0"],
+               "X": ["bush_0", "bush_1"], "&": ["tree_0", "tree_1", "tree_2", "tree_3"], "b": []},
+    "snow": {"T": ["pine_0", "pine_1", "pine_2"], "x": ["rock_0", "crystal_0", "crystal_1"], "X": ["crystal_0", "rock_0"],
+             "&": ["pine_0", "pine_1", "pine_2"], "b": []},
+    "city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0", "dumpster_0", "dumpster_1", "car_0", "car_1"],
+             "X": ["hydrant_0", "lamp_0"], "&": ["street_tree_0", "street_tree_1"], "b": []},
+    "lake": {"T": ["palm_0", "palm_1", "umbrella_0", "umbrella_1"], "x": ["crates_0", "rock_0"], "X": ["bollard_0", "rock_0"],
+             "&": ["palm_0", "palm_1"], "b": ["boat_0"]},
+    "datacenter": {"T": ["server_0", "server_1"], "x": ["console_0", "drum_0", "crates_0"], "X": ["drum_0", "crates_0"],
+                   "&": ["server_0", "server_1"], "b": []},
 }
 FLOORS = [0, 0, 0, 0, 1, 1, 2, 3, 4, 5]
 
@@ -22,7 +32,7 @@ def h(x, y, s=0):
 
 def main():
     mp, theme, out = sys.argv[1:4]
-    rows = open(mp).read().replace("\r", "").split("\n")
+    rows = open(mp).read().replace("\r", "").split("\n---\n")[0].split("\n")
     W = max(len(r) for r in rows)
     H = len(rows)
     ch = lambda x, y: rows[y][x] if 0 <= y < H and 0 <= x < len(rows[y]) else " "
