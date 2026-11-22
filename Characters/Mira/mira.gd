@@ -11,7 +11,6 @@ var last_direction = Vector2.RIGHT
 ## Buttons shown by the on-screen touch controls.
 var touch_actions := {"primary": "POZIONE", "secondary": "BASTONE"}
 const STAFF_COOLDOWN := 0.55
-const STAFF_REACH := 48.0
 
 
 func _ready() -> void:
@@ -61,16 +60,16 @@ func staff_swing() -> bool:
 	if not secondary_ready():
 		return false
 	start_secondary_cooldown(STAFF_COOLDOWN)
-	# Mouse: swing where it points. Touch: auto-aim only at a close enemy,
-	# otherwise swing where she's facing (a vase in front, not a far enemy).
-	var aim := TouchControls.get_aim_position(self)
-	if not TouchControls.enabled or aim.distance_to(global_position) <= STAFF_REACH:
-		update_attack_direction(aim - global_position)
+	# Mouse: swing where it points. Touch: turn to a close enemy, otherwise
+	# swing where she's facing (a vase in front, not a far enemy).
+	if not TouchControls.enabled:
+		update_attack_direction(get_global_mouse_position() - global_position)
+	else:
+		aim_melee_at_nearest_enemy()
 	await get_tree().physics_frame  # let the hurt box turn before checking it
 	deflect_overlapping(hurt_box, self)
-	for b in hurt_box.get_overlapping_bodies():
-		if b != self and b.has_method("take_damage"):
-			b.take_damage(attack_damage, self)
+	for b in _bodies_in_swing():
+		b.take_damage(attack_damage, self)
 	play_attack_sound()
 	FX.spawn("hit", get_parent(), global_position + Vector2(0, -8) + attack_direction * 16.0)
 	return true
