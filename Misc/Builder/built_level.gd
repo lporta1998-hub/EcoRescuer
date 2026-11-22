@@ -1,23 +1,29 @@
 class_name BuiltLevel
 extends Node2D
-## A level built from a text map and an original tileset (Ruins, Toxic
-## Factory, Harbor, Fortress). Edit the map file to change the level: every
-## character is one 16 px cell.
+## A level built from a text map and an original tileset (every campaign
+## level). Edit the map file to change the level: every character is one
+## 16 px cell.
 ##
 ## Terrain:  .  floor        ,  path / plaza     _  special overlay
 ##           #  wall         ~  water / pool     =  bridge / walkway
+##           ;  lawn (only the themes with a <theme>_grass.png: the City park)
 ##           &  dense mass: forest, machinery, containers, junk (blocks, filled with big props)
 ##           o  decor A      O  decor B          (space = nothing)
 ## Props (sprites, y-sorted with the characters, they block at the base):
 ##           T  big prop     x  medium prop      X  small prop       b  boat (on water)
+##           c  the theme's special prop: parked cars (City), junk heaps (Polluted Lake)
 ## Things (they stand on floor):
 ##           P  player start     S  recycling station    D  secret dossier
 ##           B  trash bag        E  enemy                L  Elite enemy
 ##           C  coin             H  heart                F  speed feather
+##           W  litter (small trash to pick up)
 ##           R  leaking barrel   K  eco chest (cost from `chest_costs`, in map order)
 ##           Z  boss             G  arena gate (floor, closes when the boss fight starts)
 ## Secrets (see SecretSpots):
 ##           V  breakable crates (close a secret passage)      Y  portal to the secret vault
+## After the rows, a line "---" starts the extras, one per line, in map pixels:
+##           tp X Y DX DY      a passage at X,Y that takes the player to DX,DY
+##           turret X Y DIR    a wall turret (DIR: left, right, up, down)
 
 const TILE := 16
 const SCENES := {
@@ -30,6 +36,15 @@ const SCENES := {
 	"E": "res://Default_Enemy/Enemy.tscn",
 	"L": "res://EliteEnemy/Scenes/Elite.tscn",
 	"S": "res://Misc/LevelExit/level_exit.tscn",
+	"W": "res://Collectibles/Scenes/trash.tscn",
+}
+const TELEPORT_SCENE := "res://Levels/SnowPathLevel/Assets/Scenes/teleport_area.tscn"
+const TELEPORT_ART := "res://Misc/Builder/Tiles/passage.png"
+const TURRETS := {
+	"left": "res://Levels/Ai DataCenter_level/Assets/Turrets/turret/turret.tscn",
+	"right": "res://Levels/Ai DataCenter_level/Assets/Turrets/turretRight/turret.tscn",
+	"up": "res://Levels/Ai DataCenter_level/Assets/Turrets/turretUp/turret.tscn",
+	"down": "res://Levels/Ai DataCenter_level/Assets/Turrets/turretDown/turret.tscn",
 }
 ## Atlas index of each terrain character (see the tileset generator).
 const FLOORS := [0, 0, 0, 0, 1, 1, 2, 3, 4, 5]
@@ -51,14 +66,27 @@ const PROPS := {
 			"&": ["container_0", "container_1", "container_2"], "b": ["boat_0"]},
 	"fortress": {"T": ["junk_0", "junk_1", "car_0"], "x": ["tires_0", "drums_0", "banner_0"], "X": ["tires_0"],
 			"&": ["junk_0", "junk_1"], "b": []},
+	"forest": {"T": ["tree_0", "tree_1", "tree_2", "tree_0", "tree_1", "tree_3"], "x": ["rock_0", "stump_0", "bush_0"],
+			"X": ["bush_0", "bush_1"], "&": ["tree_0", "tree_1", "tree_2", "tree_3"], "b": []},
+	"snow": {"T": ["pine_0", "pine_1", "pine_2"], "x": ["rock_0", "crystal_0", "crystal_1"], "X": ["crystal_0", "rock_0"],
+			"&": ["pine_0", "pine_1", "pine_2"], "b": []},
+	"city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0"],
+			"X": ["hydrant_0", "lamp_0", "dumpster_0", "dumpster_1"], "&": ["street_tree_0", "street_tree_1"], "b": [],
+			"c": ["car_0", "car_1"]},
+	"lake": {"T": ["palm_0", "palm_1", "umbrella_0", "umbrella_1"], "x": ["crates_0", "rock_0"], "X": ["bollard_0", "rock_0"],
+			"&": ["palm_0", "palm_1"], "b": ["boat_0"], "c": ["junk_0", "junk_1"]},
+	"datacenter": {"T": ["server_0", "server_1"], "x": ["console_0", "drum_0", "crates_0"], "X": ["drum_0", "crates_0"],
+			"&": ["server_0", "server_1"], "b": []},
 }
 ## Fog tint per theme (the Forest's drifting fog).
 const FOG := {"ruins": Color(1, 1, 1, 0.8), "factory": Color(0.75, 1.0, 0.6, 0.7),
-		"harbor": Color(0.9, 0.95, 1.0, 0.75), "fortress": Color(0.8, 0.7, 0.9, 0.7)}
+		"harbor": Color(0.9, 0.95, 1.0, 0.75), "fortress": Color(0.8, 0.7, 0.9, 0.7),
+		"forest": Color(1, 1, 1, 0.8), "snow": Color(0.9, 0.95, 1.0, 0.85), "city": Color(0.9, 0.85, 0.8, 0.45),
+		"lake": Color(1, 1, 1, 0.5), "datacenter": Color(0.6, 0.9, 1.0, 0.35)}
 const FOG_SCENE := "res://Levels/Forest_level/Assets/Scenes/parallax_background.tscn"
 
 @export_file("*.txt") var map_path := ""
-@export_enum("ruins", "factory", "harbor", "fortress") var theme := "ruins"
+@export_enum("ruins", "factory", "harbor", "fortress", "forest", "snow", "city", "lake", "datacenter") var theme := "ruins"
 @export var chest_costs: Array[int] = [3, 5]
 @export_file var music_path := ""
 ## Map given in code instead of map_path (the secret vaults).
@@ -68,6 +96,7 @@ var map_text := ""
 var sub_area := false
 
 var map: PackedStringArray
+var extras: PackedStringArray  ## lines after "---" (teleports, turrets)
 var ground: TileMapLayer   ## floor + collision of water and masses
 var walls: TileMapLayer    ## walls, bridges, decor, gates (drawn over water and paths)
 var gates: Array[Vector2i] = []
@@ -109,12 +138,17 @@ func build() -> void:
 			push_error("BuiltLevel: map not found: " + map_path)
 			return
 		text = f.get_as_text()
-	map = text.replace("\r", "").split("\n")
+	var parts := text.replace("\r", "").split("\n---\n")
+	map = parts[0].split("\n")
+	extras = parts[1].split("\n", false) if parts.size() > 1 else PackedStringArray()
 	# characters, props, enemies and items are all children of the level:
 	# sort them by their feet so you walk behind trees and in front of them
 	y_sort_enabled = true
 	var tiles := _make_tileset()
 	ground = _layer("Ground", tiles, -10)
+	var lawn: TileMapLayer = null
+	if ResourceLoader.exists("res://Misc/Builder/Tiles/%s_grass.png" % theme):
+		lawn = _layer("Lawn", _overlay_tileset("grass"), -9, false)
 	var water := _layer("Water", _overlay_tileset("water"), -9, false)
 	var path := _layer("Path", _overlay_tileset("path"), -8, false)
 	walls = _layer("Walls", tiles, -7)
@@ -175,8 +209,11 @@ func build() -> void:
 						n.position = pos
 						add_child(n)
 	bounds = Rect2(0, 0, w * TILE, map.size() * TILE)
+	_add_extras()
 	_fill_overlay(water, w, _is_water)
 	_fill_overlay(path, w, _is_path)
+	if lawn:
+		_fill_overlay(lawn, w, _is_lawn)
 	if sub_area:
 		_own_children()
 		return
@@ -195,6 +232,30 @@ func build() -> void:
 		m.name = menu[0]
 		add_child(m)
 		m.owner = self
+
+
+## Teleports between the areas of a map, and wall turrets.
+func _add_extras() -> void:
+	for line in extras:
+		var a := line.split(" ", false)
+		if a.size() >= 5 and a[0] == "tp":
+			var dest := Marker2D.new()
+			dest.position = Vector2(float(a[3]), float(a[4]))
+			add_child(dest)
+			var tp: Area2D = load(TELEPORT_SCENE).instantiate()
+			tp.position = Vector2(float(a[1]), float(a[2]))
+			tp.destination_marker = dest
+			if ResourceLoader.exists(TELEPORT_ART):
+				var art := Sprite2D.new()
+				art.texture = load(TELEPORT_ART)
+				art.z_index = -6
+				art.z_as_relative = false
+				tp.add_child(art)
+			add_child(tp)
+		elif a.size() >= 4 and a[0] == "turret" and TURRETS.has(a[3]):
+			var t: Node2D = load(TURRETS[a[3]]).instantiate()
+			t.position = Vector2(float(a[1]), float(a[2]))
+			add_child(t)
 
 
 ## Nodes made in code have no owner, and find_children() (used by LevelManager
@@ -277,15 +338,24 @@ func _is_water(x: int, y: int) -> bool:
 
 
 func _is_path(x: int, y: int) -> bool:
+	return _covered(x, y, [",", "_"])
+
+
+func _is_lawn(x: int, y: int) -> bool:
+	return _covered(x, y, [";"])
+
+
+## True on the overlay's own cells, and under things and props standing among
+## them (a tree on the lawn, a coin on a plaza keep the ground under them).
+func _covered(x: int, y: int, own: Array) -> bool:
 	var c := _char(x, y)
-	if c == "," or c == "_":
+	if c in own:
 		return true
-	if c in [".", "#", "~", "=", "&", " ", "b"]:
+	if c in [".", ",", "_", ";", "#", "~", "=", "&", " ", "b"]:
 		return false
-	# things and props standing on a plaza keep the plaza under them
 	var n := 0
 	for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-		if _char(x + d.x, y + d.y) in [",", "_"]:
+		if _char(x + d.x, y + d.y) in own:
 			n += 1
 	return n >= 2
 
@@ -294,7 +364,7 @@ func _add_props(ch: String, x: int, y: int) -> void:
 	var set_: Dictionary = PROPS.get(theme, {})
 	var key := ""
 	var jitter := Vector2.ZERO
-	if ch in ["T", "x", "X", "b"]:
+	if ch in ["T", "x", "X", "b", "c"]:
 		key = ch
 	elif ch == "&":
 		# keep the crates of a secret passage in sight: no canopy over them
@@ -321,14 +391,14 @@ func _add_props(ch: String, x: int, y: int) -> void:
 	s.offset = Vector2(-floorf(tex.get_width() / 2.0), -tex.get_height() + 3)
 	s.position = Vector2(x * TILE + TILE / 2.0, y * TILE + 14) + jitter
 	add_child(s)
-	if key in ["T", "x", "X"]:
+	if key in ["T", "x", "X", "c"]:
 		# block only at the base, so you can walk behind the canopy / top
 		var body := StaticBody2D.new()
 		body.collision_layer = 2
 		body.collision_mask = 0
 		var shape := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
-		var wide := 0.8 if theme == "harbor" and key == "T" else 0.45
+		var wide := 0.8 if (theme == "harbor" and key == "T") or key == "c" else 0.45
 		rect.size = Vector2(clampf(tex.get_width() * wide, 10.0, 40.0), 10.0)
 		shape.shape = rect
 		shape.position = Vector2(0, -4)

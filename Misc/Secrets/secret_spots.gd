@@ -1,7 +1,7 @@
 class_name SecretSpots
 extends RefCounted
 ## Every campaign level hides a secret: a corner of the map closed by
-## BreakableCrate across a narrow passage (Snow Path: the two vases). Breaking
+## BreakableCrate across a narrow passage. Breaking
 ## them opens a SecretPortal there, to the level's SecretVault: a room
 ## outside the map where guards protect a VaultChest
 ## with a reward (`secret.reward` in Story.CHAPTERS, paid once, see claim()):
@@ -10,44 +10,24 @@ extends RefCounted
 ## Nothing the objective needs is ever behind the crates or in the vault.
 ##
 ## Built levels (text maps) carve their secret pocket in the map itself (map
-## letters V crates and Y portal, Tools/dev/carve_secret_rooms.py). The
-## hand-made levels are listed in SPOTS: pockets found with
-## Tools/dev/find_secret_spots.py (cut off by a few crates, holding no trash
-## bag, enemy or teleport). Tools/dev/check_secrets.gd checks them all.
+## letters V crates and Y portal, Tools/dev/carve_secret_rooms.py and
+## Tools/dev/scene_to_map.py). A hand-made level scene would be listed in
+## SPOTS (pockets found with Tools/dev/find_secret_spots.py); every campaign
+## level is a built level now. Tools/dev/check_secrets.gd checks them all.
 ## `crates`: centres of 16 px cells to fill. `portal`: where the portal goes.
 ## `seals`: other breakable nodes that keep the portal closed.
 
 ## Gap between the map's right edge and its vault.
 const VAULT_GAP := 400.0
 
-const SPOTS := {
-	# the island in the lake, across the wooden bridge
-	"res://Levels/Forest_level/Assets/Scenes/forest.tscn": {
-		"crates": [Vector2(856, 400), Vector2(856, 416), Vector2(856, 432)],
-		"portal": Vector2(580, 420)},
-	# the end of the trail behind the two vases, at the mouth of the cave
-	"res://Levels/SnowPathLevel/Assets/Scenes/snow_path.tscn": {
-		"crates": [], "portal": Vector2(-160, 806), "seals": ["DestructibleObj", "DestructibleObj2"]},
-	# inside the monument in the middle of the roundabout
-	"res://Levels/City_level/Assets/Scenes/city.tscn": {
-		"crates": [Vector2(2344, 3176), Vector2(2360, 3176), Vector2(2376, 3176)],
-		"portal": Vector2(2332, 3252)},
-	# the far end of the old wooden pier
-	"res://Levels/BeachLevel/Assets/Scenes/beach_level.tscn": {
-		"crates": [Vector2(1320, 40), Vector2(1320, 56)],
-		"portal": Vector2(972, 52)},
-	# a dead-end corridor past the server racks
-	"res://Levels/Ai DataCenter_level/Assets/Scenes/Ai DataCenter.tscn": {
-		"crates": [Vector2(1144, 936), Vector2(1144, 952), Vector2(1144, 968)],
-		"portal": Vector2(1452, 964)},
-}
+const SPOTS := {}
 
 ## Tiles of each level's vault (BuiltLevel themes).
 const VAULT_THEMES := {
-	"res://Resources/Levels/Forest.tres": "ruins", "res://Resources/Levels/SnowPath.tres": "ruins",
-	"res://Resources/Levels/City.tres": "factory", "res://Resources/Levels/BeachLevel.tres": "harbor",
+	"res://Resources/Levels/Forest.tres": "forest", "res://Resources/Levels/SnowPath.tres": "snow",
+	"res://Resources/Levels/City.tres": "city", "res://Resources/Levels/BeachLevel.tres": "lake",
 	"res://Resources/Levels/Ruins.tres": "ruins", "res://Resources/Levels/Factory.tres": "factory",
-	"res://Resources/Levels/Harbor.tres": "harbor", "res://Resources/Levels/AiDataCenter.tres": "factory",
+	"res://Resources/Levels/Harbor.tres": "harbor", "res://Resources/Levels/AiDataCenter.tres": "datacenter",
 	"res://Resources/Levels/Fortress.tres": "fortress", "res://Resources/Levels/Escape.tres": "harbor",
 }
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://uasm0y3j2q6x" path="res://Levels/BeachLevel/Assets/Scenes/beach_level.tscn" id="1_cmqnb"]
 [ext_resource type="Script" uid="uid://k1c37ijv0wdl" path="res://Menu/Code/LevelData.gd" id="2_gwaac"]
-[ext_resource type="Texture2D" uid="uid://ccstku5ar7sei" path="res://Levels/BeachLevel/Assets/Sprites/levelicon.png" id="2_nunlp"]
+[ext_resource type="Texture2D" path="res://Resources/Levels/LakePreview.png" id="2_nunlp"]
 
 [resource]
 script = ExtResource("2_gwaac")

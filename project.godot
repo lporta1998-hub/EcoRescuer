@@ -56,8 +56,6 @@ folder_colors={
 "res://Levels/Ai DataCenter_level/Assets/": "teal",
 "res://Levels/Ai DataCenter_level/Assets/Bullets/": "yellow",
 "res://Levels/Ai DataCenter_level/Assets/Scripts/": "gray",
-"res://Levels/Ai DataCenter_level/Assets/Sounds/": "purple",
-"res://Levels/Ai DataCenter_level/Assets/Sprites/": "blue",
 "res://Levels/Ai DataCenter_level/Assets/Turrets/": "red",
 "res://_folder_structure_placeholder/": "gray",
 "res://addons/": "gray"

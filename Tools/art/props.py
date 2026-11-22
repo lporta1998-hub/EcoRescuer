@@ -345,6 +345,208 @@ def banner():
     return c.render()
 
 
+# ---------------------------------------------------------------- campaign themes (Forest, Snow Path, City, Lake, AI DataCenter)
+
+def pine(seed=0, green="#2f6e44", snow_=False, w=40, h=70):
+    """Conifer: stacked skirts of needles, optionally with snow on each skirt."""
+    rnd = random.Random(seed)
+    c = Canvas(w, h, P(leaf=green, leafd=sh_hex(green, 0.7), bark="#5a3c26", snow="#eef4ff"))
+    c.textures["leaf"] = leaf_tex
+    c.textures["leafd"] = leaf_tex
+    c.textures["bark"] = bark_tex
+    cx = w // 2
+    c.add(rbox("bark", 1, cx - 3, h - 14, cx + 3, h - 2, rad=1.5))
+    tiers = 4
+    for i in range(tiers):
+        t = i / (tiers - 1)
+        y = 6 + t * (h - 26)
+        hw = 5 + t * (w / 2 - 7) + rnd.uniform(-1, 1)
+        top = y - 8 - t * 3
+        c.add(poly("leafd", 2 + i * 0.1, [(cx, top), (cx + hw, y + 7), (cx - hw, y + 7)], depth=0.9))
+        c.add(poly("leaf", 2.05 + i * 0.1, [(cx - 1, top + 1), (cx + hw * 0.4, y + 5), (cx - hw + 1, y + 6)], depth=0.9))
+        if snow_:
+            for k in range(int(hw * 1.6)):
+                xx = cx - hw + 2 + k * 1.2
+                yy = y + 6 - abs(xx - cx) * 0.0 - (1 if k % 3 else 0)
+                c.dot(int(xx), int(yy), "snow", 4 + (k % 2))
+            c.dot(cx, int(top) + 1, "snow", 5)
+    return c.render()
+
+
+def crystal(seed=0, col="#58d8e8", w=26, h=34):
+    rnd = random.Random(seed)
+    c = Canvas(w, h, P(gem=col, gemd=sh_hex(col, 0.6), rock="#4a5266"))
+    c.add(ellipsoid("rock", 1, w / 2, h - 5, w / 2 - 2, 4))
+    shards = [(w / 2, h - 6, 0, h - 8), (w / 2 - 6, h - 6, -4, h - 16), (w / 2 + 6, h - 5, 4, h - 14)]
+    for i, (x, y, lean, ht) in enumerate(shards):
+        hw = 3.2 if i == 0 else 2.6
+        c.add(poly("gem" if i != 2 else "gemd", 2 + i * 0.1,
+                   [(x - hw, y), (x - hw + lean * 0.5, y - ht + 4), (x + lean, y - ht), (x + hw + lean * 0.5, y - ht + 4), (x + hw, y)], depth=1.0))
+    for _ in range(4):
+        c.dot(rnd.randint(4, w - 5), rnd.randint(4, h - 12), "gem", 5)
+    return c.render()
+
+
+def street_tree(seed=0):
+    rnd = random.Random(seed)
+    c = Canvas(36, 56, P(leaf="#4a9a44", leaf2="#72c058", bark="#6a4a2e", pot="#a8a49c", soil="#4a3424"))
+    for k in ("leaf", "leaf2"):
+        c.textures[k] = leaf_tex
+    c.add(rbox("pot", 1, 8, 44, 28, 55, rad=2))
+    c.add(ellipsoid("soil", 1.2, 18, 45, 9, 2.2, depth=0.3))
+    c.add(rbox("bark", 1.5, 16, 24, 20, 46, rad=1.5))
+    for i in range(9):
+        a = rnd.uniform(0, math.tau)
+        d = rnd.uniform(0, 0.7)
+        c.add(ellipsoid("leaf" if i % 3 else "leaf2", 2 + i * 0.05, 18 + math.cos(a) * 10 * d - (2 if i % 3 == 0 else 0),
+                        16 + math.sin(a) * 8 * d - (2 if i % 3 == 0 else 0), 7.5, 7))
+    return c.render()
+
+
+def lamp():
+    c = Canvas(18, 60, P(pole="#3a4050", glass="#fff0b0", dark="#22262e"))
+    c.textures["pole"] = metal_tex
+    c.add(rbox("dark", 1, 5, 54, 13, 59, rad=1.5))
+    c.add(capsule("pole", 1.5, 9, 56, 9, 10, 1.6))
+    c.add(capsule("pole", 2, 9, 10, 14, 6, 1.3))
+    c.add(rbox("dark", 2.5, 11, 4, 17, 8, rad=1))
+    c.add(ellipsoid("glass", 3, 14, 8, 2.5, 1.5, depth=0.4))
+    return c.render()
+
+
+def bench():
+    c = Canvas(34, 22, P(wood="#a86a3a", metal="#3a4050"))
+    c.textures["wood"] = bark_tex
+    for x in (5, 29):
+        c.add(rbox("metal", 1, x - 1.5, 8, x + 1.5, 21, rad=0.5))
+    c.add(rbox("wood", 2, 2, 4, 32, 8, rad=1, depth=0.6))
+    c.add(rbox("wood", 2.2, 2, 12, 32, 16, rad=1, depth=0.6))
+    return c.render()
+
+
+def dumpster(col="#2e7a4a"):
+    c = Canvas(36, 30, P(paint=col, lid="#24262e", wheel="#1a1a20"))
+    c.textures["paint"] = metal_tex
+    c.add(rbox("paint", 1, 2, 8, 34, 27, rad=2))
+    c.add(rbox("lid", 1.5, 1, 4, 35, 10, rad=1.5, depth=0.5))
+    for x in range(4, 33, 4):
+        c.dot(x, 18, "paint", 1)
+    for x in (7, 29):
+        c.add(ellipsoid("wheel", 2, x, 28, 2.5, 1.8))
+    return c.render()
+
+
+def hydrant():
+    c = Canvas(14, 20, P(red="#d83a2a", cap="#f0c040"))
+    c.add(rbox("red", 1, 3, 6, 11, 19, rad=2))
+    c.add(ellipsoid("red", 1.5, 7, 6, 4.5, 3))
+    c.add(capsule("red", 2, 1, 11, 13, 11, 1.6))
+    c.add(ellipsoid("cap", 2.5, 7, 3, 2, 1.5))
+    return c.render()
+
+
+def parked_car(col="#3a6ab0"):
+    c = Canvas(48, 30, P(paint=col, glass="#9ac4dc", tire="#1e1e24", light="#fff0b0"))
+    c.add(rbox("paint", 1, 2, 12, 46, 26, rad=4))
+    c.add(rbox("paint", 1.5, 11, 4, 37, 15, rad=4))
+    c.add(rbox("glass", 2, 14, 6, 23, 13, rad=1, depth=0.4))
+    c.add(rbox("glass", 2, 26, 6, 34, 13, rad=1, depth=0.4))
+    for x in (10, 38):
+        c.add(ellipsoid("tire", 2.5, x, 26, 4.5, 3))
+    c.add(ellipsoid("light", 3, 44, 17, 1.5, 1.2, depth=0.3))
+    return c.render()
+
+
+def palm(seed=0):
+    rnd = random.Random(seed)
+    c = Canvas(50, 70, P(leaf="#3a9a4a", leafd="#2a7038", bark="#9a7448", nut="#6a4a28"))
+    c.textures["bark"] = bark_tex
+    c.textures["leaf"] = leaf_tex
+    x0, y0 = 25, 68
+    lean = rnd.choice((-1, 1)) * 5
+    for i in range(10):  # ringed trunk, gently bent
+        t0, t1 = i / 10, (i + 1) / 10
+        c.add(capsule("bark", 1 + i * 0.01, x0 + lean * t0 * t0, y0 - t0 * 46, x0 + lean * t1 * t1, y0 - t1 * 46, 2.6 - t0 * 0.8))
+    tx, ty = x0 + lean, y0 - 48
+    for k, a in enumerate((200, 235, 270, 305, 340, 160, 20)):
+        r = math.radians(a)
+        ex, ey = tx + math.cos(r) * 22, ty + math.sin(r) * 9 + 8
+        mx_, my_ = tx + math.cos(r) * 12, ty + math.sin(r) * 5 - 3
+        c.add(capsule("leaf" if k % 2 else "leafd", 2 + k * 0.05, tx, ty, mx_, my_, 3.2))
+        c.add(capsule("leaf" if k % 2 else "leafd", 2.02 + k * 0.05, mx_, my_, ex, ey, 2.2))
+    for dx in (-2, 2):
+        c.add(ellipsoid("nut", 3, tx + dx, ty + 3, 2, 2))
+    return c.render()
+
+
+def umbrella(col="#e04a3a"):
+    c = Canvas(40, 50, P(cloth=col, cloth2="#f4f0e8", pole="#d8d0c0", towel="#3a8ad0"))
+    c.add(rbox("towel", 0.5, 4, 40, 26, 48, rad=1, depth=0.2))
+    c.add(capsule("pole", 1, 20, 47, 20, 10, 1.1))
+    for i in range(6):
+        a0 = math.pi + i * math.pi / 6
+        a1 = math.pi + (i + 1) * math.pi / 6
+        c.add(poly("cloth" if i % 2 == 0 else "cloth2", 2 + i * 0.01,
+                   [(20, 4), (20 + math.cos(a0) * 19, 16 + math.sin(a0) * 2), (20 + math.cos(a1) * 19, 16 + math.sin(a1) * 2)], depth=0.6))
+    return c.render()
+
+
+def server(seed=0, led="#40e8e0", led2="#f050c8"):
+    rnd = random.Random(seed)
+    c = Canvas(30, 52, P(body="#2c3244", front="#1a1e2a", led=led, led2=led2, top="#4a5268"))
+    c.textures["body"] = metal_tex
+    c.add(rbox("body", 1, 2, 6, 28, 51, rad=1.5))
+    c.add(rbox("top", 1.2, 2, 2, 28, 8, rad=1.5, depth=0.5))
+    c.add(rbox("front", 1.5, 5, 10, 25, 48, rad=1, depth=0.4))
+    for y in range(12, 47, 4):
+        for x in range(7, 24):
+            c.dot(x, y + 2, "body", 1)
+        for x in (8, 11, 14):
+            if rnd.random() < 0.7:
+                c.dot(x, y, "led" if rnd.random() < 0.7 else "led2", 3)
+    return c.render()
+
+
+def console():
+    c = Canvas(36, 30, P(body="#3a4256", screen="#2ad0d8", key="#8a92a6", glow="#d8ffff"))
+    c.textures["body"] = metal_tex
+    c.add(rbox("body", 1, 3, 14, 33, 29, rad=2))
+    c.add(poly("body", 1.5, [(4, 15), (32, 15), (29, 4), (7, 4)], depth=0.6))
+    c.add(rbox("screen", 2, 9, 6, 27, 13, rad=1, depth=0.3))
+    for x in range(11, 26, 3):
+        c.dot(x, 8, "glow", 5)
+        c.dot(x + 1, 10, "glow", 3)
+    for x in range(7, 30, 3):
+        c.dot(x, 19, "key", 4)
+        c.dot(x, 22, "key", 3)
+    return c.render()
+
+
+def cable_drum():
+    c = Canvas(26, 26, P(wood="#8a6a42", cable="#e0503a", dark="#3a2a1e"))
+    c.add(ellipsoid("wood", 1, 13, 14, 11, 11))
+    c.add(ellipsoid("cable", 1.5, 13, 14, 8, 8))
+    c.add(ellipsoid("dark", 2, 13, 14, 2.5, 2.5, depth=0.3))
+    return c.render()
+
+
+def turret(view="side"):
+    """AI DataCenter wall turret: a NEXUS eye on a steel mount.
+    side: the barrel points left (the scene flips it); up / down: pointing up or down."""
+    c = Canvas(32, 32, P(body="#4a5268", dark="#22283a", eye="#f040c0", barrel="#8a94aa"))
+    c.textures["body"] = metal_tex
+    c.add(rbox("dark", 1, 8, 8, 24, 24, rad=3))
+    c.add(ellipsoid("body", 2, 16, 16, 7, 7))
+    if view == "side":
+        c.add(capsule("barrel", 3, 15, 16, 2, 16, 2.2))
+    elif view == "up":
+        c.add(capsule("barrel", 3, 16, 15, 16, 2, 2.2))
+    else:
+        c.add(capsule("barrel", 3, 16, 17, 16, 30, 2.2))
+    c.add(ellipsoid("eye", 4, 16, 16, 2.6, 2.6, depth=0.5))
+    return c.render()
+
+
 THEMES = {
     "ruins": {"tree": [tree2(seed=s) for s in range(3)] + [tree2(seed=7, green="#4a7a2e", light="#86b04c")],
               "bush": [bush(s) for s in range(2)],
@@ -355,7 +557,21 @@ THEMES = {
                "bollard": [bollard()], "boat": [boat()], "drums": [drums()]},
     "fortress": {"junk": [junk_pile(s) for s in range(2)], "tires": [tires()], "car": [car_wreck()], "banner": [banner()],
                  "drums": [drums()]},
+    "forest": {"tree": [tree2(seed=s, green=g, light=l) for s, g, l in ((11, "#2f7a3a", "#58aa48"), (12, "#357f34", "#62b04a"),
+                                                                       (13, "#2a6e40", "#4fa050"))] + [pine(seed=14)],
+               "bush": [bush(s) for s in range(2)], "rock": [rock(5, "#7c8478")], "stump": [rock(6, "#7a5634")]},
+    "snow": {"pine": [pine(seed=s, green=g, snow_=True) for s, g in ((21, "#2a5e48"), (22, "#2e6650"), (23, "#24564a"))],
+             "crystal": [crystal(24), crystal(25, "#8ae0ff")], "rock": [rock(26, "#8a96aa")]},
+    "city": {"street_tree": [street_tree(s) for s in (31, 32)], "lamp": [lamp()], "bench": [bench()],
+             "dumpster": [dumpster(), dumpster("#3a5a9a")], "hydrant": [hydrant()], "car": [parked_car(), parked_car("#c84a3a")]},
+    "lake": {"palm": [palm(41), palm(42)], "umbrella": [umbrella(), umbrella("#2a8ad0")], "crates": [crates()],
+             "rock": [rock(43, "#9a9488")], "bollard": [bollard()], "boat": [boat()],
+             "junk": [junk_pile(s) for s in range(2)]},
+    "datacenter": {"server": [server(51), server(52, "#5af07a", "#40c8f0")], "console": [console()],
+                   "drum": [cable_drum()], "crates": [crates()]},
 }
+
+TURRETS = {"turret_side": turret("side"), "turret_up": turret("up"), "turret_down": turret("down")}
 
 if __name__ == "__main__":
     for theme, kinds in THEMES.items():
@@ -365,4 +581,6 @@ if __name__ == "__main__":
                 if kind != "boat":
                     im = grounded(im)
                 im.save(os.path.join(OUT, theme, f"{kind}_{i}.png"))
+    for name, im in TURRETS.items():
+        im.save(os.path.join(OUT, name + ".png"))
     print("ok")

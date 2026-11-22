@@ -15,17 +15,37 @@ the game.
 | `vol.py` | Volume-shaded pixel renderer (ellipsoids, capsules, rounded boxes, lighting, outline). Used by heads, props, boss, portrait. |
 | `pixelkit.py` | Smaller pixel-art helpers used by the collectibles and the trash bag. |
 
-## Levels (Ruins, Factory, Harbor, Fortress)
+## Levels (every campaign level)
+All levels are `BuiltLevel`s (`Misc/Builder/built_level.gd`): a text map drawn
+with the tilesets and props below. Themes: `ruins`, `factory`, `harbor`,
+`fortress`, and `forest`, `snow`, `city`, `lake`, `datacenter` for Forest,
+Snow Path, City, Polluted Lake and AI DataCenter.
+
 | Script | Output | Goes to |
 |---|---|---|
-| `tiles2.py OUT` | `<theme>.png` (8x2 atlas), `<theme>_water.png`, `<theme>_path.png` (dual-grid edges) | `Misc/Builder/Tiles/` |
-| `props.py OUT` | trees, pillars, tanks, containers, junk piles... per theme | `Misc/Builder/Props/<theme>/` |
-| `gen_maps2.py OUT` | `Ruins.txt`, `Factory.txt`, `Harbor.txt`, `Fortress.txt` (seeded, same result every run) | `Levels/<Name>_level/map.txt` |
-| `preview_map.py MAP THEME OUT.png [x y w h]` | picture of a map as the game draws it (needs `tiles2/` and `props/` next to the script) | level-select previews in `Resources/Levels/` |
+| `tiles2.py OUT` | `<theme>.png` (8x2 atlas), `<theme>_water.png`, `<theme>_path.png` (dual-grid edges), `city_grass.png` (the park lawn), `passage.png` (marks the teleports between the areas of a map) | `Misc/Builder/Tiles/` |
+| `props.py OUT` | trees, pines, crystals, lamps, cars, palms, junk heaps, server racks... per theme, plus `turret_side/up/down.png` | `Misc/Builder/Props/<theme>/`, the turrets to `Levels/Ai DataCenter_level/Assets/Turrets/` |
+| `gen_maps2.py OUT [Name ...]` | `Ruins.txt`, `Factory.txt`, `Harbor.txt`, `Fortress.txt`, `City.txt`, `SnowPath.txt`, `Lake.txt`, `DataCenter.txt` (seeded, same result every run; give names to make only those) | `Levels/<Name>_level/map.txt` (`SnowPath` → `SnowPathLevel/`, `Lake` → `BeachLevel/`, `DataCenter` → `Ai DataCenter_level/`) |
+| `preview_map.py MAP THEME OUT.png [x y w h]` | picture of a map as the game draws it (needs `tiles2/` and `props/` next to the script) | level-select previews in `Resources/Levels/`, menu backgrounds in `Menu/Background/` |
 
 The map characters are documented at the top of `Misc/Builder/built_level.gd`.
-The prop names per theme are listed in `PROPS` in the same file. If you add a
-prop, add it there too.
+The prop names per theme are listed in `PROPS` in the same file (and in `CAT`
+in `preview_map.py`). If you add a prop, add it there too.
+
+City, Snow Path, Polluted Lake and AI DataCenter are designed in
+`gen_maps2.py` (one function each, the layout is described at the top of it):
+the City's blocks of buildings round the park in the middle, the Snow Path
+trail from the valley to the summit with its two caves, the lake with a use
+for every shore, the data center's halls and corridors (and its wall turrets,
+in the extras after `---`). Their secret rooms are carved by `secret_room()`,
+which checks that the portal can only be reached by breaking the crates.
+Ruins, Factory, Harbor and Fortress got their secret rooms afterwards from
+`Tools/dev/carve_secret_rooms.py`, so regenerate only the maps you change.
+
+The Forest keeps the layout of its old hand-made scene (which used
+third-party tilesets, now removed): `Tools/dev/scene_to_map.py` read which
+cells were walkable, water or walls, and where the start, enemies, items and
+teleports were. It was converted once and can be edited by hand.
 
 ## Boss and story
 | Script | Output | Goes to |
