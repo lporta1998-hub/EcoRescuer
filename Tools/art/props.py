@@ -565,7 +565,8 @@ THEMES = {
     "city": {"street_tree": [street_tree(s) for s in (31, 32)], "lamp": [lamp()], "bench": [bench()],
              "dumpster": [dumpster(), dumpster("#3a5a9a")], "hydrant": [hydrant()], "car": [parked_car(), parked_car("#c84a3a")]},
     "lake": {"palm": [palm(41), palm(42)], "umbrella": [umbrella(), umbrella("#2a8ad0")], "crates": [crates()],
-             "rock": [rock(43, "#9a9488")], "bollard": [bollard()], "boat": [boat()]},
+             "rock": [rock(43, "#9a9488")], "bollard": [bollard()], "boat": [boat()],
+             "junk": [junk_pile(s) for s in range(2)]},
     "datacenter": {"server": [server(51), server(52, "#5af07a", "#40c8f0")], "console": [console()],
                    "drum": [cable_drum()], "crates": [crates()]},
 }

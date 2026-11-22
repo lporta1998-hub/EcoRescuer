@@ -6,7 +6,8 @@
   10   bridge / walkway                   11 decor A (transparent)   12 decor B (transparent)
   13   closed gate (collision)            14 floor variant             15 special overlay (transparent)
 <theme>_water.png, <theme>_path.png  4x4 dual-grid atlases: tile index = TL + 2*TR + 4*BL + 8*BR
-  (which of the 4 cells around a grid corner are water / path)."""
+  (which of the 4 cells around a grid corner are water / path).
+<theme>_grass.png  same, for the lawn (map ";"), only for the themes that have one (city: the park)."""
 import math, random, sys, os
 from PIL import Image
 
@@ -574,6 +575,19 @@ def tech_floor(base, line, seed, glow=None):
     return im
 
 
+def hatch(base, line, seed, period=8):
+    """Solid wall seen from above, drawn like a floor plan: diagonal hatching."""
+    rnd = random.Random(seed)
+    im = new()
+    px = im.load()
+    for y in range(T):
+        for x in range(T):
+            d = (x + y) % period
+            c = line if d == 0 else (sh(base, 1.1) if d == 1 else sh(base, 1 + rnd.uniform(-0.03, 0.03)))
+            px[x, y] = c + (255,)
+    return im
+
+
 def snow(base, seed, sparkle=True, prints=False):
     rnd = random.Random(seed)
     im = new()
@@ -835,7 +849,11 @@ def city():
                       decor(litter, 113), gate(hx("#6a6e76"), 114), dense, decor(crosswalk, 115)]
     water = dual(water_fn(hx("#3a7a9a"), hx("#24546e"), hx("#b0dcf0"), 101), hx("#dcecf4"), hx("#6a6660"), 102, shadow=(0, 0, 0, 80))
     path = dual(asphalt_fn(hx("#46464e"), 103), hx("#5a5a62"), hx("#8a8680"), 104, noise=0.04)
-    return tiles, water, path
+    # the park's lawn, with a stone curb
+    lawn = hx("#4e9a40")
+    lawn_tiles = [grass(lawn, 116 + s, flowers=(1 if s == 0 else 0), light=hx("#68b450"), dark=hx("#357a30")) for s in range(4)]
+    grass_ = dual(lambda x, y, d: lawn_tiles[(x // 8 + y // 8) % 4].getpixel((x, y))[:3], hx("#3c7e34"), hx("#8e8a82"), 117, noise=0.05)
+    return tiles, water, path, grass_
 
 
 def lake():
@@ -855,8 +873,9 @@ def datacenter():
     fl = hx("#3a4052")
     floors = [tech_floor(fl, hx("#262a38"), 140 + s) for s in range(5)] + [tech_floor(fl, hx("#262a38"), 145, glow=hx("#3ad8e0"))]
     under = tech_floor(sh(fl, 0.8), hx("#1e2230"), 146)
-    dense = speckled(hx("#161a26"), 147, specks=[hx("#202636")], rate=0.2)
-    tiles = floors + [wall_top(hx("#2a3042"), 148), rack(149),
+    # walls stand out from the dark floor: light steel tops, hatched where they are thick
+    dense = hatch(hx("#6a7388"), hx("#4e566a"), 147)
+    tiles = floors + [wall_top(hx("#8a94aa"), 148), rack(149),
                       under, floors[1], planks(hx("#6a7286"), hx("#1a1e28"), 150, vertical=True), decor(cables, 151),
                       decor(vent, 152), decor(energy_gate, 153), dense, decor(circuit, 154)]
     water = dual(glow_fn(hx("#38d8e0"), hx("#1a8aa8"), hx("#d8ffff"), 141), hx("#a8ffff"), hx("#1a1e2a"), 142, shadow=(0, 0, 0, 100))
@@ -889,9 +908,11 @@ THEMES = {"ruins": ruins, "factory": factory, "harbor": harbor, "fortress": fort
 
 if __name__ == "__main__":
     for name, fn in THEMES.items():
-        tiles, water, path = fn()
+        tiles, water, path, *grass_ = fn()
         atlas(tiles).save(os.path.join(OUT, name + ".png"))
         water.save(os.path.join(OUT, name + "_water.png"))
         path.save(os.path.join(OUT, name + "_path.png"))
+        if grass_:
+            grass_[0].save(os.path.join(OUT, name + "_grass.png"))
     passage().save(os.path.join(OUT, "passage.png"))
     print("ok")

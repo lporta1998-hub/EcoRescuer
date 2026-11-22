@@ -1,5 +1,5 @@
 """Renders a BuiltLevel v2 map the way the game draws it (for quick iteration).
-usage: preview_map.py map.txt theme out.png [x0 y0 w h (cells)]"""
+usage: preview_map.py map.txt theme out.png [x0 y0 w h (cells)] [scale]"""
 import sys, os, zlib
 from PIL import Image
 
@@ -16,10 +16,10 @@ CAT = {
                "X": ["bush_0", "bush_1"], "&": ["tree_0", "tree_1", "tree_2", "tree_3"], "b": []},
     "snow": {"T": ["pine_0", "pine_1", "pine_2"], "x": ["rock_0", "crystal_0", "crystal_1"], "X": ["crystal_0", "rock_0"],
              "&": ["pine_0", "pine_1", "pine_2"], "b": []},
-    "city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0", "dumpster_0", "dumpster_1", "car_0", "car_1"],
-             "X": ["hydrant_0", "lamp_0"], "&": ["street_tree_0", "street_tree_1"], "b": []},
+    "city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0"],
+             "X": ["hydrant_0", "lamp_0", "dumpster_0", "dumpster_1"], "&": ["street_tree_0", "street_tree_1"], "b": [], "c": ["car_0", "car_1"]},
     "lake": {"T": ["palm_0", "palm_1", "umbrella_0", "umbrella_1"], "x": ["crates_0", "rock_0"], "X": ["bollard_0", "rock_0"],
-             "&": ["palm_0", "palm_1"], "b": ["boat_0"]},
+             "&": ["palm_0", "palm_1"], "b": ["boat_0"], "c": ["junk_0", "junk_1"]},
     "datacenter": {"T": ["server_0", "server_1"], "x": ["console_0", "drum_0", "crates_0"], "X": ["drum_0", "crates_0"],
                    "&": ["server_0", "server_1"], "b": []},
 }
@@ -41,17 +41,23 @@ def main():
     atlas = Image.open(os.path.join(tdir, theme + ".png"))
     water = Image.open(os.path.join(tdir, theme + "_water.png"))
     path = Image.open(os.path.join(tdir, theme + "_path.png"))
+    gpath = os.path.join(tdir, theme + "_grass.png")
+    grass = Image.open(gpath) if os.path.exists(gpath) else None
     tile = lambda i: atlas.crop(((i % 8) * T, (i // 8) * T, (i % 8) * T + T, (i // 8) * T + T))
     img = Image.new("RGBA", (W * T, H * T), (0, 0, 0, 255))
-    ENT = set("PBECHFRKDSLZGTxX")
+    ENT = set("PBECHFRKDSLZGWVYTxXc")
 
-    def is_path(x, y):
-        c = ch(x, y)
-        if c in ",_":
-            return True
-        if c in ENT or c in "oO":
-            return sum(ch(x + dx, y + dy) in ",_" for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))) >= 2
-        return False
+    def overlay(own):
+        def f(x, y):
+            c = ch(x, y)
+            if c in own:
+                return True
+            if c in ENT or c in "oO":
+                return sum(ch(x + dx, y + dy) in own for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))) >= 2
+            return False
+        return f
+    is_path = overlay(",_")
+    is_lawn = overlay(";")
 
     def is_water(x, y):
         return ch(x, y) in "~=b"
@@ -67,7 +73,8 @@ def main():
             else:
                 i = 8 if c in "~b" else FLOORS[h(x, y) % len(FLOORS)]
             img.alpha_composite(tile(i), (x * T, y * T))
-    for layer, fn in ((water, is_water), (path, is_path)):
+    layers = ([(grass, is_lawn)] if grass else []) + [(water, is_water), (path, is_path)]
+    for layer, fn in layers:
         for y in range(H + 1):
             for x in range(W + 1):
                 idx = fn(x - 1, y - 1) * 1 + fn(x, y - 1) * 2 + fn(x - 1, y) * 4 + fn(x, y) * 8
@@ -78,6 +85,8 @@ def main():
         for x in range(W):
             c = ch(x, y)
             i = {"#": 6 if ch(x, y + 1) == "#" else 7, "=": 10, "o": 11, "O": 12, "_": 15, "G": 13}.get(c)
+            if c == "#" and all(ch(x + dx, y + dy) in "# " for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
+                i = 14  # deep inside a wall block: dark roof (as BuiltLevel._top)
             if i is not None:
                 img.alpha_composite(tile(i), (x * T, y * T))
             if c == "#" and ch(x, y - 1) not in "# ":
@@ -95,8 +104,8 @@ def main():
             c = ch(x, y)
             names = None
             jx = jy = 0
-            if c in "TxXb":
-                names = cat[c]
+            if c in "TxXbc":
+                names = cat.get(c)
             elif c == "&" and ((y % 2 == 0 and (x + (y // 2) % 2 * 2) % 3 == 0) or
                                ((x + y) % 2 == 0 and any(ch(x + dx, y + dy) not in "&" for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))))):
                 names = cat["&"]
@@ -110,6 +119,9 @@ def main():
     if len(sys.argv) > 4:
         x0, y0, w, hh = map(int, sys.argv[4:8])
         img = img.crop((x0 * T, y0 * T, (x0 + w) * T, (y0 + hh) * T))
+    if len(sys.argv) > 8:
+        k = float(sys.argv[8])
+        img = img.resize((int(img.width * k), int(img.height * k)), Image.LANCZOS)
     img.save(out)
 
 

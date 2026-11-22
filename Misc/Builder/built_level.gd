@@ -6,10 +6,12 @@ extends Node2D
 ##
 ## Terrain:  .  floor        ,  path / plaza     _  special overlay
 ##           #  wall         ~  water / pool     =  bridge / walkway
+##           ;  lawn (only the themes with a <theme>_grass.png: the City park)
 ##           &  dense mass: forest, machinery, containers, junk (blocks, filled with big props)
 ##           o  decor A      O  decor B          (space = nothing)
 ## Props (sprites, y-sorted with the characters, they block at the base):
 ##           T  big prop     x  medium prop      X  small prop       b  boat (on water)
+##           c  the theme's special prop: parked cars (City), junk heaps (Polluted Lake)
 ## Things (they stand on floor):
 ##           P  player start     S  recycling station    D  secret dossier
 ##           B  trash bag        E  enemy                L  Elite enemy
@@ -68,10 +70,11 @@ const PROPS := {
 			"X": ["bush_0", "bush_1"], "&": ["tree_0", "tree_1", "tree_2", "tree_3"], "b": []},
 	"snow": {"T": ["pine_0", "pine_1", "pine_2"], "x": ["rock_0", "crystal_0", "crystal_1"], "X": ["crystal_0", "rock_0"],
 			"&": ["pine_0", "pine_1", "pine_2"], "b": []},
-	"city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0", "dumpster_0", "dumpster_1", "car_0", "car_1"],
-			"X": ["hydrant_0", "lamp_0"], "&": ["street_tree_0", "street_tree_1"], "b": []},
+	"city": {"T": ["street_tree_0", "street_tree_1", "lamp_0"], "x": ["bench_0"],
+			"X": ["hydrant_0", "lamp_0", "dumpster_0", "dumpster_1"], "&": ["street_tree_0", "street_tree_1"], "b": [],
+			"c": ["car_0", "car_1"]},
 	"lake": {"T": ["palm_0", "palm_1", "umbrella_0", "umbrella_1"], "x": ["crates_0", "rock_0"], "X": ["bollard_0", "rock_0"],
-			"&": ["palm_0", "palm_1"], "b": ["boat_0"]},
+			"&": ["palm_0", "palm_1"], "b": ["boat_0"], "c": ["junk_0", "junk_1"]},
 	"datacenter": {"T": ["server_0", "server_1"], "x": ["console_0", "drum_0", "crates_0"], "X": ["drum_0", "crates_0"],
 			"&": ["server_0", "server_1"], "b": []},
 }
@@ -143,6 +146,9 @@ func build() -> void:
 	y_sort_enabled = true
 	var tiles := _make_tileset()
 	ground = _layer("Ground", tiles, -10)
+	var lawn: TileMapLayer = null
+	if ResourceLoader.exists("res://Misc/Builder/Tiles/%s_grass.png" % theme):
+		lawn = _layer("Lawn", _overlay_tileset("grass"), -9, false)
 	var water := _layer("Water", _overlay_tileset("water"), -9, false)
 	var path := _layer("Path", _overlay_tileset("path"), -8, false)
 	walls = _layer("Walls", tiles, -7)
@@ -206,6 +212,8 @@ func build() -> void:
 	_add_extras()
 	_fill_overlay(water, w, _is_water)
 	_fill_overlay(path, w, _is_path)
+	if lawn:
+		_fill_overlay(lawn, w, _is_lawn)
 	if sub_area:
 		_own_children()
 		return
@@ -330,15 +338,24 @@ func _is_water(x: int, y: int) -> bool:
 
 
 func _is_path(x: int, y: int) -> bool:
+	return _covered(x, y, [",", "_"])
+
+
+func _is_lawn(x: int, y: int) -> bool:
+	return _covered(x, y, [";"])
+
+
+## True on the overlay's own cells, and under things and props standing among
+## them (a tree on the lawn, a coin on a plaza keep the ground under them).
+func _covered(x: int, y: int, own: Array) -> bool:
 	var c := _char(x, y)
-	if c == "," or c == "_":
+	if c in own:
 		return true
-	if c in [".", "#", "~", "=", "&", " ", "b"]:
+	if c in [".", ",", "_", ";", "#", "~", "=", "&", " ", "b"]:
 		return false
-	# things and props standing on a plaza keep the plaza under them
 	var n := 0
 	for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-		if _char(x + d.x, y + d.y) in [",", "_"]:
+		if _char(x + d.x, y + d.y) in own:
 			n += 1
 	return n >= 2
 
@@ -347,7 +364,7 @@ func _add_props(ch: String, x: int, y: int) -> void:
 	var set_: Dictionary = PROPS.get(theme, {})
 	var key := ""
 	var jitter := Vector2.ZERO
-	if ch in ["T", "x", "X", "b"]:
+	if ch in ["T", "x", "X", "b", "c"]:
 		key = ch
 	elif ch == "&":
 		# keep the crates of a secret passage in sight: no canopy over them
@@ -374,14 +391,14 @@ func _add_props(ch: String, x: int, y: int) -> void:
 	s.offset = Vector2(-floorf(tex.get_width() / 2.0), -tex.get_height() + 3)
 	s.position = Vector2(x * TILE + TILE / 2.0, y * TILE + 14) + jitter
 	add_child(s)
-	if key in ["T", "x", "X"]:
+	if key in ["T", "x", "X", "c"]:
 		# block only at the base, so you can walk behind the canopy / top
 		var body := StaticBody2D.new()
 		body.collision_layer = 2
 		body.collision_mask = 0
 		var shape := CollisionShape2D.new()
 		var rect := RectangleShape2D.new()
-		var wide := 0.8 if theme == "harbor" and key == "T" else 0.45
+		var wide := 0.8 if (theme == "harbor" and key == "T") or key == "c" else 0.45
 		rect.size = Vector2(clampf(tex.get_width() * wide, 10.0, 40.0), 10.0)
 		shape.shape = rect
 		shape.position = Vector2(0, -4)
