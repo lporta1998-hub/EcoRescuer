@@ -12,7 +12,7 @@ static func spawn(target: Node2D, text: String, color: Color = Color.WHITE, offs
 	if not is_instance_valid(target) or not target.is_inside_tree():
 		return
 	var ft := FloatText.new()
-	ft._text = text
+	ft._text = Lang.t(text)
 	ft._color = color
 	ft.z_index = 100
 	target.get_parent().add_child(ft)

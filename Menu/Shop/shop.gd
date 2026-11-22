@@ -336,14 +336,14 @@ func _refresh() -> void:
 			button.add_theme_color_override("font_color", col)
 			button.add_theme_color_override("font_hover_color", col)
 		else:
-			button.text = "Posseduto" if item.price > 0 else "Gratis"
+			button.text = tr("Posseduto") if item.price > 0 else tr("Gratis")
 			button.icon = null
 			button.disabled = true
 			button.add_theme_color_override("font_disabled_color", GREEN)
 	match _tab:
 		"enemy":
 			var bonus := roundi((Progress.coin_multiplier() - 1.0) * 100.0)
-			_summary.text = "Bonus monete con le sfide attive: +%d%%" % bonus if bonus > 0 \
+			_summary.text = tr("Bonus monete con le sfide attive: +%d%%") % bonus if bonus > 0 \
 					else "Attiva le sfide per rendere i livelli più difficili e guadagnare più monete."
 		"player":
 			_summary.text = "Ogni potenziamento si compra fino a 5 volte: ogni livello lo rende più forte."
@@ -366,7 +366,7 @@ func _refresh_buff_card(c: Dictionary) -> void:
 	else:
 		c.desc.text = "%s\n→ %s" % [Progress.effect_text(id, lvl), Progress.effect_text(id, lvl + 1)]
 	if c.reward:
-		c.reward.text = "+%d%% monete" % roundi(Progress.reward_at(id, maxi(lvl, 1)) * 100.0)
+		c.reward.text = tr("+%d%% monete") % roundi(Progress.reward_at(id, maxi(lvl, 1)) * 100.0)
 		c.reward.modulate.a = 1.0 if on or lvl == 0 else 0.5
 	if maxed:
 		button.text = "MAX"
@@ -385,7 +385,7 @@ func _refresh_buff_card(c: Dictionary) -> void:
 		button.add_theme_color_override("font_hover_color", col)
 	var toggle: Button = c.toggle
 	toggle.visible = lvl > 0
-	toggle.text = "ATTIVO" if on else "SPENTO"
+	toggle.text = tr("ATTIVO") if on else tr("SPENTO")
 	toggle.add_theme_color_override("font_color", GREEN if on else GREY)
 	toggle.add_theme_color_override("font_hover_color", GREEN if on else GREY)
 
@@ -396,7 +396,7 @@ func _draw_pips(pips: Control, id: String) -> void:
 	var on := Progress.is_active(id)
 	var fill := (GREEN if Progress.BUFFS[id].kind == "player" else Color(1.0, 0.5, 0.45)) if on else GREY
 	var font := get_theme_default_font()
-	var label := "Lv %d/%d" % [lvl, Progress.MAX_BUFF_LEVEL]
+	var label := tr("Lv %d/%d") % [lvl, Progress.MAX_BUFF_LEVEL]
 	var lw := font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, 15).x
 	var r := 6.0
 	var gap := 4.0
@@ -465,17 +465,17 @@ func _on_card_pressed(item: Dictionary, card: Control) -> void:
 	if bought:
 		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_buy.wav"))
 		if item.kind == "character":
-			_show_message("%s sbloccato! Sceglilo in selezione personaggio." % item.title, GREEN)
+			_show_message(tr("%s sbloccato! Sceglilo in selezione personaggio.") % tr(item.title), GREEN)
 		else:
 			var lvl := Progress.buff_level(item.id)
-			_show_message("%s livello %d: %s. È attivo." % [item.title, lvl, Progress.effect_text(item.id, lvl)], GREEN)
+			_show_message(tr("%s livello %d: %s. È attivo.") % [tr(item.title), lvl, Progress.effect_text(item.id, lvl)], GREEN)
 		card.pivot_offset = card.size / 2.0
 		var t := create_tween()
 		t.tween_property(card, "scale", Vector2(1.08, 1.08), 0.1)
 		t.tween_property(card, "scale", Vector2.ONE, 0.15)
 	else:
 		SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_denied.wav"))
-		_show_message("Ti mancano %d monete: raccogli oggetti nei livelli!" % (price - Progress.coins), RED)
+		_show_message(tr("Ti mancano %d monete: raccogli oggetti nei livelli!") % (price - Progress.coins), RED)
 		card.pivot_offset = card.size / 2.0
 		var t := create_tween()
 		for r in [0.04, -0.04, 0.025, 0.0]:
@@ -489,7 +489,7 @@ func _on_toggle_pressed(item: Dictionary) -> void:
 	var on := not Progress.is_active(item.id)
 	Progress.set_buff_active(item.id, on)
 	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_on.wav") if on else preload("res://Audio/SFX/Eco/ui_off.wav"))
-	_show_message("%s %s." % [item.title, "attivato" if on else "spento"], GREEN if on else GREY)
+	_show_message((tr("%s attivato.") if on else tr("%s spento.")) % tr(item.title), GREEN if on else GREY)
 	_refresh()
 
 

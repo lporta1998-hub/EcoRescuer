@@ -181,18 +181,18 @@ func _fill_achievements() -> void:
 			done += 1
 		var target := Achievements.target_of(a)
 		var value := mini(Achievements.value_of(a), target)
-		var right := "+%d monete" % a.reward if unlocked else "%d / %d" % [value, target]
+		var right := tr("+%d monete") % a.reward if unlocked else "%d / %d" % [value, target]
 		_list.add_child(_row(STAR_ICON if unlocked else LOCK_ICON, a.title, a.text, right,
 				GOLD if unlocked else GREY))
-	_summary.text = "Traguardi sbloccati: %d / %d" % [done, Achievements.LIST.size()]
+	_summary.text = tr("Traguardi sbloccati: %d / %d") % [done, Achievements.LIST.size()]
 
 
 func _fill_enemies() -> void:
 	var met := 0
 	for e in ENEMIES:
 		var info: Dictionary = Story.ENEMIES.get(e.get("type", ""), {})
-		var name: String = e.get("name", info.get("name", "?"))
-		var tip: String = e.get("tip", info.get("tip", ""))
+		var name: String = tr(e.get("name", info.get("name", "?")))
+		var tip: String = tr(e.get("tip", info.get("tip", "")))
 		if _enemy_met(e):
 			met += 1
 			var icon := AtlasTexture.new()
@@ -201,7 +201,7 @@ func _fill_enemies() -> void:
 			_list.add_child(_row(icon, name, tip.substr(0, 1).to_upper() + tip.substr(1), "", Color.WHITE))
 		else:
 			_list.add_child(_row(LOCK_ICON, "???", "Non l'hai ancora incontrato: continua la campagna.", "", GREY))
-	_summary.text = "Nemici incontrati: %d / %d" % [met, ENEMIES.size()]
+	_summary.text = tr("Nemici incontrati: %d / %d") % [met, ENEMIES.size()]
 
 
 ## True once the player has reached the chapter the enemy first appears in.
@@ -237,13 +237,13 @@ func _fill_dossiers() -> void:
 	for i in list.size():
 		var ch: Dictionary = list[i]
 		var level: LevelData = load(ch.level)
-		var label := ("Epilogo" if ch.get("epilogue", false) else "Capitolo %d" % (i + 1)) + " · " + String(ch.title)
+		var label := (tr("Epilogo") if ch.get("epilogue", false) else tr("Capitolo %d") % (i + 1)) + " · " + tr(ch.title)
 		if Progress.quest_done(level, "dossier"):
 			found += 1
 			_list.add_child(_row(DOSSIER_ICON, label, ch.dossier, "", GOLD))
 		else:
-			_list.add_child(_row(LOCK_ICON, label, "Dossier non ancora trovato: è nascosto in %s." % level.level_name, "", GREY))
-	_summary.text = "Dossier trovati: %d / %d" % [found, list.size()]
+			_list.add_child(_row(LOCK_ICON, label, tr("Dossier non ancora trovato: è nascosto in %s.") % tr(level.level_name), "", GREY))
+	_summary.text = tr("Dossier trovati: %d / %d") % [found, list.size()]
 
 
 func _fill_secrets() -> void:
@@ -254,17 +254,17 @@ func _fill_secrets() -> void:
 		var level: LevelData = load(ch.level)
 		var secret: Dictionary = ch.get("secret", {})
 		var reward: Dictionary = secret.get("reward", {})
-		var where := ("Epilogo" if ch.get("epilogue", false) else "Capitolo %d" % (i + 1)) + " · " + level.level_name
+		var where := (tr("Epilogo") if ch.get("epilogue", false) else tr("Capitolo %d") % (i + 1)) + " · " + tr(level.level_name)
 		if Progress.quest_done(level, "secret"):
 			found += 1
 			_list.add_child(_row(VaultChest.OPEN, secret.get("title", "?"),
-					secret.get("text", "") + "\n" + SecretSpots.reward_text(reward), where, SecretPortal.COLOR))
+					tr(secret.get("text", "")) + "\n" + SecretSpots.reward_text(reward), where, SecretPortal.COLOR))
 		else:
-			var kind := "un potenziamento per la Rage mode" if reward.get("type", "") == "perk" else "uno sconto nel negozio"
+			var kind := tr("un potenziamento per la Rage mode") if reward.get("type", "") == "perk" else tr("uno sconto nel negozio")
 			_list.add_child(_row(LOCK_ICON, "Caveau nascosto",
-					"In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s." % [level.level_name, kind],
+					tr("In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s.") % [tr(level.level_name), kind],
 					where, GREY))
-	_summary.text = "Caveau trovati: %d / %d" % [found, list.size()]
+	_summary.text = tr("Caveau trovati: %d / %d") % [found, list.size()]
 
 
 func _fill_stats() -> void:
@@ -276,7 +276,7 @@ func _fill_stats() -> void:
 	for pg in ShopMenu.CHARACTERS:
 		var wins := Progress.wins_with(pg)
 		if wins > 0:
-			_list.add_child(_row(pg.icon, "Vittorie con %s" % pg.title, "", str(wins), Color.WHITE))
+			_list.add_child(_row(pg.icon, tr("Vittorie con %s") % pg.title, "", str(wins), Color.WHITE))
 	_summary.text = ""
 
 

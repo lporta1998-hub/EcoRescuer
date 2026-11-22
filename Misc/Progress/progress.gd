@@ -194,30 +194,30 @@ func effect_text(id: String, level: int) -> String:
 	var pct := func(v: float) -> String: return "%d%%" % roundi(v * 100.0)
 	match id:
 		"extra_heart":
-			return "+1 cuore massimo" if level == 1 else "+%d cuori massimi" % level
+			return tr("+1 cuore massimo") if level == 1 else tr("+%d cuori massimi") % level
 		"swift":
-			return "+%s velocità" % pct.call(buff_value(id, level))
+			return tr("+%s velocità") % pct.call(buff_value(id, level))
 		"power":
 			if level <= 1:
-				return "+1 danno a ogni colpo"
-			return "+1 danno, %s di colpo critico (x2)" % pct.call(buff_value(id, level - 1))
+				return tr("+1 danno a ogni colpo")
+			return tr("+1 danno, %s di colpo critico (x2)") % pct.call(buff_value(id, level - 1))
 		"magnet":
-			return "attira gli oggetti entro %d px" % roundi(MAGNET_BASE_RADIUS + buff_value(id, level))
+			return tr("attira gli oggetti entro %d px") % roundi(MAGNET_BASE_RADIUS + buff_value(id, level))
 		"shield":
-			return "blocca il primo colpo di ogni partita" if level == 1 \
-					else "blocca i primi %d colpi di ogni partita" % level
+			return tr("blocca il primo colpo di ogni partita") if level == 1 \
+					else tr("blocca i primi %d colpi di ogni partita") % level
 		"armored":
-			return "nemici con +%s di vita" % pct.call(buff_value(id, level))
+			return tr("nemici con +%s di vita") % pct.call(buff_value(id, level))
 		"rapid":
-			return "nemici +%s veloci" % pct.call(buff_value(id, level))
+			return tr("nemici +%s veloci") % pct.call(buff_value(id, level))
 		"heavy":
 			if level >= MAX_BUFF_LEVEL:
-				return "ogni colpo nemico toglie 2 cuori"
-			return "%s dei colpi nemici toglie 2 cuori" % pct.call(buff_value(id, level))
+				return tr("ogni colpo nemico toglie 2 cuori")
+			return tr("%s dei colpi nemici toglie 2 cuori") % pct.call(buff_value(id, level))
 		"no_heal":
 			if level >= MAX_BUFF_LEVEL:
-				return "nessun cuore a terra"
-			return "sparisce il %s dei cuori a terra" % pct.call(buff_value(id, level))
+				return tr("nessun cuore a terra")
+			return tr("sparisce il %s dei cuori a terra") % pct.call(buff_value(id, level))
 	return ""
 
 

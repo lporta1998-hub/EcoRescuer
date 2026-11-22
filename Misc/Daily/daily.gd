@@ -70,7 +70,7 @@ func sfide_text() -> String:
 	for id in Progress.BUFFS:
 		var lvl: int = today().sfide.get(id, 0)
 		if lvl > 0:
-			parts.append("%s %d" % [Progress.BUFFS[id].title, lvl])
+			parts.append("%s %d" % [tr(Progress.BUFFS[id].title), lvl])
 	return "  ·  ".join(parts)
 
 

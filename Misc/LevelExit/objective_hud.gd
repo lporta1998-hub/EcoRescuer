@@ -111,8 +111,8 @@ func _ready() -> void:
 	if not active.is_empty():
 		var names := []
 		for entry in active:
-			names.append("%s Lv%d" % [Progress.BUFFS[entry[0]].title, entry[1]])
-		toast.call_deferred("Attivi: " + ", ".join(names), Color(0.8, 0.95, 1.0))
+			names.append(tr("%s Lv%d") % [tr(Progress.BUFFS[entry[0]].title), entry[1]])
+		toast.call_deferred(tr("Attivi: %s") % ", ".join(names), Color(0.8, 0.95, 1.0))
 
 
 func _process(delta: float) -> void:
@@ -146,9 +146,9 @@ func update_objective(bags: int, bags_needed: int, kills: int, kills_needed: int
 			toast("Obiettivo completato! Raggiungi il punto di raccolta.", GREEN)
 			refresh_route()
 	else:
-		var parts := ["Rifiuti %d/%d" % [mini(bags, bags_needed), bags_needed]]
+		var parts := [tr("Rifiuti %d/%d") % [mini(bags, bags_needed), bags_needed]]
 		if kills_needed > 0:
-			parts.append("Nemici %d/%d" % [mini(kills, kills_needed), kills_needed])
+			parts.append(tr("Nemici %d/%d") % [mini(kills, kills_needed), kills_needed])
 		_label.text = "  ·  ".join(parts)
 		_label.add_theme_color_override("font_color", Color.WHITE)
 	_arrow.queue_redraw()
@@ -293,7 +293,7 @@ func _draw_arrow() -> void:
 			var tip := target_screen + Vector2(0, -26 + bob)
 			_arrow.draw_colored_polygon(PackedVector2Array([tip, tip + Vector2(-10, -14), tip + Vector2(10, -14)]), TELEPORT_COLOR)
 			_arrow.draw_arc(target_screen, 18.0 + 3.0 * sin(t * 4.0), 0, TAU, 32, TELEPORT_COLOR, 2.5, true)
-			_draw_text(tip + Vector2(0, -20), "Teletrasporto", TELEPORT_COLOR)
+			_draw_text(tip + Vector2(0, -20), tr("Teletrasporto"), TELEPORT_COLOR)
 		return
 
 	# Off screen: an arrow orbiting the player, along the walking route.

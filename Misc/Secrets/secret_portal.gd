@@ -134,7 +134,7 @@ func _on_body_entered(body: Node) -> void:
 	if going_in and LevelManager.objective_hud:
 		var left := vault.guards_left()
 		LevelManager.objective_hud.toast(
-				"Caveau segreto! Sconfiggi i %d guardiani per aprire il forziere." % left if left > 0
-				else "Caveau segreto!", COLOR)
+				tr("Caveau segreto! Sconfiggi i %d guardiani per aprire il forziere.") % left if left > 0
+				else tr("Caveau segreto!"), COLOR)
 	await get_tree().create_timer(0.8).timeout
 	_busy = false

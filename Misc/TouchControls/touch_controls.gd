@@ -166,9 +166,9 @@ func _configure_for_player() -> void:
 		if custom is Dictionary:
 			actions = custom
 	_primary.visible = actions.has("primary")
-	_primary.label = actions.get("primary", "")
+	_primary.label = tr(actions.get("primary", ""))
 	_secondary.visible = actions.has("secondary")
-	_secondary.label = actions.get("secondary", "")
+	_secondary.label = tr(actions.get("secondary", ""))
 
 
 func _update_cooldowns() -> void:

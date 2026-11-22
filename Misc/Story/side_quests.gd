@@ -53,21 +53,21 @@ func is_active() -> bool:
 func summary(elapsed_seconds: float) -> String:
 	if not is_active():
 		return ""
-	var parts := ["Dossier %d/1" % (1 if dossier_found else 0)]
+	var parts := [tr("Dossier %d/1") % (1 if dossier_found else 0)]
 	match kind:
 		"barrels":
-			parts.append("Barili %d/%d" % [progress, target])
+			parts.append(tr("Barili %d/%d") % [progress, target])
 		"chests":
-			parts.append("Forzieri %d/%d" % [progress, target])
+			parts.append(tr("Forzieri %d/%d") % [progress, target])
 		"elites":
-			parts.append("Elite %d/%d" % [progress, target])
+			parts.append(tr("Elite %d/%d") % [progress, target])
 		"coins":
-			parts.append("Monete %d/%d" % [progress, target])
+			parts.append(tr("Monete %d/%d") % [progress, target])
 		"time":
 			var left := maxi(0, target - int(elapsed_seconds))
-			parts.append("Tempo %d:%02d" % [left / 60, left % 60] if not quest_failed else "Tempo scaduto")
+			parts.append(tr("Tempo %d:%02d") % [left / 60, left % 60] if not quest_failed else tr("Tempo scaduto"))
 		"nodamage":
-			parts.append("Senza danni" + (": fallita" if quest_failed else ""))
+			parts.append(tr("Senza danni: fallita") if quest_failed else tr("Senza danni"))
 	if quest_done:
 		parts[1] += " OK"
 	return "  ·  ".join(parts)
@@ -104,7 +104,7 @@ func on_dossier() -> String:
 	var first := Progress.record_quest(level, "dossier")
 	if first:
 		bonus_coins += Story.DOSSIER_REWARD
-	return "Dossier segreto trovato!" + (" +%d monete" % Story.DOSSIER_REWARD if first else "")
+	return tr("Dossier segreto trovato!") + (tr(" +%d monete") % Story.DOSSIER_REWARD if first else "")
 
 
 ## End of the level: quests checked at the finish line.
@@ -122,4 +122,4 @@ func _complete_quest() -> String:
 	var first := Progress.record_quest(level, "quest")
 	if first:
 		bonus_coins += Story.QUEST_REWARD
-	return "Missione completata!" + (" +%d monete" % Story.QUEST_REWARD if first else "")
+	return tr("Missione completata!") + (tr(" +%d monete") % Story.QUEST_REWARD if first else "")

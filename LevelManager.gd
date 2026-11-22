@@ -483,29 +483,33 @@ func _show_briefing() -> void:
         return
     var ld: LevelData = Global.selected_level_data
     var ch: Dictionary = side_quests.chapter
-    var lines := ["Obiettivo: raccogli %d sacchi di rifiuti%s, poi portali al punto di raccolta." % [
-            bags_needed, (" e sconfiggi %d Inquinatori" % kills_needed) if kills_needed > 0 else ""],
-            "Missioni secondarie: trova il dossier segreto  ·  %s." % side_quests.text]
+    var lines := [_objective_line(),
+            tr("Missioni secondarie: trova il dossier segreto  ·  %s.") % tr(side_quests.text)]
     for type in Story.new_enemies_in(ld):
-        lines.append("Nuovo nemico: %s — %s" % [Story.ENEMIES[type].name, Story.ENEMIES[type].tip])
+        lines.append(tr("Nuovo nemico: %s — %s") % [tr(Story.ENEMIES[type].name), tr(Story.ENEMIES[type].tip)])
     var card := StoryCard.open(current_level, {
-        "kicker": ("Epilogo  ·  %s" % ld.level_name) if Story.is_epilogue(ld) else \
-                "Capitolo %d di %d  ·  %s" % [Story.chapter_index(ld) + 1, Story.main_chapters().size(), ld.level_name],
+        "kicker": (tr("Epilogo  ·  %s") % tr(ld.level_name)) if Story.is_epilogue(ld) else \
+                tr("Capitolo %d di %d  ·  %s") % [Story.chapter_index(ld) + 1, Story.main_chapters().size(), tr(ld.level_name)],
         "title": ch.title, "text": ch.text, "lines": lines, "button": "Via!"})
     card.closed.connect(func(): start_time = Time.get_ticks_msec())  # the clock starts now
+
+## "Obiettivo: raccogli 10 sacchi di rifiuti e sconfiggi 5 Inquinatori, ..."
+func _objective_line() -> String:
+    if kills_needed > 0:
+        return tr("Obiettivo: raccogli %d sacchi di rifiuti e sconfiggi %d Inquinatori, poi portali al punto di raccolta.") % [bags_needed, kills_needed]
+    return tr("Obiettivo: raccogli %d sacchi di rifiuti, poi portali al punto di raccolta.") % bags_needed
 
 func _show_daily_briefing() -> void:
     if not is_instance_valid(current_level):
         return
     var ld: LevelData = Global.selected_level_data
-    var lines := ["Obiettivo: raccogli %d sacchi di rifiuti%s, poi portali al punto di raccolta." % [
-            bags_needed, (" e sconfiggi %d Inquinatori" % kills_needed) if kills_needed > 0 else ""],
-            "Sfide attive: " + Daily.sfide_text(),
-            "I potenziamenti del negozio sono spenti: vince il punteggio più alto."]
+    var lines := [_objective_line(),
+            tr("Sfide attive: %s") % Daily.sfide_text(),
+            tr("I potenziamenti del negozio sono spenti: vince il punteggio più alto.")]
     if not Daily.done_today():
-        lines.append("Completala per +%d monete (una volta al giorno)." % Daily.REWARD)
+        lines.append(tr("Completala per +%d monete (una volta al giorno).") % Daily.REWARD)
     var card := StoryCard.open(current_level, {
-        "kicker": "Sfida del giorno  ·  " + Daily.date(),
+        "kicker": tr("Sfida del giorno") + "  ·  " + Daily.date(),
         "title": ld.level_name, "text": "Stesso livello e stesse Sfide per tutti i giocatori, solo per oggi.",
         "lines": lines, "button": "Via!", "color": Color(0.55, 0.9, 1.0)})
     card.closed.connect(func(): start_time = Time.get_ticks_msec())
@@ -675,11 +679,11 @@ func try_finish_level() -> void:
         return
     var missing := []
     if trash_bags_collected < bags_needed:
-        missing.append("%d rifiuti" % (bags_needed - trash_bags_collected))
+        missing.append(tr("%d rifiuti") % (bags_needed - trash_bags_collected))
     if enemies_killed < kills_needed:
-        missing.append("%d nemici da sconfiggere" % (kills_needed - enemies_killed))
+        missing.append(tr("%d nemici da sconfiggere") % (kills_needed - enemies_killed))
     if objective_hud:
-        objective_hud.toast("Ti mancano ancora: " + " e ".join(missing), Color(1.0, 0.6, 0.45))
+        objective_hud.toast(tr("Ti mancano ancora: %s") % tr(" e ").join(missing), Color(1.0, 0.6, 0.45))
 
 ## Nothing uses the navigation mesh any more (enemies and the station arrow
 ## path over RouteGuide's tile grid). The tile layers registered one

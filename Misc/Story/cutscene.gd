@@ -57,9 +57,9 @@ static func ending_panels() -> Array:
 	var total := Story.main_chapters().size()
 	var last: String
 	if found >= total:
-		last = "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!" % total
+		last = Lang.t("Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!") % total
 	else:
-		last = "L'isola è salva, per ora. Hai trovato %d dossier su %d: trovali tutti per mandare in prigione i politici corrotti e vedere il finale completo." % [found, total]
+		last = Lang.t("L'isola è salva, per ora. Hai trovato %d dossier su %d: trovali tutti per mandare in prigione i politici corrotti e vedere il finale completo.") % [found, total]
 	var out := []
 	for p in ENDING:
 		var q: Dictionary = p.duplicate()
@@ -191,8 +191,8 @@ func _next() -> void:
 		return
 	var p: Dictionary = _panels[_index]
 	_image.texture = load(ART + p.image + ".png")
-	_title.text = p.title
-	_full_text = p.text
+	_title.text = tr(p.title)
+	_full_text = tr(p.text)
 	_text.text = _full_text
 	_shown = 0.0
 	_text.visible_characters = 0

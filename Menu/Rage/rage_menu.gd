@@ -71,7 +71,7 @@ func _build(maps: Array[LevelData], heroes: Array[Pg]) -> void:
 		get_tree().change_scene_to_file("res://main_menu.tscn"))
 	add_child(back)
 
-	var best := _label("Record: round %d" % Progress.stat("rage_best_round"), 22, GOLD)
+	var best := _label(tr("Record: round %d") % Progress.stat("rage_best_round"), 22, GOLD)
 	best.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	best.offset_left = -300
 	best.offset_right = -48
@@ -114,7 +114,7 @@ func _build(maps: Array[LevelData], heroes: Array[Pg]) -> void:
 	_perk_box.add_theme_constant_override("v_separation", 8)
 	col.add_child(_perk_box)
 
-	var help := _label("Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round." % Rage.BOSS_EVERY, 15, Color(0.9, 0.9, 0.9))
+	var help := _label(tr("Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round.") % Rage.BOSS_EVERY, 15, Color(0.9, 0.9, 0.9))
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(help)
 
@@ -226,7 +226,7 @@ func _refresh() -> void:
 			continue
 		any = true
 		var on := _use_perks and not Progress.rage_perks_off.has(id)
-		var b := _button("%s Lv%d" % [Rage.PERKS[id].title, lvl], 16)
+		var b := _button(tr("%s Lv%d") % [tr(Rage.PERKS[id].title), lvl], 16)
 		b.icon = load(Rage.PERKS[id].icon)
 		b.add_theme_constant_override("icon_max_width", 22)
 		b.add_theme_color_override("font_color", GREEN if on else GREY)
@@ -238,7 +238,7 @@ func _refresh() -> void:
 			_refresh())
 		_perk_box.add_child(b)
 	if not any:
-		var l := _label("Nessuno ancora: sconfiggi un boss (ogni %d round) per sceglierne uno." % Rage.BOSS_EVERY, 16, GREY)
+		var l := _label(tr("Nessuno ancora: sconfiggi un boss (ogni %d round) per sceglierne uno.") % Rage.BOSS_EVERY, 16, GREY)
 		_perk_box.add_child(l)
 	_perks_toggle.visible = any
 

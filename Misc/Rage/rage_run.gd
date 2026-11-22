@@ -170,7 +170,7 @@ func _start_round() -> void:
 	_to_spawn = round_size()
 	_round_total = _to_spawn
 	_spawn_timer = 0.5
-	_toast("Round %d" % wave, GOLD)
+	_toast(tr("Round %d") % wave, GOLD)
 	update_hud()
 
 
@@ -188,7 +188,7 @@ func _end_round() -> void:
 		_spawn_pickup(hero, true)
 		if hero.has_method("uses_batteries"):
 			_spawn_battery(hero)
-	var msg := "Round %d superato!" % wave
+	var msg := tr("Round %d superato!") % wave
 	# every round cleared gives back a heart; Rigenerazione one more
 	# (every 3 / 2 / 1 rounds at level 1 / 2 / 3)
 	var p := _player()
@@ -198,7 +198,7 @@ func _end_round() -> void:
 		heal += 1
 	if p and p.health < p.max_health:
 		p.heal(heal)
-		msg += "  +%d %s" % [heal, "cuore" if heal == 1 else "cuori"]
+		msg += "  " + (tr("+1 cuore") if heal == 1 else tr("+%d cuori") % heal)
 	_toast(msg, GREEN)
 	update_hud()
 
@@ -217,13 +217,13 @@ func update_hud() -> void:
 	var text := ""
 	match state:
 		"boss", "choice":
-			text = "Round %d  ·  BOSS: %s" % [wave, _boss_name]
+			text = tr("Round %d  ·  BOSS: %s") % [wave, tr(_boss_name)]
 		"fight":
 			var left := _to_spawn + _alive.size()
-			text = "Round %d  ·  Nemici %d/%d" % [wave, _round_total - left, _round_total]
+			text = tr("Round %d  ·  Nemici %d/%d") % [wave, _round_total - left, _round_total]
 		_:
-			text = "Round %d tra poco..." % (wave + 1) if wave > 0 else "Preparati..."
-	hud._label.text = "%s  ·  Uccisioni %d" % [text, kills]
+			text = tr("Round %d tra poco...") % (wave + 1) if wave > 0 else tr("Preparati...")
+	hud._label.text = tr("%s  ·  Uccisioni %d") % [text, kills]
 	hud._label.add_theme_color_override("font_color", RED if state == "boss" else Color.WHITE)
 
 
@@ -294,7 +294,7 @@ func _start_boss() -> void:
 		b.get_node("AnimatedSprite2D").play("boot")
 		_boss = b
 		_boss_name = "MECCA-RIFIUTI del Barone"
-		_toast("ROUND %d: IL BARONE È TORNATO!" % wave, RED)
+		_toast(tr("ROUND %d: IL BARONE È TORNATO!") % wave, RED)
 		_make_bar()
 		await get_tree().create_timer(1.2, false).timeout
 		if is_instance_valid(b) and state == "boss":
@@ -308,7 +308,7 @@ func _start_boss() -> void:
 		e.hpChanged.connect(func(hp: float): _set_bar(hp / e.max_health))
 		_boss = e
 		_boss_name = BOSS_TYPES[type]
-		_toast("ROUND %d: BOSS! %s" % [wave, _boss_name], RED)
+		_toast(tr("ROUND %d: BOSS! %s") % [wave, tr(_boss_name)], RED)
 		MusicManager.play_track("boss")
 		_make_bar()
 	update_hud()
@@ -348,7 +348,7 @@ func _make_bar() -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_bar.add_child(root)
 	var title := _label(18, Color(1.0, 0.75, 0.6))
-	title.text = "BOSS · " + _boss_name
+	title.text = "BOSS · " + tr(_boss_name)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.size = Vector2(540, 22)
 	root.add_child(title)
@@ -443,7 +443,7 @@ func _perk_card(id: String, on_pick: Callable) -> Button:
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	col.add_child(icon)
 	for line in [[perk.title, 22, Color.WHITE], [perk.text, 15, Color(0.85, 0.85, 0.85)],
-			["Livello %d → %d" % [lvl, lvl + 1], 17, GOLD]]:
+			[tr("Livello %d → %d") % [lvl, lvl + 1], 17, GOLD]]:
 		var l := _label(line[1], line[2])
 		l.text = line[0]
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -464,9 +464,9 @@ func _choose_perk(id: String, ui: Node) -> void:
 	ui.queue_free()
 	get_tree().paused = false
 	if Rage.use_perks:
-		_toast("%s livello %d!" % [Rage.PERKS[id].title, Progress.rage_perks[id]], GREEN)
+		_toast(tr("%s livello %d!") % [tr(Rage.PERKS[id].title), Progress.rage_perks[id]], GREEN)
 	else:
-		_toast("%s livello %d: attivo dalla prossima partita con i potenziamenti." % [Rage.PERKS[id].title, Progress.rage_perks[id]], GREEN)
+		_toast(tr("%s livello %d: attivo dalla prossima partita con i potenziamenti.") % [tr(Rage.PERKS[id].title), Progress.rage_perks[id]], GREEN)
 	_after_choice()
 
 
@@ -527,16 +527,16 @@ func _spawn_battery(p: Node2D) -> void:
 
 func on_pickup(id: String) -> void:
 	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_buy.wav"))
-	var title: String = Progress.BUFFS[id].title
+	var title: String = tr(Progress.BUFFS[id].title)
 	var p := _player()
 	if Rage.buff_level(id) >= Rage.MAX_LEVEL:
 		if p:
 			p.heal(1)
-		_toast("%s al massimo: +1 cura" % title, GREEN)
+		_toast(tr("%s al massimo: +1 cura") % title, GREEN)
 		return
 	_set_run_level(id, int(Rage.run_levels.get(id, 0)) + 1)
-	var lasts := "fino a fine partita" if Rage.PICKUPS[id].lasts == "match" else "fino a fine round"
-	_toast("%s Lv%d (%s)" % [title, Rage.buff_level(id), lasts], Color(0.6, 0.95, 1.0))
+	var lasts := tr("fino a fine partita") if Rage.PICKUPS[id].lasts == "match" else tr("fino a fine round")
+	_toast(tr("%s Lv%d (%s)") % [title, Rage.buff_level(id), lasts], Color(0.6, 0.95, 1.0))
 
 
 func _set_run_level(id: String, lvl: int) -> void:

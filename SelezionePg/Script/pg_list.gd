@@ -29,7 +29,7 @@ func _on_slot_pressed(character: Pg):
         selected_character = null
         $"../../ConfermaButton".hide()
         get_parent().get_parent().show_hint(
-            "%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!" % [character.title, character.price, Progress.coins])
+            tr("%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!") % [character.title, character.price, Progress.coins])
         return
     get_parent().get_parent().show_hint("")
     SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))

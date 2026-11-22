@@ -1,0 +1,1452 @@
+# EcoRescuer — English translation.
+# The msgid is the original Italian text: keep %d / %s / %% placeholders.
+# Regenerate the list of texts from the editor: Project Settings > Localization > POT Generation.
+msgid ""
+msgstr ""
+"Project-Id-Version: EcoRescuer\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Oggetto"
+msgstr "Item"
+
+msgid "Missioni secondarie: trova il dossier segreto  ·  %s."
+msgstr "Side quests: find the secret dossier  ·  %s."
+
+msgid "Nuovo nemico: %s — %s"
+msgstr "New enemy: %s — %s"
+
+msgid "Epilogo  ·  %s"
+msgstr "Epilogue  ·  %s"
+
+msgid "Capitolo %d di %d  ·  %s"
+msgstr "Chapter %d of %d  ·  %s"
+
+msgid "Via!"
+msgstr "Go!"
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti e sconfiggi %d Inquinatori, poi portali al punto di raccolta."
+msgstr "Goal: collect %d trash bags and defeat %d Polluters, then bring them to the collection point."
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti, poi portali al punto di raccolta."
+msgstr "Goal: collect %d trash bags, then bring them to the collection point."
+
+msgid "Sfide attive: %s"
+msgstr "Active Challenges: %s"
+
+msgid "I potenziamenti del negozio sono spenti: vince il punteggio più alto."
+msgstr "Shop upgrades are off: the highest score wins."
+
+msgid "Completala per +%d monete (una volta al giorno)."
+msgstr "Complete it for +%d coins (once a day)."
+
+msgid "Sfida del giorno"
+msgstr "Daily Challenge"
+
+msgid "Stesso livello e stesse Sfide per tutti i giocatori, solo per oggi."
+msgstr "Same level and same Challenges for every player, today only."
+
+msgid "Dossier segreto degli Inquinatori"
+msgstr "Secret Polluter dossier"
+
+msgid "Trovato!"
+msgstr "Found!"
+
+msgid "Continua"
+msgstr "Continue"
+
+msgid "%d rifiuti"
+msgstr "%d trash bags"
+
+msgid "%d nemici da sconfiggere"
+msgstr "%d enemies to defeat"
+
+msgid "Ti mancano ancora: %s"
+msgstr "You still need: %s"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Shop"
+msgstr "Shop"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Leaderboard"
+msgstr "Leaderboard"
+
+msgid "Quit"
+msgstr "Quit"
+
+msgid "Inserisci il tuo nome"
+msgstr "Enter your name"
+
+msgid "Nome giocatore"
+msgstr "Player name"
+
+msgid "Conferma"
+msgstr "Confirm"
+
+msgid "Prima pulizia"
+msgstr "First cleanup"
+
+msgid "Completa il tuo primo livello"
+msgstr "Complete your first level"
+
+msgid "Spazzino"
+msgstr "Sweeper"
+
+msgid "Sconfiggi 100 Inquinatori"
+msgstr "Defeat 100 Polluters"
+
+msgid "Incubo degli Inquinatori"
+msgstr "Polluters' nightmare"
+
+msgid "Sconfiggi 500 Inquinatori"
+msgstr "Defeat 500 Polluters"
+
+msgid "Caccia ai capi"
+msgstr "Boss hunt"
+
+msgid "Sconfiggi 20 Elite"
+msgstr "Defeat 20 Elites"
+
+msgid "Sacchi pieni"
+msgstr "Full bags"
+
+msgid "Raccogli 100 sacchi di rifiuti"
+msgstr "Collect 100 trash bags"
+
+msgid "Niente perdite"
+msgstr "No leaks"
+
+msgid "Metti in sicurezza 25 barili"
+msgstr "Secure 25 barrels"
+
+msgid "Cacciatore di tesori"
+msgstr "Treasure hunter"
+
+msgid "Apri 15 forzieri"
+msgstr "Open 15 chests"
+
+msgid "Intoccabile"
+msgstr "Untouchable"
+
+msgid "Completa un livello senza subire danni"
+msgstr "Complete a level without taking damage"
+
+msgid "Senza paura"
+msgstr "Fearless"
+
+msgid "Completa un livello con 3 Sfide attive"
+msgstr "Complete a level with 3 active Challenges"
+
+msgid "Stelle nascenti"
+msgstr "Rising stars"
+
+msgid "Ottieni 14 stelle"
+msgstr "Earn 14 stars"
+
+msgid "Cielo pieno"
+msgstr "Full sky"
+
+msgid "Ottieni 3 stelle in tutti i livelli della campagna"
+msgstr "Earn 3 stars in every campaign level"
+
+msgid "Prima prova"
+msgstr "First evidence"
+
+msgid "Trova un dossier segreto"
+msgstr "Find a secret dossier"
+
+msgid "Prove schiaccianti"
+msgstr "Damning evidence"
+
+msgid "Trova tutti i dossier segreti"
+msgstr "Find every secret dossier"
+
+msgid "Esploratore"
+msgstr "Explorer"
+
+msgid "Saccheggia un caveau segreto"
+msgstr "Loot a secret vault"
+
+msgid "Cartografo"
+msgstr "Cartographer"
+
+msgid "Saccheggia i caveau segreti di tutti i livelli"
+msgstr "Loot the secret vault of every level"
+
+msgid "Missioni compiute"
+msgstr "Missions accomplished"
+
+msgid "Completa tutte le missioni secondarie"
+msgstr "Complete every side quest"
+
+msgid "Abbasso il Barone"
+msgstr "Down with the Baron"
+
+msgid "Distruggi il MECCA-RIFIUTI"
+msgstr "Destroy the TRASH-MECH"
+
+msgid "Fine della fuga"
+msgstr "End of the escape"
+
+msgid "Completa il capitolo \"La fuga del Barone\""
+msgstr "Complete the chapter \"The Baron's Escape\""
+
+msgid "Squadra al completo"
+msgstr "Full team"
+
+msgid "Completa un livello con 5 eroi diversi"
+msgstr "Complete a level with 5 different heroes"
+
+msgid "Collezionista"
+msgstr "Collector"
+
+msgid "Sblocca tutti gli eroi"
+msgstr "Unlock every hero"
+
+msgid "Furia"
+msgstr "Fury"
+
+msgid "Supera 10 round in Rage mode"
+msgstr "Clear 10 rounds in Rage mode"
+
+msgid "Inarrestabile"
+msgstr "Unstoppable"
+
+msgid "Supera 30 round in Rage mode"
+msgstr "Clear 30 rounds in Rage mode"
+
+msgid "Sfida accettata"
+msgstr "Challenge accepted"
+
+msgid "Completa una Sfida del giorno"
+msgstr "Complete a Daily Challenge"
+
+msgid "Abitudine verde"
+msgstr "Green habit"
+
+msgid "Completa 7 Sfide del giorno"
+msgstr "Complete 7 Daily Challenges"
+
+msgid "Cuore extra"
+msgstr "Extra heart"
+
+msgid "Scarpe veloci"
+msgstr "Swift shoes"
+
+msgid "Colpo potente"
+msgstr "Power strike"
+
+msgid "Magnete"
+msgstr "Magnet"
+
+msgid "Scudo"
+msgstr "Shield"
+
+msgid "Nemici corazzati"
+msgstr "Armored enemies"
+
+msgid "Nemici rapidi"
+msgstr "Fast enemies"
+
+msgid "Colpi pesanti"
+msgstr "Heavy hits"
+
+msgid "Senza cure"
+msgstr "No healing"
+
+msgid "+1 cuore massimo"
+msgstr "+1 max heart"
+
+msgid "+%d cuori massimi"
+msgstr "+%d max hearts"
+
+msgid "+%s velocità"
+msgstr "+%s speed"
+
+msgid "+1 danno a ogni colpo"
+msgstr "+1 damage on every hit"
+
+msgid "+1 danno, %s di colpo critico (x2)"
+msgstr "+1 damage, %s critical hit chance (x2)"
+
+msgid "attira gli oggetti entro %d px"
+msgstr "pulls in items within %d px"
+
+msgid "blocca il primo colpo di ogni partita"
+msgstr "blocks the first hit of every game"
+
+msgid "blocca i primi %d colpi di ogni partita"
+msgstr "blocks the first %d hits of every game"
+
+msgid "nemici con +%s di vita"
+msgstr "enemies with +%s health"
+
+msgid "nemici +%s veloci"
+msgstr "enemies +%s faster"
+
+msgid "ogni colpo nemico toglie 2 cuori"
+msgstr "every enemy hit takes 2 hearts"
+
+msgid "%s dei colpi nemici toglie 2 cuori"
+msgstr "%s of enemy hits take 2 hearts"
+
+msgid "nessun cuore a terra"
+msgstr "no hearts on the ground"
+
+msgid "sparisce il %s dei cuori a terra"
+msgstr "%s of the hearts on the ground disappear"
+
+msgid "ATTACCA"
+msgstr "ATTACK"
+
+msgid "CRIT!"
+msgstr "CRIT!"
+
+msgid "Guardiani: %d"
+msgstr "Guards: %d"
+
+msgid "Aperto!"
+msgstr "Open!"
+
+msgid "Guardiani sconfitti! Il forziere del caveau è aperto."
+msgstr "Guards defeated! The vault chest is open."
+
+msgid "Il forziere è sigillato: sconfiggi prima tutti i guardiani."
+msgstr "The chest is sealed: defeat all the guards first."
+
+msgid "Caveau segreto"
+msgstr "Secret vault"
+
+msgid "Il forziere"
+msgstr "The chest"
+
+msgid "Un portale si è aperto!"
+msgstr "A portal has opened!"
+
+msgid "Caveau segreto! Sconfiggi i %d guardiani per aprire il forziere."
+msgstr "Secret vault! Defeat the %d guards to open the chest."
+
+msgid "Caveau segreto!"
+msgstr "Secret vault!"
+
+msgid "Hai già preso il tesoro di questo caveau."
+msgstr "You already took this vault's treasure."
+
+msgid "%s è già al massimo: +300 monete."
+msgstr "%s is already maxed out: +300 coins."
+
+msgid "Segreti trovati: %d/%d (Codex, scheda Segreti)."
+msgstr "Secrets found: %d/%d (Codex, Secrets tab)."
+
+msgid "Rage mode: %s +1 livello, per sempre."
+msgstr "Rage mode: %s +1 level, forever."
+
+msgid "Negozio: -%d%% su %s, per sempre."
+msgstr "Shop: -%d%% on %s, forever."
+
+msgid "%s Lv%d"
+msgstr "%s Lv%d"
+
+msgid "Attivi: %s"
+msgstr "Active: %s"
+
+msgid "Porta i rifiuti al punto di raccolta!"
+msgstr "Bring the trash to the collection point!"
+
+msgid "Obiettivo completato! Raggiungi il punto di raccolta."
+msgstr "Goal complete! Reach the collection point."
+
+msgid "Rifiuti %d/%d"
+msgstr "Trash %d/%d"
+
+msgid "Nemici %d/%d"
+msgstr "Enemies %d/%d"
+
+msgid "Teletrasporto"
+msgstr "Teleport"
+
+msgid "Bruto furioso"
+msgstr "Furious Brute"
+
+msgid "Spruzzatore gigante"
+msgstr "Giant Sprayer"
+
+msgid "Drone madre"
+msgstr "Mother Drone"
+
+msgid "Capobanda"
+msgstr "Gang Leader"
+
+msgid "RAGE MODE! Sopravvivi più round che puoi."
+msgstr "RAGE MODE! Survive as many rounds as you can."
+
+msgid "Round %d"
+msgstr "Round %d"
+
+msgid "Round %d superato!"
+msgstr "Round %d cleared!"
+
+msgid "+1 cuore"
+msgstr "+1 heart"
+
+msgid "+%d cuori"
+msgstr "+%d hearts"
+
+msgid "Round %d  ·  BOSS: %s"
+msgstr "Round %d  ·  BOSS: %s"
+
+msgid "Round %d  ·  Nemici %d/%d"
+msgstr "Round %d  ·  Enemies %d/%d"
+
+msgid "Round %d tra poco..."
+msgstr "Round %d coming up..."
+
+msgid "Preparati..."
+msgstr "Get ready..."
+
+msgid "%s  ·  Uccisioni %d"
+msgstr "%s  ·  Kills %d"
+
+msgid "MECCA-RIFIUTI del Barone"
+msgstr "The Baron's TRASH-MECH"
+
+msgid "ROUND %d: IL BARONE È TORNATO!"
+msgstr "ROUND %d: THE BARON IS BACK!"
+
+msgid "ROUND %d: BOSS! %s"
+msgstr "ROUND %d: BOSS! %s"
+
+msgid "Boss sconfitto!"
+msgstr "Boss defeated!"
+
+msgid "Hai già tutti i potenziamenti al massimo: +300 monete!"
+msgstr "All your upgrades are already maxed out: +300 coins!"
+
+msgid "Boss sconfitto! Scegli un potenziamento"
+msgstr "Boss defeated! Choose an upgrade"
+
+msgid "È permanente: vale per tutte le tue partite in Rage mode."
+msgstr "It's permanent: it counts in all your Rage mode games."
+
+msgid "Livello %d → %d"
+msgstr "Level %d → %d"
+
+msgid "%s livello %d!"
+msgstr "%s level %d!"
+
+msgid "%s livello %d: attivo dalla prossima partita con i potenziamenti."
+msgstr "%s level %d: active from your next game with upgrades on."
+
+msgid "%s al massimo: +1 cura"
+msgstr "%s maxed out: +1 heal"
+
+msgid "fino a fine partita"
+msgstr "until game over"
+
+msgid "fino a fine round"
+msgstr "until the end of the round"
+
+msgid "%s Lv%d (%s)"
+msgstr "%s Lv%d (%s)"
+
+msgid "+1 cuore massimo a inizio partita"
+msgstr "+1 max heart at the start of the game"
+
+msgid "Più veloce per tutta la partita"
+msgstr "Faster for the whole game"
+
+msgid "+1 danno e colpi critici"
+msgstr "+1 damage and critical hits"
+
+msgid "Attira monete e oggetti da più lontano"
+msgstr "Pulls in coins and items from farther away"
+
+msgid "+1 colpo bloccato a inizio partita"
+msgstr "+1 blocked hit at the start of the game"
+
+msgid "Rigenerazione"
+msgstr "Regeneration"
+
+msgid "Un cuore in più alla fine dei round (ogni 3/2/1 round)"
+msgstr "One more heart at the end of rounds (every 3/2/1 rounds)"
+
+msgid "Fortuna"
+msgstr "Luck"
+
+msgid "I potenziamenti compaiono più spesso"
+msgstr "Upgrades show up more often"
+
+msgid "Bottino"
+msgstr "Loot"
+
+msgid "+25% monete alla fine della partita"
+msgstr "+25% coins at the end of the game"
+
+msgid "Completa il livello senza subire danni"
+msgstr "Complete the level without taking damage"
+
+msgid "Dossier %d/1"
+msgstr "Dossier %d/1"
+
+msgid "Barili %d/%d"
+msgstr "Barrels %d/%d"
+
+msgid "Forzieri %d/%d"
+msgstr "Chests %d/%d"
+
+msgid "Elite %d/%d"
+msgstr "Elites %d/%d"
+
+msgid "Monete %d/%d"
+msgstr "Coins %d/%d"
+
+msgid "Tempo %d:%02d"
+msgstr "Time %d:%02d"
+
+msgid "Tempo scaduto"
+msgstr "Time's up"
+
+msgid "Senza danni: fallita"
+msgstr "No damage: failed"
+
+msgid "Senza danni"
+msgstr "No damage"
+
+msgid "Dossier segreto trovato!"
+msgstr "Secret dossier found!"
+
+msgid " +%d monete"
+msgstr " +%d coins"
+
+msgid "Dossier segreto"
+msgstr "Secret dossier"
+
+msgid "Missione completata!"
+msgstr "Quest complete!"
+
+msgid "Spruzzatore"
+msgstr "Sprayer"
+
+msgid "lancia fanghi tossici da lontano: avvicinati mentre prende la mira."
+msgstr "throws toxic sludge from afar: close in while it's aiming."
+
+msgid "Kamikaze"
+msgstr "Kamikaze"
+
+msgid "corre verso di te con un barile che esplode: colpiscilo prima o allontanati quando lampeggia."
+msgstr "runs at you with an exploding barrel: hit it first or get away when it flashes."
+
+msgid "Bruto"
+msgstr "Brute"
+
+msgid "carica in linea retta: schivalo e fallo sbattere contro un muro, resterà stordito."
+msgstr "charges in a straight line: dodge it and make it slam into a wall, it'll be stunned."
+
+msgid "Drone NEXUS"
+msgstr "NEXUS Drone"
+
+msgid "vola sopra muri e acqua e spara laser: colpiscilo da lontano o respingi i suoi colpi."
+msgstr "flies over walls and water and shoots lasers: hit it from afar or knock its shots back."
+
+msgid "La ghianda d'oro"
+msgstr "The golden acorn"
+
+msgid "Nel caveau del bosco, una ghianda placcata d'oro. I primi abitanti piantavano una quercia per ogni bambino nato: questo bosco è fatto delle loro famiglie."
+msgstr "In the forest vault, a gold-plated acorn. The first islanders planted an oak for every child born: this forest is made of their families."
+
+msgid "Il primo segnale"
+msgstr "The first sign"
+
+msgid "Nella foresta dell'isola sono comparsi sacchi di rifiuti tossici, scaricati di notte. Le tracce portano agli Inquinatori. Ripulisci il bosco e scopri chi li manda."
+msgstr "Bags of toxic waste have appeared in the island's forest, dumped at night. The tracks lead to the Polluters. Clean up the forest and find out who sends them."
+
+msgid "Ordine di scarico n. 1: \"Bosco nord, tre carichi a settimana. Pagamento garantito.\" Firmato: N."
+msgstr "Dumping order no. 1: \"North forest, three loads a week. Payment guaranteed.\" Signed: N."
+
+msgid "Metti in sicurezza tutti i barili che perdono"
+msgstr "Secure every leaking barrel"
+
+msgid "Il cristallo tiepido"
+msgstr "The warm crystal"
+
+msgid "Un cristallo delle grotte, ancora tiepido, custodito dagli Inquinatori. Quando l'isola guarirà, dicono, torneranno a brillare tutti."
+msgstr "A crystal from the caves, still warm, kept by the Polluters. When the island heals, they say, all of them will shine again."
+
+msgid "Cristalli spenti"
+msgstr "Dimmed crystals"
+
+msgid "Sul sentiero innevato i cristalli che illuminavano le grotte si stanno spegnendo sotto le scorie. Gli Inquinatori usano le grotte come deposito."
+msgstr "On the snowy path, the crystals that lit up the caves are fading under the sludge. The Polluters use the caves as a dump."
+
+msgid "Rapporto interno: \"Le grotte sono perfette, nessuno controlla. N. approva l'espansione.\""
+msgstr "Internal report: \"The caves are perfect, nobody checks. N. approves the expansion.\""
+
+msgid "Apri tutti i forzieri nelle grotte"
+msgstr "Open every chest in the caves"
+
+msgid "La mappa del tram"
+msgstr "The tram map"
+
+msgid "Sotto il monumento, il deposito segreto degli assessori corrotti: c'è la mappa del vecchio tram elettrico, fatto chiudere per vendere più carburante."
+msgstr "Under the monument, the secret stash of the corrupt councillors: the map of the old electric tram, shut down to sell more fuel."
+
+msgid "La città comprata"
+msgstr "The bought city"
+
+msgid "In città nessuno ferma gli Inquinatori: politici e funzionari sono stati pagati. Riprendi le strade e trova le prove della corruzione."
+msgstr "In the city nobody stops the Polluters: politicians and officials have been paid off. Take back the streets and find proof of the corruption."
+
+msgid "Lista pagamenti: assessori, ispettori, un giudice. In fondo: \"Calcolato da NEXUS: corrompere costa meno che smaltire.\""
+msgstr "Payment list: councillors, inspectors, a judge. At the bottom: \"Calculated by NEXUS: bribing costs less than disposal.\""
+
+msgid "Sconfiggi i capisquadra (Elite) degli Inquinatori"
+msgstr "Defeat the Polluters' squad leaders (Elites)"
+
+msgid "La foto del lago"
+msgstr "The lake photo"
+
+msgid "Tra la merce rubata, una foto del 1980: bambini che fanno il bagno nel lago limpido. Si vedeva il fondo a dieci metri."
+msgstr "Among the stolen goods, a photo from 1980: children swimming in the clear lake. You could see the bottom ten metres down."
+
+msgid "Il lago dimenticato"
+msgstr "The forgotten lake"
+
+msgid "Il grande lago è diventato una discarica a cielo aperto. Il furgone degli Inquinatori fa ancora la spola dal complesso sulla riva."
+msgstr "The great lake has become an open-air dump. The Polluters' van still shuttles back and forth from the compound on the shore."
+
+msgid "Messaggio di NEXUS: \"Profitto massimo raggiunto. Ridurre i costi: aumentare gli scarichi del 40%.\""
+msgstr "Message from NEXUS: \"Maximum profit reached. Cut costs: increase dumping by 40%.\""
+
+msgid "Raccogli tutte le monete del lago"
+msgstr "Collect every coin at the lake"
+
+msgid "La tavoletta di pietra"
+msgstr "The stone tablet"
+
+msgid "La camera sotto le rovine conserva una legge incisa nella pietra: «Chi sporca la sorgente beve il proprio veleno»."
+msgstr "The chamber under the ruins holds a law carved in stone: «Whoever fouls the spring drinks their own poison»."
+
+msgid "Le rovine antiche"
+msgstr "The ancient ruins"
+
+msgid "Tra le rovine di un'antica città dell'isola gli Inquinatori hanno nascosto dei server di NEXUS. Le pietre ricordano un tempo in cui l'isola era pulita."
+msgstr "Among the ruins of an ancient city on the island, the Polluters have hidden NEXUS servers. The stones remember a time when the island was clean."
+
+msgid "Mappa dei server: \"Nodo rovine, nodo fabbrica, nodo porto. Il nucleo è nella fortezza del Barone.\""
+msgstr "Server map: \"Ruins node, factory node, harbor node. The core is in the Baron's fortress.\""
+
+msgid "Completa il livello in meno di 4 minuti"
+msgstr "Complete the level in under 4 minutes"
+
+msgid "Il progetto del filtro"
+msgstr "The filter blueprint"
+
+msgid "Nel magazzino segreto: il progetto di un filtro per le ciminiere, mai costruito. A margine, NEXUS ha scritto «non redditizio»."
+msgstr "In the secret warehouse: the blueprint of a filter for the smokestacks, never built. In the margin, NEXUS wrote «not profitable»."
+
+msgid "La fabbrica tossica"
+msgstr "The toxic factory"
+
+msgid "Ecco da dove arrivano i veleni: una fabbrica che non produce nulla, solo scorie. Fermala prima che le vasche traboccino."
+msgstr "So this is where the poisons come from: a factory that makes nothing, only waste. Stop it before the tanks overflow."
+
+msgid "Registro della fabbrica: \"Produzione: zero. Scorie: 900 tonnellate. Obiettivo NEXUS: raggiunto.\""
+msgstr "Factory log: \"Output: zero. Waste: 900 tons. NEXUS target: reached.\""
+
+msgid "La bussola del pescatore"
+msgstr "The fisherman's compass"
+
+msgid "Nella stiva dei contrabbandieri, la bussola dell'ultimo pescatore del porto. Sul retro: «Il mare restituisce tutto quello che gli dai»."
+msgstr "In the smugglers' hold, the compass of the harbor's last fisherman. On the back: «The sea gives back everything you give it»."
+
+msgid "Il porto nero"
+msgstr "The black harbor"
+
+msgid "Le navi degli Inquinatori portano rifiuti da tutto il mondo sull'isola. Al porto si nasconde anche il Barone dei Rifiuti, il capo della banda."
+msgstr "The Polluters' ships bring waste from all over the world to the island. The Waste Baron, leader of the gang, is also hiding at the harbor."
+
+msgid "Contratto del Barone: \"In cambio della protezione di NEXUS, l'isola sarà la discarica del mondo.\""
+msgstr "The Baron's contract: \"In exchange for NEXUS's protection, the island will be the world's dump.\""
+
+msgid "Il chip di NEXUS v0.1"
+msgstr "The NEXUS v0.1 chip"
+
+msgid "Nel server nascosto, la prima versione di NEXUS: doveva ottimizzare il riciclo dell'isola. Qualcuno ha cambiato un solo parametro: profitto."
+msgstr "In the hidden server, the first version of NEXUS: it was meant to optimise the island's recycling. Someone changed a single parameter: profit."
+
+msgid "Il cervello"
+msgstr "The brain"
+
+msgid "Il data center è la mente degli Inquinatori. Qui NEXUS calcola ogni scarico e ogni tangente. Spegni i suoi server e scopri dov'è il nucleo."
+msgstr "The data center is the Polluters' mind. Here NEXUS calculates every dump and every bribe. Shut down its servers and find out where the core is."
+
+msgid "Ultimo file: \"Se il nucleo è minacciato, il Barone attiverà il MECCA-RIFIUTI.\""
+msgstr "Last file: \"If the core is threatened, the Baron will activate the TRASH-MECH.\""
+
+msgid "Sconfiggi tutte le guardie Elite del data center"
+msgstr "Defeat every Elite guard in the data center"
+
+msgid "Il diario del Barone"
+msgstr "The Baron's diary"
+
+msgid "Nella cassaforte del Barone resta una sola pagina del suo diario: «Da piccolo volevo fare il guardaparco»."
+msgstr "In the Baron's safe, a single page of his diary is left: «When I was little I wanted to be a park ranger»."
+
+msgid "La fortezza del Barone"
+msgstr "The Baron's fortress"
+
+msgid "Sulla collina della discarica si alza la fortezza del Barone dei Rifiuti. Attraversala, raggiungi l'arena e abbatti il suo MECCA-RIFIUTI per spegnere NEXUS."
+msgstr "On the landfill hill rises the fortress of the Waste Baron. Cross it, reach the arena and take down his TRASH-MECH to shut NEXUS down."
+
+msgid "Codice di spegnimento di NEXUS: trovato. L'isola può tornare verde."
+msgstr "NEXUS shutdown code: found. The island can be green again."
+
+msgid "Apri i forzieri della fortezza"
+msgstr "Open the fortress chests"
+
+msgid "Il biglietto senza ritorno"
+msgstr "The one-way ticket"
+
+msgid "Il bottino del Barone, pronto per la fuga. Sopra c'è il biglietto della nave, destinazione «isola successiva». Non partirà mai."
+msgstr "The Baron's loot, packed for the getaway. On top, the ship ticket, destination «next island». It will never leave."
+
+msgid "La fuga del Barone"
+msgstr "The Baron's Escape"
+
+msgid "NEXUS è spento, ma il Barone dei Rifiuti è scappato. Di notte, al molo, aspetta una nave con quel che resta del suo MECCA-RIFIUTI. Ripulisci il porto e fermalo prima che salpi."
+msgstr "NEXUS is shut down, but the Waste Baron has escaped. At night, on the pier, he waits for a ship with what's left of his TRASH-MECH. Clean up the harbor and stop him before he sets sail."
+
+msgid "Biglietto del Barone: \"Nave per l'isola successiva, mezzanotte. Ricominceremo da capo.\" Non ci sarà nessuna isola successiva."
+msgstr "The Baron's ticket: \"Ship to the next island, midnight. We'll start over.\" There will be no next island."
+
+msgid "Completa il livello in meno di 5 minuti"
+msgstr "Complete the level in under 5 minutes"
+
+msgid "L'isola"
+msgstr "The island"
+
+msgid "C'era una volta un'isola verde, piena di boschi, laghi limpidi e cristalli che brillavano nella neve."
+msgstr "Once upon a time there was a green island, full of forests, clear lakes and crystals that sparkled in the snow."
+
+msgid "Gli Inquinatori"
+msgstr "The Polluters"
+
+msgid "Poi arrivarono gli Inquinatori. Di notte scaricano rifiuti tossici ovunque, e i politici che hanno pagato fanno finta di non vedere."
+msgstr "Then the Polluters arrived. At night they dump toxic waste everywhere, and the politicians they paid pretend not to see."
+
+msgid "Dietro di loro c'è NEXUS, un'intelligenza artificiale creata per fare profitto. Ha calcolato che inquinare costa meno di qualsiasi altra cosa."
+msgstr "Behind them is NEXUS, an artificial intelligence built to make a profit. It calculated that polluting costs less than anything else."
+
+msgid "Il Barone dei Rifiuti"
+msgstr "The Waste Baron"
+
+msgid "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."
+msgstr "The Waste Baron leads the gang and guards the core of NEXUS in his fortress, on top of the landfill."
+
+msgid "Gli EcoRescuer"
+msgstr "The EcoRescuers"
+
+msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono gli EcoRescuer, e tu sei uno di loro."
+msgstr "But someone decided to fight back: brave kids, a scientist, an ancient nature god and even a rebel robot. They are the EcoRescuers, and you are one of them."
+
+msgid "La missione"
+msgstr "The mission"
+
+msgid "In ogni zona raccogli i sacchi di rifiuti, sconfiggi gli Inquinatori e porta tutto al punto di raccolta. Cerca anche i dossier segreti: sveleranno i piani di NEXUS."
+msgstr "In every area, collect the trash bags, defeat the Polluters and bring everything to the collection point. Look for the secret dossiers too: they will reveal NEXUS's plans."
+
+msgid "La caduta"
+msgstr "The fall"
+
+msgid "Il MECCA-RIFIUTI crolla tra le scintille. Il Barone fugge nella notte e il nucleo di NEXUS si spegne per sempre."
+msgstr "The TRASH-MECH collapses in a shower of sparks. The Baron flees into the night and the core of NEXUS shuts down forever."
+
+msgid "L'isola respira"
+msgstr "The island breathes"
+
+msgid "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."
+msgstr "With no more dumping, the island breathes again: the trees grow back, the lake runs clear and the crystals shine once more."
+
+msgid "Grazie, EcoRescuer!"
+msgstr "Thank you, EcoRescuer!"
+
+msgid "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."
+msgstr "The Waste Baron never boards his ship: the island police are waiting for him on the pier. The TRASH-MECH ends up in a recycling plant."
+
+msgid "La squadra"
+msgstr "The team"
+
+msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La squadra EcoRescuer resta di guardia: se qualcuno sporca l'isola, lo saprà."
+msgstr "The harbor is clean and the Polluters' gang has no leader anymore. The EcoRescuer team stays on watch: if anyone dirties the island, they'll know."
+
+msgid "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!"
+msgstr "With all %d dossiers as evidence, the corrupt politicians are arrested and the Polluters will never come back. The island is safe forever!"
+
+msgid "L'isola è salva, per ora. Hai trovato %d dossier su %d: trovali tutti per mandare in prigione i politici corrotti e vedere il finale completo."
+msgstr "The island is safe, for now. You found %d of %d dossiers: find them all to send the corrupt politicians to prison and see the full ending."
+
+msgid "Il Barone è fuggito"
+msgstr "The Baron got away"
+
+msgid "Ma il Barone dei Rifiuti è scappato al porto, in attesa di una nave. Nuovo capitolo sbloccato: \"La fuga del Barone\"."
+msgstr "But the Waste Baron has fled to the harbor, waiting for a ship. New chapter unlocked: \"The Baron's Escape\"."
+
+msgid "Salta"
+msgstr "Skip"
+
+msgid "Tocca per continuare"
+msgstr "Tap to continue"
+
+msgid "Tocca per iniziare"
+msgstr "Tap to start"
+
+msgid "Back\n"
+msgstr "Back\n"
+
+msgid "%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!"
+msgstr "%s is locked: costs %d coins (you have %d). Unlock it in the Shop!"
+
+msgid "EcoToken"
+msgstr "EcoToken"
+
+msgid "Barile"
+msgstr "Barrel"
+
+msgid "Feather"
+msgstr "Feather"
+
+msgid "Scoria Tossica"
+msgstr "Toxic Waste"
+
+msgid "Sacchetto"
+msgstr "Trash bag"
+
+msgid "Tossico!"
+msgstr "Toxic!"
+
+msgid "Barile messo in sicurezza!"
+msgstr "Barrel secured!"
+
+msgid "Cuore"
+msgstr "Heart"
+
+msgid "Ti serve ancora 1 moneta per aprire il forziere"
+msgstr "You need 1 more coin to open the chest"
+
+msgid "Ti servono ancora %d monete per aprire il forziere"
+msgstr "You need %d more coins to open the chest"
+
+msgid "Cura: +1 cuore e salute piena!"
+msgstr "Heal: +1 heart and full health!"
+
+msgid "Eco Rush: più veloce e più forte per %d secondi!"
+msgstr "Eco Rush: faster and stronger for %d seconds!"
+
+msgid "Tesoro: +%d monete per il negozio!"
+msgstr "Treasure: +%d coins for the shop!"
+
+msgid "Scudo extra: il prossimo colpo è bloccato!"
+msgstr "Extra shield: the next hit is blocked!"
+
+msgid "Magic Bow"
+msgstr "Magic Bow"
+
+msgid "Forest"
+msgstr "Forest"
+
+msgid "Una foresta fitta piena di alberi alti e sentieri. Cerca di fermare gli Inquinatori prima che rovinino l'ecosistema della foresta"
+msgstr "A thick forest full of tall trees and trails. Try to stop the Polluters before they ruin the forest's ecosystem."
+
+msgid "Baron's Escape"
+msgstr "Baron's Escape"
+
+msgid "Epilogo. Di notte, al molo, il Barone dei Rifiuti aspetta la nave per fuggire. Ripulisci il porto, apri il cancello del pontile e fermalo per sempre."
+msgstr "Epilogue. At night, on the pier, the Waste Baron waits for the ship to get away. Clean up the harbor, open the jetty gate and stop him for good."
+
+msgid "City"
+msgstr "City"
+
+msgid "Una città con strade larghe, palazzi e vicoli dove muoversi velocemente. Ripulisci le strade dai malfattori e rifiuti!"
+msgstr "A city with wide roads, buildings and alleys to dash through. Clear the streets of crooks and trash!"
+
+msgid "Polluted Lake"
+msgstr "Polluted Lake"
+
+msgid "Un Lago nell'isola, trasformata dall’umanità in una discarica e abbandonata al proprio destino."
+msgstr "A lake on the island, turned into a dump by people and left to its fate."
+
+msgid "Toxic Factory"
+msgstr "Toxic Factory"
+
+msgid "Una fabbrica che non produce nulla, solo scorie. Vasche tossiche, casse e fusti: fermala prima che trabocchi."
+msgstr "A factory that makes nothing, only waste. Toxic tanks, crates and drums: stop it before it overflows."
+
+msgid "AI Data Center"
+msgstr "AI Data Center"
+
+msgid "L' AI Data Center uno dei centri principali dove questa banda opera, in una citta corrotta dove hanno protezione da enti governativi e politici, un posto perfetto per nascondersi "
+msgstr "The AI Data Center is one of the main hubs where this gang operates, in a corrupt city where government bodies and politicians protect them: a perfect place to hide."
+
+msgid "Snow Path"
+msgstr "Snow Path"
+
+msgid "Lo Snow Path un tempo era un sentiero immacolato, ora rifiuti e scorie oscurano il bagliore dei cristalli."
+msgstr "The Snow Path was once a spotless trail; now trash and sludge dim the glow of the crystals."
+
+msgid "Ruins"
+msgstr "Ruins"
+
+msgid "Le rovine di un'antica città dell'isola. Tra colonne e piazze di pietra gli Inquinatori hanno nascosto i server di NEXUS."
+msgstr "The ruins of an ancient city on the island. Among columns and stone squares, the Polluters have hidden the NEXUS servers."
+
+msgid "Barone's Fortress"
+msgstr "Baron's Fortress"
+
+msgid "La fortezza del Barone dei Rifiuti, in cima alla discarica. Attraversala, apri il cancello dell'arena e abbatti il MECCA-RIFIUTI."
+msgstr "The Waste Baron's fortress, on top of the landfill. Cross it, open the arena gate and take down the TRASH-MECH."
+
+msgid "Black Harbor"
+msgstr "Black Harbor"
+
+msgid "Il porto nero da cui arrivano le navi cariche di rifiuti. Moli, container e magazzini pieni di Inquinatori."
+msgstr "The black harbor where the ships loaded with waste come in. Piers, containers and warehouses full of Polluters."
+
+msgid "Il primo eco-eroe: veloce e con un attacco combo."
+msgstr "The first eco-hero: fast, with a combo attack."
+
+msgid "Fendente ampio che pulisce l'area."
+msgstr "A wide slash that clears the area."
+
+msgid "Arciere: colpisce da lontano con le frecce."
+msgstr "Archer: hits from afar with arrows."
+
+msgid "Janitor"
+msgstr "Janitor"
+
+msgid "Pugni e semi. Debole all'inquinamento e lento."
+msgstr "Punches and seeds. Weak to pollution and slow."
+
+msgid "Forza e velocità enormi. Va a batterie!"
+msgstr "Huge strength and speed. Runs on batteries!"
+
+msgid "Lancia pozioni: danno doppio. Solo 2 cuori."
+msgstr "Throws potions: double damage. Only 2 hearts."
+
+msgid "Il più resistente: 4 cuori invece di 3."
+msgstr "The toughest: 4 hearts instead of 3."
+
+msgid "RINFORZI!"
+msgstr "BACKUP!"
+
+msgid "BOOM"
+msgstr "BOOM"
+
+msgid "Benvenuti nella mia fortezza, piccoli ambientalisti!"
+msgstr "Welcome to my fortress, little environmentalists!"
+
+msgid "Io compro tutto: politici, isole... e questa armatura da un miliardo."
+msgstr "I buy everything: politicians, islands... and this billion-dollar armor."
+
+msgid "Il MECCA-RIFIUTI è distrutto! NEXUS si spegne..."
+msgstr "The TRASH-MECH is destroyed! NEXUS is shutting down..."
+
+msgid "Il cancello dell'arena è aperto! Entra e affronta il Barone."
+msgstr "The arena gate is open! Go in and face the Baron."
+
+msgid "Sconfiggi il MECCA-RIFIUTI!"
+msgstr "Defeat the TRASH-MECH!"
+
+msgid "IL BARONE DEI RIFIUTI ATTACCA!"
+msgstr "THE WASTE BARON ATTACKS!"
+
+msgid "Armatura, apriti!"
+msgstr "Armor, open up!"
+
+msgid "MECCA-RIFIUTI ATTIVATO!"
+msgstr "TRASH-MECH ACTIVATED!"
+
+msgid "BARONE DEI RIFIUTI · MECCA-RIFIUTI"
+msgstr "WASTE BARON · TRASH-MECH"
+
+msgid "Record\n300"
+msgstr "Record\n300"
+
+msgid "%d minuti e %d secondi"
+msgstr "%d minutes and %d seconds"
+
+msgid "%d secondi"
+msgstr "%d seconds"
+
+msgid "Oggetti: %d/%d"
+msgstr "Items: %d/%d"
+
+msgid "Completamento: %.1f%%"
+msgstr "Completion: %.1f%%"
+
+msgid "Tempo: %s"
+msgstr "Time: %s"
+
+msgid "Punteggio: %d"
+msgstr "Score: %d"
+
+msgid "Livello completato"
+msgstr "Level complete"
+
+msgid "Tutti gli oggetti raccolti"
+msgstr "All items collected"
+
+msgid "Nessun danno subito"
+msgstr "No damage taken"
+
+msgid "Nuovo record! Stelle totali: %d"
+msgstr "New record! Total stars: %d"
+
+msgid "Stelle totali: %d"
+msgstr "Total stars: %d"
+
+msgid "Monete: +%d (totale %d)"
+msgstr "Coins: +%d (total %d)"
+
+msgid "bonus sfide +%d%%"
+msgstr "Challenge bonus +%d%%"
+
+msgid "forzieri +%d"
+msgstr "chests +%d"
+
+msgid "sfida del giorno +%d"
+msgstr "Daily Challenge +%d"
+
+msgid "missioni +%d"
+msgstr "quests +%d"
+
+msgid "Traguardo: %s  +%d"
+msgstr "Achievement: %s  +%d"
+
+msgid "Avanti"
+msgstr "Next"
+
+msgid "Finale"
+msgstr "Ending"
+
+msgid "Livello Completato!"
+msgstr "Level Complete!"
+
+msgid "Menu principale"
+msgstr "Main menu"
+
+msgid "Livelli"
+msgstr "Levels"
+
+msgid "Personaggi"
+msgstr "Characters"
+
+msgid "Potenziamenti"
+msgstr "Upgrades"
+
+msgid "Sfide"
+msgstr "Challenges"
+
+msgid "Negozio"
+msgstr "Shop"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Posseduto"
+msgstr "Owned"
+
+msgid "Gratis"
+msgstr "Free"
+
+msgid "Bonus monete con le sfide attive: +%d%%"
+msgstr "Coin bonus from active Challenges: +%d%%"
+
+msgid "Attiva le sfide per rendere i livelli più difficili e guadagnare più monete."
+msgstr "Turn on Challenges to make levels harder and earn more coins."
+
+msgid "Ogni potenziamento si compra fino a 5 volte: ogni livello lo rende più forte."
+msgstr "Each upgrade can be bought up to 5 times: every level makes it stronger."
+
+msgid "+%d%% monete"
+msgstr "+%d%% coins"
+
+msgid "MAX"
+msgstr "MAX"
+
+msgid "ATTIVO"
+msgstr "ON"
+
+msgid "SPENTO"
+msgstr "OFF"
+
+msgid "Lv %d/%d"
+msgstr "Lv %d/%d"
+
+msgid "%s sbloccato! Sceglilo in selezione personaggio."
+msgstr "%s unlocked! Pick them in character select."
+
+msgid "%s livello %d: %s. È attivo."
+msgstr "%s level %d: %s. It's active."
+
+msgid "Ti mancano %d monete: raccogli oggetti nei livelli!"
+msgstr "You need %d more coins: collect items in the levels!"
+
+msgid "%s attivato."
+msgstr "%s on."
+
+msgid "%s spento."
+msgstr "%s off."
+
+msgid "Traguardi"
+msgstr "Achievements"
+
+msgid "Nemici"
+msgstr "Enemies"
+
+msgid "Segreti"
+msgstr "Secrets"
+
+msgid "Statistiche"
+msgstr "Stats"
+
+msgid "Inquinatore"
+msgstr "Polluter"
+
+msgid "il soldato semplice della banda: attacca da vicino. Colpiscilo e allontanati."
+msgstr "the gang's foot soldier: attacks up close. Hit it and back off."
+
+msgid "Elite"
+msgstr "Elite"
+
+msgid "un caposquadra più resistente e più forte: tienilo a distanza e non farti circondare."
+msgstr "a tougher, stronger squad leader: keep your distance and don't get surrounded."
+
+msgid "MECCA-RIFIUTI"
+msgstr "TRASH-MECH"
+
+msgid "l'armatura del Barone dei Rifiuti: carica, lancia barili tossici e chiama rinforzi. Schiva le cariche e colpiscilo quando si ferma."
+msgstr "the Waste Baron's armor: it charges, throws toxic barrels and calls for backup. Dodge the charges and hit it when it stops."
+
+msgid "Inquinatori sconfitti"
+msgstr "Polluters defeated"
+
+msgid "Elite sconfitti"
+msgstr "Elites defeated"
+
+msgid "MECCA-RIFIUTI distrutti"
+msgstr "TRASH-MECHs destroyed"
+
+msgid "Sacchi raccolti"
+msgstr "Bags collected"
+
+msgid "Monete verdi raccolte"
+msgstr "Green coins collected"
+
+msgid "Barili messi in sicurezza"
+msgstr "Barrels secured"
+
+msgid "Forzieri aperti"
+msgstr "Chests opened"
+
+msgid "Livelli completati"
+msgstr "Levels completed"
+
+msgid "Livelli senza danni"
+msgstr "Levels without damage"
+
+msgid "Sconfitte"
+msgstr "Defeats"
+
+msgid "Sfide del giorno completate"
+msgstr "Daily Challenges completed"
+
+msgid "Partite in Rage mode"
+msgstr "Rage mode games"
+
+msgid "Miglior round in Rage mode"
+msgstr "Best Rage mode round"
+
+msgid "Boss sconfitti in Rage mode"
+msgstr "Bosses defeated in Rage mode"
+
+msgid "Codex"
+msgstr "Codex"
+
+msgid "+%d monete"
+msgstr "+%d coins"
+
+msgid "Traguardi sbloccati: %d / %d"
+msgstr "Achievements unlocked: %d / %d"
+
+msgid "Non l'hai ancora incontrato: continua la campagna."
+msgstr "You haven't met it yet: keep playing the campaign."
+
+msgid "Nemici incontrati: %d / %d"
+msgstr "Enemies met: %d / %d"
+
+msgid "Epilogo"
+msgstr "Epilogue"
+
+msgid "Capitolo %d"
+msgstr "Chapter %d"
+
+msgid "Dossier non ancora trovato: è nascosto in %s."
+msgstr "Dossier not found yet: it's hidden in %s."
+
+msgid "Dossier trovati: %d / %d"
+msgstr "Dossiers found: %d / %d"
+
+msgid "un potenziamento per la Rage mode"
+msgstr "a Rage mode upgrade"
+
+msgid "uno sconto nel negozio"
+msgstr "a shop discount"
+
+msgid "Caveau nascosto"
+msgstr "Hidden vault"
+
+msgid "In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s."
+msgstr "In %s a hidden passage (crates or vases to break) leads to a portal. Inside: guards and %s."
+
+msgid "Caveau trovati: %d / %d"
+msgstr "Vaults found: %d / %d"
+
+msgid "Stelle"
+msgstr "Stars"
+
+msgid "Eroi che hanno completato un livello"
+msgstr "Heroes who completed a level"
+
+msgid "Vittorie con %s"
+msgstr "Wins with %s"
+
+msgid "Game Over"
+msgstr "Game Over"
+
+msgid "Riprova\n"
+msgstr "Retry\n"
+
+msgid "Hai salvato metà del bottino: +%d monete"
+msgstr "You saved half the loot: +%d coins"
+
+msgid "Rage mode: %d round superati  ·  %d nemici  ·  %d boss\nPunteggio %d  ·  +%d monete  ·  %s"
+msgstr "Rage mode: %d rounds cleared  ·  %d enemies  ·  %d bosses\nScore %d  ·  +%d coins  ·  %s"
+
+msgid "NUOVO RECORD!"
+msgstr "NEW RECORD!"
+
+msgid "record: round %d"
+msgstr "record: round %d"
+
+msgid "Nessun oggetto raccolto"
+msgstr "No items collected"
+
+msgid "Batti il Barone"
+msgstr "Beat the Baron"
+
+msgid "NUOVO!"
+msgstr "NEW!"
+
+msgid "Record:\n%d"
+msgstr "Record:\n%d"
+
+msgid "Miglior p: --"
+msgstr "Best: --"
+
+msgid "Bloccato!\nSconfiggi il Barone\nnella sua fortezza"
+msgstr "Locked!\nDefeat the Baron\nin his fortress"
+
+msgid "Bloccato!\nServono %d stelle\n(ne hai %d)"
+msgstr "Locked!\nYou need %d stars\n(you have %d)"
+
+msgid "Storia"
+msgstr "Story"
+
+msgid "Rage mode"
+msgstr "Rage mode"
+
+msgid "Livello: %s"
+msgstr "Level: %s"
+
+msgid "Sfide: %s"
+msgstr "Challenges: %s"
+
+msgid "Potenziamenti spenti: stesse regole per tutti."
+msgstr "Upgrades off: same rules for everyone."
+
+msgid "Ricompensa di oggi già ottenuta: gioca per il punteggio!"
+msgstr "Today's reward already claimed: play for the score!"
+
+msgid "Completala per +%d monete."
+msgstr "Complete it for +%d coins."
+
+msgid "Indietro"
+msgstr "Back"
+
+msgid "Gioca"
+msgstr "Play"
+
+msgid "Giocatore: %s  ·  cambia"
+msgstr "Player: %s  ·  change"
+
+msgid "Volume Master:\n"
+msgstr "Master volume:\n"
+
+msgid "Volume Music:\n"
+msgstr "Music volume:\n"
+
+msgid "Volume SFX:\n"
+msgstr "SFX volume:\n"
+
+msgid "Risoluzione"
+msgstr "Resolution"
+
+msgid "Fullscreen"
+msgstr "Fullscreen"
+
+msgid "Borderless"
+msgstr "Borderless"
+
+msgid "Up"
+msgstr "Up"
+
+msgid "Down"
+msgstr "Down"
+
+msgid "Left"
+msgstr "Left"
+
+msgid "Rigth"
+msgstr "Right"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Controls"
+msgstr "Controls"
+
+msgid "Mappa"
+msgstr "Map"
+
+msgid "Tu"
+msgstr "You"
+
+msgid "Punto di raccolta"
+msgstr "Collection point"
+
+msgid "Nemici: %d"
+msgstr "Enemies: %d"
+
+msgid "Pausa"
+msgstr "Pause"
+
+msgid "Riprendi\n"
+msgstr "Resume\n"
+
+msgid "Opzioni\n"
+msgstr "Options\n"
+
+msgid "Oggetti Raccolti"
+msgstr "Items Collected"
+
+msgid "Record: round %d"
+msgstr "Record: round %d"
+
+msgid "Mappa (sbloccate nella campagna)"
+msgstr "Map (unlocked in the campaign)"
+
+msgid "Eroe (solo quelli che hai comprato)"
+msgstr "Hero (only the ones you bought)"
+
+msgid "Potenziamenti permanenti"
+msgstr "Permanent upgrades"
+
+msgid "Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round."
+msgstr "Endless rounds of enemies, a boss every %d rounds. Shop upgrades you find on the ground only count here: hearts, shield and magnet until game over, speed and strength until the end of the round."
+
+msgid "Attivi"
+msgstr "On"
+
+msgid "Spenti"
+msgstr "Off"
+
+msgid "Nessuno ancora: sconfiggi un boss (ogni %d round) per sceglierne uno."
+msgstr "None yet: defeat a boss (every %d rounds) to choose one."
+
+msgid "Ancora voi?! La nave arriva tra pochi minuti..."
+msgstr "You again?! The ship arrives in a few minutes..."
+
+msgid "Il mio MECCA-RIFIUTI è ammaccato, ma basta per voi!"
+msgstr "My TRASH-MECH is dented, but it's enough for you!"
+
+msgid "Il Barone è a terra! Niente nave per lui stanotte."
+msgstr "The Baron is down! No ship for him tonight."
+
+msgid "TIRA"
+msgstr "SHOOT"
+
+msgid "ZAP"
+msgstr "ZAP"
+
+msgid "COLPO"
+msgstr "STRIKE"
+
+msgid "LASER"
+msgstr "LASER"
+
+msgid "Energia bassa! Cerca una batteria."
+msgstr "Low energy! Find a battery."
+
+msgid "Energia!"
+msgstr "Energy!"
+
+msgid "ENERGIA %d%%"
+msgstr "ENERGY %d%%"
+
+msgid "POZIONE"
+msgstr "POTION"
+
+msgid "BASTONE"
+msgstr "STAFF"
+
+msgid "PUGNO"
+msgstr "PUNCH"
+
+msgid "SEMI"
+msgstr "SEEDS"
+
+msgid "Veleno!"
+msgstr "Poison!"
+
+msgid "FRANA"
+msgstr "ROCKSLIDE"
+
+msgid "ACQUA"
+msgstr "WATER"
+
+msgid "MOCIO"
+msgstr "MOP"
+
+msgid "LATTINA"
+msgstr "CAN"
+
+msgid " e "
+msgstr " and "
+
+msgid "Dossier"
+msgstr "Dossiers"
+
+msgid "Unassigned"
+msgstr "Unassigned"
+

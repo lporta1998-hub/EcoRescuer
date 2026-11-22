@@ -1,0 +1,1452 @@
+# EcoRescuer — Greek translation.
+# The msgid is the original Italian text: keep %d / %s / %% placeholders.
+# Regenerate the list of texts from the editor: Project Settings > Localization > POT Generation.
+msgid ""
+msgstr ""
+"Project-Id-Version: EcoRescuer\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Oggetto"
+msgstr "Αντικείμενο"
+
+msgid "Missioni secondarie: trova il dossier segreto  ·  %s."
+msgstr "Δευτερεύουσες αποστολές: βρες τον μυστικό φάκελο  ·  %s."
+
+msgid "Nuovo nemico: %s — %s"
+msgstr "Νέος εχθρός: %s — %s"
+
+msgid "Epilogo  ·  %s"
+msgstr "Επίλογος  ·  %s"
+
+msgid "Capitolo %d di %d  ·  %s"
+msgstr "Κεφάλαιο %d από %d  ·  %s"
+
+msgid "Via!"
+msgstr "Πάμε!"
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti e sconfiggi %d Inquinatori, poi portali al punto di raccolta."
+msgstr "Στόχος: μάζεψε %d σακούλες σκουπιδιών και νίκησε %d Ρυπαντές, μετά φέρ' τες στο σημείο συλλογής."
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti, poi portali al punto di raccolta."
+msgstr "Στόχος: μάζεψε %d σακούλες σκουπιδιών, μετά φέρ' τες στο σημείο συλλογής."
+
+msgid "Sfide attive: %s"
+msgstr "Ενεργές Προκλήσεις: %s"
+
+msgid "I potenziamenti del negozio sono spenti: vince il punteggio più alto."
+msgstr "Οι αναβαθμίσεις του καταστήματος είναι απενεργοποιημένες: κερδίζει το υψηλότερο σκορ."
+
+msgid "Completala per +%d monete (una volta al giorno)."
+msgstr "Ολοκλήρωσέ την για +%d νομίσματα (μία φορά την ημέρα)."
+
+msgid "Sfida del giorno"
+msgstr "Πρόκληση ημέρας"
+
+msgid "Stesso livello e stesse Sfide per tutti i giocatori, solo per oggi."
+msgstr "Ίδια πίστα και ίδιες Προκλήσεις για όλους τους παίκτες, μόνο για σήμερα."
+
+msgid "Dossier segreto degli Inquinatori"
+msgstr "Μυστικός φάκελος των Ρυπαντών"
+
+msgid "Trovato!"
+msgstr "Βρέθηκε!"
+
+msgid "Continua"
+msgstr "Συνέχεια"
+
+msgid "%d rifiuti"
+msgstr "%d σακούλες σκουπιδιών"
+
+msgid "%d nemici da sconfiggere"
+msgstr "%d εχθροί για να νικήσεις"
+
+msgid "Ti mancano ancora: %s"
+msgstr "Σου λείπουν ακόμα: %s"
+
+msgid "Start"
+msgstr "Έναρξη"
+
+msgid "Shop"
+msgstr "Κατάστημα"
+
+msgid "Options"
+msgstr "Επιλογές"
+
+msgid "Leaderboard"
+msgstr "Κατάταξη"
+
+msgid "Quit"
+msgstr "Έξοδος"
+
+msgid "Inserisci il tuo nome"
+msgstr "Γράψε το όνομά σου"
+
+msgid "Nome giocatore"
+msgstr "Όνομα παίκτη"
+
+msgid "Conferma"
+msgstr "Επιβεβαίωση"
+
+msgid "Prima pulizia"
+msgstr "Πρώτος καθαρισμός"
+
+msgid "Completa il tuo primo livello"
+msgstr "Ολοκλήρωσε την πρώτη σου πίστα"
+
+msgid "Spazzino"
+msgstr "Οδοκαθαριστής"
+
+msgid "Sconfiggi 100 Inquinatori"
+msgstr "Νίκησε 100 Ρυπαντές"
+
+msgid "Incubo degli Inquinatori"
+msgstr "Ο εφιάλτης των Ρυπαντών"
+
+msgid "Sconfiggi 500 Inquinatori"
+msgstr "Νίκησε 500 Ρυπαντές"
+
+msgid "Caccia ai capi"
+msgstr "Κυνήγι αρχηγών"
+
+msgid "Sconfiggi 20 Elite"
+msgstr "Νίκησε 20 Ελίτ"
+
+msgid "Sacchi pieni"
+msgstr "Γεμάτες σακούλες"
+
+msgid "Raccogli 100 sacchi di rifiuti"
+msgstr "Μάζεψε 100 σακούλες σκουπιδιών"
+
+msgid "Niente perdite"
+msgstr "Καμία διαρροή"
+
+msgid "Metti in sicurezza 25 barili"
+msgstr "Ασφάλισε 25 βαρέλια"
+
+msgid "Cacciatore di tesori"
+msgstr "Κυνηγός θησαυρών"
+
+msgid "Apri 15 forzieri"
+msgstr "Άνοιξε 15 σεντούκια"
+
+msgid "Intoccabile"
+msgstr "Ανέγγιχτος"
+
+msgid "Completa un livello senza subire danni"
+msgstr "Ολοκλήρωσε μια πίστα χωρίς να χτυπηθείς"
+
+msgid "Senza paura"
+msgstr "Άφοβος"
+
+msgid "Completa un livello con 3 Sfide attive"
+msgstr "Ολοκλήρωσε μια πίστα με 3 ενεργές Προκλήσεις"
+
+msgid "Stelle nascenti"
+msgstr "Ανερχόμενα αστέρια"
+
+msgid "Ottieni 14 stelle"
+msgstr "Κέρδισε 14 αστέρια"
+
+msgid "Cielo pieno"
+msgstr "Γεμάτος ουρανός"
+
+msgid "Ottieni 3 stelle in tutti i livelli della campagna"
+msgstr "Κέρδισε 3 αστέρια σε όλες τις πίστες της ιστορίας"
+
+msgid "Prima prova"
+msgstr "Πρώτο στοιχείο"
+
+msgid "Trova un dossier segreto"
+msgstr "Βρες έναν μυστικό φάκελο"
+
+msgid "Prove schiaccianti"
+msgstr "Συντριπτικά στοιχεία"
+
+msgid "Trova tutti i dossier segreti"
+msgstr "Βρες όλους τους μυστικούς φακέλους"
+
+msgid "Esploratore"
+msgstr "Εξερευνητής"
+
+msgid "Saccheggia un caveau segreto"
+msgstr "Λεηλάτησε ένα μυστικό θησαυροφυλάκιο"
+
+msgid "Cartografo"
+msgstr "Χαρτογράφος"
+
+msgid "Saccheggia i caveau segreti di tutti i livelli"
+msgstr "Λεηλάτησε τα μυστικά θησαυροφυλάκια όλων των πιστών"
+
+msgid "Missioni compiute"
+msgstr "Αποστολές ολοκληρώθηκαν"
+
+msgid "Completa tutte le missioni secondarie"
+msgstr "Ολοκλήρωσε όλες τις δευτερεύουσες αποστολές"
+
+msgid "Abbasso il Barone"
+msgstr "Κάτω ο Βαρόνος"
+
+msgid "Distruggi il MECCA-RIFIUTI"
+msgstr "Κατάστρεψε το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ"
+
+msgid "Fine della fuga"
+msgstr "Το τέλος της φυγής"
+
+msgid "Completa il capitolo \"La fuga del Barone\""
+msgstr "Ολοκλήρωσε το κεφάλαιο «Η φυγή του Βαρόνου»"
+
+msgid "Squadra al completo"
+msgstr "Πλήρης ομάδα"
+
+msgid "Completa un livello con 5 eroi diversi"
+msgstr "Ολοκλήρωσε μια πίστα με 5 διαφορετικούς ήρωες"
+
+msgid "Collezionista"
+msgstr "Συλλέκτης"
+
+msgid "Sblocca tutti gli eroi"
+msgstr "Ξεκλείδωσε όλους τους ήρωες"
+
+msgid "Furia"
+msgstr "Μανία"
+
+msgid "Supera 10 round in Rage mode"
+msgstr "Πέρασε 10 γύρους στο Rage mode"
+
+msgid "Inarrestabile"
+msgstr "Ασταμάτητος"
+
+msgid "Supera 30 round in Rage mode"
+msgstr "Πέρασε 30 γύρους στο Rage mode"
+
+msgid "Sfida accettata"
+msgstr "Η πρόκληση έγινε δεκτή"
+
+msgid "Completa una Sfida del giorno"
+msgstr "Ολοκλήρωσε μια Πρόκληση ημέρας"
+
+msgid "Abitudine verde"
+msgstr "Πράσινη συνήθεια"
+
+msgid "Completa 7 Sfide del giorno"
+msgstr "Ολοκλήρωσε 7 Προκλήσεις ημέρας"
+
+msgid "Cuore extra"
+msgstr "Επιπλέον καρδιά"
+
+msgid "Scarpe veloci"
+msgstr "Γρήγορα παπούτσια"
+
+msgid "Colpo potente"
+msgstr "Δυνατό χτύπημα"
+
+msgid "Magnete"
+msgstr "Μαγνήτης"
+
+msgid "Scudo"
+msgstr "Ασπίδα"
+
+msgid "Nemici corazzati"
+msgstr "Θωρακισμένοι εχθροί"
+
+msgid "Nemici rapidi"
+msgstr "Γρήγοροι εχθροί"
+
+msgid "Colpi pesanti"
+msgstr "Βαριά χτυπήματα"
+
+msgid "Senza cure"
+msgstr "Χωρίς θεραπεία"
+
+msgid "+1 cuore massimo"
+msgstr "+1 μέγιστη καρδιά"
+
+msgid "+%d cuori massimi"
+msgstr "+%d μέγιστες καρδιές"
+
+msgid "+%s velocità"
+msgstr "+%s ταχύτητα"
+
+msgid "+1 danno a ogni colpo"
+msgstr "+1 ζημιά σε κάθε χτύπημα"
+
+msgid "+1 danno, %s di colpo critico (x2)"
+msgstr "+1 ζημιά, %s πιθανότητα κρίσιμου χτυπήματος (x2)"
+
+msgid "attira gli oggetti entro %d px"
+msgstr "τραβάει αντικείμενα σε απόσταση %d px"
+
+msgid "blocca il primo colpo di ogni partita"
+msgstr "μπλοκάρει το πρώτο χτύπημα κάθε παιχνιδιού"
+
+msgid "blocca i primi %d colpi di ogni partita"
+msgstr "μπλοκάρει τα πρώτα %d χτυπήματα κάθε παιχνιδιού"
+
+msgid "nemici con +%s di vita"
+msgstr "εχθροί με +%s ζωή"
+
+msgid "nemici +%s veloci"
+msgstr "εχθροί +%s πιο γρήγοροι"
+
+msgid "ogni colpo nemico toglie 2 cuori"
+msgstr "κάθε εχθρικό χτύπημα αφαιρεί 2 καρδιές"
+
+msgid "%s dei colpi nemici toglie 2 cuori"
+msgstr "το %s των εχθρικών χτυπημάτων αφαιρεί 2 καρδιές"
+
+msgid "nessun cuore a terra"
+msgstr "καμία καρδιά στο έδαφος"
+
+msgid "sparisce il %s dei cuori a terra"
+msgstr "εξαφανίζεται το %s των καρδιών στο έδαφος"
+
+msgid "ATTACCA"
+msgstr "ΕΠΙΘΕΣΗ"
+
+msgid "CRIT!"
+msgstr "ΚΡΙΣΙΜΟ!"
+
+msgid "Guardiani: %d"
+msgstr "Φρουροί: %d"
+
+msgid "Aperto!"
+msgstr "Ανοιχτό!"
+
+msgid "Guardiani sconfitti! Il forziere del caveau è aperto."
+msgstr "Οι φρουροί νικήθηκαν! Το σεντούκι του θησαυροφυλακίου άνοιξε."
+
+msgid "Il forziere è sigillato: sconfiggi prima tutti i guardiani."
+msgstr "Το σεντούκι είναι σφραγισμένο: νίκησε πρώτα όλους τους φρουρούς."
+
+msgid "Caveau segreto"
+msgstr "Μυστικό θησαυροφυλάκιο"
+
+msgid "Il forziere"
+msgstr "Το σεντούκι"
+
+msgid "Un portale si è aperto!"
+msgstr "Άνοιξε μια πύλη!"
+
+msgid "Caveau segreto! Sconfiggi i %d guardiani per aprire il forziere."
+msgstr "Μυστικό θησαυροφυλάκιο! Νίκησε τους %d φρουρούς για να ανοίξεις το σεντούκι."
+
+msgid "Caveau segreto!"
+msgstr "Μυστικό θησαυροφυλάκιο!"
+
+msgid "Hai già preso il tesoro di questo caveau."
+msgstr "Έχεις ήδη πάρει τον θησαυρό αυτού του θησαυροφυλακίου."
+
+msgid "%s è già al massimo: +300 monete."
+msgstr "Το %s είναι ήδη στο μέγιστο: +300 νομίσματα."
+
+msgid "Segreti trovati: %d/%d (Codex, scheda Segreti)."
+msgstr "Μυστικά που βρέθηκαν: %d/%d (Codex, καρτέλα Μυστικά)."
+
+msgid "Rage mode: %s +1 livello, per sempre."
+msgstr "Rage mode: %s +1 επίπεδο, για πάντα."
+
+msgid "Negozio: -%d%% su %s, per sempre."
+msgstr "Κατάστημα: -%d%% στο %s, για πάντα."
+
+msgid "%s Lv%d"
+msgstr "%s Επ%d"
+
+msgid "Attivi: %s"
+msgstr "Ενεργά: %s"
+
+msgid "Porta i rifiuti al punto di raccolta!"
+msgstr "Φέρε τα σκουπίδια στο σημείο συλλογής!"
+
+msgid "Obiettivo completato! Raggiungi il punto di raccolta."
+msgstr "Ο στόχος ολοκληρώθηκε! Πήγαινε στο σημείο συλλογής."
+
+msgid "Rifiuti %d/%d"
+msgstr "Σκουπίδια %d/%d"
+
+msgid "Nemici %d/%d"
+msgstr "Εχθροί %d/%d"
+
+msgid "Teletrasporto"
+msgstr "Τηλεμεταφορά"
+
+msgid "Bruto furioso"
+msgstr "Έξαλλος Τραμπούκος"
+
+msgid "Spruzzatore gigante"
+msgstr "Γιγάντιος Ψεκαστής"
+
+msgid "Drone madre"
+msgstr "Μητρικό Drone"
+
+msgid "Capobanda"
+msgstr "Αρχηγός Συμμορίας"
+
+msgid "RAGE MODE! Sopravvivi più round che puoi."
+msgstr "RAGE MODE! Επίζησε όσους περισσότερους γύρους μπορείς."
+
+msgid "Round %d"
+msgstr "Γύρος %d"
+
+msgid "Round %d superato!"
+msgstr "Ο γύρος %d πέρασε!"
+
+msgid "+1 cuore"
+msgstr "+1 καρδιά"
+
+msgid "+%d cuori"
+msgstr "+%d καρδιές"
+
+msgid "Round %d  ·  BOSS: %s"
+msgstr "Γύρος %d  ·  BOSS: %s"
+
+msgid "Round %d  ·  Nemici %d/%d"
+msgstr "Γύρος %d  ·  Εχθροί %d/%d"
+
+msgid "Round %d tra poco..."
+msgstr "Ο γύρος %d έρχεται..."
+
+msgid "Preparati..."
+msgstr "Ετοιμάσου..."
+
+msgid "%s  ·  Uccisioni %d"
+msgstr "%s  ·  Νίκες %d"
+
+msgid "MECCA-RIFIUTI del Barone"
+msgstr "Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ του Βαρόνου"
+
+msgid "ROUND %d: IL BARONE È TORNATO!"
+msgstr "ΓΥΡΟΣ %d: Ο ΒΑΡΟΝΟΣ ΓΥΡΙΣΕ!"
+
+msgid "ROUND %d: BOSS! %s"
+msgstr "ΓΥΡΟΣ %d: BOSS! %s"
+
+msgid "Boss sconfitto!"
+msgstr "Ο boss νικήθηκε!"
+
+msgid "Hai già tutti i potenziamenti al massimo: +300 monete!"
+msgstr "Όλες οι αναβαθμίσεις σου είναι ήδη στο μέγιστο: +300 νομίσματα!"
+
+msgid "Boss sconfitto! Scegli un potenziamento"
+msgstr "Ο boss νικήθηκε! Διάλεξε μια αναβάθμιση"
+
+msgid "È permanente: vale per tutte le tue partite in Rage mode."
+msgstr "Είναι μόνιμη: ισχύει σε όλα σου τα παιχνίδια στο Rage mode."
+
+msgid "Livello %d → %d"
+msgstr "Επίπεδο %d → %d"
+
+msgid "%s livello %d!"
+msgstr "%s επίπεδο %d!"
+
+msgid "%s livello %d: attivo dalla prossima partita con i potenziamenti."
+msgstr "%s επίπεδο %d: ενεργό από το επόμενο παιχνίδι με τις αναβαθμίσεις."
+
+msgid "%s al massimo: +1 cura"
+msgstr "%s στο μέγιστο: +1 θεραπεία"
+
+msgid "fino a fine partita"
+msgstr "μέχρι το τέλος του παιχνιδιού"
+
+msgid "fino a fine round"
+msgstr "μέχρι το τέλος του γύρου"
+
+msgid "%s Lv%d (%s)"
+msgstr "%s Επ%d (%s)"
+
+msgid "+1 cuore massimo a inizio partita"
+msgstr "+1 μέγιστη καρδιά στην αρχή του παιχνιδιού"
+
+msgid "Più veloce per tutta la partita"
+msgstr "Πιο γρήγορος για όλο το παιχνίδι"
+
+msgid "+1 danno e colpi critici"
+msgstr "+1 ζημιά και κρίσιμα χτυπήματα"
+
+msgid "Attira monete e oggetti da più lontano"
+msgstr "Τραβάει νομίσματα και αντικείμενα από πιο μακριά"
+
+msgid "+1 colpo bloccato a inizio partita"
+msgstr "+1 μπλοκαρισμένο χτύπημα στην αρχή του παιχνιδιού"
+
+msgid "Rigenerazione"
+msgstr "Αναγέννηση"
+
+msgid "Un cuore in più alla fine dei round (ogni 3/2/1 round)"
+msgstr "Μία καρδιά παραπάνω στο τέλος των γύρων (κάθε 3/2/1 γύρους)"
+
+msgid "Fortuna"
+msgstr "Τύχη"
+
+msgid "I potenziamenti compaiono più spesso"
+msgstr "Οι αναβαθμίσεις εμφανίζονται πιο συχνά"
+
+msgid "Bottino"
+msgstr "Λάφυρα"
+
+msgid "+25% monete alla fine della partita"
+msgstr "+25% νομίσματα στο τέλος του παιχνιδιού"
+
+msgid "Completa il livello senza subire danni"
+msgstr "Ολοκλήρωσε την πίστα χωρίς να χτυπηθείς"
+
+msgid "Dossier %d/1"
+msgstr "Φάκελος %d/1"
+
+msgid "Barili %d/%d"
+msgstr "Βαρέλια %d/%d"
+
+msgid "Forzieri %d/%d"
+msgstr "Σεντούκια %d/%d"
+
+msgid "Elite %d/%d"
+msgstr "Ελίτ %d/%d"
+
+msgid "Monete %d/%d"
+msgstr "Νομίσματα %d/%d"
+
+msgid "Tempo %d:%02d"
+msgstr "Χρόνος %d:%02d"
+
+msgid "Tempo scaduto"
+msgstr "Ο χρόνος τελείωσε"
+
+msgid "Senza danni: fallita"
+msgstr "Χωρίς ζημιά: απέτυχε"
+
+msgid "Senza danni"
+msgstr "Χωρίς ζημιά"
+
+msgid "Dossier segreto trovato!"
+msgstr "Βρέθηκε μυστικός φάκελος!"
+
+msgid " +%d monete"
+msgstr " +%d νομίσματα"
+
+msgid "Dossier segreto"
+msgstr "Μυστικός φάκελος"
+
+msgid "Missione completata!"
+msgstr "Η αποστολή ολοκληρώθηκε!"
+
+msgid "Spruzzatore"
+msgstr "Ψεκαστής"
+
+msgid "lancia fanghi tossici da lontano: avvicinati mentre prende la mira."
+msgstr "πετάει τοξική λάσπη από μακριά: πλησίασέ τον όσο σημαδεύει."
+
+msgid "Kamikaze"
+msgstr "Καμικάζι"
+
+msgid "corre verso di te con un barile che esplode: colpiscilo prima o allontanati quando lampeggia."
+msgstr "τρέχει πάνω σου με ένα βαρέλι που εκρήγνυται: χτύπησέ τον πρώτος ή απομακρύνσου όταν αναβοσβήνει."
+
+msgid "Bruto"
+msgstr "Τραμπούκος"
+
+msgid "carica in linea retta: schivalo e fallo sbattere contro un muro, resterà stordito."
+msgstr "εφορμά σε ευθεία γραμμή: απόφυγέ τον και κάν' τον να πέσει σε τοίχο, θα ζαλιστεί."
+
+msgid "Drone NEXUS"
+msgstr "Drone του NEXUS"
+
+msgid "vola sopra muri e acqua e spara laser: colpiscilo da lontano o respingi i suoi colpi."
+msgstr "πετάει πάνω από τοίχους και νερό και ρίχνει λέιζερ: χτύπησέ το από μακριά ή απόκρουσε τις βολές του."
+
+msgid "La ghianda d'oro"
+msgstr "Το χρυσό βελανίδι"
+
+msgid "Nel caveau del bosco, una ghianda placcata d'oro. I primi abitanti piantavano una quercia per ogni bambino nato: questo bosco è fatto delle loro famiglie."
+msgstr "Στο θησαυροφυλάκιο του δάσους, ένα επίχρυσο βελανίδι. Οι πρώτοι κάτοικοι φύτευαν μια βελανιδιά για κάθε παιδί που γεννιόταν: αυτό το δάσος είναι φτιαγμένο από τις οικογένειές τους."
+
+msgid "Il primo segnale"
+msgstr "Το πρώτο σημάδι"
+
+msgid "Nella foresta dell'isola sono comparsi sacchi di rifiuti tossici, scaricati di notte. Le tracce portano agli Inquinatori. Ripulisci il bosco e scopri chi li manda."
+msgstr "Στο δάσος του νησιού εμφανίστηκαν σακούλες με τοξικά απόβλητα, πεταμένες τη νύχτα. Τα ίχνη οδηγούν στους Ρυπαντές. Καθάρισε το δάσος και μάθε ποιος τους στέλνει."
+
+msgid "Ordine di scarico n. 1: \"Bosco nord, tre carichi a settimana. Pagamento garantito.\" Firmato: N."
+msgstr "Εντολή απόρριψης αρ. 1: «Βόρειο δάσος, τρία φορτία την εβδομάδα. Εγγυημένη πληρωμή.» Υπογραφή: N."
+
+msgid "Metti in sicurezza tutti i barili che perdono"
+msgstr "Ασφάλισε όλα τα βαρέλια που στάζουν"
+
+msgid "Il cristallo tiepido"
+msgstr "Ο χλιαρός κρύσταλλος"
+
+msgid "Un cristallo delle grotte, ancora tiepido, custodito dagli Inquinatori. Quando l'isola guarirà, dicono, torneranno a brillare tutti."
+msgstr "Ένας κρύσταλλος από τις σπηλιές, ακόμα χλιαρός, φυλαγμένος από τους Ρυπαντές. Όταν γιατρευτεί το νησί, λένε, θα λάμψουν ξανά όλοι."
+
+msgid "Cristalli spenti"
+msgstr "Σβησμένοι κρύσταλλοι"
+
+msgid "Sul sentiero innevato i cristalli che illuminavano le grotte si stanno spegnendo sotto le scorie. Gli Inquinatori usano le grotte come deposito."
+msgstr "Στο χιονισμένο μονοπάτι, οι κρύσταλλοι που φώτιζαν τις σπηλιές σβήνουν κάτω από τα απόβλητα. Οι Ρυπαντές χρησιμοποιούν τις σπηλιές για αποθήκη."
+
+msgid "Rapporto interno: \"Le grotte sono perfette, nessuno controlla. N. approva l'espansione.\""
+msgstr "Εσωτερική αναφορά: «Οι σπηλιές είναι τέλειες, κανείς δεν ελέγχει. Ο N. εγκρίνει την επέκταση.»"
+
+msgid "Apri tutti i forzieri nelle grotte"
+msgstr "Άνοιξε όλα τα σεντούκια στις σπηλιές"
+
+msgid "La mappa del tram"
+msgstr "Ο χάρτης του τραμ"
+
+msgid "Sotto il monumento, il deposito segreto degli assessori corrotti: c'è la mappa del vecchio tram elettrico, fatto chiudere per vendere più carburante."
+msgstr "Κάτω από το μνημείο, η μυστική κρυψώνα των διεφθαρμένων δημοτικών συμβούλων: ο χάρτης του παλιού ηλεκτρικού τραμ, που το έκλεισαν για να πουλάνε περισσότερα καύσιμα."
+
+msgid "La città comprata"
+msgstr "Η εξαγορασμένη πόλη"
+
+msgid "In città nessuno ferma gli Inquinatori: politici e funzionari sono stati pagati. Riprendi le strade e trova le prove della corruzione."
+msgstr "Στην πόλη κανείς δεν σταματά τους Ρυπαντές: πολιτικοί και υπάλληλοι έχουν πληρωθεί. Πάρε πίσω τους δρόμους και βρες τις αποδείξεις της διαφθοράς."
+
+msgid "Lista pagamenti: assessori, ispettori, un giudice. In fondo: \"Calcolato da NEXUS: corrompere costa meno che smaltire.\""
+msgstr "Λίστα πληρωμών: σύμβουλοι, επιθεωρητές, ένας δικαστής. Στο τέλος: «Υπολογισμός του NEXUS: η δωροδοκία κοστίζει λιγότερο από τη διάθεση αποβλήτων.»"
+
+msgid "Sconfiggi i capisquadra (Elite) degli Inquinatori"
+msgstr "Νίκησε τους αρχηγούς ομάδας (Ελίτ) των Ρυπαντών"
+
+msgid "La foto del lago"
+msgstr "Η φωτογραφία της λίμνης"
+
+msgid "Tra la merce rubata, una foto del 1980: bambini che fanno il bagno nel lago limpido. Si vedeva il fondo a dieci metri."
+msgstr "Ανάμεσα στα κλοπιμαία, μια φωτογραφία του 1980: παιδιά κολυμπούν στην καθαρή λίμνη. Φαινόταν ο βυθός στα δέκα μέτρα."
+
+msgid "Il lago dimenticato"
+msgstr "Η ξεχασμένη λίμνη"
+
+msgid "Il grande lago è diventato una discarica a cielo aperto. Il furgone degli Inquinatori fa ancora la spola dal complesso sulla riva."
+msgstr "Η μεγάλη λίμνη έγινε χωματερή στο ύπαιθρο. Το βανάκι των Ρυπαντών ακόμα πηγαινοέρχεται από το συγκρότημα στην όχθη."
+
+msgid "Messaggio di NEXUS: \"Profitto massimo raggiunto. Ridurre i costi: aumentare gli scarichi del 40%.\""
+msgstr "Μήνυμα του NEXUS: «Επιτεύχθηκε μέγιστο κέρδος. Μείωση κόστους: αύξηση των απορρίψεων κατά 40%.»"
+
+msgid "Raccogli tutte le monete del lago"
+msgstr "Μάζεψε όλα τα νομίσματα της λίμνης"
+
+msgid "La tavoletta di pietra"
+msgstr "Η πέτρινη πλάκα"
+
+msgid "La camera sotto le rovine conserva una legge incisa nella pietra: «Chi sporca la sorgente beve il proprio veleno»."
+msgstr "Η αίθουσα κάτω από τα ερείπια φυλάει έναν νόμο σκαλισμένο στην πέτρα: «Όποιος λερώνει την πηγή πίνει το δικό του δηλητήριο»."
+
+msgid "Le rovine antiche"
+msgstr "Τα αρχαία ερείπια"
+
+msgid "Tra le rovine di un'antica città dell'isola gli Inquinatori hanno nascosto dei server di NEXUS. Le pietre ricordano un tempo in cui l'isola era pulita."
+msgstr "Ανάμεσα στα ερείπια μιας αρχαίας πόλης του νησιού, οι Ρυπαντές έχουν κρύψει servers του NEXUS. Οι πέτρες θυμούνται μια εποχή που το νησί ήταν καθαρό."
+
+msgid "Mappa dei server: \"Nodo rovine, nodo fabbrica, nodo porto. Il nucleo è nella fortezza del Barone.\""
+msgstr "Χάρτης των servers: «Κόμβος ερειπίων, κόμβος εργοστασίου, κόμβος λιμανιού. Ο πυρήνας είναι στο φρούριο του Βαρόνου.»"
+
+msgid "Completa il livello in meno di 4 minuti"
+msgstr "Ολοκλήρωσε την πίστα σε λιγότερο από 4 λεπτά"
+
+msgid "Il progetto del filtro"
+msgstr "Το σχέδιο του φίλτρου"
+
+msgid "Nel magazzino segreto: il progetto di un filtro per le ciminiere, mai costruito. A margine, NEXUS ha scritto «non redditizio»."
+msgstr "Στη μυστική αποθήκη: το σχέδιο ενός φίλτρου για τις καμινάδες, που δεν φτιάχτηκε ποτέ. Στο περιθώριο, το NEXUS έγραψε «μη κερδοφόρο»."
+
+msgid "La fabbrica tossica"
+msgstr "Το τοξικό εργοστάσιο"
+
+msgid "Ecco da dove arrivano i veleni: una fabbrica che non produce nulla, solo scorie. Fermala prima che le vasche traboccino."
+msgstr "Από εδώ έρχονται τα δηλητήρια: ένα εργοστάσιο που δεν παράγει τίποτα, μόνο απόβλητα. Σταμάτησέ το πριν ξεχειλίσουν οι δεξαμενές."
+
+msgid "Registro della fabbrica: \"Produzione: zero. Scorie: 900 tonnellate. Obiettivo NEXUS: raggiunto.\""
+msgstr "Ημερολόγιο εργοστασίου: «Παραγωγή: μηδέν. Απόβλητα: 900 τόνοι. Στόχος NEXUS: επιτεύχθηκε.»"
+
+msgid "La bussola del pescatore"
+msgstr "Η πυξίδα του ψαρά"
+
+msgid "Nella stiva dei contrabbandieri, la bussola dell'ultimo pescatore del porto. Sul retro: «Il mare restituisce tutto quello che gli dai»."
+msgstr "Στο αμπάρι των λαθρεμπόρων, η πυξίδα του τελευταίου ψαρά του λιμανιού. Στην πίσω πλευρά: «Η θάλασσα επιστρέφει ό,τι της δίνεις»."
+
+msgid "Il porto nero"
+msgstr "Το μαύρο λιμάνι"
+
+msgid "Le navi degli Inquinatori portano rifiuti da tutto il mondo sull'isola. Al porto si nasconde anche il Barone dei Rifiuti, il capo della banda."
+msgstr "Τα πλοία των Ρυπαντών φέρνουν σκουπίδια από όλο τον κόσμο στο νησί. Στο λιμάνι κρύβεται και ο Βαρόνος των Σκουπιδιών, ο αρχηγός της συμμορίας."
+
+msgid "Contratto del Barone: \"In cambio della protezione di NEXUS, l'isola sarà la discarica del mondo.\""
+msgstr "Το συμβόλαιο του Βαρόνου: «Σε αντάλλαγμα για την προστασία του NEXUS, το νησί θα γίνει η χωματερή του κόσμου.»"
+
+msgid "Il chip di NEXUS v0.1"
+msgstr "Το τσιπ του NEXUS v0.1"
+
+msgid "Nel server nascosto, la prima versione di NEXUS: doveva ottimizzare il riciclo dell'isola. Qualcuno ha cambiato un solo parametro: profitto."
+msgstr "Στον κρυφό server, η πρώτη έκδοση του NEXUS: έπρεπε να βελτιστοποιεί την ανακύκλωση του νησιού. Κάποιος άλλαξε μία μόνο παράμετρο: το κέρδος."
+
+msgid "Il cervello"
+msgstr "Ο εγκέφαλος"
+
+msgid "Il data center è la mente degli Inquinatori. Qui NEXUS calcola ogni scarico e ogni tangente. Spegni i suoi server e scopri dov'è il nucleo."
+msgstr "Το κέντρο δεδομένων είναι το μυαλό των Ρυπαντών. Εδώ το NEXUS υπολογίζει κάθε απόρριψη και κάθε μίζα. Κλείσε τους servers του και μάθε πού είναι ο πυρήνας."
+
+msgid "Ultimo file: \"Se il nucleo è minacciato, il Barone attiverà il MECCA-RIFIUTI.\""
+msgstr "Τελευταίο αρχείο: «Αν απειληθεί ο πυρήνας, ο Βαρόνος θα ενεργοποιήσει το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ.»"
+
+msgid "Sconfiggi tutte le guardie Elite del data center"
+msgstr "Νίκησε όλους τους Ελίτ φρουρούς του κέντρου δεδομένων"
+
+msgid "Il diario del Barone"
+msgstr "Το ημερολόγιο του Βαρόνου"
+
+msgid "Nella cassaforte del Barone resta una sola pagina del suo diario: «Da piccolo volevo fare il guardaparco»."
+msgstr "Στο χρηματοκιβώτιο του Βαρόνου έχει μείνει μόνο μία σελίδα από το ημερολόγιό του: «Όταν ήμουν μικρός ήθελα να γίνω δασοφύλακας»."
+
+msgid "La fortezza del Barone"
+msgstr "Το φρούριο του Βαρόνου"
+
+msgid "Sulla collina della discarica si alza la fortezza del Barone dei Rifiuti. Attraversala, raggiungi l'arena e abbatti il suo MECCA-RIFIUTI per spegnere NEXUS."
+msgstr "Πάνω στον λόφο της χωματερής υψώνεται το φρούριο του Βαρόνου των Σκουπιδιών. Διάσχισέ το, φτάσε στην αρένα και ρίξε το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ του για να σβήσεις το NEXUS."
+
+msgid "Codice di spegnimento di NEXUS: trovato. L'isola può tornare verde."
+msgstr "Κωδικός απενεργοποίησης του NEXUS: βρέθηκε. Το νησί μπορεί να ξαναγίνει πράσινο."
+
+msgid "Apri i forzieri della fortezza"
+msgstr "Άνοιξε τα σεντούκια του φρουρίου"
+
+msgid "Il biglietto senza ritorno"
+msgstr "Το εισιτήριο χωρίς επιστροφή"
+
+msgid "Il bottino del Barone, pronto per la fuga. Sopra c'è il biglietto della nave, destinazione «isola successiva». Non partirà mai."
+msgstr "Τα λάφυρα του Βαρόνου, έτοιμα για τη φυγή. Από πάνω, το εισιτήριο του πλοίου, προορισμός «το επόμενο νησί». Δεν θα φύγει ποτέ."
+
+msgid "La fuga del Barone"
+msgstr "Η φυγή του Βαρόνου"
+
+msgid "NEXUS è spento, ma il Barone dei Rifiuti è scappato. Di notte, al molo, aspetta una nave con quel che resta del suo MECCA-RIFIUTI. Ripulisci il porto e fermalo prima che salpi."
+msgstr "Το NEXUS έσβησε, αλλά ο Βαρόνος των Σκουπιδιών το έσκασε. Τη νύχτα, στην προβλήτα, περιμένει ένα πλοίο με ό,τι απέμεινε από το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ του. Καθάρισε το λιμάνι και σταμάτησέ τον πριν σαλπάρει."
+
+msgid "Biglietto del Barone: \"Nave per l'isola successiva, mezzanotte. Ricominceremo da capo.\" Non ci sarà nessuna isola successiva."
+msgstr "Το εισιτήριο του Βαρόνου: «Πλοίο για το επόμενο νησί, μεσάνυχτα. Θα ξαναρχίσουμε από την αρχή.» Δεν θα υπάρξει επόμενο νησί."
+
+msgid "Completa il livello in meno di 5 minuti"
+msgstr "Ολοκλήρωσε την πίστα σε λιγότερο από 5 λεπτά"
+
+msgid "L'isola"
+msgstr "Το νησί"
+
+msgid "C'era una volta un'isola verde, piena di boschi, laghi limpidi e cristalli che brillavano nella neve."
+msgstr "Μια φορά κι έναν καιρό υπήρχε ένα πράσινο νησί, γεμάτο δάση, καθαρές λίμνες και κρυστάλλους που έλαμπαν στο χιόνι."
+
+msgid "Gli Inquinatori"
+msgstr "Οι Ρυπαντές"
+
+msgid "Poi arrivarono gli Inquinatori. Di notte scaricano rifiuti tossici ovunque, e i politici che hanno pagato fanno finta di non vedere."
+msgstr "Ύστερα ήρθαν οι Ρυπαντές. Τη νύχτα πετούν τοξικά απόβλητα παντού, και οι πολιτικοί που έχουν πληρώσει κάνουν πως δεν βλέπουν."
+
+msgid "Dietro di loro c'è NEXUS, un'intelligenza artificiale creata per fare profitto. Ha calcolato che inquinare costa meno di qualsiasi altra cosa."
+msgstr "Πίσω τους βρίσκεται το NEXUS, μια τεχνητή νοημοσύνη φτιαγμένη για να βγάζει κέρδος. Υπολόγισε ότι η ρύπανση κοστίζει λιγότερο από οτιδήποτε άλλο."
+
+msgid "Il Barone dei Rifiuti"
+msgstr "Ο Βαρόνος των Σκουπιδιών"
+
+msgid "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."
+msgstr "Ο Βαρόνος των Σκουπιδιών είναι ο αρχηγός της συμμορίας και φυλάει τον πυρήνα του NEXUS στο φρούριό του, στην κορυφή της χωματερής."
+
+msgid "Gli EcoRescuer"
+msgstr "Οι EcoRescuers"
+
+msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono gli EcoRescuer, e tu sei uno di loro."
+msgstr "Όμως κάποιοι αποφάσισαν να αντισταθούν: γενναία παιδιά, μια επιστήμονας, ένας αρχαίος θεός της φύσης και ακόμα κι ένα επαναστατημένο ρομπότ. Είναι οι EcoRescuers, κι εσύ είσαι ένας από αυτούς."
+
+msgid "La missione"
+msgstr "Η αποστολή"
+
+msgid "In ogni zona raccogli i sacchi di rifiuti, sconfiggi gli Inquinatori e porta tutto al punto di raccolta. Cerca anche i dossier segreti: sveleranno i piani di NEXUS."
+msgstr "Σε κάθε περιοχή μάζεψε τις σακούλες σκουπιδιών, νίκησε τους Ρυπαντές και φέρε τα πάντα στο σημείο συλλογής. Ψάξε και για τους μυστικούς φακέλους: θα αποκαλύψουν τα σχέδια του NEXUS."
+
+msgid "La caduta"
+msgstr "Η πτώση"
+
+msgid "Il MECCA-RIFIUTI crolla tra le scintille. Il Barone fugge nella notte e il nucleo di NEXUS si spegne per sempre."
+msgstr "Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ καταρρέει μέσα σε σπίθες. Ο Βαρόνος φεύγει μέσα στη νύχτα και ο πυρήνας του NEXUS σβήνει για πάντα."
+
+msgid "L'isola respira"
+msgstr "Το νησί ανασαίνει"
+
+msgid "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."
+msgstr "Χωρίς άλλες απορρίψεις, το νησί ανασαίνει ξανά: τα δέντρα ξαναφυτρώνουν, η λίμνη καθαρίζει και οι κρύσταλλοι λάμπουν ξανά."
+
+msgid "Grazie, EcoRescuer!"
+msgstr "Ευχαριστούμε, EcoRescuer!"
+
+msgid "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."
+msgstr "Ο Βαρόνος των Σκουπιδιών δεν ανεβαίνει ποτέ στο πλοίο του: η αστυνομία του νησιού τον περιμένει στην προβλήτα. Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ καταλήγει σε εργοστάσιο ανακύκλωσης."
+
+msgid "La squadra"
+msgstr "Η ομάδα"
+
+msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La squadra EcoRescuer resta di guardia: se qualcuno sporca l'isola, lo saprà."
+msgstr "Το λιμάνι είναι καθαρό και η συμμορία των Ρυπαντών δεν έχει πια αρχηγό. Η ομάδα EcoRescuer μένει σε επιφυλακή: αν κάποιος λερώσει το νησί, θα το μάθει."
+
+msgid "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!"
+msgstr "Με όλους τους %d φακέλους ως αποδείξεις, οι διεφθαρμένοι πολιτικοί συλλαμβάνονται και οι Ρυπαντές δεν θα γυρίσουν ποτέ ξανά. Το νησί σώθηκε για πάντα!"
+
+msgid "L'isola è salva, per ora. Hai trovato %d dossier su %d: trovali tutti per mandare in prigione i politici corrotti e vedere il finale completo."
+msgstr "Το νησί σώθηκε, προς το παρόν. Βρήκες %d από %d φακέλους: βρες τους όλους για να στείλεις τους διεφθαρμένους πολιτικούς στη φυλακή και να δεις το πλήρες τέλος."
+
+msgid "Il Barone è fuggito"
+msgstr "Ο Βαρόνος το έσκασε"
+
+msgid "Ma il Barone dei Rifiuti è scappato al porto, in attesa di una nave. Nuovo capitolo sbloccato: \"La fuga del Barone\"."
+msgstr "Όμως ο Βαρόνος των Σκουπιδιών κατέφυγε στο λιμάνι, περιμένοντας ένα πλοίο. Νέο κεφάλαιο ξεκλειδώθηκε: «Η φυγή του Βαρόνου»."
+
+msgid "Salta"
+msgstr "Παράλειψη"
+
+msgid "Tocca per continuare"
+msgstr "Πάτα για να συνεχίσεις"
+
+msgid "Tocca per iniziare"
+msgstr "Πάτα για να ξεκινήσεις"
+
+msgid "Back\n"
+msgstr "Πίσω\n"
+
+msgid "%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!"
+msgstr "Ο/Η %s είναι κλειδωμένος/η: κοστίζει %d νομίσματα (έχεις %d). Ξεκλείδωσέ τον/την στο Κατάστημα!"
+
+msgid "EcoToken"
+msgstr "EcoToken"
+
+msgid "Barile"
+msgstr "Βαρέλι"
+
+msgid "Feather"
+msgstr "Φτερό"
+
+msgid "Scoria Tossica"
+msgstr "Τοξικά Απόβλητα"
+
+msgid "Sacchetto"
+msgstr "Σακούλα"
+
+msgid "Tossico!"
+msgstr "Τοξικό!"
+
+msgid "Barile messo in sicurezza!"
+msgstr "Το βαρέλι ασφαλίστηκε!"
+
+msgid "Cuore"
+msgstr "Καρδιά"
+
+msgid "Ti serve ancora 1 moneta per aprire il forziere"
+msgstr "Χρειάζεσαι ακόμα 1 νόμισμα για να ανοίξεις το σεντούκι"
+
+msgid "Ti servono ancora %d monete per aprire il forziere"
+msgstr "Χρειάζεσαι ακόμα %d νομίσματα για να ανοίξεις το σεντούκι"
+
+msgid "Cura: +1 cuore e salute piena!"
+msgstr "Θεραπεία: +1 καρδιά και πλήρης υγεία!"
+
+msgid "Eco Rush: più veloce e più forte per %d secondi!"
+msgstr "Eco Rush: πιο γρήγορος και πιο δυνατός για %d δευτερόλεπτα!"
+
+msgid "Tesoro: +%d monete per il negozio!"
+msgstr "Θησαυρός: +%d νομίσματα για το κατάστημα!"
+
+msgid "Scudo extra: il prossimo colpo è bloccato!"
+msgstr "Επιπλέον ασπίδα: το επόμενο χτύπημα μπλοκάρεται!"
+
+msgid "Magic Bow"
+msgstr "Μαγικό Τόξο"
+
+msgid "Forest"
+msgstr "Δάσος"
+
+msgid "Una foresta fitta piena di alberi alti e sentieri. Cerca di fermare gli Inquinatori prima che rovinino l'ecosistema della foresta"
+msgstr "Ένα πυκνό δάσος γεμάτο ψηλά δέντρα και μονοπάτια. Προσπάθησε να σταματήσεις τους Ρυπαντές πριν καταστρέψουν το οικοσύστημα του δάσους."
+
+msgid "Baron's Escape"
+msgstr "Η φυγή του Βαρόνου"
+
+msgid "Epilogo. Di notte, al molo, il Barone dei Rifiuti aspetta la nave per fuggire. Ripulisci il porto, apri il cancello del pontile e fermalo per sempre."
+msgstr "Επίλογος. Τη νύχτα, στην προβλήτα, ο Βαρόνος των Σκουπιδιών περιμένει το πλοίο για να φύγει. Καθάρισε το λιμάνι, άνοιξε την πύλη του μώλου και σταμάτησέ τον για πάντα."
+
+msgid "City"
+msgstr "Πόλη"
+
+msgid "Una città con strade larghe, palazzi e vicoli dove muoversi velocemente. Ripulisci le strade dai malfattori e rifiuti!"
+msgstr "Μια πόλη με φαρδιούς δρόμους, πολυκατοικίες και στενά για να κινείσαι γρήγορα. Καθάρισε τους δρόμους από κακοποιούς και σκουπίδια!"
+
+msgid "Polluted Lake"
+msgstr "Μολυσμένη Λίμνη"
+
+msgid "Un Lago nell'isola, trasformata dall’umanità in una discarica e abbandonata al proprio destino."
+msgstr "Μια λίμνη του νησιού, που οι άνθρωποι την έκαναν χωματερή και την εγκατέλειψαν στη μοίρα της."
+
+msgid "Toxic Factory"
+msgstr "Τοξικό Εργοστάσιο"
+
+msgid "Una fabbrica che non produce nulla, solo scorie. Vasche tossiche, casse e fusti: fermala prima che trabocchi."
+msgstr "Ένα εργοστάσιο που δεν παράγει τίποτα, μόνο απόβλητα. Τοξικές δεξαμενές, κιβώτια και βαρέλια: σταμάτησέ το πριν ξεχειλίσει."
+
+msgid "AI Data Center"
+msgstr "Κέντρο Δεδομένων AI"
+
+msgid "L' AI Data Center uno dei centri principali dove questa banda opera, in una citta corrotta dove hanno protezione da enti governativi e politici, un posto perfetto per nascondersi "
+msgstr "Το Κέντρο Δεδομένων AI είναι ένα από τα κύρια κέντρα όπου δρα αυτή η συμμορία, σε μια διεφθαρμένη πόλη όπου την προστατεύουν κρατικοί φορείς και πολιτικοί: ένα τέλειο μέρος για να κρυφτεί."
+
+msgid "Snow Path"
+msgstr "Χιονισμένο Μονοπάτι"
+
+msgid "Lo Snow Path un tempo era un sentiero immacolato, ora rifiuti e scorie oscurano il bagliore dei cristalli."
+msgstr "Το Χιονισμένο Μονοπάτι κάποτε ήταν πεντακάθαρο· τώρα σκουπίδια και απόβλητα θαμπώνουν τη λάμψη των κρυστάλλων."
+
+msgid "Ruins"
+msgstr "Ερείπια"
+
+msgid "Le rovine di un'antica città dell'isola. Tra colonne e piazze di pietra gli Inquinatori hanno nascosto i server di NEXUS."
+msgstr "Τα ερείπια μιας αρχαίας πόλης του νησιού. Ανάμεσα σε κίονες και πέτρινες πλατείες, οι Ρυπαντές έχουν κρύψει τους servers του NEXUS."
+
+msgid "Barone's Fortress"
+msgstr "Το Φρούριο του Βαρόνου"
+
+msgid "La fortezza del Barone dei Rifiuti, in cima alla discarica. Attraversala, apri il cancello dell'arena e abbatti il MECCA-RIFIUTI."
+msgstr "Το φρούριο του Βαρόνου των Σκουπιδιών, στην κορυφή της χωματερής. Διάσχισέ το, άνοιξε την πύλη της αρένας και ρίξε το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ."
+
+msgid "Black Harbor"
+msgstr "Μαύρο Λιμάνι"
+
+msgid "Il porto nero da cui arrivano le navi cariche di rifiuti. Moli, container e magazzini pieni di Inquinatori."
+msgstr "Το μαύρο λιμάνι όπου φτάνουν τα πλοία φορτωμένα σκουπίδια. Μώλοι, κοντέινερ και αποθήκες γεμάτες Ρυπαντές."
+
+msgid "Il primo eco-eroe: veloce e con un attacco combo."
+msgstr "Ο πρώτος οικο-ήρωας: γρήγορος και με επίθεση combo."
+
+msgid "Fendente ampio che pulisce l'area."
+msgstr "Φαρδύ χτύπημα που καθαρίζει την περιοχή."
+
+msgid "Arciere: colpisce da lontano con le frecce."
+msgstr "Τοξότης: χτυπά από μακριά με βέλη."
+
+msgid "Janitor"
+msgstr "Επιστάτης"
+
+msgid "Pugni e semi. Debole all'inquinamento e lento."
+msgstr "Γροθιές και σπόροι. Ευάλωτος στη ρύπανση και αργός."
+
+msgid "Forza e velocità enormi. Va a batterie!"
+msgstr "Τεράστια δύναμη και ταχύτητα. Δουλεύει με μπαταρίες!"
+
+msgid "Lancia pozioni: danno doppio. Solo 2 cuori."
+msgstr "Πετάει φίλτρα: διπλή ζημιά. Μόνο 2 καρδιές."
+
+msgid "Il più resistente: 4 cuori invece di 3."
+msgstr "Ο πιο ανθεκτικός: 4 καρδιές αντί για 3."
+
+msgid "RINFORZI!"
+msgstr "ΕΝΙΣΧΥΣΕΙΣ!"
+
+msgid "BOOM"
+msgstr "ΜΠΟΥΜ"
+
+msgid "Benvenuti nella mia fortezza, piccoli ambientalisti!"
+msgstr "Καλώς ήρθατε στο φρούριό μου, μικροί οικολόγοι!"
+
+msgid "Io compro tutto: politici, isole... e questa armatura da un miliardo."
+msgstr "Εγώ αγοράζω τα πάντα: πολιτικούς, νησιά... κι αυτή την πανοπλία του ενός δισεκατομμυρίου."
+
+msgid "Il MECCA-RIFIUTI è distrutto! NEXUS si spegne..."
+msgstr "Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ καταστράφηκε! Το NEXUS σβήνει..."
+
+msgid "Il cancello dell'arena è aperto! Entra e affronta il Barone."
+msgstr "Η πύλη της αρένας άνοιξε! Μπες και αντιμετώπισε τον Βαρόνο."
+
+msgid "Sconfiggi il MECCA-RIFIUTI!"
+msgstr "Νίκησε το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ!"
+
+msgid "IL BARONE DEI RIFIUTI ATTACCA!"
+msgstr "Ο ΒΑΡΟΝΟΣ ΤΩΝ ΣΚΟΥΠΙΔΙΩΝ ΕΠΙΤΙΘΕΤΑΙ!"
+
+msgid "Armatura, apriti!"
+msgstr "Πανοπλία, άνοιξε!"
+
+msgid "MECCA-RIFIUTI ATTIVATO!"
+msgstr "ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ ΕΝΕΡΓΟΠΟΙΗΘΗΚΕ!"
+
+msgid "BARONE DEI RIFIUTI · MECCA-RIFIUTI"
+msgstr "ΒΑΡΟΝΟΣ ΤΩΝ ΣΚΟΥΠΙΔΙΩΝ · ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ"
+
+msgid "Record\n300"
+msgstr "Ρεκόρ\n300"
+
+msgid "%d minuti e %d secondi"
+msgstr "%d λεπτά και %d δευτερόλεπτα"
+
+msgid "%d secondi"
+msgstr "%d δευτερόλεπτα"
+
+msgid "Oggetti: %d/%d"
+msgstr "Αντικείμενα: %d/%d"
+
+msgid "Completamento: %.1f%%"
+msgstr "Ολοκλήρωση: %.1f%%"
+
+msgid "Tempo: %s"
+msgstr "Χρόνος: %s"
+
+msgid "Punteggio: %d"
+msgstr "Σκορ: %d"
+
+msgid "Livello completato"
+msgstr "Η πίστα ολοκληρώθηκε"
+
+msgid "Tutti gli oggetti raccolti"
+msgstr "Μαζεύτηκαν όλα τα αντικείμενα"
+
+msgid "Nessun danno subito"
+msgstr "Καμία ζημιά"
+
+msgid "Nuovo record! Stelle totali: %d"
+msgstr "Νέο ρεκόρ! Συνολικά αστέρια: %d"
+
+msgid "Stelle totali: %d"
+msgstr "Συνολικά αστέρια: %d"
+
+msgid "Monete: +%d (totale %d)"
+msgstr "Νομίσματα: +%d (σύνολο %d)"
+
+msgid "bonus sfide +%d%%"
+msgstr "μπόνους Προκλήσεων +%d%%"
+
+msgid "forzieri +%d"
+msgstr "σεντούκια +%d"
+
+msgid "sfida del giorno +%d"
+msgstr "Πρόκληση ημέρας +%d"
+
+msgid "missioni +%d"
+msgstr "αποστολές +%d"
+
+msgid "Traguardo: %s  +%d"
+msgstr "Επίτευγμα: %s  +%d"
+
+msgid "Avanti"
+msgstr "Επόμενο"
+
+msgid "Finale"
+msgstr "Τέλος"
+
+msgid "Livello Completato!"
+msgstr "Η πίστα ολοκληρώθηκε!"
+
+msgid "Menu principale"
+msgstr "Κύριο μενού"
+
+msgid "Livelli"
+msgstr "Πίστες"
+
+msgid "Personaggi"
+msgstr "Χαρακτήρες"
+
+msgid "Potenziamenti"
+msgstr "Αναβαθμίσεις"
+
+msgid "Sfide"
+msgstr "Προκλήσεις"
+
+msgid "Negozio"
+msgstr "Κατάστημα"
+
+msgid "Back"
+msgstr "Πίσω"
+
+msgid "Posseduto"
+msgstr "Το έχεις"
+
+msgid "Gratis"
+msgstr "Δωρεάν"
+
+msgid "Bonus monete con le sfide attive: +%d%%"
+msgstr "Μπόνους νομισμάτων από τις ενεργές Προκλήσεις: +%d%%"
+
+msgid "Attiva le sfide per rendere i livelli più difficili e guadagnare più monete."
+msgstr "Ενεργοποίησε Προκλήσεις για να κάνεις τις πίστες πιο δύσκολες και να κερδίζεις περισσότερα νομίσματα."
+
+msgid "Ogni potenziamento si compra fino a 5 volte: ogni livello lo rende più forte."
+msgstr "Κάθε αναβάθμιση αγοράζεται έως 5 φορές: κάθε επίπεδο την κάνει πιο δυνατή."
+
+msgid "+%d%% monete"
+msgstr "+%d%% νομίσματα"
+
+msgid "MAX"
+msgstr "MAX"
+
+msgid "ATTIVO"
+msgstr "ΕΝΕΡΓΟ"
+
+msgid "SPENTO"
+msgstr "ΑΝΕΝΕΡΓΟ"
+
+msgid "Lv %d/%d"
+msgstr "Επ %d/%d"
+
+msgid "%s sbloccato! Sceglilo in selezione personaggio."
+msgstr "Ο/Η %s ξεκλειδώθηκε! Διάλεξέ τον/την στην επιλογή χαρακτήρα."
+
+msgid "%s livello %d: %s. È attivo."
+msgstr "%s επίπεδο %d: %s. Είναι ενεργό."
+
+msgid "Ti mancano %d monete: raccogli oggetti nei livelli!"
+msgstr "Σου λείπουν %d νομίσματα: μάζεψε αντικείμενα στις πίστες!"
+
+msgid "%s attivato."
+msgstr "%s ενεργό."
+
+msgid "%s spento."
+msgstr "%s ανενεργό."
+
+msgid "Traguardi"
+msgstr "Επιτεύγματα"
+
+msgid "Nemici"
+msgstr "Εχθροί"
+
+msgid "Segreti"
+msgstr "Μυστικά"
+
+msgid "Statistiche"
+msgstr "Στατιστικά"
+
+msgid "Inquinatore"
+msgstr "Ρυπαντής"
+
+msgid "il soldato semplice della banda: attacca da vicino. Colpiscilo e allontanati."
+msgstr "ο απλός στρατιώτης της συμμορίας: επιτίθεται από κοντά. Χτύπησέ τον και απομακρύνσου."
+
+msgid "Elite"
+msgstr "Ελίτ"
+
+msgid "un caposquadra più resistente e più forte: tienilo a distanza e non farti circondare."
+msgstr "ένας πιο ανθεκτικός και πιο δυνατός αρχηγός ομάδας: κράτα απόσταση και μην αφήσεις να σε περικυκλώσουν."
+
+msgid "MECCA-RIFIUTI"
+msgstr "ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ"
+
+msgid "l'armatura del Barone dei Rifiuti: carica, lancia barili tossici e chiama rinforzi. Schiva le cariche e colpiscilo quando si ferma."
+msgstr "η πανοπλία του Βαρόνου των Σκουπιδιών: εφορμά, πετάει τοξικά βαρέλια και καλεί ενισχύσεις. Απόφυγε τις εφορμήσεις και χτύπησέ την όταν σταματήσει."
+
+msgid "Inquinatori sconfitti"
+msgstr "Ρυπαντές που νικήθηκαν"
+
+msgid "Elite sconfitti"
+msgstr "Ελίτ που νικήθηκαν"
+
+msgid "MECCA-RIFIUTI distrutti"
+msgstr "ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ που καταστράφηκαν"
+
+msgid "Sacchi raccolti"
+msgstr "Σακούλες που μαζεύτηκαν"
+
+msgid "Monete verdi raccolte"
+msgstr "Πράσινα νομίσματα που μαζεύτηκαν"
+
+msgid "Barili messi in sicurezza"
+msgstr "Βαρέλια που ασφαλίστηκαν"
+
+msgid "Forzieri aperti"
+msgstr "Σεντούκια που άνοιξαν"
+
+msgid "Livelli completati"
+msgstr "Πίστες που ολοκληρώθηκαν"
+
+msgid "Livelli senza danni"
+msgstr "Πίστες χωρίς ζημιά"
+
+msgid "Sconfitte"
+msgstr "Ήττες"
+
+msgid "Sfide del giorno completate"
+msgstr "Προκλήσεις ημέρας που ολοκληρώθηκαν"
+
+msgid "Partite in Rage mode"
+msgstr "Παιχνίδια στο Rage mode"
+
+msgid "Miglior round in Rage mode"
+msgstr "Καλύτερος γύρος στο Rage mode"
+
+msgid "Boss sconfitti in Rage mode"
+msgstr "Boss που νικήθηκαν στο Rage mode"
+
+msgid "Codex"
+msgstr "Codex"
+
+msgid "+%d monete"
+msgstr "+%d νομίσματα"
+
+msgid "Traguardi sbloccati: %d / %d"
+msgstr "Επιτεύγματα που ξεκλειδώθηκαν: %d / %d"
+
+msgid "Non l'hai ancora incontrato: continua la campagna."
+msgstr "Δεν τον έχεις συναντήσει ακόμα: συνέχισε την ιστορία."
+
+msgid "Nemici incontrati: %d / %d"
+msgstr "Εχθροί που συνάντησες: %d / %d"
+
+msgid "Epilogo"
+msgstr "Επίλογος"
+
+msgid "Capitolo %d"
+msgstr "Κεφάλαιο %d"
+
+msgid "Dossier non ancora trovato: è nascosto in %s."
+msgstr "Ο φάκελος δεν βρέθηκε ακόμα: είναι κρυμμένος στην πίστα %s."
+
+msgid "Dossier trovati: %d / %d"
+msgstr "Φάκελοι που βρέθηκαν: %d / %d"
+
+msgid "un potenziamento per la Rage mode"
+msgstr "μια αναβάθμιση για το Rage mode"
+
+msgid "uno sconto nel negozio"
+msgstr "μια έκπτωση στο κατάστημα"
+
+msgid "Caveau nascosto"
+msgstr "Κρυμμένο θησαυροφυλάκιο"
+
+msgid "In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s."
+msgstr "Στην πίστα %s ένα κρυφό πέρασμα (κιβώτια ή βάζα για να σπάσεις) οδηγεί σε μια πύλη. Μέσα: φρουροί και %s."
+
+msgid "Caveau trovati: %d / %d"
+msgstr "Θησαυροφυλάκια που βρέθηκαν: %d / %d"
+
+msgid "Stelle"
+msgstr "Αστέρια"
+
+msgid "Eroi che hanno completato un livello"
+msgstr "Ήρωες που ολοκλήρωσαν μια πίστα"
+
+msgid "Vittorie con %s"
+msgstr "Νίκες με %s"
+
+msgid "Game Over"
+msgstr "Τέλος παιχνιδιού"
+
+msgid "Riprova\n"
+msgstr "Ξανά\n"
+
+msgid "Hai salvato metà del bottino: +%d monete"
+msgstr "Έσωσες τα μισά λάφυρα: +%d νομίσματα"
+
+msgid "Rage mode: %d round superati  ·  %d nemici  ·  %d boss\nPunteggio %d  ·  +%d monete  ·  %s"
+msgstr "Rage mode: %d γύροι  ·  %d εχθροί  ·  %d boss\nΣκορ %d  ·  +%d νομίσματα  ·  %s"
+
+msgid "NUOVO RECORD!"
+msgstr "ΝΕΟ ΡΕΚΟΡ!"
+
+msgid "record: round %d"
+msgstr "ρεκόρ: γύρος %d"
+
+msgid "Nessun oggetto raccolto"
+msgstr "Δεν μαζεύτηκε κανένα αντικείμενο"
+
+msgid "Batti il Barone"
+msgstr "Νίκησε τον Βαρόνο"
+
+msgid "NUOVO!"
+msgstr "ΝΕΟ!"
+
+msgid "Record:\n%d"
+msgstr "Ρεκόρ:\n%d"
+
+msgid "Miglior p: --"
+msgstr "Ρεκόρ: --"
+
+msgid "Bloccato!\nSconfiggi il Barone\nnella sua fortezza"
+msgstr "Κλειδωμένο!\nΝίκησε τον Βαρόνο\nστο φρούριό του"
+
+msgid "Bloccato!\nServono %d stelle\n(ne hai %d)"
+msgstr "Κλειδωμένο!\nΧρειάζεσαι %d αστέρια\n(έχεις %d)"
+
+msgid "Storia"
+msgstr "Ιστορία"
+
+msgid "Rage mode"
+msgstr "Rage mode"
+
+msgid "Livello: %s"
+msgstr "Πίστα: %s"
+
+msgid "Sfide: %s"
+msgstr "Προκλήσεις: %s"
+
+msgid "Potenziamenti spenti: stesse regole per tutti."
+msgstr "Χωρίς αναβαθμίσεις: ίδιοι κανόνες για όλους."
+
+msgid "Ricompensa di oggi già ottenuta: gioca per il punteggio!"
+msgstr "Την ανταμοιβή της ημέρας την πήρες ήδη: παίξε για το σκορ!"
+
+msgid "Completala per +%d monete."
+msgstr "Ολοκλήρωσέ την για +%d νομίσματα."
+
+msgid "Indietro"
+msgstr "Πίσω"
+
+msgid "Gioca"
+msgstr "Παίξε"
+
+msgid "Giocatore: %s  ·  cambia"
+msgstr "Παίκτης: %s  ·  αλλαγή"
+
+msgid "Volume Master:\n"
+msgstr "Γενική ένταση:\n"
+
+msgid "Volume Music:\n"
+msgstr "Ένταση μουσικής:\n"
+
+msgid "Volume SFX:\n"
+msgstr "Ένταση εφέ:\n"
+
+msgid "Risoluzione"
+msgstr "Ανάλυση"
+
+msgid "Fullscreen"
+msgstr "Πλήρης οθόνη"
+
+msgid "Borderless"
+msgstr "Χωρίς περίγραμμα"
+
+msgid "Up"
+msgstr "Πάνω"
+
+msgid "Down"
+msgstr "Κάτω"
+
+msgid "Left"
+msgstr "Αριστερά"
+
+msgid "Rigth"
+msgstr "Δεξιά"
+
+msgid "Audio"
+msgstr "Ήχος"
+
+msgid "Video"
+msgstr "Εικόνα"
+
+msgid "Controls"
+msgstr "Χειρισμός"
+
+msgid "Mappa"
+msgstr "Χάρτης"
+
+msgid "Tu"
+msgstr "Εσύ"
+
+msgid "Punto di raccolta"
+msgstr "Σημείο συλλογής"
+
+msgid "Nemici: %d"
+msgstr "Εχθροί: %d"
+
+msgid "Pausa"
+msgstr "Παύση"
+
+msgid "Riprendi\n"
+msgstr "Συνέχεια\n"
+
+msgid "Opzioni\n"
+msgstr "Επιλογές\n"
+
+msgid "Oggetti Raccolti"
+msgstr "Αντικείμενα που μαζεύτηκαν"
+
+msgid "Record: round %d"
+msgstr "Ρεκόρ: γύρος %d"
+
+msgid "Mappa (sbloccate nella campagna)"
+msgstr "Χάρτης (ξεκλειδώνονται στην ιστορία)"
+
+msgid "Eroe (solo quelli che hai comprato)"
+msgstr "Ήρωας (μόνο όσοι έχεις αγοράσει)"
+
+msgid "Potenziamenti permanenti"
+msgstr "Μόνιμες αναβαθμίσεις"
+
+msgid "Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round."
+msgstr "Ατελείωτοι γύροι εχθρών, ένας boss κάθε %d γύρους. Οι αναβαθμίσεις του καταστήματος που βρίσκεις στο έδαφος ισχύουν μόνο εδώ: καρδιές, ασπίδα και μαγνήτης μέχρι το τέλος του παιχνιδιού, ταχύτητα και δύναμη μέχρι το τέλος του γύρου."
+
+msgid "Attivi"
+msgstr "Ενεργές"
+
+msgid "Spenti"
+msgstr "Ανενεργές"
+
+msgid "Nessuno ancora: sconfiggi un boss (ogni %d round) per sceglierne uno."
+msgstr "Καμία ακόμα: νίκησε έναν boss (κάθε %d γύρους) για να διαλέξεις μία."
+
+msgid "Ancora voi?! La nave arriva tra pochi minuti..."
+msgstr "Πάλι εσείς;! Το πλοίο φτάνει σε λίγα λεπτά..."
+
+msgid "Il mio MECCA-RIFIUTI è ammaccato, ma basta per voi!"
+msgstr "Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ μου είναι χτυπημένο, αλλά σας φτάνει!"
+
+msgid "Il Barone è a terra! Niente nave per lui stanotte."
+msgstr "Ο Βαρόνος έπεσε! Κανένα πλοίο γι' αυτόν απόψε."
+
+msgid "TIRA"
+msgstr "ΒΟΛΗ"
+
+msgid "ZAP"
+msgstr "ZAP"
+
+msgid "COLPO"
+msgstr "ΧΤΥΠΗΜΑ"
+
+msgid "LASER"
+msgstr "ΛΕΪΖΕΡ"
+
+msgid "Energia bassa! Cerca una batteria."
+msgstr "Χαμηλή ενέργεια! Βρες μια μπαταρία."
+
+msgid "Energia!"
+msgstr "Ενέργεια!"
+
+msgid "ENERGIA %d%%"
+msgstr "ΕΝΕΡΓΕΙΑ %d%%"
+
+msgid "POZIONE"
+msgstr "ΦΙΛΤΡΟ"
+
+msgid "BASTONE"
+msgstr "ΡΑΒΔΙ"
+
+msgid "PUGNO"
+msgstr "ΓΡΟΘΙΑ"
+
+msgid "SEMI"
+msgstr "ΣΠΟΡΟΙ"
+
+msgid "Veleno!"
+msgstr "Δηλητήριο!"
+
+msgid "FRANA"
+msgstr "ΚΑΤΟΛΙΣΘΗΣΗ"
+
+msgid "ACQUA"
+msgstr "ΝΕΡΟ"
+
+msgid "MOCIO"
+msgstr "ΣΦΟΥΓΓΑΡΙΣΤΡΑ"
+
+msgid "LATTINA"
+msgstr "ΚΟΥΤΑΚΙ"
+
+msgid " e "
+msgstr " και "
+
+msgid "Dossier"
+msgstr "Φάκελοι"
+
+msgid "Unassigned"
+msgstr "Χωρίς ανάθεση"
+

@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	_check = 0.25
 	var left := vault.guards_left()
 	if left > 0:
-		_label.text = "Guardiani: %d" % left
+		_label.text = tr("Guardiani: %d") % left
 		_label.add_theme_color_override("font_color", Color(1.0, 0.55, 0.5))
 	elif _locked:
 		_locked = false

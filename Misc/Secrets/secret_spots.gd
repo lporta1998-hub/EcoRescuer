@@ -94,7 +94,7 @@ static func claim(level: LevelData) -> Array:
 		return []
 	var reward: Dictionary = Story.chapter_of(level).get("secret", {}).get("reward", {})
 	if not Progress.record_quest(level, "secret"):
-		return ["Hai già preso il tesoro di questo caveau."]
+		return [Lang.t("Hai già preso il tesoro di questo caveau.")]
 	var lines := [reward_text(reward)]
 	match reward.get("type", ""):
 		"perk":
@@ -102,11 +102,11 @@ static func claim(level: LevelData) -> Array:
 				Progress.add_rage_perk(reward.id)
 			else:
 				Progress.add_coins(300)
-				lines = ["%s è già al massimo: +300 monete." % Rage.PERKS[reward.id].title]
+				lines = [Lang.t("%s è già al massimo: +300 monete.") % Lang.t(Rage.PERKS[reward.id].title)]
 		"discount":
 			Progress.add_discount(reward.id, int(reward.pct))
 	Progress.save_progress()
-	lines.append("Segreti trovati: %d/%d (Codex, scheda Segreti)." % [Progress.secrets_found(), Story.chapters().size()])
+	lines.append(Lang.t("Segreti trovati: %d/%d (Codex, scheda Segreti).") % [Progress.secrets_found(), Story.chapters().size()])
 	return lines
 
 
@@ -114,9 +114,9 @@ static func claim(level: LevelData) -> Array:
 static func reward_text(reward: Dictionary) -> String:
 	match reward.get("type", ""):
 		"perk":
-			return "Rage mode: %s +1 livello, per sempre." % Rage.PERKS[reward.id].title
+			return Lang.t("Rage mode: %s +1 livello, per sempre.") % Lang.t(Rage.PERKS[reward.id].title)
 		"discount":
-			return "Negozio: -%d%% su %s, per sempre." % [int(reward.pct), Progress.BUFFS[reward.id].title]
+			return Lang.t("Negozio: -%d%% su %s, per sempre.") % [int(reward.pct), Lang.t(Progress.BUFFS[reward.id].title)]
 	return ""
 
 

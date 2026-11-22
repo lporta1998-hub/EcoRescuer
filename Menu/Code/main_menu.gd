@@ -18,6 +18,7 @@ func _ready() -> void:
     _add_player_button()
     _add_story_button()
     _add_codex_button()
+    _add_language_buttons()
     _add_daily_button()
     _add_rage_button()
     _layout_buttons()
@@ -118,6 +119,37 @@ func _add_codex_button() -> void:
         CodexMenu.open_from(get_tree(), "res://main_menu.tscn"))
     add_child(b)
     move_child(b, $NameOverlay.get_index())
+
+
+## "Italiano · English · Ελληνικά" in the top-right corner: the current
+## language is gold; tapping another one switches and reloads the menu.
+func _add_language_buttons() -> void:
+    var row := HBoxContainer.new()
+    row.add_theme_constant_override("separation", 6)
+    row.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+    row.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+    row.offset_right = -30.0
+    row.offset_top = 20.0
+    for code in Lang.LANGUAGES:
+        var b := Button.new()
+        b.flat = true
+        b.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED  # each name in its own language
+        b.text = Lang.NAMES[code]
+        b.add_theme_font_size_override("font_size", 22)
+        b.add_theme_constant_override("outline_size", 6)
+        b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+        var col := Color(1.0, 0.83, 0.3) if code == Lang.current else Color(0.8, 0.8, 0.8)
+        b.add_theme_color_override("font_color", col)
+        b.add_theme_color_override("font_hover_color", Color.WHITE)
+        b.pressed.connect(func():
+            if code == Lang.current:
+                return
+            SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+            Lang.apply(code)
+            get_tree().reload_current_scene())
+        row.add_child(b)
+    add_child(row)
+    move_child(row, $NameOverlay.get_index())
 
 
 ## "Sfida del giorno" under Start: shows today's level and Sfide, then plays.
@@ -222,12 +254,12 @@ func _open_daily_panel() -> void:
     box.add_theme_constant_override("separation", 10)
     panel.add_child(box)
     var lines := [
-        ["Sfida del giorno  ·  " + t.date, 30, Color(0.55, 0.9, 1.0)],
-        ["Livello: " + t.level.level_name, 24, Color.WHITE],
-        ["Sfide: " + Daily.sfide_text(), 20, Color(1.0, 0.6, 0.55)],
-        ["Potenziamenti spenti: stesse regole per tutti.", 18, Color(0.85, 0.85, 0.85)],
-        ["Ricompensa di oggi già ottenuta: gioca per il punteggio!" if Daily.done_today()
-                else "Completala per +%d monete." % Daily.REWARD, 18, Color(1.0, 0.83, 0.3)],
+        [tr("Sfida del giorno") + "  ·  " + t.date, 30, Color(0.55, 0.9, 1.0)],
+        [tr("Livello: %s") % tr(t.level.level_name), 24, Color.WHITE],
+        [tr("Sfide: %s") % Daily.sfide_text(), 20, Color(1.0, 0.6, 0.55)],
+        [tr("Potenziamenti spenti: stesse regole per tutti."), 18, Color(0.85, 0.85, 0.85)],
+        [tr("Ricompensa di oggi già ottenuta: gioca per il punteggio!") if Daily.done_today()
+                else tr("Completala per +%d monete.") % Daily.REWARD, 18, Color(1.0, 0.83, 0.3)],
     ]
     for l in lines:
         var label := Label.new()
@@ -263,7 +295,7 @@ func _open_daily_panel() -> void:
 
 func _update_player_button() -> void:
     _player_button.visible = Global.player_name != ""
-    _player_button.text = "Giocatore: %s  ·  cambia" % Global.player_name
+    _player_button.text = tr("Giocatore: %s  ·  cambia") % Global.player_name
 
 
 func _on_shop_button_pressed() -> void:

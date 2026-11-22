@@ -197,12 +197,12 @@ func _draw() -> void:
 func _draw_legend(trash_left: int, trash_total: int, enemies: int, chests_open: int, chests_total: int) -> void:
 	var font := get_theme_default_font()
 	var fs := 15
-	var row1 := [[PLAYER_COLOR, "Tu"], [Color(0.3, 0.75, 0.35), "Punto di raccolta"]]
+	var row1 := [[PLAYER_COLOR, tr("Tu")], [Color(0.3, 0.75, 0.35), tr("Punto di raccolta")]]
 	if LevelManager.route_guide and not LevelManager.route_guide.teleports().is_empty():
-		row1.append([TELEPORT_COLOR, "Teletrasporto"])
-	var row2 := [[TRASH_COLOR, "Rifiuti %d/%d" % [trash_left, trash_total]], [ENEMY_COLOR, "Nemici: %d" % enemies]]
+		row1.append([TELEPORT_COLOR, tr("Teletrasporto")])
+	var row2 := [[TRASH_COLOR, tr("Rifiuti %d/%d") % [trash_left, trash_total]], [ENEMY_COLOR, tr("Nemici: %d") % enemies]]
 	if chests_total > 0:
-		row2.append([CHEST_COLOR, "Forzieri %d/%d" % [chests_open, chests_total]])
+		row2.append([CHEST_COLOR, tr("Forzieri %d/%d") % [chests_open, chests_total]])
 	var rows := [row1, row2]
 	var y := size.y - LEGEND_HEIGHT + 18.0
 	for row in rows:

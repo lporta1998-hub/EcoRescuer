@@ -119,5 +119,5 @@ func _draw_bar() -> void:
 	for i in range(1, 5):
 		_bar.draw_line(Vector2(3 + 38 * i, 3), Vector2(3 + 38 * i, 23), Color(0, 0, 0, 0.35), 2.0)
 	var font := ThemeDB.fallback_font
-	_bar.draw_string_outline(font, Vector2(8, 19), "ENERGIA %d%%" % int(r * 100), HORIZONTAL_ALIGNMENT_LEFT, -1, 15, 4, Color(0, 0, 0, 0.8))
-	_bar.draw_string(font, Vector2(8, 19), "ENERGIA %d%%" % int(r * 100), HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color.WHITE)
+	_bar.draw_string_outline(font, Vector2(8, 19), tr("ENERGIA %d%%") % int(r * 100), HORIZONTAL_ALIGNMENT_LEFT, -1, 15, 4, Color(0, 0, 0, 0.8))
+	_bar.draw_string(font, Vector2(8, 19), tr("ENERGIA %d%%") % int(r * 100), HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color.WHITE)

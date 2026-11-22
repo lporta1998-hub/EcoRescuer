@@ -50,7 +50,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if _hint_cooldown <= 0.0:
 			_hint_cooldown = 1.5
 			var missing := cost - LevelManager.run_coins
-			_toast("Ti servono ancora %d %s per aprire il forziere" % [missing, "moneta" if missing == 1 else "monete"],
+			_toast((tr("Ti serve ancora 1 moneta per aprire il forziere") if missing == 1 else tr("Ti servono ancora %d monete per aprire il forziere") % missing),
 					Color(1.0, 0.6, 0.45))
 			var tw := create_tween()
 			for r in [0.12, -0.12, 0.06, 0.0]:
@@ -81,16 +81,16 @@ func _open(player: Node2D) -> void:
 					hearts.setMaxHP(1)
 				if player.has_method("heal"):
 					player.heal(int(player.max_health))
-			text = "Cura: +1 cuore e salute piena!"
+			text = tr("Cura: +1 cuore e salute piena!")
 		"rush":
 			LevelManager.start_eco_rush(player)
-			text = "Eco Rush: più veloce e più forte per %d secondi!" % int(LevelManager.ECO_RUSH_SECONDS)
+			text = tr("Eco Rush: più veloce e più forte per %d secondi!") % int(LevelManager.ECO_RUSH_SECONDS)
 		"treasure":
 			LevelManager.chest_bonus_coins += TREASURE_COINS
-			text = "Tesoro: +%d monete per il negozio!" % TREASURE_COINS
+			text = tr("Tesoro: +%d monete per il negozio!") % TREASURE_COINS
 		"shield":
 			LevelManager.shield_charges += 1
-			text = "Scudo extra: il prossimo colpo è bloccato!"
+			text = tr("Scudo extra: il prossimo colpo è bloccato!")
 	FloatText.spawn(self, text.get_slice(":", 0) + "!", Color(0.65, 0.95, 0.3), Vector2(0, -40))
 	_toast(text, Color(0.65, 0.95, 0.3))
 

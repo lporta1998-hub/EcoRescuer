@@ -26,15 +26,15 @@ func format_time(total_seconds: float) -> String:
     var seconds = int(total_seconds) % 60
     
     if minutes > 0:
-        return "%d minuti e %d secondi" % [minutes, seconds]
+        return tr("%d minuti e %d secondi") % [minutes, seconds]
     else:
-        return "%d secondi" % seconds
+        return tr("%d secondi") % seconds
 
 func update_display() -> void:
     # Aggiorna etichette principali
     if total_label:
         # Usa le chiavi CORRETTE
-        total_label.text = "Oggetti: %d/%d" % [
+        total_label.text = tr("Oggetti: %d/%d") % [
             level_data.get("collected_items", 0),
             level_data.get("total_items", 0)  
             ]
@@ -42,15 +42,15 @@ func update_display() -> void:
     if percentage_label:
         # Mostra percentuale di completamento TOTALE (tutti gli oggetti)
         var percentage = level_data.get("completion_percentage", 0)
-        percentage_label.text = "Completamento: %.1f%%" % percentage
+        percentage_label.text = tr("Completamento: %.1f%%") % percentage
     
     if time_label:
         var total_seconds = level_data.get("completion_seconds", 0)
         var time_string = format_time(total_seconds)
-        time_label.text = "Tempo: %s" % time_string
+        time_label.text = tr("Tempo: %s") % time_string
     if score_label:
         var current_score = level_data.get("score", 0)
-        score_label.text = "Punteggio: %d" % current_score
+        score_label.text = tr("Punteggio: %d") % current_score
         _show_coins_earned()
         _show_star_conditions()
         _show_quests()
@@ -111,7 +111,7 @@ func _show_star_conditions() -> void:
             line.name = line_name
             box.add_child(line)
         var ok: bool = conds[i] if i < conds.size() else false
-        line.text = ("[x] " if ok else "[  ] ") + STAR_TEXTS[i]
+        line.text = ("[x] " if ok else "[  ] ") + tr(STAR_TEXTS[i])
         line.add_theme_color_override("font_color", Color(1.0, 0.83, 0.3) if ok else Color(0.7, 0.7, 0.7))
     var total_line: Label = box.get_node_or_null("StarTotal")
     if total_line == null:
@@ -120,7 +120,7 @@ func _show_star_conditions() -> void:
         total_line.add_theme_color_override("font_color", Color(1.0, 0.83, 0.3))
         box.add_child(total_line)
     var total: int = level_data.get("stars_total", 0)
-    total_line.text = ("Nuovo record! Stelle totali: %d" if level_data.get("new_star_record", false) else "Stelle totali: %d") % total
+    total_line.text = (tr("Nuovo record! Stelle totali: %d") if level_data.get("new_star_record", false) else tr("Stelle totali: %d")) % total
 
 ## "Monete: +N (totale M)" line under the score, added in code so the
 ## scene layout stays untouched.
@@ -131,17 +131,17 @@ func _show_coins_earned() -> void:
         coins_label.name = "CoinsLabel"
         coins_label.add_theme_color_override("font_color", Color(0.65, 0.95, 0.3))
         score_label.get_parent().add_child(coins_label)
-    coins_label.text = "Monete: +%d (totale %d)" % [
+    coins_label.text = tr("Monete: +%d (totale %d)") % [
         level_data.get("coins_earned", 0), level_data.get("coins_total", 0)]
     var bonus: float = level_data.get("coin_bonus", 0.0)
     if bonus > 0.001:
-        coins_label.text += "  bonus sfide +%d%%" % roundi(bonus * 100.0)
+        coins_label.text += "  " + tr("bonus sfide +%d%%") % roundi(bonus * 100.0)
     var chest: int = level_data.get("chest_coins", 0)
     if chest > 0:
-        coins_label.text += "  forzieri +%d" % chest
+        coins_label.text += "  " + tr("forzieri +%d") % chest
     var daily: int = level_data.get("daily_reward", 0)
     if daily > 0:
-        coins_label.text += "  sfida del giorno +%d" % daily
+        coins_label.text += "  " + tr("sfida del giorno +%d") % daily
 
 ## Side quests of the level: "[x] Dossier segreto  +100".
 func _show_quests() -> void:
@@ -155,13 +155,13 @@ func _show_quests() -> void:
             line.name = line_name
             box.add_child(line)
         var q: Array = quests[i]
-        line.text = ("[x] " if q[1] else "[  ] ") + q[0]
+        line.text = ("[x] " if q[1] else "[  ] ") + tr(q[0])
         line.add_theme_color_override("font_color", Color(1.0, 0.75, 0.35) if q[1] else Color(0.7, 0.7, 0.7))
     var bonus: int = level_data.get("quest_coins", 0)
     if bonus > 0:
         var coins_label: Label = box.get_node_or_null("CoinsLabel")
         if coins_label:
-            coins_label.text += "  missioni +%d" % bonus
+            coins_label.text += "  " + tr("missioni +%d") % bonus
 
 ## Achievements unlocked by this run: "Traguardo: Spazzino  +100".
 func _show_achievements() -> void:
@@ -174,7 +174,7 @@ func _show_achievements() -> void:
             line = score_label.duplicate()
             line.name = line_name
             box.add_child(line)
-        line.text = "Traguardo: %s  +%d" % [unlocked[i].title, unlocked[i].reward]
+        line.text = tr("Traguardo: %s  +%d") % [tr(unlocked[i].title), unlocked[i].reward]
         line.add_theme_color_override("font_color", Color(0.55, 0.9, 1.0))
 
 ## "Avanti" starts the next chapter, by itself after a short countdown. After
@@ -208,7 +208,7 @@ func _update_next_label() -> void:
     if _next_button == null:
         return
     var ld: LevelData = Global.selected_level_data
-    var word := "Finale" if Story.is_final(ld) or Story.is_epilogue(ld) else "Avanti"
+    var word := tr("Finale") if Story.is_final(ld) or Story.is_epilogue(ld) else tr("Avanti")
     _next_button.text = ("%s (%d)" % [word, ceili(_countdown)]) if _countdown > 0.0 else word
 
 func _process(delta: float) -> void:
