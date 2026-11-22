@@ -1,5 +1,5 @@
 ## collectible.gd
-## Base class for all collectible objects in EcoRescuer.
+## Base class for all collectible objects in Trash Patrol.
 ## Subclasses override `on_collect()` to define pickup behaviour.
 class_name Collectible extends Area2D
 

@@ -5,7 +5,7 @@ extends Node
 ## The story: the island was green until the Inquinatori gang started dumping
 ## waste everywhere, covered by corrupt politicians. Behind them is NEXUS, an
 ## AI built to maximise profit that decided pollution is the cheapest way.
-## The EcoRescuer team cleans each area and follows the trail to the fortress
+## The Trash Patrol team cleans each area and follows the trail to the fortress
 ## of the Barone dei Rifiuti, who guards NEXUS's core.
 ##
 ## Every level has two side quests:

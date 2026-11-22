@@ -1,9 +1,8 @@
-# EcoRescuer — Greek translation.
+# Trash Patrol — Greek translation.
 # The msgid is the original Italian text: keep %d / %s / %% placeholders.
-# Regenerate the list of texts from the editor: Project Settings > Localization > POT Generation.
 msgid ""
 msgstr ""
-"Project-Id-Version: EcoRescuer\n"
+"Project-Id-Version: Trash Patrol\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -751,11 +750,11 @@ msgstr "Ο Βαρόνος των Σκουπιδιών"
 msgid "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."
 msgstr "Ο Βαρόνος των Σκουπιδιών είναι ο αρχηγός της συμμορίας και φυλάει τον πυρήνα του NEXUS στο φρούριό του, στην κορυφή της χωματερής."
 
-msgid "Gli EcoRescuer"
-msgstr "Οι EcoRescuers"
+msgid "La Trash Patrol"
+msgstr "Η Trash Patrol"
 
-msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono gli EcoRescuer, e tu sei uno di loro."
-msgstr "Όμως κάποιοι αποφάσισαν να αντισταθούν: γενναία παιδιά, μια επιστήμονας, ένας αρχαίος θεός της φύσης και ακόμα κι ένα επαναστατημένο ρομπότ. Είναι οι EcoRescuers, κι εσύ είσαι ένας από αυτούς."
+msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono la Trash Patrol, e tu sei uno di loro."
+msgstr "Όμως κάποιοι αποφάσισαν να αντισταθούν: γενναία παιδιά, μια επιστήμονας, ένας αρχαίος θεός της φύσης και ακόμα κι ένα επαναστατημένο ρομπότ. Είναι η Trash Patrol, κι εσύ είσαι ένας από αυτούς."
 
 msgid "La missione"
 msgstr "Η αποστολή"
@@ -775,8 +774,8 @@ msgstr "Το νησί ανασαίνει"
 msgid "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."
 msgstr "Χωρίς άλλες απορρίψεις, το νησί ανασαίνει ξανά: τα δέντρα ξαναφυτρώνουν, η λίμνη καθαρίζει και οι κρύσταλλοι λάμπουν ξανά."
 
-msgid "Grazie, EcoRescuer!"
-msgstr "Ευχαριστούμε, EcoRescuer!"
+msgid "Grazie, Trash Patrol!"
+msgstr "Ευχαριστούμε, Trash Patrol!"
 
 msgid "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."
 msgstr "Ο Βαρόνος των Σκουπιδιών δεν ανεβαίνει ποτέ στο πλοίο του: η αστυνομία του νησιού τον περιμένει στην προβλήτα. Το ΣΚΟΥΠΙΔΟ-ΡΟΜΠΟΤ καταλήγει σε εργοστάσιο ανακύκλωσης."
@@ -784,8 +783,8 @@ msgstr "Ο Βαρόνος των Σκουπιδιών δεν ανεβαίνει 
 msgid "La squadra"
 msgstr "Η ομάδα"
 
-msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La squadra EcoRescuer resta di guardia: se qualcuno sporca l'isola, lo saprà."
-msgstr "Το λιμάνι είναι καθαρό και η συμμορία των Ρυπαντών δεν έχει πια αρχηγό. Η ομάδα EcoRescuer μένει σε επιφυλακή: αν κάποιος λερώσει το νησί, θα το μάθει."
+msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La Trash Patrol resta di guardia: se qualcuno sporca l'isola, lo saprà."
+msgstr "Το λιμάνι είναι καθαρό και η συμμορία των Ρυπαντών δεν έχει πια αρχηγό. Η Trash Patrol μένει σε επιφυλακή: αν κάποιος λερώσει το νησί, θα το μάθει."
 
 msgid "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!"
 msgstr "Με όλους τους %d φακέλους ως αποδείξεις, οι διεφθαρμένοι πολιτικοί συλλαμβάνονται και οι Ρυπαντές δεν θα γυρίσουν ποτέ ξανά. Το νησί σώθηκε για πάντα!"
@@ -1270,6 +1269,9 @@ msgstr "Κλειδωμένο!\nΧρειάζεσαι %d αστέρια\n(έχει
 msgid "Storia"
 msgstr "Ιστορία"
 
+msgid "Automatico"
+msgstr "Αυτόματα"
+
 msgid "Rage mode"
 msgstr "Rage mode"
 
@@ -1449,4 +1451,7 @@ msgstr "Φάκελοι"
 
 msgid "Unassigned"
 msgstr "Χωρίς ανάθεση"
+
+msgid "Automatico"
+msgstr "Αυτόματα"
 

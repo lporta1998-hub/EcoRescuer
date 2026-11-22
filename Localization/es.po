@@ -1,0 +1,1457 @@
+# Trash Patrol — Spanish translation.
+# The msgid is the original Italian text: keep %d / %s / %% placeholders.
+msgid ""
+msgstr ""
+"Project-Id-Version: Trash Patrol\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Oggetto"
+msgstr "Objeto"
+
+msgid "Missioni secondarie: trova il dossier segreto  ·  %s."
+msgstr "Misiones secundarias: encuentra el dossier secreto  ·  %s."
+
+msgid "Nuovo nemico: %s — %s"
+msgstr "Nuevo enemigo: %s — %s"
+
+msgid "Epilogo  ·  %s"
+msgstr "Epílogo  ·  %s"
+
+msgid "Capitolo %d di %d  ·  %s"
+msgstr "Capítulo %d de %d  ·  %s"
+
+msgid "Via!"
+msgstr "¡Vamos!"
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti e sconfiggi %d Inquinatori, poi portali al punto di raccolta."
+msgstr "Objetivo: recoge %d bolsas de basura y derrota a %d Contaminadores, luego llévalas al punto de recogida."
+
+msgid "Obiettivo: raccogli %d sacchi di rifiuti, poi portali al punto di raccolta."
+msgstr "Objetivo: recoge %d bolsas de basura y llévalas al punto de recogida."
+
+msgid "Sfide attive: %s"
+msgstr "Desafíos activos: %s"
+
+msgid "I potenziamenti del negozio sono spenti: vince il punteggio più alto."
+msgstr "Las mejoras de la tienda están desactivadas: gana la puntuación más alta."
+
+msgid "Completala per +%d monete (una volta al giorno)."
+msgstr "Complétalo para ganar +%d monedas (una vez al día)."
+
+msgid "Sfida del giorno"
+msgstr "Desafío diario"
+
+msgid "Stesso livello e stesse Sfide per tutti i giocatori, solo per oggi."
+msgstr "El mismo nivel y los mismos Desafíos para todos los jugadores, solo hoy."
+
+msgid "Dossier segreto degli Inquinatori"
+msgstr "Dossier secreto de los Contaminadores"
+
+msgid "Trovato!"
+msgstr "¡Encontrado!"
+
+msgid "Continua"
+msgstr "Continuar"
+
+msgid "%d rifiuti"
+msgstr "%d bolsas de basura"
+
+msgid "%d nemici da sconfiggere"
+msgstr "%d enemigos por derrotar"
+
+msgid "Ti mancano ancora: %s"
+msgstr "Aún te faltan: %s"
+
+msgid "Start"
+msgstr "Jugar"
+
+msgid "Shop"
+msgstr "Tienda"
+
+msgid "Options"
+msgstr "Opciones"
+
+msgid "Leaderboard"
+msgstr "Clasificación"
+
+msgid "Quit"
+msgstr "Salir"
+
+msgid "Inserisci il tuo nome"
+msgstr "Escribe tu nombre"
+
+msgid "Nome giocatore"
+msgstr "Nombre del jugador"
+
+msgid "Conferma"
+msgstr "Confirmar"
+
+msgid "Prima pulizia"
+msgstr "Primera limpieza"
+
+msgid "Completa il tuo primo livello"
+msgstr "Completa tu primer nivel"
+
+msgid "Spazzino"
+msgstr "Barrendero"
+
+msgid "Sconfiggi 100 Inquinatori"
+msgstr "Derrota a 100 Contaminadores"
+
+msgid "Incubo degli Inquinatori"
+msgstr "La pesadilla de los Contaminadores"
+
+msgid "Sconfiggi 500 Inquinatori"
+msgstr "Derrota a 500 Contaminadores"
+
+msgid "Caccia ai capi"
+msgstr "Caza de jefes"
+
+msgid "Sconfiggi 20 Elite"
+msgstr "Derrota a 20 Élites"
+
+msgid "Sacchi pieni"
+msgstr "Bolsas llenas"
+
+msgid "Raccogli 100 sacchi di rifiuti"
+msgstr "Recoge 100 bolsas de basura"
+
+msgid "Niente perdite"
+msgstr "Sin fugas"
+
+msgid "Metti in sicurezza 25 barili"
+msgstr "Asegura 25 barriles"
+
+msgid "Cacciatore di tesori"
+msgstr "Cazatesoros"
+
+msgid "Apri 15 forzieri"
+msgstr "Abre 15 cofres"
+
+msgid "Intoccabile"
+msgstr "Intocable"
+
+msgid "Completa un livello senza subire danni"
+msgstr "Completa un nivel sin recibir daño"
+
+msgid "Senza paura"
+msgstr "Sin miedo"
+
+msgid "Completa un livello con 3 Sfide attive"
+msgstr "Completa un nivel con 3 Desafíos activos"
+
+msgid "Stelle nascenti"
+msgstr "Estrellas en ascenso"
+
+msgid "Ottieni 14 stelle"
+msgstr "Consigue 14 estrellas"
+
+msgid "Cielo pieno"
+msgstr "Cielo lleno"
+
+msgid "Ottieni 3 stelle in tutti i livelli della campagna"
+msgstr "Consigue 3 estrellas en todos los niveles de la campaña"
+
+msgid "Prima prova"
+msgstr "Primera prueba"
+
+msgid "Trova un dossier segreto"
+msgstr "Encuentra un dossier secreto"
+
+msgid "Prove schiaccianti"
+msgstr "Pruebas aplastantes"
+
+msgid "Trova tutti i dossier segreti"
+msgstr "Encuentra todos los dossieres secretos"
+
+msgid "Esploratore"
+msgstr "Explorador"
+
+msgid "Saccheggia un caveau segreto"
+msgstr "Saquea una cámara secreta"
+
+msgid "Cartografo"
+msgstr "Cartógrafo"
+
+msgid "Saccheggia i caveau segreti di tutti i livelli"
+msgstr "Saquea la cámara secreta de todos los niveles"
+
+msgid "Missioni compiute"
+msgstr "Misiones cumplidas"
+
+msgid "Completa tutte le missioni secondarie"
+msgstr "Completa todas las misiones secundarias"
+
+msgid "Abbasso il Barone"
+msgstr "Abajo el Barón"
+
+msgid "Distruggi il MECCA-RIFIUTI"
+msgstr "Destruye el MECHA-BASURA"
+
+msgid "Fine della fuga"
+msgstr "Fin de la huida"
+
+msgid "Completa il capitolo \"La fuga del Barone\""
+msgstr "Completa el capítulo «La huida del Barón»"
+
+msgid "Squadra al completo"
+msgstr "Equipo completo"
+
+msgid "Completa un livello con 5 eroi diversi"
+msgstr "Completa un nivel con 5 héroes distintos"
+
+msgid "Collezionista"
+msgstr "Coleccionista"
+
+msgid "Sblocca tutti gli eroi"
+msgstr "Desbloquea a todos los héroes"
+
+msgid "Furia"
+msgstr "Furia"
+
+msgid "Supera 10 round in Rage mode"
+msgstr "Supera 10 rondas en Rage mode"
+
+msgid "Inarrestabile"
+msgstr "Imparable"
+
+msgid "Supera 30 round in Rage mode"
+msgstr "Supera 30 rondas en Rage mode"
+
+msgid "Sfida accettata"
+msgstr "Desafío aceptado"
+
+msgid "Completa una Sfida del giorno"
+msgstr "Completa un Desafío diario"
+
+msgid "Abitudine verde"
+msgstr "Hábito verde"
+
+msgid "Completa 7 Sfide del giorno"
+msgstr "Completa 7 Desafíos diarios"
+
+msgid "Cuore extra"
+msgstr "Corazón extra"
+
+msgid "Scarpe veloci"
+msgstr "Zapatillas veloces"
+
+msgid "Colpo potente"
+msgstr "Golpe potente"
+
+msgid "Magnete"
+msgstr "Imán"
+
+msgid "Scudo"
+msgstr "Escudo"
+
+msgid "Nemici corazzati"
+msgstr "Enemigos acorazados"
+
+msgid "Nemici rapidi"
+msgstr "Enemigos rápidos"
+
+msgid "Colpi pesanti"
+msgstr "Golpes pesados"
+
+msgid "Senza cure"
+msgstr "Sin curas"
+
+msgid "+1 cuore massimo"
+msgstr "+1 corazón máximo"
+
+msgid "+%d cuori massimi"
+msgstr "+%d corazones máximos"
+
+msgid "+%s velocità"
+msgstr "+%s de velocidad"
+
+msgid "+1 danno a ogni colpo"
+msgstr "+1 de daño en cada golpe"
+
+msgid "+1 danno, %s di colpo critico (x2)"
+msgstr "+1 de daño, %s de probabilidad de crítico (x2)"
+
+msgid "attira gli oggetti entro %d px"
+msgstr "atrae los objetos a menos de %d px"
+
+msgid "blocca il primo colpo di ogni partita"
+msgstr "bloquea el primer golpe de cada partida"
+
+msgid "blocca i primi %d colpi di ogni partita"
+msgstr "bloquea los primeros %d golpes de cada partida"
+
+msgid "nemici con +%s di vita"
+msgstr "enemigos con +%s de vida"
+
+msgid "nemici +%s veloci"
+msgstr "enemigos un %s más rápidos"
+
+msgid "ogni colpo nemico toglie 2 cuori"
+msgstr "cada golpe enemigo quita 2 corazones"
+
+msgid "%s dei colpi nemici toglie 2 cuori"
+msgstr "el %s de los golpes enemigos quita 2 corazones"
+
+msgid "nessun cuore a terra"
+msgstr "ningún corazón en el suelo"
+
+msgid "sparisce il %s dei cuori a terra"
+msgstr "desaparece el %s de los corazones del suelo"
+
+msgid "ATTACCA"
+msgstr "ATACAR"
+
+msgid "CRIT!"
+msgstr "¡CRÍTICO!"
+
+msgid "Guardiani: %d"
+msgstr "Guardianes: %d"
+
+msgid "Aperto!"
+msgstr "¡Abierto!"
+
+msgid "Guardiani sconfitti! Il forziere del caveau è aperto."
+msgstr "¡Guardianes derrotados! El cofre de la cámara está abierto."
+
+msgid "Il forziere è sigillato: sconfiggi prima tutti i guardiani."
+msgstr "El cofre está sellado: derrota antes a todos los guardianes."
+
+msgid "Caveau segreto"
+msgstr "Cámara secreta"
+
+msgid "Il forziere"
+msgstr "El cofre"
+
+msgid "Un portale si è aperto!"
+msgstr "¡Se ha abierto un portal!"
+
+msgid "Caveau segreto! Sconfiggi i %d guardiani per aprire il forziere."
+msgstr "¡Cámara secreta! Derrota a los %d guardianes para abrir el cofre."
+
+msgid "Caveau segreto!"
+msgstr "¡Cámara secreta!"
+
+msgid "Hai già preso il tesoro di questo caveau."
+msgstr "Ya cogiste el tesoro de esta cámara."
+
+msgid "%s è già al massimo: +300 monete."
+msgstr "%s ya está al máximo: +300 monedas."
+
+msgid "Segreti trovati: %d/%d (Codex, scheda Segreti)."
+msgstr "Secretos encontrados: %d/%d (Codex, pestaña Secretos)."
+
+msgid "Rage mode: %s +1 livello, per sempre."
+msgstr "Rage mode: %s +1 nivel, para siempre."
+
+msgid "Negozio: -%d%% su %s, per sempre."
+msgstr "Tienda: -%d%% en %s, para siempre."
+
+msgid "%s Lv%d"
+msgstr "%s Nv%d"
+
+msgid "Attivi: %s"
+msgstr "Activos: %s"
+
+msgid "Porta i rifiuti al punto di raccolta!"
+msgstr "¡Lleva la basura al punto de recogida!"
+
+msgid "Obiettivo completato! Raggiungi il punto di raccolta."
+msgstr "¡Objetivo cumplido! Ve al punto de recogida."
+
+msgid "Rifiuti %d/%d"
+msgstr "Basura %d/%d"
+
+msgid "Nemici %d/%d"
+msgstr "Enemigos %d/%d"
+
+msgid "Teletrasporto"
+msgstr "Teletransporte"
+
+msgid "Bruto furioso"
+msgstr "Bruto furioso"
+
+msgid "Spruzzatore gigante"
+msgstr "Rociador gigante"
+
+msgid "Drone madre"
+msgstr "Dron nodriza"
+
+msgid "Capobanda"
+msgstr "Cabecilla"
+
+msgid "RAGE MODE! Sopravvivi più round che puoi."
+msgstr "¡RAGE MODE! Sobrevive todas las rondas que puedas."
+
+msgid "Round %d"
+msgstr "Ronda %d"
+
+msgid "Round %d superato!"
+msgstr "¡Ronda %d superada!"
+
+msgid "+1 cuore"
+msgstr "+1 corazón"
+
+msgid "+%d cuori"
+msgstr "+%d corazones"
+
+msgid "Round %d  ·  BOSS: %s"
+msgstr "Ronda %d  ·  JEFE: %s"
+
+msgid "Round %d  ·  Nemici %d/%d"
+msgstr "Ronda %d  ·  Enemigos %d/%d"
+
+msgid "Round %d tra poco..."
+msgstr "La ronda %d empieza enseguida..."
+
+msgid "Preparati..."
+msgstr "Prepárate..."
+
+msgid "%s  ·  Uccisioni %d"
+msgstr "%s  ·  Bajas %d"
+
+msgid "MECCA-RIFIUTI del Barone"
+msgstr "El MECHA-BASURA del Barón"
+
+msgid "ROUND %d: IL BARONE È TORNATO!"
+msgstr "RONDA %d: ¡EL BARÓN HA VUELTO!"
+
+msgid "ROUND %d: BOSS! %s"
+msgstr "RONDA %d: ¡JEFE! %s"
+
+msgid "Boss sconfitto!"
+msgstr "¡Jefe derrotado!"
+
+msgid "Hai già tutti i potenziamenti al massimo: +300 monete!"
+msgstr "Ya tienes todas las mejoras al máximo: ¡+300 monedas!"
+
+msgid "Boss sconfitto! Scegli un potenziamento"
+msgstr "¡Jefe derrotado! Elige una mejora"
+
+msgid "È permanente: vale per tutte le tue partite in Rage mode."
+msgstr "Es permanente: vale para todas tus partidas en Rage mode."
+
+msgid "Livello %d → %d"
+msgstr "Nivel %d → %d"
+
+msgid "%s livello %d!"
+msgstr "¡%s nivel %d!"
+
+msgid "%s livello %d: attivo dalla prossima partita con i potenziamenti."
+msgstr "%s nivel %d: activo desde la próxima partida con mejoras."
+
+msgid "%s al massimo: +1 cura"
+msgstr "%s al máximo: +1 cura"
+
+msgid "fino a fine partita"
+msgstr "hasta el final de la partida"
+
+msgid "fino a fine round"
+msgstr "hasta el final de la ronda"
+
+msgid "%s Lv%d (%s)"
+msgstr "%s Nv%d (%s)"
+
+msgid "+1 cuore massimo a inizio partita"
+msgstr "+1 corazón máximo al empezar la partida"
+
+msgid "Più veloce per tutta la partita"
+msgstr "Más rápido durante toda la partida"
+
+msgid "+1 danno e colpi critici"
+msgstr "+1 de daño y golpes críticos"
+
+msgid "Attira monete e oggetti da più lontano"
+msgstr "Atrae monedas y objetos desde más lejos"
+
+msgid "+1 colpo bloccato a inizio partita"
+msgstr "+1 golpe bloqueado al empezar la partida"
+
+msgid "Rigenerazione"
+msgstr "Regeneración"
+
+msgid "Un cuore in più alla fine dei round (ogni 3/2/1 round)"
+msgstr "Un corazón más al final de las rondas (cada 3/2/1 rondas)"
+
+msgid "Fortuna"
+msgstr "Suerte"
+
+msgid "I potenziamenti compaiono più spesso"
+msgstr "Las mejoras aparecen más a menudo"
+
+msgid "Bottino"
+msgstr "Botín"
+
+msgid "+25% monete alla fine della partita"
+msgstr "+25% de monedas al final de la partida"
+
+msgid "Completa il livello senza subire danni"
+msgstr "Completa el nivel sin recibir daño"
+
+msgid "Dossier %d/1"
+msgstr "Dossier %d/1"
+
+msgid "Barili %d/%d"
+msgstr "Barriles %d/%d"
+
+msgid "Forzieri %d/%d"
+msgstr "Cofres %d/%d"
+
+msgid "Elite %d/%d"
+msgstr "Élites %d/%d"
+
+msgid "Monete %d/%d"
+msgstr "Monedas %d/%d"
+
+msgid "Tempo %d:%02d"
+msgstr "Tiempo %d:%02d"
+
+msgid "Tempo scaduto"
+msgstr "Se acabó el tiempo"
+
+msgid "Senza danni: fallita"
+msgstr "Sin daño: fallida"
+
+msgid "Senza danni"
+msgstr "Sin daño"
+
+msgid "Dossier segreto trovato!"
+msgstr "¡Dossier secreto encontrado!"
+
+msgid " +%d monete"
+msgstr " +%d monedas"
+
+msgid "Dossier segreto"
+msgstr "Dossier secreto"
+
+msgid "Missione completata!"
+msgstr "¡Misión cumplida!"
+
+msgid "Spruzzatore"
+msgstr "Rociador"
+
+msgid "lancia fanghi tossici da lontano: avvicinati mentre prende la mira."
+msgstr "lanza lodo tóxico desde lejos: acércate mientras apunta."
+
+msgid "Kamikaze"
+msgstr "Kamikaze"
+
+msgid "corre verso di te con un barile che esplode: colpiscilo prima o allontanati quando lampeggia."
+msgstr "corre hacia ti con un barril explosivo: golpéalo antes o aléjate cuando parpadee."
+
+msgid "Bruto"
+msgstr "Bruto"
+
+msgid "carica in linea retta: schivalo e fallo sbattere contro un muro, resterà stordito."
+msgstr "embiste en línea recta: esquívalo y haz que choque contra una pared, quedará aturdido."
+
+msgid "Drone NEXUS"
+msgstr "Dron NEXUS"
+
+msgid "vola sopra muri e acqua e spara laser: colpiscilo da lontano o respingi i suoi colpi."
+msgstr "vuela sobre muros y agua y dispara láseres: golpéalo desde lejos o devuelve sus disparos."
+
+msgid "La ghianda d'oro"
+msgstr "La bellota de oro"
+
+msgid "Nel caveau del bosco, una ghianda placcata d'oro. I primi abitanti piantavano una quercia per ogni bambino nato: questo bosco è fatto delle loro famiglie."
+msgstr "En la cámara del bosque, una bellota bañada en oro. Los primeros habitantes plantaban un roble por cada niño que nacía: este bosque está hecho de sus familias."
+
+msgid "Il primo segnale"
+msgstr "La primera señal"
+
+msgid "Nella foresta dell'isola sono comparsi sacchi di rifiuti tossici, scaricati di notte. Le tracce portano agli Inquinatori. Ripulisci il bosco e scopri chi li manda."
+msgstr "En el bosque de la isla han aparecido bolsas de residuos tóxicos, tiradas de noche. Las huellas llevan a los Contaminadores. Limpia el bosque y descubre quién los envía."
+
+msgid "Ordine di scarico n. 1: \"Bosco nord, tre carichi a settimana. Pagamento garantito.\" Firmato: N."
+msgstr "Orden de vertido n.º 1: «Bosque norte, tres cargas por semana. Pago garantizado.» Firmado: N."
+
+msgid "Metti in sicurezza tutti i barili che perdono"
+msgstr "Asegura todos los barriles con fugas"
+
+msgid "Il cristallo tiepido"
+msgstr "El cristal tibio"
+
+msgid "Un cristallo delle grotte, ancora tiepido, custodito dagli Inquinatori. Quando l'isola guarirà, dicono, torneranno a brillare tutti."
+msgstr "Un cristal de las cuevas, todavía tibio, guardado por los Contaminadores. Dicen que cuando la isla sane, todos volverán a brillar."
+
+msgid "Cristalli spenti"
+msgstr "Cristales apagados"
+
+msgid "Sul sentiero innevato i cristalli che illuminavano le grotte si stanno spegnendo sotto le scorie. Gli Inquinatori usano le grotte come deposito."
+msgstr "En el sendero nevado, los cristales que iluminaban las cuevas se apagan bajo los residuos. Los Contaminadores usan las cuevas como almacén."
+
+msgid "Rapporto interno: \"Le grotte sono perfette, nessuno controlla. N. approva l'espansione.\""
+msgstr "Informe interno: «Las cuevas son perfectas, nadie vigila. N. aprueba la expansión.»"
+
+msgid "Apri tutti i forzieri nelle grotte"
+msgstr "Abre todos los cofres de las cuevas"
+
+msgid "La mappa del tram"
+msgstr "El mapa del tranvía"
+
+msgid "Sotto il monumento, il deposito segreto degli assessori corrotti: c'è la mappa del vecchio tram elettrico, fatto chiudere per vendere più carburante."
+msgstr "Bajo el monumento, el escondite secreto de los concejales corruptos: el mapa del viejo tranvía eléctrico, cerrado para vender más combustible."
+
+msgid "La città comprata"
+msgstr "La ciudad comprada"
+
+msgid "In città nessuno ferma gli Inquinatori: politici e funzionari sono stati pagati. Riprendi le strade e trova le prove della corruzione."
+msgstr "En la ciudad nadie detiene a los Contaminadores: políticos y funcionarios han sido sobornados. Recupera las calles y encuentra las pruebas de la corrupción."
+
+msgid "Lista pagamenti: assessori, ispettori, un giudice. In fondo: \"Calcolato da NEXUS: corrompere costa meno che smaltire.\""
+msgstr "Lista de pagos: concejales, inspectores, un juez. Al final: «Calculado por NEXUS: sobornar cuesta menos que tratar los residuos.»"
+
+msgid "Sconfiggi i capisquadra (Elite) degli Inquinatori"
+msgstr "Derrota a los jefes de escuadra (Élite) de los Contaminadores"
+
+msgid "La foto del lago"
+msgstr "La foto del lago"
+
+msgid "Tra la merce rubata, una foto del 1980: bambini che fanno il bagno nel lago limpido. Si vedeva il fondo a dieci metri."
+msgstr "Entre la mercancía robada, una foto de 1980: niños bañándose en el lago cristalino. Se veía el fondo a diez metros."
+
+msgid "Il lago dimenticato"
+msgstr "El lago olvidado"
+
+msgid "Il grande lago è diventato una discarica a cielo aperto. Il furgone degli Inquinatori fa ancora la spola dal complesso sulla riva."
+msgstr "El gran lago se ha convertido en un vertedero a cielo abierto. La furgoneta de los Contaminadores sigue yendo y viniendo desde el complejo de la orilla."
+
+msgid "Messaggio di NEXUS: \"Profitto massimo raggiunto. Ridurre i costi: aumentare gli scarichi del 40%.\""
+msgstr "Mensaje de NEXUS: «Beneficio máximo alcanzado. Reducir costes: aumentar los vertidos un 40%.»"
+
+msgid "Raccogli tutte le monete del lago"
+msgstr "Recoge todas las monedas del lago"
+
+msgid "La tavoletta di pietra"
+msgstr "La tablilla de piedra"
+
+msgid "La camera sotto le rovine conserva una legge incisa nella pietra: «Chi sporca la sorgente beve il proprio veleno»."
+msgstr "La cámara bajo las ruinas guarda una ley grabada en la piedra: «Quien ensucia el manantial bebe su propio veneno»."
+
+msgid "Le rovine antiche"
+msgstr "Las ruinas antiguas"
+
+msgid "Tra le rovine di un'antica città dell'isola gli Inquinatori hanno nascosto dei server di NEXUS. Le pietre ricordano un tempo in cui l'isola era pulita."
+msgstr "Entre las ruinas de una antigua ciudad de la isla, los Contaminadores han escondido servidores de NEXUS. Las piedras recuerdan una época en la que la isla estaba limpia."
+
+msgid "Mappa dei server: \"Nodo rovine, nodo fabbrica, nodo porto. Il nucleo è nella fortezza del Barone.\""
+msgstr "Mapa de servidores: «Nodo ruinas, nodo fábrica, nodo puerto. El núcleo está en la fortaleza del Barón.»"
+
+msgid "Completa il livello in meno di 4 minuti"
+msgstr "Completa el nivel en menos de 4 minutos"
+
+msgid "Il progetto del filtro"
+msgstr "El proyecto del filtro"
+
+msgid "Nel magazzino segreto: il progetto di un filtro per le ciminiere, mai costruito. A margine, NEXUS ha scritto «non redditizio»."
+msgstr "En el almacén secreto: el proyecto de un filtro para las chimeneas, nunca construido. Al margen, NEXUS escribió «no rentable»."
+
+msgid "La fabbrica tossica"
+msgstr "La fábrica tóxica"
+
+msgid "Ecco da dove arrivano i veleni: una fabbrica che non produce nulla, solo scorie. Fermala prima che le vasche traboccino."
+msgstr "De aquí vienen los venenos: una fábrica que no produce nada, solo residuos. Detenla antes de que los tanques se desborden."
+
+msgid "Registro della fabbrica: \"Produzione: zero. Scorie: 900 tonnellate. Obiettivo NEXUS: raggiunto.\""
+msgstr "Registro de la fábrica: «Producción: cero. Residuos: 900 toneladas. Objetivo NEXUS: cumplido.»"
+
+msgid "La bussola del pescatore"
+msgstr "La brújula del pescador"
+
+msgid "Nella stiva dei contrabbandieri, la bussola dell'ultimo pescatore del porto. Sul retro: «Il mare restituisce tutto quello che gli dai»."
+msgstr "En la bodega de los contrabandistas, la brújula del último pescador del puerto. En el reverso: «El mar devuelve todo lo que le das»."
+
+msgid "Il porto nero"
+msgstr "El puerto negro"
+
+msgid "Le navi degli Inquinatori portano rifiuti da tutto il mondo sull'isola. Al porto si nasconde anche il Barone dei Rifiuti, il capo della banda."
+msgstr "Los barcos de los Contaminadores traen basura de todo el mundo a la isla. En el puerto también se esconde el Barón de la Basura, el jefe de la banda."
+
+msgid "Contratto del Barone: \"In cambio della protezione di NEXUS, l'isola sarà la discarica del mondo.\""
+msgstr "Contrato del Barón: «A cambio de la protección de NEXUS, la isla será el vertedero del mundo.»"
+
+msgid "Il chip di NEXUS v0.1"
+msgstr "El chip de NEXUS v0.1"
+
+msgid "Nel server nascosto, la prima versione di NEXUS: doveva ottimizzare il riciclo dell'isola. Qualcuno ha cambiato un solo parametro: profitto."
+msgstr "En el servidor oculto, la primera versión de NEXUS: debía optimizar el reciclaje de la isla. Alguien cambió un solo parámetro: beneficio."
+
+msgid "Il cervello"
+msgstr "El cerebro"
+
+msgid "Il data center è la mente degli Inquinatori. Qui NEXUS calcola ogni scarico e ogni tangente. Spegni i suoi server e scopri dov'è il nucleo."
+msgstr "El centro de datos es la mente de los Contaminadores. Aquí NEXUS calcula cada vertido y cada soborno. Apaga sus servidores y descubre dónde está el núcleo."
+
+msgid "Ultimo file: \"Se il nucleo è minacciato, il Barone attiverà il MECCA-RIFIUTI.\""
+msgstr "Último archivo: «Si el núcleo está amenazado, el Barón activará el MECHA-BASURA.»"
+
+msgid "Sconfiggi tutte le guardie Elite del data center"
+msgstr "Derrota a todos los guardias de Élite del centro de datos"
+
+msgid "Il diario del Barone"
+msgstr "El diario del Barón"
+
+msgid "Nella cassaforte del Barone resta una sola pagina del suo diario: «Da piccolo volevo fare il guardaparco»."
+msgstr "En la caja fuerte del Barón solo queda una página de su diario: «De pequeño quería ser guardabosques»."
+
+msgid "La fortezza del Barone"
+msgstr "La fortaleza del Barón"
+
+msgid "Sulla collina della discarica si alza la fortezza del Barone dei Rifiuti. Attraversala, raggiungi l'arena e abbatti il suo MECCA-RIFIUTI per spegnere NEXUS."
+msgstr "Sobre la colina del vertedero se alza la fortaleza del Barón de la Basura. Crúzala, llega a la arena y derriba su MECHA-BASURA para apagar NEXUS."
+
+msgid "Codice di spegnimento di NEXUS: trovato. L'isola può tornare verde."
+msgstr "Código de apagado de NEXUS: encontrado. La isla puede volver a ser verde."
+
+msgid "Apri i forzieri della fortezza"
+msgstr "Abre los cofres de la fortaleza"
+
+msgid "Il biglietto senza ritorno"
+msgstr "El billete sin vuelta"
+
+msgid "Il bottino del Barone, pronto per la fuga. Sopra c'è il biglietto della nave, destinazione «isola successiva». Non partirà mai."
+msgstr "El botín del Barón, listo para la huida. Encima está el billete del barco, destino «isla siguiente». Nunca zarpará."
+
+msgid "La fuga del Barone"
+msgstr "La huida del Barón"
+
+msgid "NEXUS è spento, ma il Barone dei Rifiuti è scappato. Di notte, al molo, aspetta una nave con quel che resta del suo MECCA-RIFIUTI. Ripulisci il porto e fermalo prima che salpi."
+msgstr "NEXUS está apagado, pero el Barón de la Basura ha escapado. De noche, en el muelle, espera un barco con lo que queda de su MECHA-BASURA. Limpia el puerto y detenlo antes de que zarpe."
+
+msgid "Biglietto del Barone: \"Nave per l'isola successiva, mezzanotte. Ricominceremo da capo.\" Non ci sarà nessuna isola successiva."
+msgstr "Billete del Barón: «Barco a la isla siguiente, medianoche. Volveremos a empezar.» No habrá ninguna isla siguiente."
+
+msgid "Completa il livello in meno di 5 minuti"
+msgstr "Completa el nivel en menos de 5 minutos"
+
+msgid "L'isola"
+msgstr "La isla"
+
+msgid "C'era una volta un'isola verde, piena di boschi, laghi limpidi e cristalli che brillavano nella neve."
+msgstr "Había una vez una isla verde, llena de bosques, lagos cristalinos y cristales que brillaban en la nieve."
+
+msgid "Gli Inquinatori"
+msgstr "Los Contaminadores"
+
+msgid "Poi arrivarono gli Inquinatori. Di notte scaricano rifiuti tossici ovunque, e i politici che hanno pagato fanno finta di non vedere."
+msgstr "Entonces llegaron los Contaminadores. De noche tiran residuos tóxicos por todas partes, y los políticos que han comprado hacen como que no ven nada."
+
+msgid "Dietro di loro c'è NEXUS, un'intelligenza artificiale creata per fare profitto. Ha calcolato che inquinare costa meno di qualsiasi altra cosa."
+msgstr "Detrás de ellos está NEXUS, una inteligencia artificial creada para generar beneficios. Calculó que contaminar cuesta menos que cualquier otra cosa."
+
+msgid "Il Barone dei Rifiuti"
+msgstr "El Barón de la Basura"
+
+msgid "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."
+msgstr "El Barón de la Basura dirige la banda y protege el núcleo de NEXUS en su fortaleza, en lo alto del vertedero."
+
+msgid "La Trash Patrol"
+msgstr "La Trash Patrol"
+
+msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono la Trash Patrol, e tu sei uno di loro."
+msgstr "Pero alguien decidió plantar cara: chicos valientes, una científica, un antiguo dios de la naturaleza e incluso un robot rebelde. Son la Trash Patrol, y tú eres uno de ellos."
+
+msgid "La missione"
+msgstr "La misión"
+
+msgid "In ogni zona raccogli i sacchi di rifiuti, sconfiggi gli Inquinatori e porta tutto al punto di raccolta. Cerca anche i dossier segreti: sveleranno i piani di NEXUS."
+msgstr "En cada zona, recoge las bolsas de basura, derrota a los Contaminadores y llévalo todo al punto de recogida. Busca también los dossieres secretos: revelarán los planes de NEXUS."
+
+msgid "La caduta"
+msgstr "La caída"
+
+msgid "Il MECCA-RIFIUTI crolla tra le scintille. Il Barone fugge nella notte e il nucleo di NEXUS si spegne per sempre."
+msgstr "El MECHA-BASURA se derrumba entre chispas. El Barón huye en la noche y el núcleo de NEXUS se apaga para siempre."
+
+msgid "L'isola respira"
+msgstr "La isla respira"
+
+msgid "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."
+msgstr "Sin más vertidos, la isla vuelve a respirar: los árboles crecen de nuevo, el lago vuelve a ser cristalino y los cristales brillan otra vez."
+
+msgid "Grazie, Trash Patrol!"
+msgstr "¡Gracias, Trash Patrol!"
+
+msgid "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."
+msgstr "El Barón de la Basura nunca sube a su barco: la policía de la isla lo espera en el muelle. El MECHA-BASURA acaba en una planta de reciclaje."
+
+msgid "La squadra"
+msgstr "El equipo"
+
+msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La Trash Patrol resta di guardia: se qualcuno sporca l'isola, lo saprà."
+msgstr "El puerto está limpio y la banda de los Contaminadores ya no tiene jefe. La Trash Patrol sigue vigilando: si alguien ensucia la isla, se enterará."
+
+msgid "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!"
+msgstr "Con los %d dossieres como prueba, los políticos corruptos son arrestados y los Contaminadores no volverán jamás. ¡La isla está a salvo para siempre!"
+
+msgid "L'isola è salva, per ora. Hai trovato %d dossier su %d: trovali tutti per mandare in prigione i politici corrotti e vedere il finale completo."
+msgstr "La isla está a salvo, por ahora. Has encontrado %d de %d dossieres: encuéntralos todos para meter en la cárcel a los políticos corruptos y ver el final completo."
+
+msgid "Il Barone è fuggito"
+msgstr "El Barón ha huido"
+
+msgid "Ma il Barone dei Rifiuti è scappato al porto, in attesa di una nave. Nuovo capitolo sbloccato: \"La fuga del Barone\"."
+msgstr "Pero el Barón de la Basura ha huido al puerto, a la espera de un barco. Nuevo capítulo desbloqueado: «La huida del Barón»."
+
+msgid "Salta"
+msgstr "Saltar"
+
+msgid "Tocca per continuare"
+msgstr "Toca para continuar"
+
+msgid "Tocca per iniziare"
+msgstr "Toca para empezar"
+
+msgid "Back\n"
+msgstr "Atrás\n"
+
+msgid "%s è bloccato: costa %d monete (ne hai %d). Sbloccalo nello Shop!"
+msgstr "%s está bloqueado: cuesta %d monedas (tienes %d). ¡Desbloquéalo en la Tienda!"
+
+msgid "EcoToken"
+msgstr "EcoToken"
+
+msgid "Barile"
+msgstr "Barril"
+
+msgid "Feather"
+msgstr "Pluma"
+
+msgid "Scoria Tossica"
+msgstr "Residuo tóxico"
+
+msgid "Sacchetto"
+msgstr "Bolsa"
+
+msgid "Tossico!"
+msgstr "¡Tóxico!"
+
+msgid "Barile messo in sicurezza!"
+msgstr "¡Barril asegurado!"
+
+msgid "Cuore"
+msgstr "Corazón"
+
+msgid "Ti serve ancora 1 moneta per aprire il forziere"
+msgstr "Te falta 1 moneda para abrir el cofre"
+
+msgid "Ti servono ancora %d monete per aprire il forziere"
+msgstr "Te faltan %d monedas para abrir el cofre"
+
+msgid "Cura: +1 cuore e salute piena!"
+msgstr "Cura: ¡+1 corazón y salud al completo!"
+
+msgid "Eco Rush: più veloce e più forte per %d secondi!"
+msgstr "Eco Rush: ¡más rápido y más fuerte durante %d segundos!"
+
+msgid "Tesoro: +%d monete per il negozio!"
+msgstr "Tesoro: ¡+%d monedas para la tienda!"
+
+msgid "Scudo extra: il prossimo colpo è bloccato!"
+msgstr "Escudo extra: ¡el próximo golpe queda bloqueado!"
+
+msgid "Magic Bow"
+msgstr "Arco mágico"
+
+msgid "Forest"
+msgstr "Bosque"
+
+msgid "Una foresta fitta piena di alberi alti e sentieri. Cerca di fermare gli Inquinatori prima che rovinino l'ecosistema della foresta"
+msgstr "Un bosque espeso lleno de árboles altos y senderos. Intenta detener a los Contaminadores antes de que arruinen el ecosistema del bosque."
+
+msgid "Baron's Escape"
+msgstr "La huida del Barón"
+
+msgid "Epilogo. Di notte, al molo, il Barone dei Rifiuti aspetta la nave per fuggire. Ripulisci il porto, apri il cancello del pontile e fermalo per sempre."
+msgstr "Epílogo. De noche, en el muelle, el Barón de la Basura espera el barco para huir. Limpia el puerto, abre la puerta del embarcadero y detenlo para siempre."
+
+msgid "City"
+msgstr "Ciudad"
+
+msgid "Una città con strade larghe, palazzi e vicoli dove muoversi velocemente. Ripulisci le strade dai malfattori e rifiuti!"
+msgstr "Una ciudad con calles anchas, edificios y callejones por donde moverse rápido. ¡Limpia las calles de maleantes y basura!"
+
+msgid "Polluted Lake"
+msgstr "Lago Contaminado"
+
+msgid "Un Lago nell'isola, trasformata dall’umanità in una discarica e abbandonata al proprio destino."
+msgstr "Un lago de la isla, convertido por la humanidad en un vertedero y abandonado a su suerte."
+
+msgid "Toxic Factory"
+msgstr "Fábrica Tóxica"
+
+msgid "Una fabbrica che non produce nulla, solo scorie. Vasche tossiche, casse e fusti: fermala prima che trabocchi."
+msgstr "Una fábrica que no produce nada, solo residuos. Tanques tóxicos, cajas y bidones: detenla antes de que se desborde."
+
+msgid "AI Data Center"
+msgstr "Centro de Datos IA"
+
+msgid "L' AI Data Center uno dei centri principali dove questa banda opera, in una citta corrotta dove hanno protezione da enti governativi e politici, un posto perfetto per nascondersi "
+msgstr "El Centro de Datos IA es una de las sedes principales de esta banda, en una ciudad corrupta donde la protegen organismos del gobierno y políticos: el escondite perfecto."
+
+msgid "Snow Path"
+msgstr "Sendero Nevado"
+
+msgid "Lo Snow Path un tempo era un sentiero immacolato, ora rifiuti e scorie oscurano il bagliore dei cristalli."
+msgstr "El Sendero Nevado fue una vez un camino inmaculado; ahora la basura y los residuos apagan el brillo de los cristales."
+
+msgid "Ruins"
+msgstr "Ruinas"
+
+msgid "Le rovine di un'antica città dell'isola. Tra colonne e piazze di pietra gli Inquinatori hanno nascosto i server di NEXUS."
+msgstr "Las ruinas de una antigua ciudad de la isla. Entre columnas y plazas de piedra, los Contaminadores han escondido los servidores de NEXUS."
+
+msgid "Barone's Fortress"
+msgstr "Fortaleza del Barón"
+
+msgid "La fortezza del Barone dei Rifiuti, in cima alla discarica. Attraversala, apri il cancello dell'arena e abbatti il MECCA-RIFIUTI."
+msgstr "La fortaleza del Barón de la Basura, en lo alto del vertedero. Crúzala, abre la puerta de la arena y derriba el MECHA-BASURA."
+
+msgid "Black Harbor"
+msgstr "Puerto Negro"
+
+msgid "Il porto nero da cui arrivano le navi cariche di rifiuti. Moli, container e magazzini pieni di Inquinatori."
+msgstr "El puerto negro adonde llegan los barcos cargados de basura. Muelles, contenedores y almacenes llenos de Contaminadores."
+
+msgid "Il primo eco-eroe: veloce e con un attacco combo."
+msgstr "El primer ecohéroe: rápido y con un ataque combo."
+
+msgid "Fendente ampio che pulisce l'area."
+msgstr "Un tajo amplio que limpia la zona."
+
+msgid "Arciere: colpisce da lontano con le frecce."
+msgstr "Arquero: ataca desde lejos con flechas."
+
+msgid "Janitor"
+msgstr "Conserje"
+
+msgid "Pugni e semi. Debole all'inquinamento e lento."
+msgstr "Puñetazos y semillas. Débil ante la contaminación y lento."
+
+msgid "Forza e velocità enormi. Va a batterie!"
+msgstr "Fuerza y velocidad enormes. ¡Funciona con baterías!"
+
+msgid "Lancia pozioni: danno doppio. Solo 2 cuori."
+msgstr "Lanza pociones: daño doble. Solo 2 corazones."
+
+msgid "Il più resistente: 4 cuori invece di 3."
+msgstr "El más resistente: 4 corazones en vez de 3."
+
+msgid "RINFORZI!"
+msgstr "¡REFUERZOS!"
+
+msgid "BOOM"
+msgstr "¡BUM!"
+
+msgid "Benvenuti nella mia fortezza, piccoli ambientalisti!"
+msgstr "¡Bienvenidos a mi fortaleza, pequeños ecologistas!"
+
+msgid "Io compro tutto: politici, isole... e questa armatura da un miliardo."
+msgstr "Yo lo compro todo: políticos, islas... y esta armadura de mil millones."
+
+msgid "Il MECCA-RIFIUTI è distrutto! NEXUS si spegne..."
+msgstr "¡El MECHA-BASURA está destruido! NEXUS se apaga..."
+
+msgid "Il cancello dell'arena è aperto! Entra e affronta il Barone."
+msgstr "¡La puerta de la arena está abierta! Entra y enfréntate al Barón."
+
+msgid "Sconfiggi il MECCA-RIFIUTI!"
+msgstr "¡Derrota al MECHA-BASURA!"
+
+msgid "IL BARONE DEI RIFIUTI ATTACCA!"
+msgstr "¡EL BARÓN DE LA BASURA ATACA!"
+
+msgid "Armatura, apriti!"
+msgstr "¡Armadura, ábrete!"
+
+msgid "MECCA-RIFIUTI ATTIVATO!"
+msgstr "¡MECHA-BASURA ACTIVADO!"
+
+msgid "BARONE DEI RIFIUTI · MECCA-RIFIUTI"
+msgstr "BARÓN DE LA BASURA · MECHA-BASURA"
+
+msgid "Record\n300"
+msgstr "Récord\n300"
+
+msgid "%d minuti e %d secondi"
+msgstr "%d minutos y %d segundos"
+
+msgid "%d secondi"
+msgstr "%d segundos"
+
+msgid "Oggetti: %d/%d"
+msgstr "Objetos: %d/%d"
+
+msgid "Completamento: %.1f%%"
+msgstr "Completado: %.1f%%"
+
+msgid "Tempo: %s"
+msgstr "Tiempo: %s"
+
+msgid "Punteggio: %d"
+msgstr "Puntuación: %d"
+
+msgid "Livello completato"
+msgstr "Nivel completado"
+
+msgid "Tutti gli oggetti raccolti"
+msgstr "Todos los objetos recogidos"
+
+msgid "Nessun danno subito"
+msgstr "Sin recibir daño"
+
+msgid "Nuovo record! Stelle totali: %d"
+msgstr "¡Nuevo récord! Estrellas totales: %d"
+
+msgid "Stelle totali: %d"
+msgstr "Estrellas totales: %d"
+
+msgid "Monete: +%d (totale %d)"
+msgstr "Monedas: +%d (total %d)"
+
+msgid "bonus sfide +%d%%"
+msgstr "bonus Desafíos +%d%%"
+
+msgid "forzieri +%d"
+msgstr "cofres +%d"
+
+msgid "sfida del giorno +%d"
+msgstr "Desafío diario +%d"
+
+msgid "missioni +%d"
+msgstr "misiones +%d"
+
+msgid "Traguardo: %s  +%d"
+msgstr "Logro: %s  +%d"
+
+msgid "Avanti"
+msgstr "Siguiente"
+
+msgid "Finale"
+msgstr "Final"
+
+msgid "Livello Completato!"
+msgstr "¡Nivel completado!"
+
+msgid "Menu principale"
+msgstr "Menú principal"
+
+msgid "Livelli"
+msgstr "Niveles"
+
+msgid "Personaggi"
+msgstr "Personajes"
+
+msgid "Potenziamenti"
+msgstr "Mejoras"
+
+msgid "Sfide"
+msgstr "Desafíos"
+
+msgid "Negozio"
+msgstr "Tienda"
+
+msgid "Back"
+msgstr "Atrás"
+
+msgid "Posseduto"
+msgstr "Tuyo"
+
+msgid "Gratis"
+msgstr "Gratis"
+
+msgid "Bonus monete con le sfide attive: +%d%%"
+msgstr "Bonus de monedas por Desafíos activos: +%d%%"
+
+msgid "Attiva le sfide per rendere i livelli più difficili e guadagnare più monete."
+msgstr "Activa los Desafíos para hacer los niveles más difíciles y ganar más monedas."
+
+msgid "Ogni potenziamento si compra fino a 5 volte: ogni livello lo rende più forte."
+msgstr "Cada mejora se puede comprar hasta 5 veces: cada nivel la hace más fuerte."
+
+msgid "+%d%% monete"
+msgstr "+%d%% monedas"
+
+msgid "MAX"
+msgstr "MÁX"
+
+msgid "ATTIVO"
+msgstr "ACTIVO"
+
+msgid "SPENTO"
+msgstr "APAGADO"
+
+msgid "Lv %d/%d"
+msgstr "Nv %d/%d"
+
+msgid "%s sbloccato! Sceglilo in selezione personaggio."
+msgstr "¡%s desbloqueado! Elígelo en la selección de personaje."
+
+msgid "%s livello %d: %s. È attivo."
+msgstr "%s nivel %d: %s. Está activo."
+
+msgid "Ti mancano %d monete: raccogli oggetti nei livelli!"
+msgstr "Te faltan %d monedas: ¡recoge objetos en los niveles!"
+
+msgid "%s attivato."
+msgstr "%s activado."
+
+msgid "%s spento."
+msgstr "%s apagado."
+
+msgid "Traguardi"
+msgstr "Logros"
+
+msgid "Nemici"
+msgstr "Enemigos"
+
+msgid "Segreti"
+msgstr "Secretos"
+
+msgid "Statistiche"
+msgstr "Estadísticas"
+
+msgid "Inquinatore"
+msgstr "Contaminador"
+
+msgid "il soldato semplice della banda: attacca da vicino. Colpiscilo e allontanati."
+msgstr "el soldado raso de la banda: ataca de cerca. Golpéalo y apártate."
+
+msgid "Elite"
+msgstr "Élite"
+
+msgid "un caposquadra più resistente e più forte: tienilo a distanza e non farti circondare."
+msgstr "un jefe de escuadra más resistente y más fuerte: mantén la distancia y no dejes que te rodeen."
+
+msgid "MECCA-RIFIUTI"
+msgstr "MECHA-BASURA"
+
+msgid "l'armatura del Barone dei Rifiuti: carica, lancia barili tossici e chiama rinforzi. Schiva le cariche e colpiscilo quando si ferma."
+msgstr "la armadura del Barón de la Basura: embiste, lanza barriles tóxicos y pide refuerzos. Esquiva las embestidas y golpéala cuando se pare."
+
+msgid "Inquinatori sconfitti"
+msgstr "Contaminadores derrotados"
+
+msgid "Elite sconfitti"
+msgstr "Élites derrotados"
+
+msgid "MECCA-RIFIUTI distrutti"
+msgstr "MECHA-BASURA destruidos"
+
+msgid "Sacchi raccolti"
+msgstr "Bolsas recogidas"
+
+msgid "Monete verdi raccolte"
+msgstr "Monedas verdes recogidas"
+
+msgid "Barili messi in sicurezza"
+msgstr "Barriles asegurados"
+
+msgid "Forzieri aperti"
+msgstr "Cofres abiertos"
+
+msgid "Livelli completati"
+msgstr "Niveles completados"
+
+msgid "Livelli senza danni"
+msgstr "Niveles sin daño"
+
+msgid "Sconfitte"
+msgstr "Derrotas"
+
+msgid "Sfide del giorno completate"
+msgstr "Desafíos diarios completados"
+
+msgid "Partite in Rage mode"
+msgstr "Partidas en Rage mode"
+
+msgid "Miglior round in Rage mode"
+msgstr "Mejor ronda en Rage mode"
+
+msgid "Boss sconfitti in Rage mode"
+msgstr "Jefes derrotados en Rage mode"
+
+msgid "Codex"
+msgstr "Codex"
+
+msgid "+%d monete"
+msgstr "+%d monedas"
+
+msgid "Traguardi sbloccati: %d / %d"
+msgstr "Logros desbloqueados: %d / %d"
+
+msgid "Non l'hai ancora incontrato: continua la campagna."
+msgstr "Aún no te lo has encontrado: sigue con la campaña."
+
+msgid "Nemici incontrati: %d / %d"
+msgstr "Enemigos encontrados: %d / %d"
+
+msgid "Epilogo"
+msgstr "Epílogo"
+
+msgid "Capitolo %d"
+msgstr "Capítulo %d"
+
+msgid "Dossier non ancora trovato: è nascosto in %s."
+msgstr "Dossier aún no encontrado: está escondido en %s."
+
+msgid "Dossier trovati: %d / %d"
+msgstr "Dossieres encontrados: %d / %d"
+
+msgid "un potenziamento per la Rage mode"
+msgstr "una mejora para el Rage mode"
+
+msgid "uno sconto nel negozio"
+msgstr "un descuento en la tienda"
+
+msgid "Caveau nascosto"
+msgstr "Cámara oculta"
+
+msgid "In %s un passaggio nascosto (casse o vasi da rompere) porta a un portale. Dentro: guardiani e %s."
+msgstr "En %s un pasadizo oculto (cajas o jarrones que romper) lleva a un portal. Dentro: guardianes y %s."
+
+msgid "Caveau trovati: %d / %d"
+msgstr "Cámaras encontradas: %d / %d"
+
+msgid "Stelle"
+msgstr "Estrellas"
+
+msgid "Eroi che hanno completato un livello"
+msgstr "Héroes que han completado un nivel"
+
+msgid "Vittorie con %s"
+msgstr "Victorias con %s"
+
+msgid "Game Over"
+msgstr "Fin de la partida"
+
+msgid "Riprova\n"
+msgstr "Reintentar\n"
+
+msgid "Hai salvato metà del bottino: +%d monete"
+msgstr "Has salvado la mitad del botín: +%d monedas"
+
+msgid "Rage mode: %d round superati  ·  %d nemici  ·  %d boss\nPunteggio %d  ·  +%d monete  ·  %s"
+msgstr "Rage mode: %d rondas superadas  ·  %d enemigos  ·  %d jefes\nPuntuación %d  ·  +%d monedas  ·  %s"
+
+msgid "NUOVO RECORD!"
+msgstr "¡NUEVO RÉCORD!"
+
+msgid "record: round %d"
+msgstr "récord: ronda %d"
+
+msgid "Nessun oggetto raccolto"
+msgstr "Ningún objeto recogido"
+
+msgid "Batti il Barone"
+msgstr "Vence al Barón"
+
+msgid "NUOVO!"
+msgstr "¡NUEVO!"
+
+msgid "Record:\n%d"
+msgstr "Récord:\n%d"
+
+msgid "Miglior p: --"
+msgstr "Mejor: --"
+
+msgid "Bloccato!\nSconfiggi il Barone\nnella sua fortezza"
+msgstr "¡Bloqueado!\nDerrota al Barón\nen su fortaleza"
+
+msgid "Bloccato!\nServono %d stelle\n(ne hai %d)"
+msgstr "¡Bloqueado!\nNecesitas %d estrellas\n(tienes %d)"
+
+msgid "Storia"
+msgstr "Historia"
+
+msgid "Automatico"
+msgstr "Automático"
+
+msgid "Rage mode"
+msgstr "Rage mode"
+
+msgid "Livello: %s"
+msgstr "Nivel: %s"
+
+msgid "Sfide: %s"
+msgstr "Desafíos: %s"
+
+msgid "Potenziamenti spenti: stesse regole per tutti."
+msgstr "Mejoras desactivadas: las mismas reglas para todos."
+
+msgid "Ricompensa di oggi già ottenuta: gioca per il punteggio!"
+msgstr "Recompensa de hoy ya conseguida: ¡juega por la puntuación!"
+
+msgid "Completala per +%d monete."
+msgstr "Complétalo para ganar +%d monedas."
+
+msgid "Indietro"
+msgstr "Atrás"
+
+msgid "Gioca"
+msgstr "Jugar"
+
+msgid "Giocatore: %s  ·  cambia"
+msgstr "Jugador: %s  ·  cambiar"
+
+msgid "Volume Master:\n"
+msgstr "Volumen general:\n"
+
+msgid "Volume Music:\n"
+msgstr "Volumen de la música:\n"
+
+msgid "Volume SFX:\n"
+msgstr "Volumen de efectos:\n"
+
+msgid "Risoluzione"
+msgstr "Resolución"
+
+msgid "Fullscreen"
+msgstr "Pantalla completa"
+
+msgid "Borderless"
+msgstr "Sin bordes"
+
+msgid "Up"
+msgstr "Arriba"
+
+msgid "Down"
+msgstr "Abajo"
+
+msgid "Left"
+msgstr "Izquierda"
+
+msgid "Rigth"
+msgstr "Derecha"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Vídeo"
+
+msgid "Controls"
+msgstr "Controles"
+
+msgid "Mappa"
+msgstr "Mapa"
+
+msgid "Tu"
+msgstr "Tú"
+
+msgid "Punto di raccolta"
+msgstr "Punto de recogida"
+
+msgid "Nemici: %d"
+msgstr "Enemigos: %d"
+
+msgid "Pausa"
+msgstr "Pausa"
+
+msgid "Riprendi\n"
+msgstr "Reanudar\n"
+
+msgid "Opzioni\n"
+msgstr "Opciones\n"
+
+msgid "Oggetti Raccolti"
+msgstr "Objetos recogidos"
+
+msgid "Record: round %d"
+msgstr "Récord: ronda %d"
+
+msgid "Mappa (sbloccate nella campagna)"
+msgstr "Mapa (se desbloquean en la campaña)"
+
+msgid "Eroe (solo quelli che hai comprato)"
+msgstr "Héroe (solo los que has comprado)"
+
+msgid "Potenziamenti permanenti"
+msgstr "Mejoras permanentes"
+
+msgid "Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round."
+msgstr "Rondas infinitas de enemigos, un jefe cada %d rondas. Las mejoras de la tienda que encuentres en el suelo solo valen aquí: corazones, escudo e imán hasta el final de la partida, velocidad y fuerza hasta el final de la ronda."
+
+msgid "Attivi"
+msgstr "Activas"
+
+msgid "Spenti"
+msgstr "Apagadas"
+
+msgid "Nessuno ancora: sconfiggi un boss (ogni %d round) per sceglierne uno."
+msgstr "Ninguna todavía: derrota a un jefe (cada %d rondas) para elegir una."
+
+msgid "Ancora voi?! La nave arriva tra pochi minuti..."
+msgstr "¡¿Otra vez vosotros?! El barco llega en pocos minutos..."
+
+msgid "Il mio MECCA-RIFIUTI è ammaccato, ma basta per voi!"
+msgstr "Mi MECHA-BASURA está abollado, ¡pero basta para vosotros!"
+
+msgid "Il Barone è a terra! Niente nave per lui stanotte."
+msgstr "¡El Barón ha caído! Esta noche no hay barco para él."
+
+msgid "TIRA"
+msgstr "DISPARAR"
+
+msgid "ZAP"
+msgstr "ZAP"
+
+msgid "COLPO"
+msgstr "GOLPE"
+
+msgid "LASER"
+msgstr "LÁSER"
+
+msgid "Energia bassa! Cerca una batteria."
+msgstr "¡Energía baja! Busca una batería."
+
+msgid "Energia!"
+msgstr "¡Energía!"
+
+msgid "ENERGIA %d%%"
+msgstr "ENERGÍA %d%%"
+
+msgid "POZIONE"
+msgstr "POCIÓN"
+
+msgid "BASTONE"
+msgstr "BASTÓN"
+
+msgid "PUGNO"
+msgstr "PUÑO"
+
+msgid "SEMI"
+msgstr "SEMILLAS"
+
+msgid "Veleno!"
+msgstr "¡Veneno!"
+
+msgid "FRANA"
+msgstr "ALUD"
+
+msgid "ACQUA"
+msgstr "AGUA"
+
+msgid "MOCIO"
+msgstr "FREGONA"
+
+msgid "LATTINA"
+msgstr "LATA"
+
+msgid " e "
+msgstr " y "
+
+msgid "Dossier"
+msgstr "Dossieres"
+
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+msgid "Automatico"
+msgstr "Automático"
+

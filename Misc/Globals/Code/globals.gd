@@ -12,7 +12,12 @@ var current_level_score: int = 0
 signal score_updated(current_score: int)
 signal high_score_updated(level_data: LevelData)
 
+## Bump when the iOS launch screen changes (export_presets.cfg storyboard/*).
+const LAUNCH_SCREEN_REVISION := 6
+const LAUNCH_SCREEN_SAVE := "user://launch_screen.cfg"
+
 func _ready() -> void:
+    _refresh_ios_launch_screen()
     var sw = get_tree().root.get_node_or_null("/root/SilentWolf")
     if sw:
         SilentWolf.configure({
@@ -22,6 +27,32 @@ func _ready() -> void:
             "log_level": 1
         })
         SilentWolf.configure_scores_open_scene_on_close("res://main_menu.tscn")
+
+## iOS keeps a snapshot of the launch screen in the app's Library/SplashBoard
+## folder and reuses it after an update, so a changed launch screen (e.g. the
+## old Godot logo removed) keeps showing until the app is deleted. Clearing
+## that folder once per LAUNCH_SCREEN_REVISION makes iOS redraw it from the
+## new storyboard on the next start. Save data (Documents) is untouched.
+func _refresh_ios_launch_screen() -> void:
+    if OS.get_name() != "iOS":
+        return
+    var cfg := ConfigFile.new()
+    cfg.load(LAUNCH_SCREEN_SAVE)
+    if int(cfg.get_value("ios", "revision", 0)) >= LAUNCH_SCREEN_REVISION:
+        return
+    # user:// is <app container>/Documents; SplashBoard is in <container>/Library
+    var splash := OS.get_user_data_dir().get_base_dir().path_join("Library/SplashBoard")
+    if DirAccess.dir_exists_absolute(splash):
+        _remove_tree(splash)
+    cfg.set_value("ios", "revision", LAUNCH_SCREEN_REVISION)
+    cfg.save(LAUNCH_SCREEN_SAVE)
+
+func _remove_tree(path: String) -> void:
+    for d in DirAccess.get_directories_at(path):
+        _remove_tree(path.path_join(d))
+    for f in DirAccess.get_files_at(path):
+        DirAccess.remove_absolute(path.path_join(f))
+    DirAccess.remove_absolute(path)
 
 func load_game():
     if character_scene and selected_level:

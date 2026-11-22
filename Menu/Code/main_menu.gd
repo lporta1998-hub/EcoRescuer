@@ -18,7 +18,7 @@ func _ready() -> void:
     _add_player_button()
     _add_story_button()
     _add_codex_button()
-    _add_language_buttons()
+    _add_language_picker()
     _add_daily_button()
     _add_rage_button()
     _layout_buttons()
@@ -121,35 +121,122 @@ func _add_codex_button() -> void:
     move_child(b, $NameOverlay.get_index())
 
 
-## "Italiano · English · Ελληνικά" in the top-right corner: the current
-## language is gold; tapping another one switches and reloads the menu.
-func _add_language_buttons() -> void:
-    var row := HBoxContainer.new()
-    row.add_theme_constant_override("separation", 6)
-    row.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-    row.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-    row.offset_right = -30.0
-    row.offset_top = 20.0
+## Language picker in the top-right corner: the flag of the current
+## language. Tapping it opens the list: "Automatico" (follow the phone's
+## language), then Italiano, English, Ελληνικά. Choosing one switches the
+## language and reloads the menu.
+const FLAG_SIZE := Vector2(60, 40)
+const PICKER_GOLD := Color(1.0, 0.83, 0.3)
+
+func _add_language_picker() -> void:
+    var button := Button.new()
+    button.focus_mode = Control.FOCUS_NONE
+    button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
+    button.tooltip_text = Lang.NAMES[Lang.current]
+    button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+    button.offset_left = -120.0
+    button.offset_right = -30.0
+    button.offset_top = 20.0
+    button.offset_bottom = 20.0 + FLAG_SIZE.y + 10.0
+    _style_picker_button(button, Color(0, 0, 0, 0.35), Color(1, 1, 1, 0.6))
+    var flag := LanguageFlag.new()
+    flag.code = Lang.current
+    flag.position = Vector2(5, 5)
+    flag.size = FLAG_SIZE
+    button.add_child(flag)
+    var caret := Control.new()
+    caret.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    caret.position = Vector2(FLAG_SIZE.x + 11.0, 5.0)
+    caret.size = Vector2(14, FLAG_SIZE.y)
+    caret.draw.connect(func():
+        var c := caret.size / 2.0
+        caret.draw_colored_polygon(PackedVector2Array([c + Vector2(-6, -3), c + Vector2(6, -3), c + Vector2(0, 4)]), Color.WHITE))
+    button.add_child(caret)
+    button.pressed.connect(func():
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+        _open_language_list(button.offset_bottom + 8.0))
+    add_child(button)
+    move_child(button, $NameOverlay.get_index())
+
+
+func _open_language_list(top: float) -> void:
+    var layer := Control.new()
+    layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+    layer.mouse_filter = Control.MOUSE_FILTER_STOP
+    layer.gui_input.connect(func(e: InputEvent):  # tap outside the list closes it
+        if (e is InputEventMouseButton or e is InputEventScreenTouch) and e.pressed:
+            layer.queue_free())
+    add_child(layer)
+    move_child(layer, $NameOverlay.get_index())
+    var panel := PanelContainer.new()
+    var style := StyleBoxFlat.new()
+    style.bg_color = Color(0.02, 0.1, 0.12, 0.95)
+    style.set_border_width_all(3)
+    style.border_color = Color(0.55, 0.9, 1.0)
+    style.set_corner_radius_all(12)
+    style.set_content_margin_all(8)
+    panel.add_theme_stylebox_override("panel", style)
+    panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+    panel.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+    panel.offset_left = -30.0
+    panel.offset_right = -30.0
+    panel.offset_top = top
+    layer.add_child(panel)
+    var list := VBoxContainer.new()
+    list.add_theme_constant_override("separation", 4)
+    panel.add_child(list)
+    list.add_child(_language_row(layer, Lang.device_language(), tr("Automatico"), Lang.automatic,
+            func(): Lang.use_device_language()))
     for code in Lang.LANGUAGES:
-        var b := Button.new()
-        b.flat = true
-        b.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED  # each name in its own language
-        b.text = Lang.NAMES[code]
-        b.add_theme_font_size_override("font_size", 22)
-        b.add_theme_constant_override("outline_size", 6)
-        b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
-        var col := Color(1.0, 0.83, 0.3) if code == Lang.current else Color(0.8, 0.8, 0.8)
-        b.add_theme_color_override("font_color", col)
-        b.add_theme_color_override("font_hover_color", Color.WHITE)
-        b.pressed.connect(func():
-            if code == Lang.current:
-                return
-            SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
-            Lang.apply(code)
-            get_tree().reload_current_scene())
-        row.add_child(b)
-    add_child(row)
-    move_child(row, $NameOverlay.get_index())
+        list.add_child(_language_row(layer, code, Lang.NAMES[code], not Lang.automatic and code == Lang.current,
+                func(): Lang.apply(code)))
+
+
+## One line of the language list: flag + name; the chosen one is gold.
+func _language_row(layer: Control, code: String, text: String, selected: bool, choose: Callable) -> Button:
+    var b := Button.new()
+    b.focus_mode = Control.FOCUS_NONE
+    b.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
+    b.custom_minimum_size = Vector2(260, 54)
+    _style_picker_button(b, Color(1, 1, 1, 0.1) if selected else Color(0, 0, 0, 0),
+            PICKER_GOLD if selected else Color(0, 0, 0, 0))
+    var row := HBoxContainer.new()
+    row.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    row.set_anchors_preset(Control.PRESET_FULL_RECT)
+    row.offset_left = 12.0
+    row.offset_right = -12.0
+    row.add_theme_constant_override("separation", 14)
+    b.add_child(row)
+    var flag := LanguageFlag.new()
+    flag.code = code
+    flag.custom_minimum_size = Vector2(42, 28)
+    flag.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+    row.add_child(flag)
+    var label := Label.new()
+    label.text = text
+    label.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
+    label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+    label.add_theme_font_size_override("font_size", 24)
+    label.add_theme_color_override("font_color", PICKER_GOLD if selected else Color.WHITE)
+    row.add_child(label)
+    b.pressed.connect(func():
+        if selected:
+            layer.queue_free()
+            return
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+        choose.call()
+        get_tree().reload_current_scene())
+    return b
+
+
+func _style_picker_button(b: Button, bg: Color, border: Color) -> void:
+    for state in ["normal", "hover", "pressed", "focus"]:
+        var sb := StyleBoxFlat.new()
+        sb.bg_color = bg if state == "normal" or state == "focus" else bg.lerp(Color(1, 1, 1, 0.25), 0.5)
+        sb.set_border_width_all(3)
+        sb.border_color = border
+        sb.set_corner_radius_all(8)
+        b.add_theme_stylebox_override(state, sb)
 
 
 ## "Sfida del giorno" under Start: shows today's level and Sfide, then plays.

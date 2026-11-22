@@ -14,12 +14,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="ecorescuertest01"
+config/name="Trash Patrol"
 run/main_scene="uid://c3p4nqksuogc5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Misc/AppIcon/icon_1024.png"
-boot_splash/bg_color=Color(0.0627, 0.149, 0.18, 1)
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Misc/AppIcon/launch_logo.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 
 [autoload]
 
@@ -103,7 +105,7 @@ pause={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Localization/en.po", "res://Localization/el.po")
+locale/translations=PackedStringArray("res://Localization/en.po", "res://Localization/es.po", "res://Localization/pt.po", "res://Localization/el.po")
 locale/fallback="it"
 
 [layer_names]
