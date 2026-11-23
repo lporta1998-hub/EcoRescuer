@@ -7,7 +7,10 @@ extends StaticBody2D
 signal broken(crate: BreakableCrate)
 
 const SIZE := 16.0
-const SPRITE := preload("res://Misc/Builder/Props/factory/crates_0.png")
+## Its own cracked crate (Tools/art/breakable_crate.py), so it does not look
+## like the decorative crates of the factory, harbor, lake and data center.
+const SPRITE := preload("res://Misc/Secrets/breakable_crate.png")
+const HIGHLIGHT_SHADER := preload("res://Misc/FX/pickup_highlight.gdshader")
 
 var health := 2.0
 
@@ -25,12 +28,21 @@ func _ready() -> void:
 	var s := Sprite2D.new()
 	s.name = "Sprite2D"
 	s.texture = SPRITE
-	s.scale = Vector2(0.62, 0.62)
-	s.offset = Vector2(0, -6)
+	s.offset = Vector2(0, -3)
 	# a little variety so a row of them looks like a pile
 	var h := absi(hash(Vector2i(global_position)))
 	s.flip_h = h % 2 == 0
-	s.modulate = Color(1, 1, 1).darkened(float(h % 4) * 0.05)
+	s.modulate = Color(1, 1, 1).darkened(float(h % 4) * 0.04)
+	# a slow warm shimmer: noticeable, but quieter than the pickups
+	var mat := ShaderMaterial.new()
+	mat.shader = HIGHLIGHT_SHADER
+	mat.set_shader_parameter("glow_color", Color(1.0, 0.82, 0.45))
+	mat.set_shader_parameter("glow_strength", 0.6)
+	mat.set_shader_parameter("pulse_speed", 2.0)
+	mat.set_shader_parameter("glint_period", 4.5)
+	mat.set_shader_parameter("glint_strength", 0.4)
+	mat.set_shader_parameter("phase", float(h % 1000) / 100.0)
+	s.material = mat
 	add_child(s)
 
 

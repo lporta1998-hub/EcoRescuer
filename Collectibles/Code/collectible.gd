@@ -1,5 +1,5 @@
 ## collectible.gd
-## Base class for all collectible objects in Trash Patrol.
+## Base class for all collectible objects in Green Guardians.
 ## Subclasses override `on_collect()` to define pickup behaviour.
 class_name Collectible extends Area2D
 
@@ -23,6 +23,55 @@ var _collected: bool = false
 func _ready() -> void:
     _start_y = position.y
     body_entered.connect(_on_body_entered)
+    if highlight_enabled():
+        _add_highlight()
+
+## Items that are big and obvious already (barrels) return false.
+func highlight_enabled() -> bool:
+    return true
+
+const HIGHLIGHT_SHADER := preload("res://Misc/FX/pickup_highlight.gdshader")
+
+## Makes the item easy to spot on any ground: outline, pulsing glow and a
+## glint on the sprite (pickup_highlight.gdshader), and a soft light on the
+## ground under it. The colour is the item's sparkle tint.
+func _add_highlight() -> void:
+    var spr := get_node_or_null("Sprite2D") as Sprite2D
+    if spr == null or spr.texture == null:
+        return
+    var tint: Color = SPARKLE_TINTS.get(item_type, Color(1.0, 0.85, 0.3))
+    var phase := float(absi(hash(Vector2i(global_position))) % 1000) / 100.0
+    var mat := ShaderMaterial.new()
+    mat.shader = HIGHLIGHT_SHADER
+    mat.set_shader_parameter("glow_color", tint)
+    mat.set_shader_parameter("phase", phase)
+    mat.set_shader_parameter("px_scale", maxf(1.0, roundf(1.0 / absf(spr.scale.x))))
+    spr.material = mat
+    # soft light on the ground
+    var grad := Gradient.new()
+    grad.set_color(0, Color(tint, 0.55))
+    grad.set_color(1, Color(tint, 0.0))
+    var tex := GradientTexture2D.new()
+    tex.gradient = grad
+    tex.fill = GradientTexture2D.FILL_RADIAL
+    tex.fill_from = Vector2(0.5, 0.5)
+    tex.fill_to = Vector2(1.0, 0.5)
+    tex.width = 48
+    tex.height = 48
+    var glow := Sprite2D.new()
+    glow.name = "GroundGlow"
+    glow.texture = tex
+    var add := CanvasItemMaterial.new()
+    add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+    glow.material = add
+    var h := spr.texture.get_height() * absf(spr.scale.y)
+    glow.position = spr.position + Vector2(0, h * 0.45)
+    glow.scale = Vector2(0.7, 0.32)
+    add_child(glow)
+    move_child(glow, 0)
+    var tw := glow.create_tween().set_loops()
+    tw.tween_property(glow, "scale", Vector2(0.9, 0.42), 0.9).set_trans(Tween.TRANS_SINE)
+    tw.tween_property(glow, "scale", Vector2(0.7, 0.32), 0.9).set_trans(Tween.TRANS_SINE)
 
 ## "Magnete" buff: pull speed (the radius grows with the buff level).
 const MAGNET_SPEED := 260.0

@@ -1,8 +1,8 @@
-# Trash Patrol — Spanish translation.
+# Green Guardians — Spanish translation.
 # The msgid is the original Italian text: keep %d / %s / %% placeholders.
 msgid ""
 msgstr ""
-"Project-Id-Version: Trash Patrol\n"
+"Project-Id-Version: Green Guardians\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -750,11 +750,11 @@ msgstr "El Barón de la Basura"
 msgid "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."
 msgstr "El Barón de la Basura dirige la banda y protege el núcleo de NEXUS en su fortaleza, en lo alto del vertedero."
 
-msgid "La Trash Patrol"
-msgstr "La Trash Patrol"
+msgid "I Green Guardians"
+msgstr "Los Green Guardians"
 
-msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono la Trash Patrol, e tu sei uno di loro."
-msgstr "Pero alguien decidió plantar cara: chicos valientes, una científica, un antiguo dios de la naturaleza e incluso un robot rebelde. Son la Trash Patrol, y tú eres uno de ellos."
+msgid "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono i Green Guardians, e tu sei uno di loro."
+msgstr "Pero alguien decidió plantar cara: chicos valientes, una científica, un antiguo dios de la naturaleza e incluso un robot rebelde. Son los Green Guardians, y tú eres uno de ellos."
 
 msgid "La missione"
 msgstr "La misión"
@@ -774,8 +774,8 @@ msgstr "La isla respira"
 msgid "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."
 msgstr "Sin más vertidos, la isla vuelve a respirar: los árboles crecen de nuevo, el lago vuelve a ser cristalino y los cristales brillan otra vez."
 
-msgid "Grazie, Trash Patrol!"
-msgstr "¡Gracias, Trash Patrol!"
+msgid "Grazie, Green Guardians!"
+msgstr "¡Gracias, Green Guardians!"
 
 msgid "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."
 msgstr "El Barón de la Basura nunca sube a su barco: la policía de la isla lo espera en el muelle. El MECHA-BASURA acaba en una planta de reciclaje."
@@ -783,8 +783,8 @@ msgstr "El Barón de la Basura nunca sube a su barco: la policía de la isla lo 
 msgid "La squadra"
 msgstr "El equipo"
 
-msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La Trash Patrol resta di guardia: se qualcuno sporca l'isola, lo saprà."
-msgstr "El puerto está limpio y la banda de los Contaminadores ya no tiene jefe. La Trash Patrol sigue vigilando: si alguien ensucia la isla, se enterará."
+msgid "Il porto è pulito e la banda degli Inquinatori non ha più un capo. I Green Guardians restano di guardia: se qualcuno sporca l'isola, lo saprà."
+msgstr "El puerto está limpio y la banda de los Contaminadores ya no tiene jefe. Los Green Guardians siguen vigilando: si alguien ensucia la isla, se enterará."
 
 msgid "Con tutti i %d dossier come prova, i politici corrotti vengono arrestati e gli Inquinatori non torneranno mai più. L'isola è salva per sempre!"
 msgstr "Con los %d dossieres como prueba, los políticos corruptos son arrestados y los Contaminadores no volverán jamás. ¡La isla está a salvo para siempre!"

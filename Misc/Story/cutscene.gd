@@ -12,7 +12,7 @@ const INTRO := [
 	{"image": "02_polluters", "title": "Gli Inquinatori", "text": "Poi arrivarono gli Inquinatori. Di notte scaricano rifiuti tossici ovunque, e i politici che hanno pagato fanno finta di non vedere."},
 	{"image": "03_nexus", "title": "NEXUS", "text": "Dietro di loro c'è NEXUS, un'intelligenza artificiale creata per fare profitto. Ha calcolato che inquinare costa meno di qualsiasi altra cosa."},
 	{"image": "04_baron", "title": "Il Barone dei Rifiuti", "text": "Il Barone dei Rifiuti guida la banda e protegge il nucleo di NEXUS nella sua fortezza, in cima alla discarica."},
-	{"image": "05_team", "title": "La Trash Patrol", "text": "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono la Trash Patrol, e tu sei uno di loro."},
+	{"image": "05_team", "title": "I Green Guardians", "text": "Ma qualcuno ha deciso di reagire: ragazzi coraggiosi, una scienziata, un antico dio della natura e perfino un robot ribelle. Sono i Green Guardians, e tu sei uno di loro."},
 	{"image": "06_mission", "title": "La missione", "text": "In ogni zona raccogli i sacchi di rifiuti, sconfiggi gli Inquinatori e porta tutto al punto di raccolta. Cerca anche i dossier segreti: sveleranno i piani di NEXUS."},
 ]
 
@@ -20,7 +20,7 @@ const INTRO := [
 const ENDING := [
 	{"image": "07_fall", "title": "La caduta", "text": "Il MECCA-RIFIUTI crolla tra le scintille. Il Barone fugge nella notte e il nucleo di NEXUS si spegne per sempre."},
 	{"image": "08_healed", "title": "L'isola respira", "text": "Senza più scarichi l'isola torna a respirare: gli alberi ricrescono, il lago torna limpido e i cristalli brillano di nuovo."},
-	{"image": "05_team", "title": "Grazie, Trash Patrol!", "text": "{dossiers}"},
+	{"image": "05_team", "title": "Grazie, Green Guardians!", "text": "{dossiers}"},
 ]
 
 static var _panels: Array = []
@@ -47,7 +47,7 @@ static func play(tree: SceneTree, panels: Array, next_scene: String) -> void:
 ## After the epilogue chapter (the Barone caught).
 const EPILOGUE := [
 	{"image": "04_baron", "title": "Fine della fuga", "text": "Il Barone dei Rifiuti non sale sulla sua nave: la polizia dell'isola lo aspetta sul molo. Il MECCA-RIFIUTI finisce in un impianto di riciclo."},
-	{"image": "05_team", "title": "La squadra", "text": "Il porto è pulito e la banda degli Inquinatori non ha più un capo. La Trash Patrol resta di guardia: se qualcuno sporca l'isola, lo saprà."},
+	{"image": "05_team", "title": "La squadra", "text": "Il porto è pulito e la banda degli Inquinatori non ha più un capo. I Green Guardians restano di guardia: se qualcuno sporca l'isola, lo saprà."},
 ]
 
 

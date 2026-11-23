@@ -23,6 +23,11 @@ var _tick := 0.0
 var _t := 0.0
 
 
+## A leaking barrel is big and obvious already: no pickup highlight.
+func highlight_enabled() -> bool:
+	return false
+
+
 func _ready() -> void:
 	add_to_group("barrel_hazard")
 	points = 20

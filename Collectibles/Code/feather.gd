@@ -14,10 +14,6 @@ func _ready() -> void:
     super()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
-    
 func on_collect(_player: Node2D) -> void:
     SFXManager.play_sfx(preload("res://Audio/SFX/Eco/pickup.wav"), -8)
     if _player.has_method("speedBoost"):

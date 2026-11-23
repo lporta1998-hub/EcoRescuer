@@ -35,8 +35,8 @@ def mira(d):
     hx, hy = 16, 20
     if d == "up":
         c.add(ellipsoid("hair", 2, hx, hy - 2, 10.5, 10))
-        c.add(poly("hair", 2.5, [(6, 18), (26, 18), (27, 35), (16, 33), (5, 35)]))
-        c.add(rbox("metal", 3, 7, 9, 25, 11, rad=1))  # goggle strap
+        c.add(poly("hair", 2.5, [(6, 18), (26, 18), (26, 29), (23, 35), (16, 33), (9, 35), (6, 29)]))
+        c.add(rbox("metal", 3, 6, 13, 26, 14, rad=1))  # goggle strap round the back
         return c
     side = d in ("left", "right")
     s = 1 if d == "right" else -1
@@ -121,7 +121,18 @@ def silvano(d):
     c.textures["bark"] = bark_tex
     side = d in ("left", "right")
     s = 1 if d == "right" else -1
-    # antlers
+    # antlers (lying face down they spread flat to the sides instead of up)
+    if d == "flat":
+        for sd in (-1, 1):
+            bx = 16 + sd * 6
+            c.add(capsule("wood", 1, bx, 13, bx + sd * 6, 10, 1.4))
+            c.add(capsule("wood", 1, bx + sd * 6, 10, bx + sd * 10, 12, 1.1))
+            c.add(capsule("wood", 1, bx + sd * 4, 11, bx + sd * 6, 6, 1.0))
+            for (lx, ly) in ((bx + sd * 10, 13), (bx + sd * 6, 5), (bx + sd * 9, 9)):
+                c.add(ellipsoid("leaf", 1.5, lx, ly, 2.2, 1.6))
+        c.add(rbox("bark", 2, 9, 9, 23, 30, rad=5))
+        c.add(poly("moss", 3, [(9, 16), (23, 16), (21, 32), (16, 34), (11, 32)]))
+        return c
     for sd in ((-1, 1) if not side else (-s,)):
         base_x = 16 + sd * 6
         pts = [(base_x, 13), (base_x + sd * 4, 7), (base_x + sd * 6, 2)]
@@ -194,7 +205,7 @@ def render_all(out_dir):
     os.makedirs(out_dir, exist_ok=True)
     imgs = {}
     for name, fn in HEADS.items():
-        for d in ("down", "up", "left", "right"):
+        for d in ("down", "up", "left", "right") + (("flat",) if name == "silvano" else ()):
             im = fn(d).render()
             im.save(os.path.join(out_dir, f"{name}_{d}.png"))
             imgs[(name, d)] = im

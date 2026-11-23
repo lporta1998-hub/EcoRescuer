@@ -93,6 +93,21 @@ level plays which track is the `"music"` entry of each chapter in
 | `collectibles.py`, `bag2.py` | Coin, heart, feather, barrel, eco chest, battery, trash bag. |
 | `preview_chars.py` | Preview sheet of the characters. |
 
+To rebuild Mira, Silvano and ECO-9: `python3 derive.py derived mira eco9 silvano`
+(recolor, written to `derived/` next to the scripts), then
+`python3 redesign.py OUT mira eco9 silvano` (new heads), and copy `OUT/*` to
+`Characters/<Name>/Sprites/`. Frames that needed special handling:
+- Silvano's attack frames: the club is often above the head, so the boar head
+  is found by matching the idle head of the same direction (`boar_head()` in
+  `derive.py`); the club stays drawn in front of the new head.
+- Back views (ECO-9, Mira): the chin is placed from the top of the hair, as far
+  down as in the front frames (`UP_OFFSET`).
+- Last death frame (face down, head at the bottom): the back of the new head is
+  pasted upside down (`paste_face_down()`; Silvano uses a `flat` head with the
+  antlers spread sideways).
+- Mira has no sword: `mira_blade_frame()` fills the holes the Nerd's blade left
+  in her body and turns the hilt into a green potion vial.
+
 Careful: `derive.py`, `redesign.py` and `restyle.py` read from and can write
 straight into the game folders (`GAME_ROOT` is the EcoRescuer project). Commit
 or back up first.

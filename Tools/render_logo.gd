@@ -1,5 +1,5 @@
 extends SceneTree
-## Renders the Trash Patrol pixel-art logo (main menu title + loading screen):
+## Renders the Green Guardians pixel-art logo (main menu title + loading screen):
 ##
 ##   /path/to/Godot --path . -s Tools/render_logo.gd
 ##   /path/to/Godot --path . -s Tools/render_logo.gd -- colors=lime out=/tmp/x.png
@@ -7,25 +7,31 @@ extends SceneTree
 ## (not --headless: it needs a renderer). 16-bit style lettering: the words are
 ## drawn about `cap` pixels tall, their soft edges reduced to one in-between
 ## shade (hand-antialiased pixel art), then shaded with the app icon's palette
-## (TRASH in trash-bag metal with toxic slime dripping on top, like the icon's
-## barrel; PATROL in recycle lime), given a 1 px outline and a 2 px drop, and
+## (GREEN in recycle lime with little leaves sprouting from the letters;
+## GUARDIANS in the trash-bag metal of the icon, like armour; colors=slime gives
+## the first word the old metal with toxic slime dripping on top), given a 1 px
+## outline and a 2 px drop, and
 ## every pixel is scaled up `scale` times with no filtering. Pixelify Sans is
 ## in Tools/fonts (SIL Open Font License).
-## The menu shows the logo at 1:1 on an iPhone: after changing it, set the
-## Title rect in main_menu.tscn to image size / 1.82.
+## The menu's Title rect in main_menu.tscn keeps the logo 214 px tall (so it
+## stays clear of the buttons): after changing it, set the rect's width to
+## 214 * image width / image height.
 
 const FONTS := {
 	"pixelify": ["res://Tools/fonts/PixelifySans-Variable.ttf", 700],
 	"comfortaa": ["res://silent_wolf/assets/fonts/Comfortaa-Bold.ttf", 0],
 }
-const DEFAULTS := {"font": "pixelify", "cap": "28", "scale": "6", "colors": "metal",
-		"out": "res://Misc/AppIcon/launch_logo.png"}
+const DEFAULTS := {"font": "pixelify", "cap": "28", "scale": "6", "colors": "leaf",
+		"words": "GREEN,GUARDIANS", "out": "res://Misc/AppIcon/launch_logo.png"}
 const LINE_GAP := 4
 
 # The app icon's palette.
 const LIME := ["e8ffb0", "dffc9b", "c6f06a", "b3e94c", "9edc4a", "86cf45", "6fbe41", "5eb341", "4d9937", "3b7c2d"]
 const METAL := ["d4d8e0", "c3c8d3", "aeb3bf", "9da2af", "868c9b", "707686", "5b6170", "494d5c", "3a3e4c", "2f333e"]
 const SLIME := ["e8ffb0", "c6f06a", "9edc4a"]
+const LEAF := ["b8f070", "6fbe41", "3b7c2d"]   # light, mid, dark
+const STEM := "5a3e24"
+const LEAF_TOP := 7   # rows kept free above the first word for the sprouts
 const OUTLINE := Color("242330")
 const DROP := Color("12323d")
 
@@ -80,7 +86,10 @@ func _render() -> void:
 	var probe_img: Image = await _word(probe, 200, "H")
 	var size := maxi(6, roundi(200.0 * cap / probe_img.get_height()))
 	var font := _font(a.font, size)
-	var words := [["TRASH", METAL if a.colors == "metal" else LIME, a.colors == "metal"], ["PATROL", LIME, false]]
+	var names: PackedStringArray = String(a.words).split(",")
+	var slime: bool = a.colors == "slime"
+	var words := [[names[0], METAL if slime else LIME, slime], [names[1], LIME if slime else METAL, false]]
+	var leaves: bool = a.colors == "leaf"
 	var imgs := []
 	for w in words:
 		imgs.append(await _word(font, size, w[0]))
@@ -90,14 +99,15 @@ func _render() -> void:
 		width = maxi(width, im.get_width())
 		height += im.get_height()
 	height += LINE_GAP * (imgs.size() - 1)
+	var top := LEAF_TOP if leaves else 0
 	var cw := width + 2
-	var ch := height + 4
+	var ch := height + 4 + top
 	# 0 empty, 1 edge (in-between shade), 2 solid
 	var kind := PackedByteArray()
 	kind.resize(cw * ch)
 	var color := []
 	color.resize(cw * ch)
-	var y := 1
+	var y := 1 + top
 	for i in imgs.size():
 		var im: Image = imgs[i]
 		var bands: Array = words[i][1]
@@ -119,6 +129,8 @@ func _render() -> void:
 				else:
 					kind[idx] = 2
 				color[idx] = c
+		if i == 0 and leaves:
+			_sprouts(kind, color, cw, 1 + (width - im.get_width()) / 2, y, im.get_width())
 		y += im.get_height() + LINE_GAP
 	var img := Image.create(cw, ch, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0, 0, 0, 0))
@@ -143,3 +155,36 @@ func _render() -> void:
 	img.save_png(a.out)
 	print("Logo saved: %s %s (font size %d)" % [a.out, img.get_size(), size])
 	quit()
+
+
+## Little leaves sprouting from the top of the first word, at a few letters.
+func _sprouts(kind: PackedByteArray, color: Array, cw: int, x0: int, y0: int, w: int) -> void:
+	for f in [0.1, 0.52, 0.9]:
+		var x := x0 + int(w * f)
+		# the top of the letter in this column (or the nearest column that has one)
+		var top := -1
+		for dx in [0, 1, -1, 2, -2, 3, -3]:
+			for yy in range(y0, y0 + 12):
+				if kind[yy * cw + x + dx] > 0:
+					top = yy
+					x += dx
+					break
+			if top >= 0:
+				break
+		if top < 0:
+			continue
+		var side := 1 if f < 0.5 else -1
+		var s := side
+		var px := [[0, -1, STEM], [0, -2, STEM], [0, -3, STEM],
+				# the big leaf, leaning out
+				[s, -3, LEAF[2]], [s * 2, -3, LEAF[1]], [s * 3, -4, LEAF[1]],
+				[s, -4, LEAF[1]], [s * 2, -4, LEAF[0]], [s * 3, -5, LEAF[0]], [s * 4, -5, LEAF[0]],
+				[s * 2, -5, LEAF[0]],
+				# the small one on the other side
+				[-s, -4, LEAF[2]], [-s, -5, LEAF[1]], [-s * 2, -5, LEAF[1]], [-s * 2, -6, LEAF[0]],
+				[0, -4, LEAF[2]]]
+		for p in px:
+			var idx: int = (top + p[1]) * cw + x + p[0]
+			if idx >= 0 and kind[idx] == 0:
+				kind[idx] = 2
+				color[idx] = Color(p[2])

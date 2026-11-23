@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Trash Patrol"
+config/name="Green Guardians"
 run/main_scene="uid://c3p4nqksuogc5"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Misc/AppIcon/icon_1024.png"

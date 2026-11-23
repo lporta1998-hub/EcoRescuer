@@ -295,16 +295,93 @@ def baron_frame(src, dst, box, anim):
             put(dpx, dst.size, min(sx) + 1 + i, cy + (1 if 1 <= i <= 5 else 0), H("#f0c040") if i % 2 else H("#b08020"))
 
 
+# --- boar head tracking ------------------------------------------------------
+# In the walk/idle frames the head is the top of the sprite, but in the attack
+# frames the club is often higher than the head. There the head is found by
+# matching the idle head of the same direction against the frame.
+
+BOAR_HEAD_W, BOAR_HEAD_H = 12, 17       # half width, height of the head box
+_BOAR_TEMPLATES = {}
+
+
+def _top_head(px, box):
+    x0, y0, w, h = box
+    pts = [(x, y) for y in range(y0, y0 + h) for x in range(x0, x0 + w) if px[x, y][3]]
+    if not pts:
+        return None
+    top = min(p[1] for p in pts)
+    row = [p[0] for p in pts if p[1] <= top + 6]
+    return (min(row) + max(row)) // 2, top
+
+
+def boar_template(px, d):
+    """Pixels of the idle head facing d, relative to (cx, top)."""
+    if d not in _BOAR_TEMPLATES:
+        anim = {"right": "idle", "down": "idle_down", "up": "idle_top"}[d if d != "left" else "right"]
+        box = next(b for a, f, b in regions("Characters/CharacterBoar/Assets/Scenes/Boarman.tscn")
+                   if a == anim and f == "boar-character.png")
+        cx, top = _top_head(px, box)
+        tpl = []
+        for y in range(top, top + BOAR_HEAD_H + 1):
+            for x in range(cx - BOAR_HEAD_W, cx + BOAR_HEAD_W + 1):
+                c = px[x, y]
+                if c[3] and boar_role(c[:3]) in ("fur", "tusk", "line"):
+                    tpl.append((x - cx, y - top, c[:3]))
+        _BOAR_TEMPLATES[d] = tpl
+    return _BOAR_TEMPLATES[d]
+
+
+def _match(px, tpl, cx, top, size, tol=48):
+    n = 0
+    for dx, dy, c in tpl:
+        x, y = cx + dx, top + dy
+        if 0 <= x < size[0] and 0 <= y < size[1]:
+            q = px[x, y]
+            if q[3] and abs(q[0] - c[0]) + abs(q[1] - c[1]) + abs(q[2] - c[2]) < tol:
+                n += 1
+    return n
+
+
+def boar_head(px, size, box, anim):
+    """(cx, top, mask) of the boar head in a frame. mask is the set of pixels
+    that belong to the old head (None when the head is simply the top)."""
+    found = _top_head(px, box)
+    if found is None or not anim.startswith("attack"):
+        return (found[0], found[1], None) if found else None
+    tpl = boar_template(px, direction(anim))
+    coarse = tpl[::4]
+    x0, y0, w, h = box
+    best = []
+    for top in range(y0, y0 + h - BOAR_HEAD_H):
+        for cx in range(x0 + BOAR_HEAD_W, x0 + w - BOAR_HEAD_W):
+            best.append((_match(px, coarse, cx, top, size), cx, top))
+    best.sort(reverse=True)
+    cx, top = max(((_match(px, tpl, c, t, size), c, t) for _, c, t in best[:12]))[1:]
+    # head pixels that still look like the idle head (plus their outline), and
+    # pixels over the head that do not: the club passing in front of it.
+    mask, front = set(), set()
+    for dx, dy, c in tpl:
+        x, y = cx + dx, top + dy
+        if _match(px, [(0, 0, c)], x, y, size):
+            for ox in (-1, 0, 1):
+                for oy in (-1, 0, 1):
+                    q = (x + ox, y + oy)
+                    if q == (x, y) or (0 <= q[0] < size[0] and 0 <= q[1] < size[1]
+                                       and px[q][3] and boar_role(px[q][:3]) == "line"):
+                        mask.add(q)
+        elif px[x, y][3]:
+            front.add((x, y))
+    front -= mask
+    return cx, top, (mask, front)
+
+
 def silvano_frame(src, dst, box, anim):
     """Crown of branches with leaves on the head, glowing eyes."""
     spx, dpx = src.load(), dst.load()
-    x0, y0, w, h = box
-    pts = [(x, y) for y in range(y0, y0 + h) for x in range(x0, x0 + w) if spx[x, y][3]]
-    if not pts:
+    found = boar_head(spx, src.size, box, anim)
+    if found is None:
         return
-    top = min(p[1] for p in pts)
-    row = [p[0] for p in pts if p[1] <= top + 4]
-    cx = (min(row) + max(row)) // 2
+    cx, top, _ = found
     d = direction(anim)
     wood, wood2, leaf, leaf2, leaf3 = H("#4a321c"), H("#7a5632"), H("#2a8a2e"), H("#5cc048"), H("#a8ec70")
     sides = (-1, 1) if d in ("down", "up") else ((1,) if d == "right" else (-1,))
@@ -360,6 +437,65 @@ def eco9_color(c, role):
     return c
 
 
+def mira_blade_frame(src, dst, box, anim):
+    """Mira has no sword: the Nerd's blade is removed, the holes it leaves in
+    her body are filled from the pixels around them, the cut gets an outline,
+    and the hilt in her hand becomes a small green potion vial."""
+    spx, dpx = src.load(), dst.load()
+    x0, y0, w, h = box
+    inside = lambda x, y: x0 <= x < x0 + w and y0 <= y < y0 + h
+    role = {}
+    for y in range(y0, y0 + h):
+        for x in range(x0, x0 + w):
+            if spx[x, y][3]:
+                role[(x, y)] = nerd_role(spx[x, y][:3])
+    blade = {p for p, r in role.items() if r == "blade"}
+    if not blade:
+        return
+    n8 = [(a, b) for a in (-1, 0, 1) for b in (-1, 0, 1) if a or b]
+    # the blade's dark outline goes with it
+    gone = blade | {p for p, r in role.items() if r == "line" and any((p[0] + a, p[1] + b) in blade for a, b in n8)}
+    by1 = max(p[1] for p in role)
+    hilt = {p for p, r in role.items() if r == "metal" and p[1] < by1 - 9
+            and any((p[0] + a, p[1] + b) in blade for a, b in n8)}
+    hilt |= {(p[0] + a, p[1] + b) for p in hilt for a, b in n8
+             if role.get((p[0] + a, p[1] + b)) == "metal" and p[1] + b < by1 - 9}
+
+    def body(x, y):
+        return (x, y) in role and (x, y) not in gone
+
+    def reach(x, y, dx, dy):
+        for k in range(1, 7):
+            if body(x + dx * k, y + dy * k):
+                return k
+            if (x + dx * k, y + dy * k) not in role:
+                return None
+        return None
+
+    cleared = []
+    for (x, y) in gone:
+        up, down = reach(x, y, 0, -1), reach(x, y, 0, 1)
+        left, right = reach(x, y, -1, 0), reach(x, y, 1, 0)
+        if up and down:
+            k, s = (up, -1) if up <= down else (down, 1)
+            dpx[x, y] = dpx[x, y + s * k]
+        elif left and right:
+            k, s = (left, -1) if left <= right else (right, 1)
+            dpx[x, y] = dpx[x + s * k, y]
+        else:
+            dpx[x, y] = (0, 0, 0, 0)
+            cleared.append((x, y))
+    outline = H("#14101c")
+    for (x, y) in cleared:   # close the silhouette where the blade was cut off
+        for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            q = (x + a, y + b)
+            if inside(*q) and q not in gone and dpx[q][3]:
+                dpx[q] = outline + (255,)
+    glass = [H("#0e3a1e"), H("#1e7a3a"), H("#3ac060"), H("#8af0a0"), H("#e0ffe8")]
+    for p in hilt:
+        dpx[p] = ramp_map(spx[p][:3], glass) + (255,)
+
+
 def mira2_frame(src, dst, box, anim):
     """Long flowing hair on the Nerd base."""
     spx, dpx = src.load(), dst.load()
@@ -401,13 +537,13 @@ def mira2_frame(src, dst, box, anim):
 
 CHARS = {
     # name: (base, classifier, color fn, frame fn, scene, files)
-    "mira": ("nerd", nerd_role, mira2_color, generic, "Characters/CharacterNerd/Assets/Scenes/Nerd.tscn",
+    "mira": ("nerd", nerd_role, mira2_color, mira_blade_frame, "Characters/CharacterNerd/Assets/Scenes/Nerd.tscn",
              ["idle.png", "walk.png", "hurt.png", "slash_oversize.png"]),
     "baron": ("ranger", ranger_role, baron_color, baron_frame, "Characters/CharacterRanger/Assets/Scenes/character_body_2d.tscn",
               ["RangerIdle.png", "RangerRun.png", "hurt.png", "character-spritesheet (2).png", "shoot.png"]),
     "eco9": ("ranger", ranger_role, eco9_color, generic, "Characters/CharacterRanger/Assets/Scenes/character_body_2d.tscn",
              ["RangerIdle.png", "RangerRun.png", "hurt.png", "character-spritesheet (2).png", "shoot.png"]),
-    "silvano": ("boar", boar_role, silvano_color, silvano_frame, "Characters/CharacterBoar/Assets/Scenes/Boarman.tscn",
+    "silvano": ("boar", boar_role, silvano_color, generic, "Characters/CharacterBoar/Assets/Scenes/Boarman.tscn",
                 ["boar-character.png"]),
 }
 PREFIX = {"ranger": "CharacterRanger_", "nerd": "CharacterNerd_", "boar": "CharacterBoar_"}
