@@ -1,0 +1,15 @@
+[config]
+name="SceneSupport"
+binary="scene_support/scene_support.xcframework"
+initialization="scene_support_init"
+deinitialization="scene_support_deinit"
+
+[dependencies]
+linked=[]
+embedded=[]
+system=[]
+capabilities=[]
+files=[]
+linker_flags=["-ObjC"]
+
+[plist]

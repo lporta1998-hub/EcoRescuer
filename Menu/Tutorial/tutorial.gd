@@ -68,7 +68,7 @@ var _panel: PanelContainer
 var _title: Label
 var _step: Label
 var _intro: Label
-var _list: VBoxContainer
+var _body: MarginContainer
 var _scroll: ScrollContainer
 var _dots: HBoxContainer
 var _prev: Button
@@ -267,44 +267,47 @@ func _build() -> void:
 	col.add_theme_constant_override("separation", 8)
 	_panel.add_child(col)
 
-	# header: "Come si gioca · 2 / 8" on the left, close on the right
+	# header, one line to leave room for the page: "Come si gioca · 2 / 8"
+	# on the left, the page title in the middle, close on the right
 	var header := HBoxContainer.new()
 	col.add_child(header)
-	_step = _label("", _fs(18), Color(0.65, 0.9, 0.5))
+	_step = _label("", _fs(16), Color(0.65, 0.9, 0.5))
 	_step.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_step.size_flags_stretch_ratio = 1.0
 	_step.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_step.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	header.add_child(_step)
-	var close := _button("Chiudi", _fs(20))
-	close.custom_minimum_size = Vector2(140, 56) if _mobile else Vector2(120, 44)
-	close.pressed.connect(_close)
-	header.add_child(close)
-
-	_title = _label("", 36 if _mobile else 42, Color.WHITE)
+	_title = _label("", 34 if _mobile else 40, Color.WHITE)
 	_title.add_theme_constant_override("outline_size", 10)
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	col.add_child(_title)
+	_title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	header.add_child(_title)
+	var right := HBoxContainer.new()
+	right.alignment = BoxContainer.ALIGNMENT_END
+	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(right)
+	var close := _button("Chiudi", _fs(20))
+	close.custom_minimum_size = Vector2(130, 52) if _mobile else Vector2(120, 44)
+	close.pressed.connect(_close)
+	right.add_child(close)
 
-	_intro = _label("", _fs(20), GOLD)
+	_intro = _label("", _fs(19), GOLD)
 	_intro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(_intro)
 
-	_scroll = ScrollContainer.new()
-	_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	col.add_child(_scroll)
-	_list = VBoxContainer.new()
-	_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_list.add_theme_constant_override("separation", 8)
-	_list.mouse_filter = Control.MOUSE_FILTER_PASS
-	_scroll.add_child(_list)
+	# the page body, rebuilt by _show_page()
+	_body = MarginContainer.new()
+	_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_body.mouse_filter = Control.MOUSE_FILTER_PASS
+	col.add_child(_body)
 
 	# footer: previous · one dot per page · next
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 12)
 	col.add_child(footer)
 	_prev = _button("Indietro", _fs(22))
-	_prev.custom_minimum_size = Vector2(180, 64) if _mobile else Vector2(170, 52)
+	_prev.custom_minimum_size = Vector2(180, 56) if _mobile else Vector2(170, 52)
 	_prev.pressed.connect(func(): _go(-1))
 	footer.add_child(_prev)
 	_dots = HBoxContainer.new()
@@ -323,7 +326,7 @@ func _build() -> void:
 			_show_page(i))
 		_dots.add_child(dot)
 	_next = _button("Avanti", _fs(22))
-	_next.custom_minimum_size = Vector2(180, 64) if _mobile else Vector2(170, 52)
+	_next.custom_minimum_size = Vector2(180, 56) if _mobile else Vector2(170, 52)
 	_next.pressed.connect(func(): _go(1))
 	footer.add_child(_next)
 
@@ -358,16 +361,55 @@ func _show_page(i: int) -> void:
 	else:
 		_title.remove_theme_font_override("font")
 	_intro.text = tr(page.intro)
-	for child in _list.get_children():
+	for child in _body.get_children():
+		_body.remove_child(child)
 		child.queue_free()
+	var rows: Array = []
+	var diagram := false
 	for r in page.rows:
 		if r[0] is String and r[0] == DIAGRAM:
-			_list.add_child(TouchDiagram.new())
+			diagram = true
 		elif r[0] == null and r[2] == "":
-			_list.add_child(_section(r[1]))
+			rows.append(_section(r[1]))
 		else:
-			_list.add_child(_row(r[0], r[1], r[2], r[3] if r.size() > 3 else ""))
-	_scroll.scroll_vertical = 0
+			rows.append(_row(r[0], r[1], r[2], r[3] if r.size() > 3 else ""))
+	# Landscape screens are wide and short: rows go in two columns, and the
+	# touch diagram sits beside its numbered explanations instead of above.
+	var wide := get_viewport().get_visible_rect().size.x >= 1000.0
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	var list: Container
+	if wide and not diagram and rows.size() > 3:
+		var grid := GridContainer.new()
+		grid.columns = 2
+		grid.add_theme_constant_override("h_separation", 10)
+		grid.add_theme_constant_override("v_separation", 8)
+		list = grid
+	else:
+		var vbox := VBoxContainer.new()
+		vbox.add_theme_constant_override("separation", 8)
+		list = vbox
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	list.mouse_filter = Control.MOUSE_FILTER_PASS
+	for row in rows:
+		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		list.add_child(row)
+	_scroll.add_child(list)
+	if diagram:
+		var split: BoxContainer = HBoxContainer.new() if wide else VBoxContainer.new()
+		split.add_theme_constant_override("separation", 14)
+		var drawing := TouchDiagram.new()
+		drawing.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		drawing.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		drawing.size_flags_stretch_ratio = 1.0
+		_scroll.size_flags_stretch_ratio = 1.3
+		split.add_child(drawing)
+		split.add_child(_scroll)
+		_body.add_child(split)
+	else:
+		_body.add_child(_scroll)
 	_prev.disabled = _page == 0
 	_next.text = tr("Ho capito!") if _page == _pages.size() - 1 else tr("Avanti")
 	for d in _dots.get_child_count():
@@ -552,7 +594,7 @@ class TouchDiagram extends Control:
 	var _enemy: AtlasTexture
 
 	func _ready() -> void:
-		custom_minimum_size = Vector2(0, 310)
+		custom_minimum_size = Vector2(0, 220)
 		size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_hero = ShopMenu.CHARACTERS[0].icon
