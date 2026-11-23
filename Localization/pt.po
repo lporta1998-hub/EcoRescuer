@@ -1455,3 +1455,324 @@ msgstr "Não atribuído"
 msgid "Automatico"
 msgstr "Automático"
 
+
+# --- Come si gioca (Menu/Tutorial/tutorial.gd) ---
+
+msgid "Come si gioca"
+msgstr "Como jogar"
+
+msgid "Come si gioca  ·  %d / %d"
+msgstr "Como jogar  ·  %d / %d"
+
+msgid "Chiudi"
+msgstr "Fechar"
+
+msgid "Ho capito!"
+msgstr "Entendi!"
+
+msgid "%d monete"
+msgstr "%d moedas"
+
+msgid "ATTACCA: combo da vicino.  LATTINA: lancia una lattina riciclata che torna indietro come un boomerang."
+msgstr "ATACAR: combo corpo a corpo.  LATA: atira uma lata reciclada que volta como um bumerangue."
+
+msgid "ATTACCA: colpo da vicino.  TIRA: scocca una freccia per colpire da lontano."
+msgstr "ATACAR: golpe corpo a corpo.  DISPARAR: dispara uma flecha para acertar de longe."
+
+msgid "ATTACCA: fendente ampio che pulisce l'area.  ZAP: una scarica che salta da un nemico all'altro."
+msgstr "ATACAR: um golpe amplo que limpa a zona.  ZAP: uma descarga que salta de um inimigo para outro."
+
+msgid "ATTACCA: colpo da vicino.  FRANA: onda d'urto a terra con una pioggia di rocce. Ha 4 cuori."
+msgstr "ATACAR: golpe corpo a corpo.  DERROCADA: onda de choque no chão com uma chuva de rochas. Tem 4 corações."
+
+msgid "POZIONE: lancia pozioni a danno doppio.  BASTONE: colpo da vicino che rompe vasi e casse e respinge i colpi. Solo 2 cuori."
+msgstr "POÇÃO: atira poções que causam dano duplo.  BASTÃO: golpe corpo a corpo que parte vasos e caixas e devolve os disparos. Só 2 corações."
+
+msgid "PUGNO: pugni pesanti.  SEMI: una raffica di semi a ventaglio. 4 cuori, ma è lento e il veleno lo ferisce il doppio."
+msgstr "MURRO: murros pesados.  SEMENTES: uma rajada de sementes em leque. 4 corações, mas é lento e o veneno fere-o a dobrar."
+
+msgid "COLPO: forza enorme.  LASER: raggio che trapassa i nemici e consuma energia. Niente cuori: l'energia cala col tempo, ricaricala con le batterie."
+msgstr "GOLPE: força enorme.  LASER: um raio que atravessa os inimigos e gasta energia. Sem corações: a energia desce com o tempo, recarrega-a com baterias."
+
+msgid "L'obiettivo"
+msgstr "O objetivo"
+
+msgid "Gli Inquinatori stanno riempiendo l'isola di rifiuti. In ogni livello il tuo compito è ripulirla."
+msgstr "Os Poluidores estão a encher a ilha de lixo. Em cada nível, a tua missão é limpá-la."
+
+msgid "Raccogli i sacchi di rifiuti"
+msgstr "Apanha os sacos de lixo"
+
+msgid "Passaci sopra per raccoglierli. In alto al centro vedi quanti te ne mancano."
+msgstr "Passa por cima para os apanhar. No topo do ecrã vês quantos faltam."
+
+msgid "Sconfiggi gli Inquinatori"
+msgstr "Derrota os Poluidores"
+
+msgid "In alcuni livelli devi anche sconfiggere un certo numero di nemici: il contatore in alto te lo ricorda."
+msgstr "Em alguns níveis também tens de derrotar um certo número de inimigos: o contador no topo lembra-te."
+
+msgid "Vai al punto di raccolta"
+msgstr "Vai ao ponto de recolha"
+
+msgid "Quando l'obiettivo è completo il punto di raccolta si apre e una freccia accanto all'eroe ti mostra la strada, anche attraverso i teletrasporti. Entraci per finire il livello."
+msgstr "Quando o objetivo está completo, o ponto de recolha abre e uma seta ao lado do herói mostra-te o caminho, mesmo através dos teletransportes. Entra para terminar o nível."
+
+msgid "Avanza nella storia"
+msgstr "Avança na história"
+
+msgid "Ogni livello completato sblocca il capitolo successivo."
+msgstr "Cada nível completado desbloqueia o capítulo seguinte."
+
+msgid "I comandi"
+msgstr "Os controlos"
+
+msgid "Muovi l'eroe, attacca e usa la sua mossa speciale."
+msgstr "Move o herói, ataca e usa o seu movimento especial."
+
+msgid "Combattere"
+msgstr "Combater"
+
+msgid "Colpisci e allontanati: non farti mai circondare."
+msgstr "Ataca e afasta-te: nunca te deixes cercar."
+
+msgid "Colpisci da vicino"
+msgstr "Ataca de perto"
+
+msgid "L'attacco si gira da solo verso il nemico più vicino e colpisce ad arco davanti all'eroe."
+msgstr "O ataque vira-se sozinho para o inimigo mais próximo e atinge em arco à frente do herói."
+
+msgid "Mossa speciale"
+msgstr "Movimento especial"
+
+msgid "Ogni eroe ha una seconda mossa, spesso a distanza. Dopo averla usata deve ricaricarsi."
+msgstr "Cada herói tem um segundo movimento, muitas vezes à distância. Depois de o usar, tem de recarregar."
+
+msgid "Respingi i colpi"
+msgstr "Devolve os disparos"
+
+msgid "Un colpo da vicino rimanda indietro i proiettili nemici, come il fango e le scariche dei droni."
+msgstr "Um golpe corpo a corpo devolve os projéteis inimigos, como a lama e as descargas dos drones."
+
+msgid "Cuori"
+msgstr "Corações"
+
+msgid "Ogni colpo subito costa un cuore; subito dopo lampeggi e per un attimo sei invulnerabile. Raccogli i cuori nel livello per curarti."
+msgstr "Cada golpe sofrido custa um coração; logo a seguir piscas e ficas invulnerável por um instante. Apanha corações no nível para te curares."
+
+msgid "Se perdi tutti i cuori"
+msgstr "Se perderes todos os corações"
+
+msgid "Il livello è perso, ma tieni metà delle monete raccolte. Riprova!"
+msgstr "Perdes o nível, mas ficas com metade das moedas apanhadas. Tenta outra vez!"
+
+msgid "Conosci il nemico"
+msgstr "Conhece o inimigo"
+
+msgid "Prima di ogni capitolo ti presentiamo i nuovi nemici. Li ritrovi nel Codex, con un consiglio per batterli."
+msgstr "Antes de cada capítulo apresentamos-te os novos inimigos. Encontras todos no Codex, com uma dica para os vencer."
+
+msgid "Gli oggetti"
+msgstr "Os objetos"
+
+msgid "Esplora ogni angolo: c'è molto da raccogliere."
+msgstr "Explora cada canto: há muito para apanhar."
+
+msgid "Monete verdi"
+msgstr "Moedas verdes"
+
+msgid "Servono ad aprire i forzieri del livello. Quelle che non spendi diventano monete del negozio a fine livello."
+msgstr "Servem para abrir os baús do nível. As que não gastares tornam-se moedas da loja no fim do nível."
+
+msgid "Forzieri"
+msgstr "Baús"
+
+msgid "Toccali con abbastanza monete verdi. Ricompensa a caso: Cura, Eco Rush (20 secondi più veloce e più forte), Tesoro (+100 monete) o Scudo."
+msgstr "Toca-os com moedas verdes suficientes. Recompensa ao acaso: Cura, Eco Rush (20 segundos mais rápido e mais forte), Tesouro (+100 moedas) ou Escudo."
+
+msgid "Casse del riciclo"
+msgstr "Caixas de reciclagem"
+
+msgid "Si aprono al tuo passaggio e liberano 5 monete verdi."
+msgstr "Abrem-se à tua passagem e libertam 5 moedas verdes."
+
+msgid "Piuma"
+msgstr "Pena"
+
+msgid "Per qualche secondo corri più veloce."
+msgstr "Corres mais depressa durante alguns segundos."
+
+msgid "Barili che perdono"
+msgstr "Barris a verter"
+
+msgid "La pozza tossica ti rallenta e ti toglie cuori. Raccogli il barile per metterlo in sicurezza: la pozza si asciuga."
+msgstr "A poça tóxica abranda-te e tira-te corações. Apanha o barril para o pôr em segurança: a poça seca."
+
+msgid "Batterie"
+msgstr "Baterias"
+
+msgid "Compaiono solo quando giochi con ECO-9 e ricaricano la sua energia."
+msgstr "Só aparecem quando jogas com o ECO-9 e recarregam a sua energia."
+
+msgid "Stelle e segreti"
+msgstr "Estrelas e segredos"
+
+msgid "Finire un livello è solo l'inizio."
+msgstr "Terminar um nível é só o começo."
+
+msgid "Tre stelle per livello"
+msgstr "Três estrelas por nível"
+
+msgid "Una per averlo finito, una per aver raccolto tutti gli oggetti e una per non aver subito danni."
+msgstr "Uma por o terminar, uma por apanhar todos os objetos e uma por não sofrer dano."
+
+msgid "In ogni capitolo è nascosto un dossier degli Inquinatori: trovalo per scoprire di più sulla storia."
+msgstr "Em cada capítulo está escondido um dossier dos Poluidores: encontra-o para descobrir mais sobre a história."
+
+msgid "Missione secondaria"
+msgstr "Missão secundária"
+
+msgid "Ogni capitolo ha anche una missione extra, come aprire tutti i forzieri o finire senza danni. Dà monete in più la prima volta."
+msgstr "Cada capítulo tem também uma missão extra, como abrir todos os baús ou terminar sem dano. Dá moedas extra da primeira vez."
+
+msgid "Rompi casse e vasi sospetti: possono nascondere un passaggio verso un portale. Dentro ti aspettano guardiani e una reliquia."
+msgstr "Parte caixas e vasos suspeitos: podem esconder uma passagem para um portal. Lá dentro esperam-te guardiões e uma relíquia."
+
+msgid "Gli eroi"
+msgstr "Os heróis"
+
+msgid "Labra è con te fin dall'inizio. Gli altri eroi si sbloccano nel negozio con le monete."
+msgstr "Labra está contigo desde o início. Os outros heróis desbloqueiam-se na loja com moedas."
+
+msgid "Negozio e modalità"
+msgstr "Loja e modos"
+
+msgid "Le monete che guadagni servono a diventare più forte."
+msgstr "As moedas que ganhas servem para ficares mais forte."
+
+msgid "Sblocca eroi e Potenziamenti: cuore extra, scarpe veloci, colpo potente, magnete e scudo. Puoi accenderli e spegnerli quando vuoi."
+msgstr "Desbloqueia heróis e Melhorias: coração extra, sapatilhas rápidas, golpe potente, íman e escudo. Podes ligá-las e desligá-las quando quiseres."
+
+msgid "Rendono i nemici più forti (corazzati, rapidi, colpi pesanti, senza cure), ma ti fanno guadagnare più monete."
+msgstr "Tornam os inimigos mais fortes (blindados, rápidos, golpes pesados, sem curas), mas ganhas mais moedas."
+
+msgid "Ogni giorno un livello con le stesse Sfide per tutti e i potenziamenti spenti. Completala per monete extra e scala la classifica."
+msgstr "Todos os dias, um nível com os mesmos Desafios para todos e as melhorias desligadas. Completa-o para ganhar moedas extra e subir na classificação."
+
+msgid "Resisti a ondate infinite di nemici su una mappa già sbloccata. Ogni 10 round arriva un boss: battilo per scegliere un vantaggio permanente."
+msgstr "Resiste a vagas infinitas de inimigos num mapa já desbloqueado. A cada 10 rondas chega um chefe: derrota-o para escolher uma vantagem permanente."
+
+msgid "Traguardi, nemici incontrati, dossier, caveau e statistiche: tutto quello che hai scoperto."
+msgstr "Conquistas, inimigos encontrados, dossiers, câmaras e estatísticas: tudo o que descobriste."
+
+msgid "Consigli"
+msgstr "Dicas"
+
+msgid "Sei pronto. Ecco qualche trucco per finire in bellezza."
+msgstr "Estás pronto. Aqui ficam alguns truques para terminares em grande."
+
+msgid "Usa la mappa"
+msgstr "Usa o mapa"
+
+msgid "Metti in pausa: la mappa mostra i rifiuti rimasti, i nemici, i forzieri e la strada per il punto di raccolta."
+msgstr "Põe o jogo em pausa: o mapa mostra o lixo que falta, os inimigos, os baús e o caminho para o ponto de recolha."
+
+msgid "Tieni d'occhio gli Elite"
+msgstr "Cuidado com os Elite"
+
+msgid "Sono più resistenti e più forti degli altri: tienili a distanza e colpiscili quando si fermano."
+msgstr "São mais resistentes e mais fortes do que os outros: mantém-nos à distância e ataca quando param."
+
+msgid "Pulisci prima i barili"
+msgstr "Limpa primeiro os barris"
+
+msgid "Mettere in sicurezza i barili ti libera la strada e ti evita danni inutili."
+msgstr "Pôr os barris em segurança abre-te o caminho e evita danos desnecessários."
+
+msgid "Spendi bene le monete"
+msgstr "Gasta bem as moedas"
+
+msgid "Le monete verdi spese nei forzieri non diventano monete del negozio: aprili quando ti serve una mano."
+msgstr "As moedas verdes gastas em baús não se tornam moedas da loja: abre-os quando precisares de ajuda."
+
+msgid "Rivedi questa guida"
+msgstr "Revê este guia"
+
+msgid "La trovi sempre nel menu principale e nel menu di pausa."
+msgstr "Encontras sempre no menu principal e no menu de pausa."
+
+msgid "Tastiera e mouse"
+msgstr "Teclado e rato"
+
+msgid "Muoviti: %s"
+msgstr "Mover: %s"
+
+msgid "Puoi cambiare i tasti in Opzioni."
+msgstr "Podes mudar as teclas nas Opções."
+
+msgid "Attacco: %s"
+msgstr "Ataque: %s"
+
+msgid "tasto destro del mouse"
+msgstr "botão direito do rato"
+
+
+msgid "Mossa speciale: %s"
+msgstr "Movimento especial: %s"
+
+msgid "tasto sinistro del mouse"
+msgstr "botão esquerdo do rato"
+
+msgid "Mira con il puntatore del mouse."
+msgstr "Aponta com o ponteiro do rato."
+
+msgid "Pausa: %s"
+msgstr "Pausa: %s"
+
+msgid "Nel menu di pausa trovi la mappa del livello."
+msgstr "No menu de pausa encontras o mapa do nível."
+
+msgid "Si gioca con due pollici: il sinistro muove l'eroe, il destro combatte."
+msgstr "Joga-se com dois polegares: o esquerdo move o herói, o direito combate."
+
+msgid "L'attacco principale dell'eroe. Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "O ataque principal do herói. Com quase todos os heróis podes mantê-lo premido para continuar a atacar."
+
+msgid "Joystick: in basso a sinistra"
+msgstr "Joystick: em baixo à esquerda"
+
+msgid "Appoggia il pollice in un punto qualsiasi della parte bassa a sinistra dello schermo: il joystick compare sotto il dito. Trascina per muoverti, lascia per fermarti."
+msgstr "Pousa o polegar em qualquer ponto da parte inferior esquerda do ecrã: o joystick aparece debaixo do dedo. Arrasta para te moveres, larga para parares."
+
+msgid "Attacco: il pulsante grande"
+msgstr "Ataque: o botão grande"
+
+msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO... Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "O nome muda conforme o herói: ATACAR, POÇÃO, MURRO... Com quase todos os heróis podes mantê-lo premido para continuar a atacar."
+
+msgid "Mossa speciale: il pulsante piccolo"
+msgstr "Movimento especial: o botão pequeno"
+
+msgid "Mira da sola verso il nemico più vicino. L'ombra scura che gira sul pulsante indica che si sta ricaricando."
+msgstr "Aponta sozinho para o inimigo mais próximo. A sombra escura que roda sobre o botão indica que está a recarregar."
+
+msgid "Pausa: in alto a destra"
+msgstr "Pausa: em cima à direita"
+
+msgid "Nel menu di pausa trovi la mappa del livello e questa guida."
+msgstr "No menu de pausa encontras o mapa do nível e este guia."
+
+msgid "Usa più dita insieme"
+msgstr "Usa vários dedos ao mesmo tempo"
+
+msgid "Puoi correre e attaccare nello stesso momento: tieni il pollice sinistro sul joystick mentre premi i pulsanti."
+msgstr "Podes correr e atacar ao mesmo tempo: mantém o polegar esquerdo no joystick enquanto carregas nos botões."
+
+msgid "In alto: cuori e obiettivo"
+msgstr "No topo: corações e objetivo"
+
+msgid "In alto a sinistra ci sono i tuoi cuori, al centro i rifiuti e i nemici che ti mancano. Tieni i pollici in basso per non coprirli."
+msgstr "No canto superior esquerdo estão os teus corações e ao centro o lixo e os inimigos que faltam. Mantém os polegares em baixo para não os tapares."
+
+msgid "Scorri per cambiare pagina"
+msgstr "Desliza para mudar de página"

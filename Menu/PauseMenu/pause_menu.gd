@@ -12,7 +12,24 @@ func _ready() -> void:
     visible = false
     process_mode = Node.PROCESS_MODE_ALWAYS
     _add_level_map()
+    _add_tutorial_button()
     visibility_changed.connect(_on_visibility_changed)
+
+
+## "Come si gioca" under "Opzioni": the guide over the paused game.
+func _add_tutorial_button() -> void:
+    var b: Button = $VBoxContainer/MenuPrincipale.duplicate()
+    for c in b.get_signal_connection_list("pressed"):
+        b.disconnect("pressed", c.callable)
+    b.name = "ComeSiGioca"
+    b.text = "Come si gioca"
+    b.pressed.connect(func():
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+        is_audio_menu_open = true  # Esc closes the guide, not the pause menu
+        var guide := TutorialMenu.open(self)
+        guide.closed.connect(func(): is_audio_menu_open = false))
+    $VBoxContainer.add_child(b)
+    $VBoxContainer.move_child(b, $VBoxContainer/Opzioni.get_index() + 1)
 
 
 ## "Mappa" panel in the middle of the pause screen.

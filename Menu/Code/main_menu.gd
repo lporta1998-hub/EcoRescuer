@@ -18,6 +18,7 @@ func _ready() -> void:
     _add_player_button()
     _add_story_button()
     _add_codex_button()
+    _add_tutorial_button()
     _add_language_picker()
     _add_daily_button()
     _add_rage_button()
@@ -52,6 +53,9 @@ func _on_quit_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
     SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+    # Brand-new players see the guide once before their first game.
+    if not Progress.intro_seen and not TutorialMenu.seen():
+        await TutorialMenu.open(self).closed
     # The name is asked only the first time; after that Start goes straight in.
     if Global.player_name.strip_edges() != "":
         await $fade_transition.fade_out()
@@ -117,6 +121,28 @@ func _add_codex_button() -> void:
     b.pressed.connect(func():
         SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
         CodexMenu.open_from(get_tree(), "res://main_menu.tscn"))
+    add_child(b)
+    move_child(b, $NameOverlay.get_index())
+
+
+## "Come si gioca" next to "Codex": the step-by-step guide to the game.
+func _add_tutorial_button() -> void:
+    var b := Button.new()
+    b.flat = true
+    b.text = "Come si gioca"
+    b.add_theme_font_size_override("font_size", 22)
+    b.add_theme_constant_override("outline_size", 6)
+    b.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+    b.add_theme_color_override("font_color", Color(0.65, 0.95, 0.3))
+    b.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+    b.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+    b.offset_left = -330.0
+    b.offset_right = -320.0
+    b.offset_top = -64.0
+    b.offset_bottom = -24.0
+    b.pressed.connect(func():
+        SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
+        TutorialMenu.open(self))
     add_child(b)
     move_child(b, $NameOverlay.get_index())
 

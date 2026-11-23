@@ -1455,3 +1455,324 @@ msgstr "Χωρίς ανάθεση"
 msgid "Automatico"
 msgstr "Αυτόματα"
 
+
+# --- Come si gioca (Menu/Tutorial/tutorial.gd) ---
+
+msgid "Come si gioca"
+msgstr "Πώς παίζεται"
+
+msgid "Come si gioca  ·  %d / %d"
+msgstr "Πώς παίζεται  ·  %d / %d"
+
+msgid "Chiudi"
+msgstr "Κλείσιμο"
+
+msgid "Ho capito!"
+msgstr "Το κατάλαβα!"
+
+msgid "%d monete"
+msgstr "%d νομίσματα"
+
+msgid "ATTACCA: combo da vicino.  LATTINA: lancia una lattina riciclata che torna indietro come un boomerang."
+msgstr "ΕΠΙΘΕΣΗ: κόμπο από κοντά.  ΚΟΥΤΑΚΙ: πετάει ένα ανακυκλωμένο κουτάκι που γυρίζει πίσω σαν μπούμερανγκ."
+
+msgid "ATTACCA: colpo da vicino.  TIRA: scocca una freccia per colpire da lontano."
+msgstr "ΕΠΙΘΕΣΗ: χτύπημα από κοντά.  ΒΟΛΗ: ρίχνει ένα βέλος για να χτυπήσει από μακριά."
+
+msgid "ATTACCA: fendente ampio che pulisce l'area.  ZAP: una scarica che salta da un nemico all'altro."
+msgstr "ΕΠΙΘΕΣΗ: φαρδύ χτύπημα που καθαρίζει την περιοχή.  ZAP: μια εκκένωση που πηδάει από εχθρό σε εχθρό."
+
+msgid "ATTACCA: colpo da vicino.  FRANA: onda d'urto a terra con una pioggia di rocce. Ha 4 cuori."
+msgstr "ΕΠΙΘΕΣΗ: χτύπημα από κοντά.  ΚΑΤΟΛΙΣΘΗΣΗ: κρουστικό κύμα στο έδαφος με βροχή από βράχους. Έχει 4 καρδιές."
+
+msgid "POZIONE: lancia pozioni a danno doppio.  BASTONE: colpo da vicino che rompe vasi e casse e respinge i colpi. Solo 2 cuori."
+msgstr "ΦΙΛΤΡΟ: πετάει φίλτρα με διπλή ζημιά.  ΡΑΒΔΙ: χτύπημα από κοντά που σπάει βάζα και κιβώτια και αποκρούει τις βολές. Μόνο 2 καρδιές."
+
+msgid "PUGNO: pugni pesanti.  SEMI: una raffica di semi a ventaglio. 4 cuori, ma è lento e il veleno lo ferisce il doppio."
+msgstr "ΓΡΟΘΙΑ: βαριές γροθιές.  ΣΠΟΡΟΙ: ριπή από σπόρους σε βεντάλια. 4 καρδιές, αλλά είναι αργός και το δηλητήριο τον πληγώνει διπλά."
+
+msgid "COLPO: forza enorme.  LASER: raggio che trapassa i nemici e consuma energia. Niente cuori: l'energia cala col tempo, ricaricala con le batterie."
+msgstr "ΧΤΥΠΗΜΑ: τεράστια δύναμη.  ΛΕΪΖΕΡ: ακτίνα που διαπερνά τους εχθρούς και καταναλώνει ενέργεια. Χωρίς καρδιές: η ενέργεια πέφτει με τον χρόνο, φόρτισέ την με μπαταρίες."
+
+msgid "L'obiettivo"
+msgstr "Ο στόχος"
+
+msgid "Gli Inquinatori stanno riempiendo l'isola di rifiuti. In ogni livello il tuo compito è ripulirla."
+msgstr "Οι Ρυπαντές γεμίζουν το νησί σκουπίδια. Σε κάθε πίστα η δουλειά σου είναι να το καθαρίσεις."
+
+msgid "Raccogli i sacchi di rifiuti"
+msgstr "Μάζεψε τις σακούλες σκουπιδιών"
+
+msgid "Passaci sopra per raccoglierli. In alto al centro vedi quanti te ne mancano."
+msgstr "Πέρνα από πάνω τους για να τις μαζέψεις. Πάνω στο κέντρο βλέπεις πόσες σου λείπουν."
+
+msgid "Sconfiggi gli Inquinatori"
+msgstr "Νίκησε τους Ρυπαντές"
+
+msgid "In alcuni livelli devi anche sconfiggere un certo numero di nemici: il contatore in alto te lo ricorda."
+msgstr "Σε κάποιες πίστες πρέπει επίσης να νικήσεις έναν αριθμό εχθρών: ο μετρητής πάνω σου το θυμίζει."
+
+msgid "Vai al punto di raccolta"
+msgstr "Πήγαινε στο σημείο συλλογής"
+
+msgid "Quando l'obiettivo è completo il punto di raccolta si apre e una freccia accanto all'eroe ti mostra la strada, anche attraverso i teletrasporti. Entraci per finire il livello."
+msgstr "Όταν ολοκληρώσεις τον στόχο, το σημείο συλλογής ανοίγει και ένα βέλος δίπλα στον ήρωα σού δείχνει τον δρόμο, ακόμα και μέσα από τις τηλεμεταφορές. Μπες μέσα για να τελειώσεις την πίστα."
+
+msgid "Avanza nella storia"
+msgstr "Προχώρα στην ιστορία"
+
+msgid "Ogni livello completato sblocca il capitolo successivo."
+msgstr "Κάθε πίστα που ολοκληρώνεις ξεκλειδώνει το επόμενο κεφάλαιο."
+
+msgid "I comandi"
+msgstr "Τα χειριστήρια"
+
+msgid "Muovi l'eroe, attacca e usa la sua mossa speciale."
+msgstr "Κίνησε τον ήρωα, επιτέσου και χρησιμοποίησε την ειδική του κίνηση."
+
+msgid "Combattere"
+msgstr "Μάχη"
+
+msgid "Colpisci e allontanati: non farti mai circondare."
+msgstr "Χτύπα και απομακρύνσου: μην αφήσεις ποτέ να σε περικυκλώσουν."
+
+msgid "Colpisci da vicino"
+msgstr "Χτύπα από κοντά"
+
+msgid "L'attacco si gira da solo verso il nemico più vicino e colpisce ad arco davanti all'eroe."
+msgstr "Η επίθεση στρέφεται μόνη της προς τον πιο κοντινό εχθρό και χτυπάει σε τόξο μπροστά από τον ήρωα."
+
+msgid "Mossa speciale"
+msgstr "Ειδική κίνηση"
+
+msgid "Ogni eroe ha una seconda mossa, spesso a distanza. Dopo averla usata deve ricaricarsi."
+msgstr "Κάθε ήρωας έχει μια δεύτερη κίνηση, συχνά από απόσταση. Αφού τη χρησιμοποιήσεις, πρέπει να επαναφορτιστεί."
+
+msgid "Respingi i colpi"
+msgstr "Απόκρουσε τις βολές"
+
+msgid "Un colpo da vicino rimanda indietro i proiettili nemici, come il fango e le scariche dei droni."
+msgstr "Ένα χτύπημα από κοντά στέλνει πίσω τα βλήματα των εχθρών, όπως τη λάσπη και τις εκκενώσεις των drone."
+
+msgid "Cuori"
+msgstr "Καρδιές"
+
+msgid "Ogni colpo subito costa un cuore; subito dopo lampeggi e per un attimo sei invulnerabile. Raccogli i cuori nel livello per curarti."
+msgstr "Κάθε χτύπημα που δέχεσαι κοστίζει μια καρδιά· αμέσως μετά αναβοσβήνεις και για λίγο είσαι άτρωτος. Μάζεψε καρδιές στην πίστα για να γιατρευτείς."
+
+msgid "Se perdi tutti i cuori"
+msgstr "Αν χάσεις όλες τις καρδιές"
+
+msgid "Il livello è perso, ma tieni metà delle monete raccolte. Riprova!"
+msgstr "Η πίστα χάνεται, αλλά κρατάς τα μισά νομίσματα που μάζεψες. Ξαναπροσπάθησε!"
+
+msgid "Conosci il nemico"
+msgstr "Γνώρισε τον εχθρό"
+
+msgid "Prima di ogni capitolo ti presentiamo i nuovi nemici. Li ritrovi nel Codex, con un consiglio per batterli."
+msgstr "Πριν από κάθε κεφάλαιο σού παρουσιάζουμε τους νέους εχθρούς. Θα τους βρεις στο Codex, με μια συμβουλή για να τους νικήσεις."
+
+msgid "Gli oggetti"
+msgstr "Τα αντικείμενα"
+
+msgid "Esplora ogni angolo: c'è molto da raccogliere."
+msgstr "Εξερεύνησε κάθε γωνιά: υπάρχουν πολλά να μαζέψεις."
+
+msgid "Monete verdi"
+msgstr "Πράσινα νομίσματα"
+
+msgid "Servono ad aprire i forzieri del livello. Quelle che non spendi diventano monete del negozio a fine livello."
+msgstr "Ανοίγουν τα σεντούκια της πίστας. Όσα δεν ξοδέψεις γίνονται νομίσματα καταστήματος στο τέλος της πίστας."
+
+msgid "Forzieri"
+msgstr "Σεντούκια"
+
+msgid "Toccali con abbastanza monete verdi. Ricompensa a caso: Cura, Eco Rush (20 secondi più veloce e più forte), Tesoro (+100 monete) o Scudo."
+msgstr "Άγγιξέ τα με αρκετά πράσινα νομίσματα. Τυχαία ανταμοιβή: Θεραπεία, Eco Rush (20 δευτερόλεπτα πιο γρήγορος και πιο δυνατός), Θησαυρός (+100 νομίσματα) ή Ασπίδα."
+
+msgid "Casse del riciclo"
+msgstr "Κιβώτια ανακύκλωσης"
+
+msgid "Si aprono al tuo passaggio e liberano 5 monete verdi."
+msgstr "Ανοίγουν καθώς περνάς και αφήνουν 5 πράσινα νομίσματα."
+
+msgid "Piuma"
+msgstr "Φτερό"
+
+msgid "Per qualche secondo corri più veloce."
+msgstr "Για λίγα δευτερόλεπτα τρέχεις πιο γρήγορα."
+
+msgid "Barili che perdono"
+msgstr "Βαρέλια που στάζουν"
+
+msgid "La pozza tossica ti rallenta e ti toglie cuori. Raccogli il barile per metterlo in sicurezza: la pozza si asciuga."
+msgstr "Η τοξική λακκούβα σε επιβραδύνει και σου παίρνει καρδιές. Μάζεψε το βαρέλι για να το ασφαλίσεις: η λακκούβα στεγνώνει."
+
+msgid "Batterie"
+msgstr "Μπαταρίες"
+
+msgid "Compaiono solo quando giochi con ECO-9 e ricaricano la sua energia."
+msgstr "Εμφανίζονται μόνο όταν παίζεις με τον ECO-9 και φορτίζουν την ενέργειά του."
+
+msgid "Stelle e segreti"
+msgstr "Αστέρια και μυστικά"
+
+msgid "Finire un livello è solo l'inizio."
+msgstr "Το να τελειώσεις μια πίστα είναι μόνο η αρχή."
+
+msgid "Tre stelle per livello"
+msgstr "Τρία αστέρια ανά πίστα"
+
+msgid "Una per averlo finito, una per aver raccolto tutti gli oggetti e una per non aver subito danni."
+msgstr "Ένα επειδή την τελείωσες, ένα επειδή μάζεψες όλα τα αντικείμενα και ένα επειδή δεν δέχτηκες ζημιά."
+
+msgid "In ogni capitolo è nascosto un dossier degli Inquinatori: trovalo per scoprire di più sulla storia."
+msgstr "Σε κάθε κεφάλαιο κρύβεται ένας φάκελος των Ρυπαντών: βρες τον για να μάθεις περισσότερα για την ιστορία."
+
+msgid "Missione secondaria"
+msgstr "Δευτερεύουσα αποστολή"
+
+msgid "Ogni capitolo ha anche una missione extra, come aprire tutti i forzieri o finire senza danni. Dà monete in più la prima volta."
+msgstr "Κάθε κεφάλαιο έχει και μια επιπλέον αποστολή, όπως να ανοίξεις όλα τα σεντούκια ή να τελειώσεις χωρίς ζημιά. Δίνει επιπλέον νομίσματα την πρώτη φορά."
+
+msgid "Rompi casse e vasi sospetti: possono nascondere un passaggio verso un portale. Dentro ti aspettano guardiani e una reliquia."
+msgstr "Σπάσε ύποπτα κιβώτια και βάζα: μπορεί να κρύβουν ένα πέρασμα προς μια πύλη. Μέσα σε περιμένουν φύλακες και ένα κειμήλιο."
+
+msgid "Gli eroi"
+msgstr "Οι ήρωες"
+
+msgid "Labra è con te fin dall'inizio. Gli altri eroi si sbloccano nel negozio con le monete."
+msgstr "Ο χαρακτήρας Labra είναι διαθέσιμος από την αρχή. Οι άλλοι ήρωες ξεκλειδώνονται στο κατάστημα με νομίσματα."
+
+msgid "Negozio e modalità"
+msgstr "Κατάστημα και λειτουργίες"
+
+msgid "Le monete che guadagni servono a diventare più forte."
+msgstr "Τα νομίσματα που κερδίζεις σε κάνουν πιο δυνατό."
+
+msgid "Sblocca eroi e Potenziamenti: cuore extra, scarpe veloci, colpo potente, magnete e scudo. Puoi accenderli e spegnerli quando vuoi."
+msgstr "Ξεκλείδωσε ήρωες και Αναβαθμίσεις: επιπλέον καρδιά, γρήγορα παπούτσια, δυνατό χτύπημα, μαγνήτη και ασπίδα. Μπορείς να τις ανάβεις και να τις σβήνεις όποτε θέλεις."
+
+msgid "Rendono i nemici più forti (corazzati, rapidi, colpi pesanti, senza cure), ma ti fanno guadagnare più monete."
+msgstr "Κάνουν τους εχθρούς πιο δυνατούς (θωρακισμένοι, γρήγοροι, βαριά χτυπήματα, χωρίς θεραπεία), αλλά κερδίζεις περισσότερα νομίσματα."
+
+msgid "Ogni giorno un livello con le stesse Sfide per tutti e i potenziamenti spenti. Completala per monete extra e scala la classifica."
+msgstr "Κάθε μέρα μία πίστα με τις ίδιες Προκλήσεις για όλους και τις αναβαθμίσεις σβηστές. Ολοκλήρωσέ την για επιπλέον νομίσματα και ανέβα στην κατάταξη."
+
+msgid "Resisti a ondate infinite di nemici su una mappa già sbloccata. Ogni 10 round arriva un boss: battilo per scegliere un vantaggio permanente."
+msgstr "Άντεξε ατελείωτα κύματα εχθρών σε έναν χάρτη που έχεις ήδη ξεκλειδώσει. Κάθε 10 γύρους έρχεται ένα αφεντικό: νίκησέ το για να διαλέξεις ένα μόνιμο πλεονέκτημα."
+
+msgid "Traguardi, nemici incontrati, dossier, caveau e statistiche: tutto quello che hai scoperto."
+msgstr "Επιτεύγματα, εχθροί που συνάντησες, φάκελοι, θησαυροφυλάκια και στατιστικά: όλα όσα ανακάλυψες."
+
+msgid "Consigli"
+msgstr "Συμβουλές"
+
+msgid "Sei pronto. Ecco qualche trucco per finire in bellezza."
+msgstr "Είσαι έτοιμος. Να μερικά κόλπα για να τα καταφέρεις με στιλ."
+
+msgid "Usa la mappa"
+msgstr "Χρησιμοποίησε τον χάρτη"
+
+msgid "Metti in pausa: la mappa mostra i rifiuti rimasti, i nemici, i forzieri e la strada per il punto di raccolta."
+msgstr "Βάλε παύση: ο χάρτης δείχνει τα σκουπίδια που έμειναν, τους εχθρούς, τα σεντούκια και τον δρόμο για το σημείο συλλογής."
+
+msgid "Tieni d'occhio gli Elite"
+msgstr "Πρόσεχε τους Ελίτ"
+
+msgid "Sono più resistenti e più forti degli altri: tienili a distanza e colpiscili quando si fermano."
+msgstr "Είναι πιο ανθεκτικοί και πιο δυνατοί από τους άλλους: κράτα απόσταση και χτύπα τους όταν σταματούν."
+
+msgid "Pulisci prima i barili"
+msgstr "Καθάρισε πρώτα τα βαρέλια"
+
+msgid "Mettere in sicurezza i barili ti libera la strada e ti evita danni inutili."
+msgstr "Η ασφάλιση των βαρελιών σού ανοίγει τον δρόμο και σε γλιτώνει από άσκοπη ζημιά."
+
+msgid "Spendi bene le monete"
+msgstr "Ξόδεψε σωστά τα νομίσματα"
+
+msgid "Le monete verdi spese nei forzieri non diventano monete del negozio: aprili quando ti serve una mano."
+msgstr "Τα πράσινα νομίσματα που ξοδεύεις σε σεντούκια δεν γίνονται νομίσματα καταστήματος: άνοιξέ τα όταν χρειάζεσαι βοήθεια."
+
+msgid "Rivedi questa guida"
+msgstr "Ξαναδές αυτόν τον οδηγό"
+
+msgid "La trovi sempre nel menu principale e nel menu di pausa."
+msgstr "Θα τον βρίσκεις πάντα στο κύριο μενού και στο μενού παύσης."
+
+msgid "Tastiera e mouse"
+msgstr "Πληκτρολόγιο και ποντίκι"
+
+msgid "Muoviti: %s"
+msgstr "Κίνηση: %s"
+
+msgid "Puoi cambiare i tasti in Opzioni."
+msgstr "Μπορείς να αλλάξεις τα πλήκτρα στις Επιλογές."
+
+msgid "Attacco: %s"
+msgstr "Επίθεση: %s"
+
+msgid "tasto destro del mouse"
+msgstr "δεξί κουμπί του ποντικιού"
+
+
+msgid "Mossa speciale: %s"
+msgstr "Ειδική κίνηση: %s"
+
+msgid "tasto sinistro del mouse"
+msgstr "αριστερό κουμπί του ποντικιού"
+
+msgid "Mira con il puntatore del mouse."
+msgstr "Σημάδεψε με τον δείκτη του ποντικιού."
+
+msgid "Pausa: %s"
+msgstr "Παύση: %s"
+
+msgid "Nel menu di pausa trovi la mappa del livello."
+msgstr "Στο μενού παύσης βρίσκεις τον χάρτη της πίστας."
+
+msgid "Si gioca con due pollici: il sinistro muove l'eroe, il destro combatte."
+msgstr "Παίζεις με δύο αντίχειρες: ο αριστερός κινεί τον ήρωα, ο δεξής πολεμάει."
+
+msgid "L'attacco principale dell'eroe. Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "Η κύρια επίθεση του ήρωα. Με σχεδόν όλους τους ήρωες μπορείς να το κρατάς πατημένο για να συνεχίσεις να χτυπάς."
+
+msgid "Joystick: in basso a sinistra"
+msgstr "Joystick: κάτω αριστερά"
+
+msgid "Appoggia il pollice in un punto qualsiasi della parte bassa a sinistra dello schermo: il joystick compare sotto il dito. Trascina per muoverti, lascia per fermarti."
+msgstr "Ακούμπησε τον αντίχειρα οπουδήποτε κάτω αριστερά στην οθόνη: το joystick εμφανίζεται κάτω από το δάχτυλο. Σύρε για να κινηθείς, άφησε για να σταματήσεις."
+
+msgid "Attacco: il pulsante grande"
+msgstr "Επίθεση: το μεγάλο κουμπί"
+
+msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO... Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "Το όνομά του αλλάζει ανάλογα με τον ήρωα: ΕΠΙΘΕΣΗ, ΦΙΛΤΡΟ, ΓΡΟΘΙΑ... Με σχεδόν όλους τους ήρωες μπορείς να το κρατάς πατημένο για να συνεχίσεις να χτυπάς."
+
+msgid "Mossa speciale: il pulsante piccolo"
+msgstr "Ειδική κίνηση: το μικρό κουμπί"
+
+msgid "Mira da sola verso il nemico più vicino. L'ombra scura che gira sul pulsante indica che si sta ricaricando."
+msgstr "Σημαδεύει μόνη της τον πιο κοντινό εχθρό. Η σκοτεινή σκιά που γυρίζει πάνω στο κουμπί δείχνει ότι επαναφορτίζεται."
+
+msgid "Pausa: in alto a destra"
+msgstr "Παύση: πάνω δεξιά"
+
+msgid "Nel menu di pausa trovi la mappa del livello e questa guida."
+msgstr "Στο μενού παύσης βρίσκεις τον χάρτη της πίστας και αυτόν τον οδηγό."
+
+msgid "Usa più dita insieme"
+msgstr "Χρησιμοποίησε πολλά δάχτυλα μαζί"
+
+msgid "Puoi correre e attaccare nello stesso momento: tieni il pollice sinistro sul joystick mentre premi i pulsanti."
+msgstr "Μπορείς να τρέχεις και να επιτίθεσαι ταυτόχρονα: κράτα τον αριστερό αντίχειρα στο joystick ενώ πατάς τα κουμπιά."
+
+msgid "In alto: cuori e obiettivo"
+msgstr "Πάνω: καρδιές και στόχος"
+
+msgid "In alto a sinistra ci sono i tuoi cuori, al centro i rifiuti e i nemici che ti mancano. Tieni i pollici in basso per non coprirli."
+msgstr "Πάνω αριστερά είναι οι καρδιές σου και στο κέντρο τα σκουπίδια και οι εχθροί που σου λείπουν. Κράτα τους αντίχειρες χαμηλά για να μην τα κρύβεις."
+
+msgid "Scorri per cambiare pagina"
+msgstr "Σύρε για να αλλάξεις σελίδα"
