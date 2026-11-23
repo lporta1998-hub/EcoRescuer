@@ -1716,8 +1716,6 @@ msgstr "Ataque: %s"
 msgid "tasto destro del mouse"
 msgstr "botón derecho del ratón"
 
-msgid "L'attacco principale dell'eroe. Tienilo premuto per continuare a colpire."
-msgstr "El ataque principal del héroe. Mantenlo pulsado para seguir golpeando."
 
 msgid "Mossa speciale: %s"
 msgstr "Movimiento especial: %s"
@@ -1734,26 +1732,47 @@ msgstr "Pausa: %s"
 msgid "Nel menu di pausa trovi la mappa del livello."
 msgstr "En el menú de pausa encontrarás el mapa del nivel."
 
-msgid "Touch screen"
-msgstr "Pantalla táctil"
+msgid "Si gioca con due pollici: il sinistro muove l'eroe, il destro combatte."
+msgstr "Se juega con dos pulgares: el izquierdo mueve al héroe, el derecho combate."
 
-msgid "Muoviti: joystick"
-msgstr "Moverse: joystick"
+msgid "L'attacco principale dell'eroe. Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "El ataque principal del héroe. Con casi todos los héroes puedes mantenerlo pulsado para seguir golpeando."
 
-msgid "Appoggia il dito in un punto qualsiasi della metà sinistra dello schermo e trascina."
-msgstr "Apoya el dedo en cualquier punto de la mitad izquierda de la pantalla y arrastra."
+msgid "Joystick: in basso a sinistra"
+msgstr "Joystick: abajo a la izquierda"
 
-msgid "Attacco: pulsante grande in basso a destra"
-msgstr "Ataque: botón grande abajo a la derecha"
+msgid "Appoggia il pollice in un punto qualsiasi della parte bassa a sinistra dello schermo: il joystick compare sotto il dito. Trascina per muoverti, lascia per fermarti."
+msgstr "Apoya el pulgar en cualquier punto de la parte inferior izquierda de la pantalla: el joystick aparece bajo el dedo. Arrastra para moverte, suelta para pararte."
 
-msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO..."
-msgstr "Su nombre cambia según el héroe: ATACAR, POCIÓN, PUÑO..."
+msgid "Attacco: il pulsante grande"
+msgstr "Ataque: el botón grande"
 
-msgid "Mossa speciale: secondo pulsante"
-msgstr "Movimiento especial: segundo botón"
+msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO... Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "Su nombre cambia según el héroe: ATACAR, POCIÓN, PUÑO... Con casi todos los héroes puedes mantenerlo pulsado para seguir golpeando."
 
-msgid "Mira da sola verso il nemico più vicino. L'ombra scura sul pulsante indica la ricarica."
-msgstr "Apunta sola al enemigo más cercano. La sombra oscura en el botón indica la recarga."
+msgid "Mossa speciale: il pulsante piccolo"
+msgstr "Movimiento especial: el botón pequeño"
 
-msgid "Pausa: pulsante in alto a destra"
-msgstr "Pausa: botón arriba a la derecha"
+msgid "Mira da sola verso il nemico più vicino. L'ombra scura che gira sul pulsante indica che si sta ricaricando."
+msgstr "Apunta sola al enemigo más cercano. La sombra oscura que gira sobre el botón indica que se está recargando."
+
+msgid "Pausa: in alto a destra"
+msgstr "Pausa: arriba a la derecha"
+
+msgid "Nel menu di pausa trovi la mappa del livello e questa guida."
+msgstr "En el menú de pausa encontrarás el mapa del nivel y esta guía."
+
+msgid "Usa più dita insieme"
+msgstr "Usa varios dedos a la vez"
+
+msgid "Puoi correre e attaccare nello stesso momento: tieni il pollice sinistro sul joystick mentre premi i pulsanti."
+msgstr "Puedes correr y atacar a la vez: mantén el pulgar izquierdo en el joystick mientras pulsas los botones."
+
+msgid "In alto: cuori e obiettivo"
+msgstr "Arriba: corazones y objetivo"
+
+msgid "In alto a sinistra ci sono i tuoi cuori, al centro i rifiuti e i nemici che ti mancano. Tieni i pollici in basso per non coprirli."
+msgstr "Arriba a la izquierda están tus corazones y en el centro la basura y los enemigos que te faltan. Mantén los pulgares abajo para no taparlos."
+
+msgid "Scorri per cambiare pagina"
+msgstr "Desliza para cambiar de página"

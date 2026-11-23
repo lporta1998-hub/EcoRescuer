@@ -1716,8 +1716,6 @@ msgstr "Attack: %s"
 msgid "tasto destro del mouse"
 msgstr "right mouse button"
 
-msgid "L'attacco principale dell'eroe. Tienilo premuto per continuare a colpire."
-msgstr "Your hero's main attack. Hold it to keep hitting."
 
 msgid "Mossa speciale: %s"
 msgstr "Special move: %s"
@@ -1734,26 +1732,47 @@ msgstr "Pause: %s"
 msgid "Nel menu di pausa trovi la mappa del livello."
 msgstr "The pause menu shows the level map."
 
-msgid "Touch screen"
-msgstr "Touch screen"
+msgid "Si gioca con due pollici: il sinistro muove l'eroe, il destro combatte."
+msgstr "You play with two thumbs: the left one moves your hero, the right one fights."
 
-msgid "Muoviti: joystick"
-msgstr "Move: joystick"
+msgid "L'attacco principale dell'eroe. Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "Your hero's main attack. With almost every hero you can hold it to keep hitting."
 
-msgid "Appoggia il dito in un punto qualsiasi della metà sinistra dello schermo e trascina."
-msgstr "Put your finger anywhere on the left half of the screen and drag."
+msgid "Joystick: in basso a sinistra"
+msgstr "Joystick: bottom left"
 
-msgid "Attacco: pulsante grande in basso a destra"
-msgstr "Attack: big button at the bottom right"
+msgid "Appoggia il pollice in un punto qualsiasi della parte bassa a sinistra dello schermo: il joystick compare sotto il dito. Trascina per muoverti, lascia per fermarti."
+msgstr "Put your thumb anywhere on the lower left of the screen: the joystick appears under your finger. Drag to move, let go to stop."
 
-msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO..."
-msgstr "Its name depends on the hero: ATTACK, POTION, PUNCH..."
+msgid "Attacco: il pulsante grande"
+msgstr "Attack: the big button"
 
-msgid "Mossa speciale: secondo pulsante"
-msgstr "Special move: second button"
+msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO... Con quasi tutti gli eroi puoi tenerlo premuto per continuare a colpire."
+msgstr "Its name depends on the hero: ATTACK, POTION, PUNCH... With almost every hero you can hold it to keep hitting."
 
-msgid "Mira da sola verso il nemico più vicino. L'ombra scura sul pulsante indica la ricarica."
-msgstr "It aims at the nearest enemy by itself. The dark shade on the button shows the recharge."
+msgid "Mossa speciale: il pulsante piccolo"
+msgstr "Special move: the small button"
 
-msgid "Pausa: pulsante in alto a destra"
-msgstr "Pause: button at the top right"
+msgid "Mira da sola verso il nemico più vicino. L'ombra scura che gira sul pulsante indica che si sta ricaricando."
+msgstr "It aims at the nearest enemy by itself. The dark shade sweeping round the button means it's recharging."
+
+msgid "Pausa: in alto a destra"
+msgstr "Pause: top right"
+
+msgid "Nel menu di pausa trovi la mappa del livello e questa guida."
+msgstr "The pause menu has the level map and this guide."
+
+msgid "Usa più dita insieme"
+msgstr "Use several fingers at once"
+
+msgid "Puoi correre e attaccare nello stesso momento: tieni il pollice sinistro sul joystick mentre premi i pulsanti."
+msgstr "You can run and attack at the same time: keep your left thumb on the joystick while you press the buttons."
+
+msgid "In alto: cuori e obiettivo"
+msgstr "At the top: hearts and goal"
+
+msgid "In alto a sinistra ci sono i tuoi cuori, al centro i rifiuti e i nemici che ti mancano. Tieni i pollici in basso per non coprirli."
+msgstr "Your hearts are at the top left, and the trash and enemies still to go are in the middle. Keep your thumbs low so you don't cover them."
+
+msgid "Scorri per cambiare pagina"
+msgstr "Swipe to turn the page"
