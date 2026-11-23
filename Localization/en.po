@@ -1455,3 +1455,305 @@ msgstr "Unassigned"
 msgid "Automatico"
 msgstr "Automatic"
 
+
+# --- Come si gioca (Menu/Tutorial/tutorial.gd) ---
+
+msgid "Come si gioca"
+msgstr "How to play"
+
+msgid "Come si gioca  ·  %d / %d"
+msgstr "How to play  ·  %d / %d"
+
+msgid "Chiudi"
+msgstr "Close"
+
+msgid "Ho capito!"
+msgstr "Got it!"
+
+msgid "%d monete"
+msgstr "%d coins"
+
+msgid "ATTACCA: combo da vicino.  LATTINA: lancia una lattina riciclata che torna indietro come un boomerang."
+msgstr "ATTACK: close-range combo.  CAN: throws a recycled can that comes back like a boomerang."
+
+msgid "ATTACCA: colpo da vicino.  TIRA: scocca una freccia per colpire da lontano."
+msgstr "ATTACK: close-range hit.  SHOOT: fires an arrow to hit from afar."
+
+msgid "ATTACCA: fendente ampio che pulisce l'area.  ZAP: una scarica che salta da un nemico all'altro."
+msgstr "ATTACK: a wide slash that clears the area.  ZAP: a bolt that jumps from one enemy to the next."
+
+msgid "ATTACCA: colpo da vicino.  FRANA: onda d'urto a terra con una pioggia di rocce. Ha 4 cuori."
+msgstr "ATTACK: close-range hit.  ROCKSLIDE: a ground shockwave with a shower of rocks. Has 4 hearts."
+
+msgid "POZIONE: lancia pozioni a danno doppio.  BASTONE: colpo da vicino che rompe vasi e casse e respinge i colpi. Solo 2 cuori."
+msgstr "POTION: throws potions that deal double damage.  STAFF: a close-range hit that breaks vases and crates and bats back shots. Only 2 hearts."
+
+msgid "PUGNO: pugni pesanti.  SEMI: una raffica di semi a ventaglio. 4 cuori, ma è lento e il veleno lo ferisce il doppio."
+msgstr "PUNCH: heavy punches.  SEEDS: a fan-shaped burst of seeds. 4 hearts, but he's slow and poison hurts him twice as much."
+
+msgid "COLPO: forza enorme.  LASER: raggio che trapassa i nemici e consuma energia. Niente cuori: l'energia cala col tempo, ricaricala con le batterie."
+msgstr "STRIKE: huge strength.  LASER: a beam that pierces enemies and uses energy. No hearts: energy drains over time, recharge it with batteries."
+
+msgid "L'obiettivo"
+msgstr "The goal"
+
+msgid "Gli Inquinatori stanno riempiendo l'isola di rifiuti. In ogni livello il tuo compito è ripulirla."
+msgstr "The Polluters are filling the island with trash. In every level, your job is to clean it up."
+
+msgid "Raccogli i sacchi di rifiuti"
+msgstr "Collect the trash bags"
+
+msgid "Passaci sopra per raccoglierli. In alto al centro vedi quanti te ne mancano."
+msgstr "Walk over them to pick them up. The top of the screen shows how many are left."
+
+msgid "Sconfiggi gli Inquinatori"
+msgstr "Defeat the Polluters"
+
+msgid "In alcuni livelli devi anche sconfiggere un certo numero di nemici: il contatore in alto te lo ricorda."
+msgstr "In some levels you also have to defeat a number of enemies: the counter at the top keeps track."
+
+msgid "Vai al punto di raccolta"
+msgstr "Go to the collection point"
+
+msgid "Quando l'obiettivo è completo il punto di raccolta si apre e una freccia accanto all'eroe ti mostra la strada, anche attraverso i teletrasporti. Entraci per finire il livello."
+msgstr "When the goal is complete the collection point opens and an arrow next to your hero shows the way, even through teleports. Walk in to finish the level."
+
+msgid "Avanza nella storia"
+msgstr "Move the story forward"
+
+msgid "Ogni livello completato sblocca il capitolo successivo."
+msgstr "Every level you complete unlocks the next chapter."
+
+msgid "I comandi"
+msgstr "Controls"
+
+msgid "Muovi l'eroe, attacca e usa la sua mossa speciale."
+msgstr "Move your hero, attack and use their special move."
+
+msgid "Combattere"
+msgstr "Fighting"
+
+msgid "Colpisci e allontanati: non farti mai circondare."
+msgstr "Hit and back off: never let them surround you."
+
+msgid "Colpisci da vicino"
+msgstr "Hit up close"
+
+msgid "L'attacco si gira da solo verso il nemico più vicino e colpisce ad arco davanti all'eroe."
+msgstr "Your attack turns toward the nearest enemy by itself and hits in an arc in front of your hero."
+
+msgid "Mossa speciale"
+msgstr "Special move"
+
+msgid "Ogni eroe ha una seconda mossa, spesso a distanza. Dopo averla usata deve ricaricarsi."
+msgstr "Every hero has a second move, often a ranged one. After using it, it needs to recharge."
+
+msgid "Respingi i colpi"
+msgstr "Bat back shots"
+
+msgid "Un colpo da vicino rimanda indietro i proiettili nemici, come il fango e le scariche dei droni."
+msgstr "A close-range hit sends enemy projectiles back, like sludge and drone bolts."
+
+msgid "Cuori"
+msgstr "Hearts"
+
+msgid "Ogni colpo subito costa un cuore; subito dopo lampeggi e per un attimo sei invulnerabile. Raccogli i cuori nel livello per curarti."
+msgstr "Every hit you take costs a heart; right after, you blink and are invulnerable for a moment. Pick up hearts in the level to heal."
+
+msgid "Se perdi tutti i cuori"
+msgstr "If you lose all your hearts"
+
+msgid "Il livello è perso, ma tieni metà delle monete raccolte. Riprova!"
+msgstr "The level is lost, but you keep half of the coins you collected. Try again!"
+
+msgid "Conosci il nemico"
+msgstr "Know your enemy"
+
+msgid "Prima di ogni capitolo ti presentiamo i nuovi nemici. Li ritrovi nel Codex, con un consiglio per batterli."
+msgstr "Before each chapter we introduce the new enemies. You'll find them in the Codex, with a tip to beat them."
+
+msgid "Gli oggetti"
+msgstr "Items"
+
+msgid "Esplora ogni angolo: c'è molto da raccogliere."
+msgstr "Explore every corner: there's a lot to pick up."
+
+msgid "Monete verdi"
+msgstr "Green coins"
+
+msgid "Servono ad aprire i forzieri del livello. Quelle che non spendi diventano monete del negozio a fine livello."
+msgstr "They open the level's chests. The ones you don't spend become shop coins at the end of the level."
+
+msgid "Forzieri"
+msgstr "Chests"
+
+msgid "Toccali con abbastanza monete verdi. Ricompensa a caso: Cura, Eco Rush (20 secondi più veloce e più forte), Tesoro (+100 monete) o Scudo."
+msgstr "Touch them with enough green coins. Random reward: Heal, Eco Rush (20 seconds faster and stronger), Treasure (+100 coins) or Shield."
+
+msgid "Casse del riciclo"
+msgstr "Recycling crates"
+
+msgid "Si aprono al tuo passaggio e liberano 5 monete verdi."
+msgstr "They open as you walk by and release 5 green coins."
+
+msgid "Piuma"
+msgstr "Feather"
+
+msgid "Per qualche secondo corri più veloce."
+msgstr "You run faster for a few seconds."
+
+msgid "Barili che perdono"
+msgstr "Leaking barrels"
+
+msgid "La pozza tossica ti rallenta e ti toglie cuori. Raccogli il barile per metterlo in sicurezza: la pozza si asciuga."
+msgstr "The toxic puddle slows you down and takes your hearts. Pick up the barrel to secure it: the puddle dries up."
+
+msgid "Batterie"
+msgstr "Batteries"
+
+msgid "Compaiono solo quando giochi con ECO-9 e ricaricano la sua energia."
+msgstr "They only appear when you play as ECO-9 and recharge its energy."
+
+msgid "Stelle e segreti"
+msgstr "Stars and secrets"
+
+msgid "Finire un livello è solo l'inizio."
+msgstr "Finishing a level is just the beginning."
+
+msgid "Tre stelle per livello"
+msgstr "Three stars per level"
+
+msgid "Una per averlo finito, una per aver raccolto tutti gli oggetti e una per non aver subito danni."
+msgstr "One for finishing it, one for collecting every item and one for taking no damage."
+
+msgid "In ogni capitolo è nascosto un dossier degli Inquinatori: trovalo per scoprire di più sulla storia."
+msgstr "Every chapter hides a Polluter dossier: find it to learn more about the story."
+
+msgid "Missione secondaria"
+msgstr "Side quest"
+
+msgid "Ogni capitolo ha anche una missione extra, come aprire tutti i forzieri o finire senza danni. Dà monete in più la prima volta."
+msgstr "Every chapter also has an extra quest, like opening every chest or finishing without damage. It pays extra coins the first time."
+
+msgid "Rompi casse e vasi sospetti: possono nascondere un passaggio verso un portale. Dentro ti aspettano guardiani e una reliquia."
+msgstr "Break suspicious crates and vases: they can hide a passage to a portal. Inside, guards and a relic await you."
+
+msgid "Gli eroi"
+msgstr "The heroes"
+
+msgid "Labra è con te fin dall'inizio. Gli altri eroi si sbloccano nel negozio con le monete."
+msgstr "Labra is with you from the start. The other heroes are unlocked in the shop with coins."
+
+msgid "Negozio e modalità"
+msgstr "Shop and modes"
+
+msgid "Le monete che guadagni servono a diventare più forte."
+msgstr "The coins you earn make you stronger."
+
+msgid "Sblocca eroi e Potenziamenti: cuore extra, scarpe veloci, colpo potente, magnete e scudo. Puoi accenderli e spegnerli quando vuoi."
+msgstr "Unlock heroes and Upgrades: extra heart, swift shoes, power strike, magnet and shield. You can switch them on and off whenever you like."
+
+msgid "Rendono i nemici più forti (corazzati, rapidi, colpi pesanti, senza cure), ma ti fanno guadagnare più monete."
+msgstr "They make enemies stronger (armored, fast, heavy hits, no healing), but you earn more coins."
+
+msgid "Ogni giorno un livello con le stesse Sfide per tutti e i potenziamenti spenti. Completala per monete extra e scala la classifica."
+msgstr "Every day, one level with the same Challenges for everyone and upgrades switched off. Complete it for extra coins and climb the leaderboard."
+
+msgid "Resisti a ondate infinite di nemici su una mappa già sbloccata. Ogni 10 round arriva un boss: battilo per scegliere un vantaggio permanente."
+msgstr "Survive endless waves of enemies on a map you've already unlocked. Every 10 rounds a boss shows up: beat it to pick a permanent perk."
+
+msgid "Traguardi, nemici incontrati, dossier, caveau e statistiche: tutto quello che hai scoperto."
+msgstr "Achievements, enemies met, dossiers, vaults and stats: everything you've discovered."
+
+msgid "Consigli"
+msgstr "Tips"
+
+msgid "Sei pronto. Ecco qualche trucco per finire in bellezza."
+msgstr "You're ready. Here are a few tricks to finish in style."
+
+msgid "Usa la mappa"
+msgstr "Use the map"
+
+msgid "Metti in pausa: la mappa mostra i rifiuti rimasti, i nemici, i forzieri e la strada per il punto di raccolta."
+msgstr "Pause the game: the map shows the trash left, the enemies, the chests and the way to the collection point."
+
+msgid "Tieni d'occhio gli Elite"
+msgstr "Watch out for Elites"
+
+msgid "Sono più resistenti e più forti degli altri: tienili a distanza e colpiscili quando si fermano."
+msgstr "They're tougher and stronger than the others: keep your distance and hit them when they stop."
+
+msgid "Pulisci prima i barili"
+msgstr "Clear the barrels first"
+
+msgid "Mettere in sicurezza i barili ti libera la strada e ti evita danni inutili."
+msgstr "Securing the barrels clears your path and saves you needless damage."
+
+msgid "Spendi bene le monete"
+msgstr "Spend your coins wisely"
+
+msgid "Le monete verdi spese nei forzieri non diventano monete del negozio: aprili quando ti serve una mano."
+msgstr "Green coins spent on chests don't become shop coins: open them when you need a hand."
+
+msgid "Rivedi questa guida"
+msgstr "Read this guide again"
+
+msgid "La trovi sempre nel menu principale e nel menu di pausa."
+msgstr "You'll always find it in the main menu and the pause menu."
+
+msgid "Tastiera e mouse"
+msgstr "Keyboard and mouse"
+
+msgid "Muoviti: %s"
+msgstr "Move: %s"
+
+msgid "Puoi cambiare i tasti in Opzioni."
+msgstr "You can change the keys in Options."
+
+msgid "Attacco: %s"
+msgstr "Attack: %s"
+
+msgid "tasto destro del mouse"
+msgstr "right mouse button"
+
+msgid "L'attacco principale dell'eroe. Tienilo premuto per continuare a colpire."
+msgstr "Your hero's main attack. Hold it to keep hitting."
+
+msgid "Mossa speciale: %s"
+msgstr "Special move: %s"
+
+msgid "tasto sinistro del mouse"
+msgstr "left mouse button"
+
+msgid "Mira con il puntatore del mouse."
+msgstr "Aim with the mouse pointer."
+
+msgid "Pausa: %s"
+msgstr "Pause: %s"
+
+msgid "Nel menu di pausa trovi la mappa del livello."
+msgstr "The pause menu shows the level map."
+
+msgid "Touch screen"
+msgstr "Touch screen"
+
+msgid "Muoviti: joystick"
+msgstr "Move: joystick"
+
+msgid "Appoggia il dito in un punto qualsiasi della metà sinistra dello schermo e trascina."
+msgstr "Put your finger anywhere on the left half of the screen and drag."
+
+msgid "Attacco: pulsante grande in basso a destra"
+msgstr "Attack: big button at the bottom right"
+
+msgid "Il nome cambia in base all'eroe: ATTACCA, POZIONE, PUGNO..."
+msgstr "Its name depends on the hero: ATTACK, POTION, PUNCH..."
+
+msgid "Mossa speciale: secondo pulsante"
+msgstr "Special move: second button"
+
+msgid "Mira da sola verso il nemico più vicino. L'ombra scura sul pulsante indica la ricarica."
+msgstr "It aims at the nearest enemy by itself. The dark shade on the button shows the recharge."
+
+msgid "Pausa: pulsante in alto a destra"
+msgstr "Pause: button at the top right"
