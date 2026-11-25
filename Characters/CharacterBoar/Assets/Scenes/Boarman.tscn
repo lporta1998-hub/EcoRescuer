@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=3 uid="uid://c4xbepnf38ypi"]
 
-[ext_resource type="Script" uid="uid://ct6o87ijx7n7j" path="res://Characters/CharacterBoar/Assets/Scripts/Boarman.gd" id="1_0cax3"]
-[ext_resource type="Texture2D" uid="uid://bwlap4nsimf2t" path="res://Characters/CharacterBoar/Assets/Sprites/boar-character.png" id="2_3mnal"]
+[ext_resource type="Script" uid="uid://5j10a80lus2x" path="res://Characters/CharacterBoar/Assets/Scripts/Boarman.gd" id="1_0cax3"]
+[ext_resource type="Texture2D" uid="uid://d2b0otqthchj5" path="res://Characters/CharacterBoar/Assets/Sprites/boar-character.png" id="2_3mnal"]
 [ext_resource type="AudioStream" uid="uid://dccylxa3o4gbr" path="res://Audio/SFX/Steps/Step_wood.wav" id="4_8crgu"]
 [ext_resource type="PackedScene" uid="uid://b7ks55wljd6e1" path="res://Misc/Character/Scenes/heartsContainer.tscn" id="4_hdke0"]
 

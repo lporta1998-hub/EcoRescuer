@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bs800qfph6ara"]
 
-[ext_resource type="Script" uid="uid://dvvoacs7p5ajj" path="res://Levels/Ai DataCenter_level/Assets/Scripts/bullet.gd" id="1_vnvo5"]
+[ext_resource type="Script" uid="uid://i7k8iglbnjbf" path="res://Levels/Ai DataCenter_level/Assets/Scripts/bullet.gd" id="1_vnvo5"]
 [ext_resource type="Texture2D" path="res://Misc/FX/plasma.png" id="fx_plasma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iv1d7"]

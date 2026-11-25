@@ -1,8 +1,8 @@
 @tool
 extends Node2D
 
-const ScoreItem = preload("res://addons/silent_wolf/Scores/ScoreItem.tscn")
-const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
+const ScoreItem = preload("res://silent_wolf/Scores/ScoreItem.tscn")
+const SWLogger = preload("res://silent_wolf/utils/SWLogger.gd")
 
 var list_index = 0
 var ld_name = "main"

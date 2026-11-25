@@ -1452,9 +1452,6 @@ msgstr "Dossiers"
 msgid "Unassigned"
 msgstr "Unassigned"
 
-msgid "Automatico"
-msgstr "Automatic"
-
 
 # --- Come si gioca (Menu/Tutorial/tutorial.gd) ---
 

@@ -11,7 +11,7 @@ var mp_player_name = ""
 func _ready():
 	mp_ws_ready = false
 	mp_session_started = false
-	var ws_client_script = load("res://addons/silent_wolf/Multiplayer/ws/WSClient.gd")
+	var ws_client_script = load("res://silent_wolf/Multiplayer/ws/WSClient.gd")
 	WSClient.set_script(ws_client_script)
 	add_child(WSClient)
 

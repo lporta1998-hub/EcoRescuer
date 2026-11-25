@@ -1,9 +1,9 @@
 [gd_scene load_steps=94 format=3 uid="uid://cvptmv7bksle0"]
 
-[ext_resource type="Script" uid="uid://ccptpuspwdv2u" path="res://Characters/CharacterLabra/Assets/Scripts/Labra.gd" id="1_57my3"]
-[ext_resource type="Texture2D" uid="uid://c6tltmyy0wvw3" path="res://Characters/CharacterLabra/Assets/Sprites/Labra.png" id="2_57my3"]
-[ext_resource type="Texture2D" uid="uid://d4fpcifdyn0fc" path="res://Characters/CharacterLabra/Assets/Sprites/Labra_attacks.png" id="2_x5gd4"]
-[ext_resource type="Texture2D" uid="uid://1me6fnrb7e5u" path="res://Characters/CharacterLabra/Assets/Sprites/LabraDeath.png" id="3_0dkl5"]
+[ext_resource type="Script" uid="uid://dt6gicy82fm0w" path="res://Characters/CharacterLabra/Assets/Scripts/Labra.gd" id="1_57my3"]
+[ext_resource type="Texture2D" uid="uid://ciya34x51qryf" path="res://Characters/CharacterLabra/Assets/Sprites/Labra.png" id="2_57my3"]
+[ext_resource type="Texture2D" uid="uid://dao45hwhnp6tc" path="res://Characters/CharacterLabra/Assets/Sprites/Labra_attacks.png" id="2_x5gd4"]
+[ext_resource type="Texture2D" uid="uid://dy3k76bu4orry" path="res://Characters/CharacterLabra/Assets/Sprites/LabraDeath.png" id="3_0dkl5"]
 [ext_resource type="PackedScene" uid="uid://b7ks55wljd6e1" path="res://Misc/Character/Scenes/heartsContainer.tscn" id="3_ltfva"]
 [ext_resource type="AudioStream" uid="uid://coidn4mkjx8t6" path="res://Audio/SFX/Steps/Step_rock.wav" id="4_10jca"]
 

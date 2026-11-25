@@ -1452,9 +1452,6 @@ msgstr "Φάκελοι"
 msgid "Unassigned"
 msgstr "Χωρίς ανάθεση"
 
-msgid "Automatico"
-msgstr "Αυτόματα"
-
 
 # --- Come si gioca (Menu/Tutorial/tutorial.gd) ---
 

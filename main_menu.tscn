@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3p4nqksuogc5"]
 
 [ext_resource type="FontFile" uid="uid://d2wn0k7lg5g7h" path="res://Menu/Font/Bleeding_Cowboys.ttf" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://cnbdxkxvdwk4x" path="res://Menu/Code/main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://csoikkl2dsyxx" path="res://Menu/Code/main_menu.gd" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="2_glbon"]
 [ext_resource type="PackedScene" uid="uid://2xe404d13xh0" path="res://Menu/Scenes/fade_transition.tscn" id="3_fu7sn"]
 [ext_resource type="PackedScene" uid="uid://dqn36130s80in" path="res://Menu/PopUp menu/popup_menu.tscn" id="5_glbon"]

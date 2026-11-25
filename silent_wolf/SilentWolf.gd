@@ -48,7 +48,7 @@ var auth_config = {
 var auth_script = load("res://silent_wolf/Auth/Auth.gd")
 var scores_script = load("res://silent_wolf/Scores/Scores.gd")
 var players_script = load("res://silent_wolf/Players/Players.gd")
-#var multiplayer_script = load("res://addons/silent_wolf/Multiplayer/Multiplayer.gd")
+#var multiplayer_script = load("res://silent_wolf/Multiplayer/Multiplayer.gd")
 
 
 func _init():
@@ -68,6 +68,13 @@ func _ready():
     #Multiplayer.set_script(multiplayer_script)
     #add_child(Multiplayer)
     print("SW ready end timestamp: " + str(SWUtils.get_timestamp()))
+
+
+# Multiplayer is never added as a child (see the commented lines in _ready),
+# so the tree won't free it: do it here or it leaks at exit.
+func _exit_tree():
+    if is_instance_valid(Multiplayer) and not Multiplayer.is_inside_tree():
+        Multiplayer.free()
 
 
 func configure(json_config):

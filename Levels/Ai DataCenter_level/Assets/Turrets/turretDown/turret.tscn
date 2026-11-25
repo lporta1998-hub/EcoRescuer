@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://udqnpg32gfw7"]
 
-[ext_resource type="Script" uid="uid://bnbsbjopfx2ib" path="res://Levels/Ai DataCenter_level/Assets/Scripts/turret.gd" id="1_a6hwx"]
+[ext_resource type="Script" uid="uid://dkbgy3vaamtbd" path="res://Levels/Ai DataCenter_level/Assets/Scripts/turret.gd" id="1_a6hwx"]
 [ext_resource type="Texture2D" path="res://Levels/Ai DataCenter_level/Assets/Turrets/turret_down.png" id="3_a6hwx"]
 [ext_resource type="PackedScene" uid="uid://bs800qfph6ara" path="res://Levels/Ai DataCenter_level/Assets/Bullets/bulletDown/Bullet.tscn" id="4_p2sc1"]
 

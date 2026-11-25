@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://silent_wolf/Scores/Leaderboard.tscn" id="2"]
-[ext_resource type="Script" uid="uid://chg58yrm4ye6b" path="res://Menu/Code/leaderboard_page.gd" id="3"]
+[ext_resource type="Script" uid="uid://dwk53suvcv4x6" path="res://Menu/Code/leaderboard_page.gd" id="3"]
 
 [node name="LeaderboardPage" type="CanvasLayer"]
 script = ExtResource("3")

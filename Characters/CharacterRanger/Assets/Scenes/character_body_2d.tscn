@@ -1,12 +1,12 @@
 [gd_scene load_steps=113 format=3 uid="uid://vf8urp3i2wld"]
 
-[ext_resource type="Script" uid="uid://ddmcra5gbtyqh" path="res://Characters/CharacterRanger/Assets/Scripts/RangerController.gd" id="1_d3mq7"]
+[ext_resource type="Script" uid="uid://cudipr0yyrbpc" path="res://Characters/CharacterRanger/Assets/Scripts/RangerController.gd" id="1_d3mq7"]
 [ext_resource type="Resource" uid="uid://dt01t2rg6s5iu" path="res://Resources/Weapons/MagicBow.tres" id="2_ji02v"]
-[ext_resource type="Texture2D" uid="uid://nsek0s1b15na" path="res://Characters/CharacterRanger/Assets/Sprites/shoot.png" id="3_5tlrc"]
-[ext_resource type="Texture2D" uid="uid://be8eainu273j0" path="res://Characters/CharacterRanger/Assets/Sprites/RangerRun.png" id="3_ji02v"]
-[ext_resource type="Texture2D" uid="uid://c7opy31xtf122" path="res://Characters/CharacterRanger/Assets/Sprites/RangerIdle.png" id="3_kj54l"]
-[ext_resource type="Texture2D" uid="uid://o1dmdbdh6b05" path="res://Characters/CharacterRanger/Assets/Sprites/character-spritesheet (2).png" id="3_nhubv"]
-[ext_resource type="Texture2D" uid="uid://b23suybo4ddne" path="res://Characters/CharacterRanger/Assets/Sprites/hurt.png" id="4_hcmnc"]
+[ext_resource type="Texture2D" uid="uid://col3esfcderkw" path="res://Characters/CharacterRanger/Assets/Sprites/shoot.png" id="3_5tlrc"]
+[ext_resource type="Texture2D" uid="uid://3ahty24ko0fl" path="res://Characters/CharacterRanger/Assets/Sprites/RangerRun.png" id="3_ji02v"]
+[ext_resource type="Texture2D" uid="uid://d1encsx4o2d5y" path="res://Characters/CharacterRanger/Assets/Sprites/RangerIdle.png" id="3_kj54l"]
+[ext_resource type="Texture2D" uid="uid://4eq15x1iv4id" path="res://Characters/CharacterRanger/Assets/Sprites/character-spritesheet (2).png" id="3_nhubv"]
+[ext_resource type="Texture2D" uid="uid://bm76gfwk4a0ns" path="res://Characters/CharacterRanger/Assets/Sprites/hurt.png" id="4_hcmnc"]
 [ext_resource type="PackedScene" uid="uid://b7ks55wljd6e1" path="res://Misc/Character/Scenes/heartsContainer.tscn" id="4_wxxay"]
 [ext_resource type="AudioStream" uid="uid://cot4nqa8qew77" path="res://Audio/SFX/Steps/Step_grass.wav" id="8_nhubv"]
 

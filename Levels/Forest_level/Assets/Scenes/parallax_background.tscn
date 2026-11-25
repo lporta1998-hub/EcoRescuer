@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cm41tke3auj0"]
 
-[ext_resource type="Script" uid="uid://c1qw6hs17ike5" path="res://Levels/Forest_level/Assets/Scripts/parallax_background.gd" id="1_c5xak"]
-[ext_resource type="Shader" uid="uid://cnkkiy148atir" path="res://Levels/Forest_level/Assets/Shader/fog.gdshader" id="1_iuml3"]
+[ext_resource type="Script" uid="uid://gxfkmxsypsjw" path="res://Levels/Forest_level/Assets/Scripts/parallax_background.gd" id="1_c5xak"]
+[ext_resource type="Shader" uid="uid://commoxcg4h8uw" path="res://Levels/Forest_level/Assets/Shader/fog.gdshader" id="1_iuml3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c5xak"]
 

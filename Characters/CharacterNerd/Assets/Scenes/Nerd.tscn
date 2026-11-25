@@ -1,10 +1,10 @@
 [gd_scene load_steps=76 format=3 uid="uid://o6i7digxs1q1"]
 
-[ext_resource type="Script" uid="uid://drw22xs3l82o0" path="res://Characters/CharacterNerd/Assets/Scripts/Nerd.gd" id="1_ldlu3"]
-[ext_resource type="Texture2D" uid="uid://bjor6ry11k3wu" path="res://Characters/CharacterNerd/Assets/Sprites/slash_oversize.png" id="2_mwmfn"]
-[ext_resource type="Texture2D" uid="uid://dnie2lo7rntdp" path="res://Characters/CharacterNerd/Assets/Sprites/hurt.png" id="3_ifc8g"]
-[ext_resource type="Texture2D" uid="uid://ditew16u2svil" path="res://Characters/CharacterNerd/Assets/Sprites/idle.png" id="4_trutf"]
-[ext_resource type="Texture2D" uid="uid://c33om8ftjb8n6" path="res://Characters/CharacterNerd/Assets/Sprites/walk.png" id="5_mh3t7"]
+[ext_resource type="Script" uid="uid://xpbshv6vntib" path="res://Characters/CharacterNerd/Assets/Scripts/Nerd.gd" id="1_ldlu3"]
+[ext_resource type="Texture2D" uid="uid://cmwcqiabowg6y" path="res://Characters/CharacterNerd/Assets/Sprites/slash_oversize.png" id="2_mwmfn"]
+[ext_resource type="Texture2D" uid="uid://lr8g8t8u7pvj" path="res://Characters/CharacterNerd/Assets/Sprites/hurt.png" id="3_ifc8g"]
+[ext_resource type="Texture2D" uid="uid://clpevqn2c42ki" path="res://Characters/CharacterNerd/Assets/Sprites/idle.png" id="4_trutf"]
+[ext_resource type="Texture2D" uid="uid://dwvemw6wg5nyn" path="res://Characters/CharacterNerd/Assets/Sprites/walk.png" id="5_mh3t7"]
 [ext_resource type="PackedScene" uid="uid://b7ks55wljd6e1" path="res://Misc/Character/Scenes/heartsContainer.tscn" id="6_xmaq6"]
 [ext_resource type="AudioStream" uid="uid://dccylxa3o4gbr" path="res://Audio/SFX/Steps/Step_wood.wav" id="7_mwmfn"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bi7lxcglf2tnc"]
 
-[ext_resource type="Script" path="res://addons/silent_wolf/Auth/Login.gd" id="1"]
-[ext_resource type="Theme" uid="uid://d2eakbmaefnt6" path="res://addons/silent_wolf/assets/themes/sw_theme.tres" id="1_bbh8k"]
-[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="2"]
-[ext_resource type="Texture2D" uid="uid://bpn62aabunxva" path="res://addons/silent_wolf/assets/gfx/checkbox_checked.png" id="4_ak74a"]
-[ext_resource type="Texture2D" uid="uid://bgs8a50ilk5cj" path="res://addons/silent_wolf/assets/gfx/checkbox_unchecked.png" id="5_3asm1"]
+[ext_resource type="Script" path="res://silent_wolf/Auth/Login.gd" id="1"]
+[ext_resource type="Theme" uid="uid://d2eakbmaefnt6" path="res://silent_wolf/assets/themes/sw_theme.tres" id="1_bbh8k"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://silent_wolf/common/SWButton.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cb2wfib2hgmet" path="res://silent_wolf/assets/gfx/checkbox_checked.png" id="4_ak74a"]
+[ext_resource type="Texture2D" uid="uid://bp31h65py32mv" path="res://silent_wolf/assets/gfx/checkbox_unchecked.png" id="5_3asm1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxxi6"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)

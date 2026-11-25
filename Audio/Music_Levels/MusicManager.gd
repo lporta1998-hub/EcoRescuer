@@ -36,9 +36,40 @@ var _fades := {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().auto_accept_quit = false  # closing the window goes through quit()
 	_main = _new_player()
 	_old = _new_player()
 	_jingle = _new_player()
+
+
+## Quitting while audio plays leaves the playback in the AudioServer, which
+## then reports the stream as leaked at exit. stop() only queues the removal
+## for the audio thread, so quit through here: stop music and sounds, give
+## the mixer a moment to drop the playbacks, then quit. Window close requests
+## come here too.
+func quit() -> void:
+	_stop_all()
+	SFXManager.stop_all()  # same race for a sound still playing (the Quit click)
+	await get_tree().create_timer(0.1, true, false, true).timeout
+	get_tree().quit()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		quit()
+
+
+func _exit_tree() -> void:
+	_stop_all()  # fallback for quits that skip quit()
+
+
+func _stop_all() -> void:
+	for p in [_main, _old, _jingle]:
+		if is_instance_valid(p):
+			p.stop()
+			p.stream = null
+	_current = null
+	current_track = ""
 
 
 func _new_player() -> AudioStreamPlayer:

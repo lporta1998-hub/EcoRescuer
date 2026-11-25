@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dx6x0s57gn30t"]
 
-[ext_resource type="Script" uid="uid://b2xkepc3vt7ep" path="res://Menu/GameOverMenu/game_over_menu.gd" id="1_366h2"]
+[ext_resource type="Script" uid="uid://vpychk236xv2" path="res://Menu/GameOverMenu/game_over_menu.gd" id="1_366h2"]
 
 [sub_resource type="FontVariation" id="FontVariation_0gjnu"]
 

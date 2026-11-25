@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dv5d8ygbtaf7l"]
 
 [ext_resource type="Script" path="res://Characters/CharacterJanitor/Assets/Scripts/JanitorController.gd" id="1_hm78f"]
-[ext_resource type="Texture2D" uid="uid://4ffnc7leuhy5" path="res://Misc/icon.svg" id="2_hm78f"]
+[ext_resource type="Texture2D" uid="uid://ck65h1l4tr7tl" path="res://Misc/icon.svg" id="2_hm78f"]
 [ext_resource type="Script" path="res://Characters/CharacterJanitor/Assets/Scripts/PuddleGenerator.gd" id="3_hm78f"]
 [ext_resource type="PackedScene" uid="uid://dohs70o6pdaik" path="res://Mop/Scenes/mop.tscn" id="4_riv5r"]
 

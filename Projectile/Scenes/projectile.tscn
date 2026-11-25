@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://eqylcn5ss4x3"]
 
-[ext_resource type="Script" uid="uid://5a6ynk8c3g4k" path="res://Projectile/Script/projectile.gd" id="1_08sw2"]
+[ext_resource type="Script" uid="uid://b017osy6a5kig" path="res://Projectile/Script/projectile.gd" id="1_08sw2"]
 [ext_resource type="Texture2D" path="res://Misc/FX/leaf_bolt.png" id="2_tm405"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nl138"]
@@ -17,6 +17,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9884616, 0.03392577), 0.0, 0.0
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_721ex"]
+texture_mode = 1
 curve = SubResource("Curve_6qb6b")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xg858"]

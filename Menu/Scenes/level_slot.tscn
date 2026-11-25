@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dgjwoyreiqw5h"]
 
-[ext_resource type="Script" uid="uid://dvmjra2bhqdca" path="res://Menu/Code/level_slot.gd" id="2_6w5eg"]
+[ext_resource type="Script" uid="uid://b357awbl0ijgv" path="res://Menu/Code/level_slot.gd" id="2_6w5eg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23iuw"]
 content_margin_left = 10.0

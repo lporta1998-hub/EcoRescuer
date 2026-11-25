@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Pg" load_steps=4 format=3 uid="uid://dijaxlvxjn81m"]
 
-[ext_resource type="Texture2D" uid="uid://bqxc115pqo1kf" path="res://Characters/CharacterNerd/Assets/Sprites/Nerd.png" id="1_0nxum"]
+[ext_resource type="Texture2D" uid="uid://cgvobxupriynk" path="res://Characters/CharacterNerd/Assets/Sprites/Nerd.png" id="1_0nxum"]
 [ext_resource type="PackedScene" uid="uid://o6i7digxs1q1" path="res://Characters/CharacterNerd/Assets/Scenes/Nerd.tscn" id="2_sokso"]
 [ext_resource type="Script" uid="uid://dnnh71e5i82sr" path="res://SelezionePg/Script/Pg.gd" id="3_cyao4"]
 

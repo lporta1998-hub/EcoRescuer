@@ -48,7 +48,7 @@ func _keep_name_panel_above_keyboard(delta: float) -> void:
 
 func _on_quit_button_pressed() -> void:
     SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_back.wav"))
-    get_tree().quit()
+    MusicManager.quit()
 
 
 func _on_start_button_pressed() -> void:

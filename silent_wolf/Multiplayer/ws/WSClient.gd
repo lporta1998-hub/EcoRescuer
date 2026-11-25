@@ -1,6 +1,6 @@
 extends Node
 
-const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
+const SWLogger = preload("res://silent_wolf/utils/SWLogger.gd")
 
 # The URL we will connect to
 @export var websocket_url = "wss://ws.silentwolfmp.com/server"

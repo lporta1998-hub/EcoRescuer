@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dohs70o6pdaik"]
 
-[ext_resource type="Script" uid="uid://b8mx3sulq7db2" path="res://Misc/Weapon/Code/Weapon.gd" id="1_6ws56"]
-[ext_resource type="Script" uid="uid://dirnwgb8lp3gc" path="res://Misc/Weapon/Code/attack_data.gd" id="2_f22uu"]
+[ext_resource type="Script" uid="uid://cbgbuy35uh2rc" path="res://Misc/Weapon/Code/Weapon.gd" id="1_6ws56"]
+[ext_resource type="Script" uid="uid://cemyh3ro6xnj5" path="res://Misc/Weapon/Code/attack_data.gd" id="2_f22uu"]
 [ext_resource type="Texture2D" path="res://Characters/CharacterJanitor/Assets/Sprites/mop.png" id="2_ma86g"]
 
 [sub_resource type="Resource" id="Resource_0c7av"]
