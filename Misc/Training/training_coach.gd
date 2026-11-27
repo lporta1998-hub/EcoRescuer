@@ -51,6 +51,8 @@ var _count: Label
 var _title: Label
 var _text: Label
 var _told_safe := false
+## Special-move cooldown seen last frame: a fresh use makes it jump up.
+var _special_last := 0.0
 
 
 func _ready() -> void:
@@ -95,8 +97,11 @@ func _process(_delta: float) -> void:
 			if _enemy == null or not is_instance_valid(_enemy) or _enemy.is_dead:
 				_complete()
 		SPECIAL:
-			if _player.has_method("secondary_cooldown_ratio") and _player.secondary_cooldown_ratio() > 0.0:
+			# a fresh use, not a cooldown left over from the attack exercise
+			var r := _special_cooldown()
+			if r > _special_last + 0.05:
 				_complete()
+			_special_last = r
 
 
 ## The recycling station was reached (via LevelManager.try_finish_level).
@@ -139,6 +144,7 @@ func _next_step() -> void:
 		SPECIAL:
 			_enemy = _spawn_enemy()
 			_target = _enemy
+			_special_last = _special_cooldown()
 		STATION:
 			_target = LevelManager.level_exit
 			if LevelManager.objective_hud:
@@ -160,6 +166,12 @@ func _complete() -> void:
 	_busy = false
 	if not _done:
 		_next_step()
+
+
+func _special_cooldown() -> float:
+	if _player.has_method("secondary_cooldown_ratio"):
+		return _player.secondary_cooldown_ratio()
+	return 0.0
 
 
 ## A weak polluter a little ahead of the hero, on open ground.

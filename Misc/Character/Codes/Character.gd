@@ -40,6 +40,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
   _update_iframes(delta)
+  # nobody loses in the training: whatever drained the hearts, keep one
+  if health <= 0 and Training.active and is_in_group("player"):
+    health = 1
+    hpChanged.emit(health)
   if health <= 0 and not is_dead:
     handle_death()
     
@@ -171,6 +175,8 @@ func take_damage(dmg: int, attacker):
     dmg = hit[0]
     if hit[1]:
       FloatText.spawn(self, "CRIT!", Color(1.0, 0.85, 0.2))
+  if Training.active and is_in_group("player"):
+    dmg = mini(dmg, int(ceilf(health)) - 1)  # the training never takes the last heart
   health -= dmg
   hpChanged.emit(health)
   _hit_fx()

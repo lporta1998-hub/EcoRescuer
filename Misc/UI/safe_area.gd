@@ -54,6 +54,25 @@ func _fit_screen(screen: Node) -> void:
 	if margins() == Vector4.ZERO:
 		return
 	_fit_children(screen)
+	# panels a screen adds later (end cards, pop-ups) get fitted too
+	if not screen.child_entered_tree.is_connected(_on_child_added):
+		screen.child_entered_tree.connect(_on_child_added.bind(screen))
+
+
+func _on_child_added(child: Node, screen: Node) -> void:
+	if child is Control:
+		_fit_late.call_deferred(child, screen)
+
+
+func _fit_late(child: Control, screen: Node) -> void:
+	if not is_instance_valid(child) or child.get_parent() != screen or child.has_meta(BASE_META):
+		return
+	if _skipped(child) or _is_background(child):
+		return
+	if _is_full(child) and child.get_class() == "Control":
+		_fit_children(child)
+	else:
+		_fit(child)
 
 
 func _fit_children(parent: Node) -> void:

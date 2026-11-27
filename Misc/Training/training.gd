@@ -18,6 +18,9 @@ static var active := false
 ## After the first training, the main menu goes on with what Start does
 ## (story intro, then the hero choice) instead of waiting for another tap.
 static var resume_start := false
+## The hero and level the player had chosen before the training borrowed
+## Labra: put back when it ends, however it ends.
+static var _saved := {}
 
 
 ## True once the player has finished the training at least once.
@@ -31,6 +34,8 @@ static func start(first_time := false) -> void:
 	resume_start = first_time
 	Daily.stop()
 	Rage.stop()
+	_saved = {"character": Global.selected_character, "scene": Global.character_scene,
+			"level": Global.selected_level, "level_data": Global.selected_level_data}
 	var hero: Pg = load(HERO)
 	Global.selected_character = hero
 	Global.character_scene = hero.scene
@@ -41,7 +46,6 @@ static func start(first_time := false) -> void:
 
 ## Back to the main menu (the training was completed or left from the pause menu).
 static func finish(tree: SceneTree, completed: bool) -> void:
-	active = false
 	if completed:
 		var cfg := ConfigFile.new()
 		cfg.load(SAVE_PATH)
@@ -49,6 +53,18 @@ static func finish(tree: SceneTree, completed: bool) -> void:
 		cfg.save(SAVE_PATH)
 	else:
 		resume_start = false
-	Global.selected_level = null
+	end()
 	tree.paused = false
 	tree.change_scene_to_file("res://main_menu.tscn")
+
+
+## The training is over (finished, skipped or left from the pause menu):
+## the player's own hero and level choice come back.
+static func end() -> void:
+	if active and not _saved.is_empty():
+		Global.selected_character = _saved.character
+		Global.character_scene = _saved.scene
+		Global.selected_level = _saved.level
+		Global.selected_level_data = _saved.level_data
+	_saved = {}
+	active = false

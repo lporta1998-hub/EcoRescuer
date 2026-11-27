@@ -18,7 +18,7 @@ func _ready() -> void:
     # left the training from its pause menu: don't push the player back in
     if Training.active:
         Training.resume_start = false
-    Training.active = false
+    Training.end()
     _add_player_button()
     _add_story_button()
     _add_codex_button()
