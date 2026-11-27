@@ -55,13 +55,15 @@ func _fit_screen(screen: Node) -> void:
 		return
 	_fit_children(screen)
 	# panels a screen adds later (end cards, pop-ups) get fitted too
+	# (no bind: a bound callable never matches is_connected, so a screen
+	# added back to the tree would be connected twice)
 	if not screen.child_entered_tree.is_connected(_on_child_added):
-		screen.child_entered_tree.connect(_on_child_added.bind(screen))
+		screen.child_entered_tree.connect(_on_child_added)
 
 
-func _on_child_added(child: Node, screen: Node) -> void:
+func _on_child_added(child: Node) -> void:
 	if child is Control:
-		_fit_late.call_deferred(child, screen)
+		_fit_late.call_deferred(child, child.get_parent())
 
 
 func _fit_late(child: Control, screen: Node) -> void:

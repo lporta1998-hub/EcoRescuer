@@ -176,7 +176,7 @@ func take_damage(dmg: int, attacker):
     if hit[1]:
       FloatText.spawn(self, "CRIT!", Color(1.0, 0.85, 0.2))
   if Training.active and is_in_group("player"):
-    dmg = mini(dmg, int(ceilf(health)) - 1)  # the training never takes the last heart
+    dmg = maxi(0, mini(dmg, int(ceilf(health)) - 1))  # the training never takes the last heart
   health -= dmg
   hpChanged.emit(health)
   _hit_fx()
