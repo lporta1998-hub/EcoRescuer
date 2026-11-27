@@ -14,7 +14,7 @@ extends CanvasLayer
 signal closed
 
 const SAVE_PATH := "user://tutorial.cfg"
-const TITLE_FONT := preload("res://Menu/Font/Bleeding_Cowboys.ttf")
+const TITLE_FONT := preload("res://Misc/UI/Fonts/pixel_title_font.tres")
 
 const GREEN := Color(0.65, 0.95, 0.3)
 const GOLD := Color(1.0, 0.83, 0.3)
@@ -73,6 +73,11 @@ var _scroll: ScrollContainer
 var _dots: HBoxContainer
 var _prev: Button
 var _next: Button
+## The animated "swipe" hint under the page (phones, until the first swipe).
+var _hint: SwipeHint
+var _next_pulse: Tween
+## How far the page is pushed sideways while the finger drags it.
+var _drag := 0.0
 
 
 ## Opens the guide on top of `parent` (any node of the current scene).
@@ -89,8 +94,19 @@ static func seen() -> bool:
 
 
 static func _mark_seen() -> void:
+	_save_flag("seen")
+
+
+## True once the player has turned a page by swiping: the hint can go.
+static func _swiped() -> bool:
 	var cfg := ConfigFile.new()
-	cfg.set_value("general", "seen", true)
+	return cfg.load(SAVE_PATH) == OK and bool(cfg.get_value("general", "swiped", false))
+
+
+static func _save_flag(key: String) -> void:
+	var cfg := ConfigFile.new()
+	cfg.load(SAVE_PATH)  # keep the other flags
+	cfg.set_value("general", key, true)
 	cfg.save(SAVE_PATH)
 
 
@@ -256,10 +272,10 @@ func _build() -> void:
 	style.set_corner_radius_all(18)
 	style.set_border_width_all(4)
 	style.border_color = Color(0.55, 0.85, 0.4)
-	style.content_margin_left = 24
-	style.content_margin_right = 24
-	style.content_margin_top = 14
-	style.content_margin_bottom = 16
+	style.content_margin_left = 34
+	style.content_margin_right = 34
+	style.content_margin_top = 18
+	style.content_margin_bottom = 18
 	_panel.add_theme_stylebox_override("panel", style)
 	_margin.add_child(_panel)
 
@@ -302,6 +318,14 @@ func _build() -> void:
 	_body.mouse_filter = Control.MOUSE_FILTER_PASS
 	col.add_child(_body)
 
+	# phones: a finger sliding across the page shows that the guide is
+	# turned by swiping (kept until the player has swiped once)
+	if _mobile and not _swiped():
+		_hint = SwipeHint.new()
+		_hint.text = tr("Scorri per cambiare pagina")
+		_hint.font_size = _fs(20)
+		col.add_child(_hint)
+
 	# footer: previous · one dot per page · next
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 12)
@@ -327,6 +351,7 @@ func _build() -> void:
 		_dots.add_child(dot)
 	_next = _button("Avanti", _fs(22))
 	_next.custom_minimum_size = Vector2(180, 56) if _mobile else Vector2(170, 52)
+	_style_next(_next)
 	_next.pressed.connect(func(): _go(1))
 	footer.add_child(_next)
 
@@ -347,19 +372,12 @@ func _fit_margins() -> void:
 	_margin.add_theme_constant_override("margin_bottom", int(top + safe.w))
 
 
-func _show_page(i: int) -> void:
+func _show_page(i: int, from := 0) -> void:
 	_page = clampi(i, 0, _pages.size() - 1)
 	var page: Dictionary = _pages[_page]
 	_step.text = tr("Come si gioca  ·  %d / %d") % [_page + 1, _pages.size()]
-	if _mobile and _page == 0:
-		_step.text += "  ·  " + tr("Scorri per cambiare pagina")
 	_title.text = tr(page.title)
-	# the western-style title font only draws Latin letters (its Greek ones
-	# are blank): Greek titles use the normal font
-	if _is_latin(_title.text):
-		_title.add_theme_font_override("font", TITLE_FONT)
-	else:
-		_title.remove_theme_font_override("font")
+	_title.add_theme_font_override("font", TITLE_FONT)
 	_intro.text = tr(page.intro)
 	for child in _body.get_children():
 		_body.remove_child(child)
@@ -420,13 +438,20 @@ func _show_page(i: int) -> void:
 			sb.bg_color = GREEN if on else Color(1, 1, 1, 0.25 if state == "normal" else 0.45)
 			sb.set_corner_radius_all(13)
 			dot.add_theme_stylebox_override(state, sb)
+	# the new page slides in from the side it comes from
+	_set_drag(from * 90.0)
+	if from != 0:
+		create_tween().tween_method(_set_drag, from * 90.0, 0.0, 0.18) \
+				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	# first page: the "Avanti" button gently pulses so the way on is obvious
+	if _next_pulse:
+		_next_pulse.kill()
+		_next.modulate = Color.WHITE
+	if _page == 0:
+		_next_pulse = create_tween().set_loops()
+		_next_pulse.tween_property(_next, "modulate", Color(1.35, 1.35, 1.35), 0.6)
+		_next_pulse.tween_property(_next, "modulate", Color.WHITE, 0.6)
 
-
-static func _is_latin(text: String) -> bool:
-	for i in text.length():
-		if text.unicode_at(i) >= 0x0250:  # past Latin Extended-B
-			return false
-	return true
 
 
 func _go(step: int) -> void:
@@ -436,7 +461,28 @@ func _go(step: int) -> void:
 	if _page + step < 0:
 		return
 	SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_page.wav"))
-	_show_page(_page + step)
+	_show_page(_page + step, step)
+
+
+## Pushes the page sideways by `x` (it fades as it goes), via the body's
+## margins so the containers keep their layout.
+func _set_drag(x: float) -> void:
+	_drag = x
+	_body.add_theme_constant_override("margin_left", roundi(x))
+	_body.add_theme_constant_override("margin_right", roundi(-x))
+	_body.modulate.a = clampf(1.0 - absf(x) / 400.0, 0.3, 1.0)
+
+
+func _style_next(b: Button) -> void:
+	for state in ["normal", "hover", "pressed"]:
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = Color(0.2, 0.45, 0.15) if state != "pressed" else Color(0.15, 0.35, 0.1)
+		if state == "hover":
+			sb.bg_color = Color(0.26, 0.55, 0.2)
+		sb.set_border_width_all(3)
+		sb.border_color = GREEN
+		sb.set_corner_radius_all(12)
+		b.add_theme_stylebox_override(state, sb)
 
 
 ## Swipe left / right to turn the page. Vertical drags stay with the list's
@@ -444,6 +490,14 @@ func _go(step: int) -> void:
 const SWIPE_MIN := 90.0
 
 func _input(event: InputEvent) -> void:
+	# the page follows the finger sideways, so it feels like a page to turn
+	if event is InputEventScreenDrag and event.index == _swipe_index:
+		var d: Vector2 = event.position - _swipe_from
+		if absf(d.x) > 12.0 and absf(d.x) > absf(d.y) * 1.5:
+			var step := -1 if d.x > 0.0 else 1
+			var can := _page + step >= 0 and _page + step < _pages.size()
+			_set_drag(d.x * (0.6 if can else 0.15))
+		return
 	if event is InputEventScreenTouch:
 		if event.pressed and _swipe_index == -1:
 			_swipe_index = event.index
@@ -456,6 +510,9 @@ func _input(event: InputEvent) -> void:
 			if absf(d.x) >= SWIPE_MIN and absf(d.x) > absf(d.y) * 2.0 \
 					and _page + step >= 0 and _page + step < _pages.size():
 				_go(step)
+				_learned_swipe()
+			elif _drag != 0.0:
+				create_tween().tween_method(_set_drag, _drag, 0.0, 0.15)
 		return
 	if event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel"):
 		_close()
@@ -466,6 +523,18 @@ func _input(event: InputEvent) -> void:
 	else:
 		return
 	get_viewport().set_input_as_handled()  # don't let the pause menu see it
+
+
+## The player knows how to swipe now: the hint fades out for good.
+func _learned_swipe() -> void:
+	if _hint == null:
+		return
+	_save_flag("swiped")
+	var h := _hint
+	_hint = null
+	var tw := create_tween()
+	tw.tween_property(h, "modulate:a", 0.0, 0.3)
+	tw.tween_callback(h.queue_free)
 
 
 func _close() -> void:
@@ -485,10 +554,10 @@ func _row(icon, title: String, text: String, right: String) -> Control:
 	style.set_border_width_all(2)
 	style.border_color = Color(GREEN, 0.45)
 	style.set_corner_radius_all(12)
-	style.content_margin_left = 12
-	style.content_margin_right = 16
-	style.content_margin_top = 6
-	style.content_margin_bottom = 6
+	style.content_margin_left = 16
+	style.content_margin_right = 26
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
 	panel.add_theme_stylebox_override("panel", style)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 14)
@@ -519,7 +588,7 @@ func _row(icon, title: String, text: String, right: String) -> Control:
 	t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(t)
 	if text != "":
-		var d := _label(tr(text), _fs(17), Color(0.92, 0.92, 0.92))
+		var d := _label(tr(text), _fs(18), Color.WHITE)
 		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		col.add_child(d)
 	if right != "":
@@ -563,6 +632,64 @@ func _button(text: String, font_size: int) -> Button:
 
 
 # --- Drawings ----------------------------------------------------------------
+
+## A finger that slides across a strip, right to left, with arrows ahead of
+## it and the words "Scorri per cambiare pagina": the guide is a book of
+## pages you turn with your thumb.
+class SwipeHint extends Control:
+	const GOLD := Color(1.0, 0.83, 0.3)
+	var text := ""
+	var font_size := 22
+	var _t := 0.0
+
+	func _ready() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		custom_minimum_size = Vector2(0, font_size + 30)
+
+	func _process(delta: float) -> void:
+		_t = fmod(_t + delta, 1.8)
+		queue_redraw()
+
+	func _draw() -> void:
+		var font := get_theme_font("font", "Label")
+		var tw := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+		var track := 150.0
+		var total := track + 24.0 + tw
+		var x0 := (size.x - total) * 0.5
+		var cy := size.y * 0.5
+		# the strip
+		var pill := Rect2(x0 - 22, cy - size.y * 0.5 + 2, total + 44, size.y - 4)
+		draw_style_box(_pill(), pill)
+		# arrows pointing the way the finger goes (towards the next page)
+		for i in 3:
+			var ax := x0 + 18 + i * 22
+			var a := 0.35 + 0.65 * clampf(sin((_t / 1.8) * TAU * 2.0 - i * 0.9) * 0.5 + 0.5, 0.0, 1.0)
+			var c := Color(GOLD, a)
+			draw_polyline(PackedVector2Array([Vector2(ax + 8, cy - 9), Vector2(ax, cy), Vector2(ax + 8, cy + 9)]), c, 4.0)
+		# the finger: slides right -> left, then fades and starts again
+		var p := clampf(_t / 1.3, 0.0, 1.0)
+		var e := p * p * (3.0 - 2.0 * p)
+		var fx := x0 + track - 4 - e * (track - 70)
+		var alpha := 1.0 if _t < 1.3 else 1.0 - (_t - 1.3) / 0.5
+		for k in 5:  # fading trail
+			var tx := fx + (k + 1) * 9.0 * e
+			draw_circle(Vector2(tx, cy), 9.0 - k * 1.4, Color(1, 1, 1, 0.18 * alpha * (1.0 - k * 0.18)))
+		draw_circle(Vector2(fx, cy), 12.0, Color(1, 1, 1, 0.95 * alpha))
+		draw_arc(Vector2(fx, cy), 12.0, 0, TAU, 24, Color(0, 0, 0, 0.6 * alpha), 2.0)
+		# the words
+		var tx0 := x0 + track + 24
+		var base := cy + font.get_ascent(font_size) * 0.5 - font.get_descent(font_size) * 0.5
+		draw_string_outline(font, Vector2(tx0, base), text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 6, Color(0, 0, 0, 0.8))
+		draw_string(font, Vector2(tx0, base), text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, GOLD)
+
+	func _pill() -> StyleBoxFlat:
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = Color(1.0, 0.83, 0.3, 0.12)
+		sb.set_border_width_all(2)
+		sb.border_color = Color(1.0, 0.83, 0.3, 0.6)
+		sb.set_corner_radius_all(int(size.y * 0.5))
+		return sb
+
 
 ## Gold disc with a number: links a line of text to the same number on the
 ## touch diagram.

@@ -1773,3 +1773,60 @@ msgstr "Your hearts are at the top left, and the trash and enemies still to go a
 
 msgid "Scorri per cambiare pagina"
 msgstr "Swipe to turn the page"
+
+msgid "Prima finisci gli esercizi dell'allenamento!"
+msgstr "Finish the training exercises first!"
+
+msgid "Allenamento  ·  %d / %d"
+msgstr "Training  ·  %d / %d"
+
+msgid "Bravo!"
+msgstr "Well done!"
+
+msgid "Qui non puoi perdere: prova pure!"
+msgstr "You can't lose here: go ahead and try!"
+
+msgid "Allenamento completato!"
+msgstr "Training complete!"
+
+msgid "Sei pronto per ripulire l'isola. Nel menu di pausa trovi la mappa del livello e la guida completa."
+msgstr "You're ready to clean up the island. The pause menu has the level map and the full guide."
+
+msgid "Gioca!"
+msgstr "Play!"
+
+msgid "Muoviti"
+msgstr "Move"
+
+msgid "Appoggia il pollice in basso a sinistra e trascinalo: raggiungi il cerchio luminoso."
+msgstr "Put your thumb on the lower left and drag it: reach the glowing circle."
+
+msgid "Usa W A S D o le frecce: raggiungi il cerchio luminoso."
+msgstr "Use W A S D or the arrow keys: reach the glowing circle."
+
+msgid "Raccogli i rifiuti"
+msgstr "Pick up the trash"
+
+msgid "Passa sopra il sacco di rifiuti per raccoglierlo. In alto vedi quanti te ne mancano."
+msgstr "Walk over the trash bag to pick it up. At the top you can see how many are left."
+
+msgid "Attacca!"
+msgstr "Attack!"
+
+msgid "Arriva un Inquinatore! Premi il pulsante grande in basso a destra per colpirlo."
+msgstr "A Polluter is coming! Press the big button on the lower right to hit it."
+
+msgid "Arriva un Inquinatore! Colpiscilo con il tasto destro del mouse."
+msgstr "A Polluter is coming! Hit it with the right mouse button."
+
+msgid "Ora premi il pulsante piccolo: la mossa speciale mira da sola al nemico più vicino."
+msgstr "Now press the small button: the special move aims at the nearest enemy by itself."
+
+msgid "Ora usa la mossa speciale con il tasto sinistro del mouse: mira con il puntatore."
+msgstr "Now use the special move with the left mouse button: aim with the pointer."
+
+msgid "Al punto di raccolta"
+msgstr "To the collection point"
+
+msgid "Hai i rifiuti: portali al punto di raccolta. Segui la freccia accanto all'eroe."
+msgstr "You have the trash: take it to the collection point. Follow the arrow next to the hero."

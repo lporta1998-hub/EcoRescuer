@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3p4nqksuogc5"]
 
-[ext_resource type="FontFile" uid="uid://d2wn0k7lg5g7h" path="res://Menu/Font/Bleeding_Cowboys.ttf" id="1_06t4h"]
+[ext_resource type="FontVariation" path="res://Misc/UI/Fonts/pixel_title_font.tres" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://csoikkl2dsyxx" path="res://Menu/Code/main_menu.gd" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://b5w1g71odtp20" path="res://Menu/Background/control.tscn" id="2_glbon"]
 [ext_resource type="PackedScene" uid="uid://2xe404d13xh0" path="res://Menu/Scenes/fade_transition.tscn" id="3_fu7sn"]
@@ -10,6 +10,10 @@
 [sub_resource type="FontVariation" id="FontVariation_06t4h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
 border_width_top = 5
@@ -24,6 +28,10 @@ shadow_size = 5
 shadow_offset = Vector2(0, -2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 5
 border_width_top = 5
@@ -38,6 +46,10 @@ shadow_size = 5
 shadow_offset = Vector2(0, -2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
 border_width_left = 5
 border_width_top = 5
@@ -54,6 +66,10 @@ shadow_offset = Vector2(0, -2)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_namepanel"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 0.72156864)
 border_width_left = 5
 border_width_top = 5

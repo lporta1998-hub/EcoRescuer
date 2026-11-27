@@ -207,6 +207,8 @@ func _layout() -> void:
 
 ## Notch / home-indicator margins in canvas units: x=left, y=top, z=right, w=bottom.
 func _safe_margins(vp: Vector2) -> Vector4:
+	if "--notch" in OS.get_cmdline_user_args():  # desktop preview of an iPhone in landscape
+		return Vector4(97.0, 0.0, 97.0, 35.0)  # iPhone 15: 59 pt sides, 21 pt home bar
 	if not OS.has_feature("mobile"):
 		return Vector4.ZERO
 	var win := Vector2(DisplayServer.window_get_size())

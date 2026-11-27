@@ -137,7 +137,7 @@ func create_item_display(item_data: Dictionary) -> void:
     # Nome
     var name_label = Label.new()
     name_label.text = item_data.get("name", "Oggetto")
-    name_label.add_theme_font_size_override("font_size", 16)
+    name_label.add_theme_font_size_override("font_size", 18)
     name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     hbox.add_child(name_label)
     

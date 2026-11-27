@@ -36,6 +36,10 @@ bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
 [sub_resource type="FontVariation" id="FontVariation_4riic"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erer0"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
 border_width_top = 5
@@ -50,6 +54,10 @@ shadow_size = 5
 shadow_offset = Vector2(0, -2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r4ru"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
 border_width_left = 5
 border_width_top = 5
@@ -64,6 +72,10 @@ shadow_size = 5
 shadow_offset = Vector2(0, -2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4riic"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.3372549, 0.3372549, 0.3372549, 1)
 border_width_left = 5
 border_width_top = 5

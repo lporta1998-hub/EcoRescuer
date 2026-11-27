@@ -15,6 +15,10 @@ func _ready() -> void:
         $VBoxContainer/QuitButton.hide()
     Daily.stop()  # back in the menu: any Daily challenge or Rage match is over
     Rage.stop()
+    # left the training from its pause menu: don't push the player back in
+    if Training.active:
+        Training.resume_start = false
+    Training.active = false
     _add_player_button()
     _add_story_button()
     _add_codex_button()
@@ -27,6 +31,10 @@ func _ready() -> void:
     MusicManager.play_track("menu")
     await $fade_transition.fade_in()
     _sync_name_prompt_with_state()
+    # just finished the first training: carry on with Start (story, heroes)
+    if Training.resume_start:
+        Training.resume_start = false
+        _go_to_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,9 +61,6 @@ func _on_quit_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
     SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
-    # Brand-new players see the guide once before their first game.
-    if not Progress.intro_seen and not TutorialMenu.seen():
-        await TutorialMenu.open(self).closed
     # The name is asked only the first time; after that Start goes straight in.
     if Global.player_name.strip_edges() != "":
         await $fade_transition.fade_out()
@@ -142,7 +147,7 @@ func _add_tutorial_button() -> void:
     b.offset_bottom = -24.0
     b.pressed.connect(func():
         SFXManager.play_sfx(preload("res://Audio/SFX/Eco/ui_confirm.wav"))
-        TutorialMenu.open(self))
+        Training.start())  # learn by playing, in the practice level
     add_child(b)
     move_child(b, $NameOverlay.get_index())
 
@@ -297,8 +302,8 @@ func _add_rage_button() -> void:
 ## The menu buttons as 2 centered rows of equal buttons (3 per row on
 ## phones, 4 + 3 on desktop where Quit is shown too). The buttons keep the
 ## style and connections they have in the scene; only their container changes.
-const MENU_BUTTON_SIZE := Vector2(250, 74)
-const MENU_FONT_SIZE := 30
+const MENU_BUTTON_SIZE := Vector2(272, 74)
+const MENU_FONT_SIZE := 26
 const MENU_GAP := 14
 
 func _layout_buttons() -> void:
@@ -470,6 +475,10 @@ func _on_name_confirm_pressed() -> void:
 
 ## Character select, with the story intro first the very first time.
 func _go_to_game() -> void:
+    # Brand-new players learn by playing: the practice level comes first.
+    if not Training.done() and not Progress.intro_seen:
+        Training.start(true)
+        return
     if not Progress.intro_seen:
         Progress.mark_intro_seen()
         Cutscene.play(get_tree(), Cutscene.INTRO, "res://SelezionePg/Scenes/menu_selezione.tscn")

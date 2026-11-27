@@ -19,6 +19,10 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w5eg"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
 border_width_left = 2
 border_width_top = 2
@@ -31,10 +35,14 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_7iq7m"]
-line_spacing = 0.0
-font_size = 12
+line_spacing = 2.0
+font_size = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rsda"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
 bg_color = Color(0.03876, 0.11207495, 0.07016479, 0)
 border_width_left = 3
 border_width_top = 3

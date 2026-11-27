@@ -3,7 +3,7 @@ extends Control
 ## Rage mode setup: pick a map (unlocked in the campaign), a hero you own and
 ## which permanent perks to use, then play. Same look as the Shop.
 
-const TITLE_FONT := preload("res://Menu/Font/Bleeding_Cowboys.ttf")
+const TITLE_FONT := preload("res://Misc/UI/Fonts/pixel_title_font.tres")
 const BACKGROUND := preload("res://Menu/Background/control.tscn")
 const LOCK_ICON := preload("res://Menu/Shop/lock.png")
 const GOLD := Color(1.0, 0.83, 0.3)
@@ -114,7 +114,7 @@ func _build(maps: Array[LevelData], heroes: Array[Pg]) -> void:
 	_perk_box.add_theme_constant_override("v_separation", 8)
 	col.add_child(_perk_box)
 
-	var help := _label(tr("Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round.") % Rage.BOSS_EVERY, 15, Color(0.9, 0.9, 0.9))
+	var help := _label(tr("Round infiniti di nemici, un boss ogni %d round. I potenziamenti del negozio che trovi a terra valgono solo qui: cuori, scudo e magnete fino a fine partita, velocità e forza fino a fine round.") % Rage.BOSS_EVERY, 17, Color(0.9, 0.9, 0.9))
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(help)
 
@@ -283,10 +283,10 @@ func _style(bg: Color) -> StyleBoxFlat:
 	s.set_border_width_all(4)
 	s.border_blend = true
 	s.set_corner_radius_all(14)
-	s.content_margin_left = 12
-	s.content_margin_right = 12
-	s.content_margin_top = 4
-	s.content_margin_bottom = 4
+	s.content_margin_left = 18
+	s.content_margin_right = 18
+	s.content_margin_top = 8
+	s.content_margin_bottom = 8
 	return s
 
 
