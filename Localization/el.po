@@ -1773,3 +1773,60 @@ msgstr "Πάνω αριστερά είναι οι καρδιές σου και �
 
 msgid "Scorri per cambiare pagina"
 msgstr "Σύρε για να αλλάξεις σελίδα"
+
+msgid "Prima finisci gli esercizi dell'allenamento!"
+msgstr "Τελείωσε πρώτα τις ασκήσεις της προπόνησης!"
+
+msgid "Allenamento  ·  %d / %d"
+msgstr "Προπόνηση  ·  %d / %d"
+
+msgid "Bravo!"
+msgstr "Μπράβο!"
+
+msgid "Qui non puoi perdere: prova pure!"
+msgstr "Εδώ δεν μπορείς να χάσεις: δοκίμασε άφοβα!"
+
+msgid "Allenamento completato!"
+msgstr "Η προπόνηση ολοκληρώθηκε!"
+
+msgid "Sei pronto per ripulire l'isola. Nel menu di pausa trovi la mappa del livello e la guida completa."
+msgstr "Είσαι έτοιμος να καθαρίσεις το νησί. Στο μενού παύσης θα βρεις τον χάρτη της πίστας και τον πλήρη οδηγό."
+
+msgid "Gioca!"
+msgstr "Παίξε!"
+
+msgid "Muoviti"
+msgstr "Κινήσου"
+
+msgid "Appoggia il pollice in basso a sinistra e trascinalo: raggiungi il cerchio luminoso."
+msgstr "Ακούμπησε τον αντίχειρα κάτω αριστερά και σύρε τον: φτάσε στον φωτεινό κύκλο."
+
+msgid "Usa W A S D o le frecce: raggiungi il cerchio luminoso."
+msgstr "Χρησιμοποίησε W A S D ή τα βελάκια: φτάσε στον φωτεινό κύκλο."
+
+msgid "Raccogli i rifiuti"
+msgstr "Μάζεψε τα σκουπίδια"
+
+msgid "Passa sopra il sacco di rifiuti per raccoglierlo. In alto vedi quanti te ne mancano."
+msgstr "Πέρνα πάνω από τη σακούλα για να τη μαζέψεις. Πάνω βλέπεις πόσες απομένουν."
+
+msgid "Attacca!"
+msgstr "Επίθεση!"
+
+msgid "Arriva un Inquinatore! Premi il pulsante grande in basso a destra per colpirlo."
+msgstr "Έρχεται ένας Ρυπαντής! Πάτα το μεγάλο κουμπί κάτω δεξιά για να τον χτυπήσεις."
+
+msgid "Arriva un Inquinatore! Colpiscilo con il tasto destro del mouse."
+msgstr "Έρχεται ένας Ρυπαντής! Χτύπησέ τον με το δεξί κουμπί του ποντικιού."
+
+msgid "Ora premi il pulsante piccolo: la mossa speciale mira da sola al nemico più vicino."
+msgstr "Τώρα πάτα το μικρό κουμπί: η ειδική κίνηση σημαδεύει μόνη της τον πιο κοντινό εχθρό."
+
+msgid "Ora usa la mossa speciale con il tasto sinistro del mouse: mira con il puntatore."
+msgstr "Τώρα χρησιμοποίησε την ειδική κίνηση με το αριστερό κουμπί του ποντικιού: σημάδεψε με τον δείκτη."
+
+msgid "Al punto di raccolta"
+msgstr "Στο σημείο συλλογής"
+
+msgid "Hai i rifiuti: portali al punto di raccolta. Segui la freccia accanto all'eroe."
+msgstr "Έχεις τα σκουπίδια: πήγαινέ τα στο σημείο συλλογής. Ακολούθησε το βέλος δίπλα στον ήρωα."

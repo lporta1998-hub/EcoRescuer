@@ -19,7 +19,7 @@ const CHARACTERS: Array[Pg] = [
 ]
 const COIN_ICON := preload("res://Collectibles/Assets/Sprites/coin.png")
 const LOCK_ICON := preload("res://Menu/Shop/lock.png")
-const TITLE_FONT := preload("res://Menu/Font/Bleeding_Cowboys.ttf")
+const TITLE_FONT := preload("res://Misc/UI/Fonts/pixel_title_font.tres")
 const BACKGROUND := preload("res://Menu/Background/control.tscn")
 
 const GREEN := Color(0.65, 0.95, 0.3)
@@ -207,17 +207,17 @@ func _show_tab(kind: String) -> void:
 
 func _make_card(item: Dictionary) -> Control:
 	var card := PanelContainer.new()
-	card.custom_minimum_size = Vector2(196, 300 if item.kind == "character" else 370)
+	card.custom_minimum_size = Vector2(232, 330 if item.kind == "character" else 400)
 	card.mouse_filter = Control.MOUSE_FILTER_PASS
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0, 0, 0, 0.6) if item.kind != "enemy" else Color(0.2, 0.02, 0.04, 0.65)
 	style.set_border_width_all(4)
 	style.border_color = Color(1, 1, 1, 0.85) if item.kind != "enemy" else Color(1.0, 0.55, 0.5, 0.9)
 	style.set_corner_radius_all(16)
-	style.content_margin_left = 12
-	style.content_margin_right = 12
-	style.content_margin_top = 12
-	style.content_margin_bottom = 12
+	style.content_margin_left = 16
+	style.content_margin_right = 16
+	style.content_margin_top = 14
+	style.content_margin_bottom = 14
 	card.add_theme_stylebox_override("panel", style)
 
 	var box := VBoxContainer.new()
@@ -271,18 +271,18 @@ func _make_card(item: Dictionary) -> Control:
 		pips.draw.connect(_draw_pips.bind(pips, item.id))
 		box.add_child(pips)
 
-	var desc := _make_label(item.desc, 15)
+	var desc := _make_label(item.desc, 17)
 	desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	desc.custom_minimum_size = Vector2(168, 0)
+	desc.custom_minimum_size = Vector2(204, 0)
 	desc.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	desc.max_lines_visible = 4  # never push the price button off the card
+	desc.max_lines_visible = 5  # never push the price button off the card
 	desc.clip_text = true
 	box.add_child(desc)
 
 	var reward: Label = null
 	if item.get("reward", 0.0) > 0.0:
-		reward = _make_label("", 17)
+		reward = _make_label("", 18)
 		reward.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		reward.add_theme_color_override("font_color", GOLD)
 		box.add_child(reward)
@@ -445,8 +445,8 @@ func _button_style(bg: Color) -> StyleBoxFlat:
 	s.set_corner_radius_all(16)
 	s.shadow_size = 5
 	s.shadow_offset = Vector2(0, -2)
-	s.content_margin_left = 12
-	s.content_margin_right = 12
+	s.content_margin_left = 20
+	s.content_margin_right = 20
 	return s
 
 

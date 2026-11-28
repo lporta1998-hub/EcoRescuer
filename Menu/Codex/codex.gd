@@ -8,7 +8,7 @@ extends Control
 ##  - Statistiche: lifetime counters.
 ## Built in code, with the same look as the Shop.
 
-const TITLE_FONT := preload("res://Menu/Font/Bleeding_Cowboys.ttf")
+const TITLE_FONT := preload("res://Misc/UI/Fonts/pixel_title_font.tres")
 const BACKGROUND := preload("res://Menu/Background/control.tscn")
 const LOCK_ICON := preload("res://Menu/Shop/lock.png")
 const STAR_ICON := preload("res://Menu/Stars/star_full.png")
@@ -289,10 +289,10 @@ func _row(icon: Texture2D, title: String, text: String, right: String, color: Co
 	style.set_border_width_all(3)
 	style.border_color = Color(color, 0.7)
 	style.set_corner_radius_all(12)
-	style.content_margin_left = 12
-	style.content_margin_right = 16
-	style.content_margin_top = 6
-	style.content_margin_bottom = 6
+	style.content_margin_left = 16
+	style.content_margin_right = 26
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
 	panel.add_theme_stylebox_override("panel", style)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 14)
@@ -315,7 +315,7 @@ func _row(icon: Texture2D, title: String, text: String, right: String, color: Co
 	t.add_theme_color_override("font_color", color)
 	col.add_child(t)
 	if text != "":
-		var d := _make_label(text, 16)
+		var d := _make_label(text, 18)
 		d.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		d.add_theme_color_override("font_color", Color(0.92, 0.92, 0.92))
 		col.add_child(d)
@@ -356,8 +356,8 @@ func _button_style(bg: Color) -> StyleBoxFlat:
 	s.set_corner_radius_all(16)
 	s.shadow_size = 5
 	s.shadow_offset = Vector2(0, -2)
-	s.content_margin_left = 12
-	s.content_margin_right = 12
+	s.content_margin_left = 20
+	s.content_margin_right = 20
 	return s
 
 

@@ -39,6 +39,7 @@ var _shown_coins := -1
 var _quest_label: Label
 var _quest_timer := 0.0
 var _objective_icon: TextureRect
+var _objective_panel: PanelContainer
 
 
 func _ready() -> void:
@@ -52,6 +53,7 @@ func _ready() -> void:
 	panel.offset_top = 10
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(panel)
+	_objective_panel = panel
 	var lines := VBoxContainer.new()
 	lines.add_theme_constant_override("separation", 0)
 	lines.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -61,7 +63,7 @@ func _ready() -> void:
 	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	lines.add_child(row)
-	_quest_label = _make_label(15)
+	_quest_label = _make_label(17)
 	_quest_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_quest_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.45))
 	_quest_label.visible = false
@@ -158,6 +160,13 @@ func update_objective(bags: int, bags_needed: int, kills: int, kills_needed: int
 func set_quests(text: String) -> void:
 	_quest_label.text = text
 	_quest_label.visible = text != ""
+
+
+## Shows or hides the objective tracker at the top (the training hides it
+## while an exercise is about something else).
+func set_objective_visible(on: bool) -> void:
+	if _objective_panel:
+		_objective_panel.visible = on
 
 
 func toast(text: String, color: Color = GOLD) -> void:

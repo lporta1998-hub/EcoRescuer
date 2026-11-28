@@ -667,6 +667,11 @@ func on_chest_opened() -> void:
 func try_finish_level() -> void:
     if _finished:
         return
+    # the practice level (Training) ends with its own card, no score or stars
+    if Training.active and current_level and current_level.has_method("training_exit_reached"):
+        if objective_met():
+            current_level.training_exit_reached()
+            return
     # Final level: the station inside the arena starts the boss fight; the
     # level ends when the boss is beaten (see Boss/fortress_level.gd).
     if current_level and current_level.has_method("start_boss_fight") and not current_level.boss_defeated \
@@ -848,6 +853,8 @@ func collected_points() -> int:
     return total
 
 func show_game_over_menu() -> void:
+    if Training.active:
+        return  # nobody loses in the training (the coach refills the hearts)
     if rage_run:
         rage_summary = rage_run.finish(maxi(0, collected_points() - spent_coin_points))
         coins_earned = rage_summary.coins

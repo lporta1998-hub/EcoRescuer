@@ -1773,3 +1773,60 @@ msgstr "No canto superior esquerdo estão os teus corações e ao centro o lixo 
 
 msgid "Scorri per cambiare pagina"
 msgstr "Desliza para mudar de página"
+
+msgid "Prima finisci gli esercizi dell'allenamento!"
+msgstr "Termina primeiro os exercícios do treino!"
+
+msgid "Allenamento  ·  %d / %d"
+msgstr "Treino  ·  %d / %d"
+
+msgid "Bravo!"
+msgstr "Muito bem!"
+
+msgid "Qui non puoi perdere: prova pure!"
+msgstr "Aqui não podes perder: experimenta à vontade!"
+
+msgid "Allenamento completato!"
+msgstr "Treino concluído!"
+
+msgid "Sei pronto per ripulire l'isola. Nel menu di pausa trovi la mappa del livello e la guida completa."
+msgstr "Estás pronto para limpar a ilha. No menu de pausa encontras o mapa do nível e o guia completo."
+
+msgid "Gioca!"
+msgstr "Jogar!"
+
+msgid "Muoviti"
+msgstr "Move-te"
+
+msgid "Appoggia il pollice in basso a sinistra e trascinalo: raggiungi il cerchio luminoso."
+msgstr "Põe o polegar em baixo à esquerda e arrasta-o: chega ao círculo brilhante."
+
+msgid "Usa W A S D o le frecce: raggiungi il cerchio luminoso."
+msgstr "Usa W A S D ou as setas: chega ao círculo brilhante."
+
+msgid "Raccogli i rifiuti"
+msgstr "Apanha o lixo"
+
+msgid "Passa sopra il sacco di rifiuti per raccoglierlo. In alto vedi quanti te ne mancano."
+msgstr "Passa por cima do saco do lixo para o apanhar. Em cima vês quantos faltam."
+
+msgid "Attacca!"
+msgstr "Ataca!"
+
+msgid "Arriva un Inquinatore! Premi il pulsante grande in basso a destra per colpirlo."
+msgstr "Vem aí um Poluidor! Carrega no botão grande em baixo à direita para lhe bater."
+
+msgid "Arriva un Inquinatore! Colpiscilo con il tasto destro del mouse."
+msgstr "Vem aí um Poluidor! Bate-lhe com o botão direito do rato."
+
+msgid "Ora premi il pulsante piccolo: la mossa speciale mira da sola al nemico più vicino."
+msgstr "Agora carrega no botão pequeno: o movimento especial aponta sozinho ao inimigo mais próximo."
+
+msgid "Ora usa la mossa speciale con il tasto sinistro del mouse: mira con il puntatore."
+msgstr "Agora usa o movimento especial com o botão esquerdo do rato: aponta com o ponteiro."
+
+msgid "Al punto di raccolta"
+msgstr "Ao ponto de recolha"
+
+msgid "Hai i rifiuti: portali al punto di raccolta. Segui la freccia accanto all'eroe."
+msgstr "Tens o lixo: leva-o ao ponto de recolha. Segue a seta ao lado do herói."

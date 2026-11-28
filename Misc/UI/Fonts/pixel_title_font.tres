@@ -1,0 +1,20 @@
+[gd_resource type="FontVariation" load_steps=3 format=3]
+
+[ext_resource type="FontFile" path="res://Misc/UI/Fonts/PixelifySans-Variable.ttf" id="1_font"]
+
+[sub_resource type="SystemFont" id="SystemFont_fallback"]
+font_names = PackedStringArray("Sans-Serif")
+font_weight = 700
+
+[resource]
+fallbacks = Array[Font]([SubResource("SystemFont_fallback")])
+base_font = ExtResource("1_font")
+opentype_features = {
+1818847073: 0,
+1668049255: 0,
+1684826471: 0
+}
+variation_opentype = {
+2003265652: 700
+}
+spacing_glyph = 1

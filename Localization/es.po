@@ -1773,3 +1773,60 @@ msgstr "Arriba a la izquierda están tus corazones y en el centro la basura y lo
 
 msgid "Scorri per cambiare pagina"
 msgstr "Desliza para cambiar de página"
+
+msgid "Prima finisci gli esercizi dell'allenamento!"
+msgstr "¡Termina primero los ejercicios del entrenamiento!"
+
+msgid "Allenamento  ·  %d / %d"
+msgstr "Entrenamiento  ·  %d / %d"
+
+msgid "Bravo!"
+msgstr "¡Bien hecho!"
+
+msgid "Qui non puoi perdere: prova pure!"
+msgstr "Aquí no puedes perder: ¡pruébalo sin miedo!"
+
+msgid "Allenamento completato!"
+msgstr "¡Entrenamiento completado!"
+
+msgid "Sei pronto per ripulire l'isola. Nel menu di pausa trovi la mappa del livello e la guida completa."
+msgstr "Estás listo para limpiar la isla. En el menú de pausa encontrarás el mapa del nivel y la guía completa."
+
+msgid "Gioca!"
+msgstr "¡Jugar!"
+
+msgid "Muoviti"
+msgstr "Muévete"
+
+msgid "Appoggia il pollice in basso a sinistra e trascinalo: raggiungi il cerchio luminoso."
+msgstr "Pon el pulgar abajo a la izquierda y arrástralo: llega al círculo brillante."
+
+msgid "Usa W A S D o le frecce: raggiungi il cerchio luminoso."
+msgstr "Usa W A S D o las flechas: llega al círculo brillante."
+
+msgid "Raccogli i rifiuti"
+msgstr "Recoge la basura"
+
+msgid "Passa sopra il sacco di rifiuti per raccoglierlo. In alto vedi quanti te ne mancano."
+msgstr "Pasa por encima de la bolsa de basura para recogerla. Arriba ves cuántas te faltan."
+
+msgid "Attacca!"
+msgstr "¡Ataca!"
+
+msgid "Arriva un Inquinatore! Premi il pulsante grande in basso a destra per colpirlo."
+msgstr "¡Llega un Contaminador! Pulsa el botón grande abajo a la derecha para golpearlo."
+
+msgid "Arriva un Inquinatore! Colpiscilo con il tasto destro del mouse."
+msgstr "¡Llega un Contaminador! Golpéalo con el botón derecho del ratón."
+
+msgid "Ora premi il pulsante piccolo: la mossa speciale mira da sola al nemico più vicino."
+msgstr "Ahora pulsa el botón pequeño: el movimiento especial apunta solo al enemigo más cercano."
+
+msgid "Ora usa la mossa speciale con il tasto sinistro del mouse: mira con il puntatore."
+msgstr "Ahora usa el movimiento especial con el botón izquierdo del ratón: apunta con el puntero."
+
+msgid "Al punto di raccolta"
+msgstr "Al punto de recogida"
+
+msgid "Hai i rifiuti: portali al punto di raccolta. Segui la freccia accanto all'eroe."
+msgstr "Tienes la basura: llévala al punto de recogida. Sigue la flecha junto al héroe."

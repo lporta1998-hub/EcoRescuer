@@ -41,8 +41,8 @@ func _ready() -> void:
 	style.set_corner_radius_all(16)
 	style.set_border_width_all(4)
 	style.border_color = _card.get("color", Color(0.55, 0.85, 0.4))
-	style.content_margin_left = 30
-	style.content_margin_right = 30
+	style.content_margin_left = 38
+	style.content_margin_right = 38
 	style.content_margin_top = 20
 	style.content_margin_bottom = 22
 	panel.add_theme_stylebox_override("panel", style)

@@ -37,6 +37,7 @@ Progress="*res://Misc/Progress/progress.gd"
 Daily="*res://Misc/Daily/daily.gd"
 Rage="*res://Misc/Rage/rage.gd"
 TouchControls="*res://Misc/TouchControls/touch_controls.gd"
+SafeArea="*res://Misc/UI/safe_area.gd"
 
 [display]
 
@@ -63,6 +64,10 @@ folder_colors={
 "res://_folder_structure_placeholder/": "gray",
 "res://addons/": "gray"
 }
+
+[gui]
+
+theme/custom="res://Misc/UI/game_theme.tres"
 
 [input]
 

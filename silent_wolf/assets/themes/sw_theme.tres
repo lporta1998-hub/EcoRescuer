@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://d2eakbmaefnt6"]
 
-[ext_resource type="FontFile" uid="uid://ko18qhcsucgf" path="res://silent_wolf/assets/fonts/Comfortaa-Bold.ttf" id="1_noq36"]
+[ext_resource type="FontVariation" path="res://Misc/UI/Fonts/pixel_font.tres" id="1_noq36"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vpgq"]
 
